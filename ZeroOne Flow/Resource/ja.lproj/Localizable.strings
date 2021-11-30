@@ -1,0 +1,145 @@
+// Copyright © 2021 Ni Fu. All rights reserved.
+
+// MARK: - Title
+"ZeroOne Flow" = "ZeroOne Flow";
+"Control" = "コントロール";
+
+// MARK: - Flow Mode
+"Mode" = "モード";
+"Linear" = "リニア";
+"Fly" = "フライ";
+"Tornado" = "トルネード";
+"Single" = "シングル";
+"Circle" = "サークル";
+"Worm" = "ワーム";
+"Big Bang" = "ビッグバン";
+"Rain" = "レイン";
+"Geometry" = "ジオメトリ";
+
+// MARK: - Content Type
+"Content" = "内容";
+"Type" = "種類";
+"Number" = "数字";
+"Language" = "言語";
+"Symbol" = "記号";
+"Custom" = "カスタム";
+
+// Number
+"Binary" = "2進数";
+"Oct" = "8進数";
+"Hex" = "16進数";
+
+// Language
+"Latin" = "ラテン";
+"Cuneiform" = "楔形文字";
+"Greek" = "ギリシャ";
+"Hieroglyph" = "ヒエログリフ";
+"Arabic" = "アラビア";
+"Devanagari" = "サンスクリット";
+"Chinese" = "漢字";
+
+// Symbol
+"Box" = "ボックス";
+"Money" = "通貨";
+"Block" = "ブロック";
+"Chess" = "チェス";
+"Mahjong" = "麻雀";
+"Kaomoji" = "顔文字";
+
+// Custom
+"First Content" = "１つ目のテキスト";
+"Secong Content" = "２つ目のテキスト";
+
+// MARK: - Font
+"Font" = "フォント";
+"Font Size" = "サイズ";
+"Max" = "最大";
+"Min" = "最小";
+
+"Design" = "書体";
+"default" = "デフォルト";
+"monospaced" = "等幅";
+"rounded" = "丸文字";
+"serif" = "セリフ";
+
+"Weight" = "太さ";
+"ultraLight" = "ウルトラライト";
+"thin" = "シン";
+"light" = "ライト";
+"regular" = "レギュラー";
+"medium" = "ミディアム";
+"semibold" = "セミボールド";
+"bold" = "ボールド";
+"heavy" = "ヘビー";
+"black" = "ブラック";
+
+// MARK: - Random
+"Random" = "ランダム";
+"random" = "ランダム";
+
+// MARK: - Color
+"Color" = "色彩";
+"Text" = "文字";
+"Background" = "背景";
+
+//MARK: - Gradient
+"Gradation" = "グラデーション";
+"Radial" = "放射";
+"Linear" = "線形";
+"Angular" = "角度";
+"Elliptical" = "楕円";
+
+// MARK: - Style
+"Style" = "スタイル";
+"My Styles" = "マイスタイル";
+
+// Save
+"Save" = "保存";
+"save.message" = "現在のスタイルを保存しますか？";
+"unnamed" = "無名";
+
+// Reset
+"Reset" = "リセット";
+"reset.message" = "現在のスタイルをリセットしますか？";
+
+// Button
+"Cancel" = "キャンセル";
+"OK" = "はい";
+
+// MARK: - Movement
+"Speed" = "速度";
+"Repeat" = "反復";
+
+"Duration" = "時間";
+"Rotation" = "回転";
+
+"Gap" = "間隔";
+"Step" = "歩幅";
+
+"Crawling" = "爬行";
+"Stretch" = "伸縮";
+
+// MARK: - LineFeed
+"LineFeed" = "改行";
+"Activate" = "有効化";
+
+// MARK: - Scale
+"Scale" = "規模";
+"Depth" = "深さ";
+"Length" = "長さ";
+
+// MARK: - Padding
+"Padding" = "余白";
+"V" = "縦";
+"H" = "横";
+
+// MARK: - Shape
+"Shape" = "図形";
+"Line Width" = "線幅";
+"Fill" = "塗りつぶし";
+
+"Line" = "線";
+"Triangle" = "三角形";
+"Rectangle" = "長方形";
+"Ellipse" = "楕円";
+"Curve" = "曲線";

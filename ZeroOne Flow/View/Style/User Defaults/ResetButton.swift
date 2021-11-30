@@ -1,0 +1,33 @@
+// Copyright © 2021 Ni Fu. All rights reserved.
+
+import SwiftUI
+
+struct ResetButton: View {
+    let reset: () -> Void
+    @State private var showAlert = false
+    
+    var body: some View {
+        resetButton
+            .alert("Reset", isPresented: $showAlert) {
+                alertButtons
+            } message: {
+                Text("reset.message")
+            }
+            .padding()
+    }
+    
+    var resetButton: some View {
+        Button(action: { showAlert.toggle() }) {
+            Image(systemName: "arrow.uturn.left")
+                .font(.title2)
+                .foregroundColor(.red)
+        }
+    }
+    
+    var alertButtons: some View {
+        Group {
+            Button("Cancel", role: .cancel, action: {})
+            Button("OK", role: .destructive, action: { reset() })
+        }
+    }
+}
