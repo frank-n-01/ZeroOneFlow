@@ -1,0 +1,145 @@
+// Copyright © 2021 Ni Fu. All rights reserved.
+
+// MARK: - Title
+"ZeroOne Flow" = "CeroUno Flujo";
+"Control" = "Control";
+
+// MARK: - Flow Mode
+"Mode" = "Modo";
+"Linear" = "Lineal";
+"Fly" = "Mosca";
+"Tornado" = "Tornado";
+"Single" = "Solo";
+"Circle" = "Circulo";
+"Worm" = "Gusano";
+"Big Bang" = "Big Bang";
+"Rain" = "Lluvia";
+"Geometry" = "Geometría";
+
+// MARK: - Content Type
+"Content" = "Contenido";
+"Type" = "Tipo";
+"Number" = "Número";
+"Language" = "Lenguaje";
+"Symbol" = "Símbolo";
+"Custom" = "Personalizado";
+
+// Number
+"Binary" = "Binario";
+"Oct" = "Oct";
+"Hex" = "Hex";
+
+// Language
+"Latin" = "Latín";
+"Cuneiform" = "Cuneiforme";
+"Greek" = "Griego";
+"Hieroglyph" = "Jeroglífico";
+"Arabic" = "Arábica";
+"Devanagari" = "Devanagari";
+"Chinese" = "Chino";
+
+// Symbol
+"Box" = "Caja";
+"Money" = "Moneda";
+"Block" = "Bloque";
+"Chess" = "Ajedrez";
+"Mahjong" = "Mahjong";
+"Kaomoji" = "Kaomoji";
+
+// Custom
+"First Content" = "primer contenido";
+"Secong Content" = "segundo contenido";
+
+// MARK: - Font
+"Font" = "Fuente";
+"Size" = "Tamaño";
+"Max" = "Max";
+"Min" = "Min";
+
+"Design" = "Diseño";
+"default" = "defecto";
+"monospaced" = "monoespaciado";
+"rounded" = "redondeado";
+"serif" = "serif";
+
+"Weight" = "Peso";
+"ultraLight" = "ultraligero";
+"thin" = "delgado";
+"light" = "ligero";
+"regular" = "regular";
+"medium" = "medio";
+"semibold" = "semibold";
+"bold" = "negrita";
+"heavy" = "pesado";
+"black" = "negro";
+
+// MARK: - Random
+"Random" = "Aleatorio";
+"random" = "aleatorio";
+
+// MARK: - Color
+"Color" = "Color";
+"Text" = "Texto";
+"Background" = "Antecedentes";
+
+//MARK: - Gradient
+"Gradation" = "Gradación";
+"Radial" = "Radial";
+"Linear" = "Lineal";
+"Angular" = "Angular";
+"Elliptical" = "Elíptico";
+
+// MARK: - Style
+"Style" = "Estilo";
+"My Styles" = "Mis estilos";
+
+// Save
+"Save" = "Guardar";
+"save.message" = "¿Guarda su estilo actual?";
+"unnamed" = "sin nombre";
+
+// Reset
+"Reset" = "Restablecer";
+"reset.message" = "¿Restablecer tu estilo?";
+
+// Button
+"Cancel" = "Cancelar";
+"OK" = "OK";
+
+// MARK: - Movement
+"Speed" = "Velocidad";
+"Repeat" = "Repetir";
+
+"Duration" = "Duración";
+"Rotation" = "Rotación";
+
+"Gap" = "Brecha";
+"Step" = "Pasco";
+
+"Crawling" = "Arrastrándose";
+"Stretch" = "Estirar";
+
+// MARK: - LineFeed
+"LineFeed" = "Nueva Línea";
+"Activate" = "Activar";
+
+// MARK: - Scale
+"Scale" = "Escala";
+"Depth" = "Profundidad";
+"Length" = "Longitud";
+
+// MARK: - Padding
+"Padding" = "Relleno";
+"V" = "V";
+"H" = "H";
+
+// MARK: - Shape
+"Shape" = "Forma";
+"Line Width" = "Ancho de Línea";
+"Fill" = "Llenar";
+
+"Line" = "Línea";
+"Triangle" = "Triángulo";
+"Rectangle" = "Rectángulo";
+"Ellipse" = "Ellipse";
+"Curve" = "Curva";

@@ -1,0 +1,145 @@
+/* 
+  Localizable.strings
+  ZeroOne Flow
+
+  Created by NI FU on 2021/09/06.
+  
+*/
+
+// MARK: -- Title
+"ZeroOne Flow" = "CeroUno Flujo";
+"Tap to Start" = "Toque para Empezar";
+
+// MARK: -- Flow Mode
+"LINEAR" = "LINEAL";
+"FLY" = "MOSCA";
+"TORNADO" = "TORNADO";
+"SINGLE" = "SOLO";
+"CIRCLE" = "CIRCULO";
+"WORM" = "GUSANO";
+"BIG BANG" = "BIG BANG";
+"RAIN" = "LLUVIA";
+"TRIANGLE" = "TRIÁNGULO";
+
+// MARK: -- Content Type
+"Number" = "Número";
+"Language" = "Lenguaje";
+"Symbol" = "Símbolo";
+"Custom" = "Personalizado";
+
+// Number
+"Binary" = "Binario";
+"Oct" = "Oct";
+"Hex" = "Hex";
+
+// Language
+"Latin" = "Latín";
+"Cuneiform" = "Cuneiforme";
+"Greek" = "Griego";
+"Hieroglyph" = "Jeroglífico";
+"Arabic" = "Arábica";
+"Devanagari" = "Devanagari";
+"Chinese" = "Chino";
+
+// Symbol
+"Box" = "Caja";
+"Money" = "Moneda";
+"Block" = "Bloque";
+"Chess" = "Ajedrez";
+"Mahjong" = "Mahjong";
+"Kaomoji" = "Kaomoji";
+
+// Custom
+"First Content" = "primer contenido";
+"Secong Content" = "segundo contenido";
+
+// MARK: -- Font Design
+"default" = "defecto";
+"monospaced" = "monoespaciado";
+"rounded" = "redondeado";
+"serif" = "serif";
+
+// MARK: -- Font Weight
+"ultraLight" = "ultraligero";
+"thin" = "delgado";
+"light" = "ligero";
+"regular" = "regular";
+"medium" = "medio";
+"semibold" = "semibold";
+"bold" = "negrita";
+"heavy" = "pesado";
+"black" = "negro";
+
+// MARK: -- Font Size
+"Font Size" = "Tamaño de Fuente";
+"Max" = "Max";
+"Min" = "Min";
+
+// MARK: -- Random
+"Random" = "Aleatorio";
+"random" = "aleatorio";
+
+// MARK: -- Color
+"Text" = "Texto";
+"Background" = "Antecedentes";
+"R" = "R";
+"G" = "G";
+"B" = "B";
+"A" = "A";
+
+// MARK: -- Style
+"Style" = "Estilo";
+
+// Save
+"Save" = "Guardar";
+"save.message" = "¿Guarda su estilo?";
+
+// Reset
+"Reset" = "Restablecer";
+"reset.message" = "¿Restablecer tu estilo?";
+
+// Button
+"Cancel" = "Cancelar";
+"OK" = "OK";
+
+// Store
+"style name" = "nombre de estilo";
+"Store" = "Almacenar";
+"store.message" = "¿Almacenar su estilo?";
+"unnamed" = "sin nombre";
+
+// Full
+"Full" = "Llena";
+"full.message" = "La capacidad está llena.";
+
+// Remove
+"Remove" = "Eliminar";
+"remove.message" = "¿Eliminar este estilo?";
+
+// MARK: -- Speed
+"Speed" = "Velocidad";
+"Repeat" = "Repetir";
+"Duration" = "Duración";
+"Rotation" = "Rotación";
+"Gap" = "Brecha";
+
+// MARK: -- LineFeed
+"LineFeed" = "Nueva Línea";
+"Max Line Length" = "Longitud Máxima";
+
+// MARK: -- Scale
+"Scale" = "Escala";
+"Number of Flies" = "Numero de Moscas";
+"Scale of Tornado" = "Escala de Tornado";
+"Depth" = "Profundidad";
+"Length" = "Longitud";
+"Triangles" = "Triangulos";
+
+// MARK: -- Padding
+"Padding" = "Padding";
+"V" = "V";
+"H" = "H";
+
+// MARK: -- Shape
+"Line Width" = "Ancho de Línea";
+"Fill" = "Llenar";

@@ -1,0 +1,145 @@
+// Copyright © 2021 Ni Fu. All rights reserved.
+
+// MARK: - Title
+"ZeroOne Flow" = "ZeroOne Flow";
+"Control" = "Control";
+
+// MARK: - Flow Mode
+"Mode" = "Mode";
+"Linear" = "Linear";
+"Fly" = "Fly";
+"Tornado" = "Tornado";
+"Single" = "Single";
+"Circle" = "Circle";
+"Worm" = "Worm";
+"Big Bang" = "Big Bang";
+"Rain" = "Rain";
+"Geometry" = "Geometry";
+
+// MARK: - Content Type
+"Content" = "Content";
+"Type" = "Type";
+"Number" = "Number";
+"Language" = "Language";
+"Symbol" = "Symbol";
+"Custom" = "Custom";
+
+// Number
+"Binary" = "Binary";
+"Oct" = "Oct";
+"Hex" = "Hex";
+
+// Language
+"Latin" = "Latin";
+"Cuneiform" = "Cuneiform";
+"Greek" = "Greek";
+"Hieroglyph" = "Hieroglyph";
+"Arabic" = "Arabic";
+"Devanagari" = "Devanagari";
+"Chinese" = "Chinese";
+
+// Symbol
+"Box" = "Box";
+"Money" = "Money";
+"Block" = "Block";
+"Chess" = "Chess";
+"Mahjong" = "Mahjong";
+"Kaomoji" = "Kaomoji";
+
+// Custom
+"First Content" = "first content";
+"Secong Content" = "secong content";
+
+// MARK: - Font
+"Font" = "Font";
+"Size" = "Size";
+"Max" = "Max";
+"Min" = "Min";
+
+"Design" = "Design";
+"default" = "default";
+"monospaced" = "monospaced";
+"rounded" = "rounded";
+"serif" = "serif";
+
+"Weight" = "Weight";
+"ultraLight" = "ultraLight";
+"thin" = "thin";
+"light" = "light";
+"regular" = "regular";
+"medium" = "medium";
+"semibold" = "semibold";
+"bold" = "bold";
+"heavy" = "heavy";
+"black" = "black";
+
+// MARK: - Random
+"Random" = "Random";
+"random" = "random";
+
+// MARK: - Color
+"Color" = "Color";
+"Text" = "Text";
+"Background" = "Background";
+
+//MARK: - Gradient
+"Gradation" = "Gradation";
+"Radial" = "Radial";
+"Linear" = "Linear";
+"Angular" = "Angular";
+"Elliptical" = "Elliptical";
+
+// MARK: - Style
+"Style" = "Style";
+"My Styles" = "My Styles";
+
+// Save
+"Save" = "Save";
+"save.message" = "Save your current style?";
+"unnamed" = "unnamed";
+
+// Reset
+"Reset" = "Reset";
+"reset.message" = "Reset your style?";
+
+// Button
+"Cancel" = "Cancel";
+"OK" = "OK";
+
+// MARK: - Movement
+"Speed" = "Speed";
+"Repeat" = "Repeat";
+
+"Duration" = "Duration";
+"Rotation" = "Rotation";
+
+"Gap" = "Gap";
+"Step" = "Step";
+
+"Crawling" = "Crawling";
+"Stretch" = "Stretch";
+
+// MARK: - LineFeed
+"LineFeed" = "Line Feed";
+"Activate" = "Activate";
+
+// MARK: - Scale
+"Scale" = "Scale";
+"Depth" = "Depth";
+"Length" = "Length";
+
+// MARK: - Padding
+"Padding" = "Padding";
+"V" = "V";
+"H" = "H";
+
+// MARK: - Shape
+"Shape" = "Shape";
+"Line Width" = "Line Width";
+"Fill" = "Fill";
+
+"Line" = "Line";
+"Triangle" = "Triangle";
+"Rectangle" = "Rectangle";
+"Ellipse" = "Ellipse";
+"Curve" = "Curve";
