@@ -13,6 +13,7 @@ struct TornadoFlow: View {
     var body: some View {
         ZStack {
             tornado.colors.bg.edgesIgnoringSafeArea(.all)
+            
             ForEach(0 ..< loop, id: \.self) { i in
                 if i < count {
                     TornadoParts(tornado: tornado, duration: $duration, count: $count)
@@ -24,32 +25,37 @@ struct TornadoFlow: View {
             loop = Int(tornado.scale)
             duration = Double.random(in: tornado.durationRange.range)
         }
-        .onReceive(Timer.publish(every: tornado.start ? 0.1 : 100, on: .current, in: .common).autoconnect()) { _ in
+        .onReceive(Timer.publish(every: tornado.isFlowing ? 0.1 : 100, on: .current, in: .common).autoconnect()) { _ in
             counter()
+            
             withAnimation(.easeIn) {
-                moveRotation2D()
+                rotate()
             }
         }
     }
     
     private func counter() {
         count += 1
+        // Change the duration of animation.
         if count % 10 == 0 {
             duration = Double.random(in: tornado.durationRange.range)
         }
+        // Avoid over flow.
         if count > 10000 {
             count = 1000
         }
     }
     
-    private func moveRotation2D() {
+    private func rotate() {
         if isClockwise {
             angle += Double.random(in: tornado.angleRange.range)
+            
             if angle > 36000 {
                 isClockwise.toggle()
             }
         } else {
             angle -= Double.random(in: tornado.angleRange.range)
+            
             if angle < 0 {
                 isClockwise.toggle()
             }
@@ -69,7 +75,7 @@ struct TornadoParts: View {
     @State private var position: CGPoint = UIScreen.getRandomPoint()
     
     var body: some View {
-        if tornado.start {
+        if tornado.isFlowing {
             GeometryReader { geometry in
                 Text(content)
                     .font(.system(size: fontSize, weight: weight, design: design))
@@ -80,14 +86,14 @@ struct TornadoParts: View {
                                       anchorZ: rotation3D.anchorZ,
                                       perspective: rotation3D.perspective)
                     .onChange(of: count) { _ in
-                        move(geometry)
+                        move(in: geometry.size)
                     }
                     .onAppear {
-                        move(geometry)
+                        move(in: geometry.size)
                     }
             }
             .onAppear {
-                content = ContentMaker.makeContent(with: tornado.contents)
+                content = ContentMaker.make(with: tornado.contents)
                 fontSize = tornado.fonts.sizeRange.getRandomSizeInRange()
                 design = tornado.fonts.design.value
                 weight = tornado.fonts.weight.value
@@ -95,15 +101,17 @@ struct TornadoParts: View {
         }
     }
     
-    private func move(_ geometry: GeometryProxy) {
+    private func move(in size: CGSize) {
+        
         withAnimation(.easeIn(duration: duration)) {
-            position.x = CGFloat.random(in: 0...geometry.size.width)
-            position.y = CGFloat.random(in: 0...geometry.size.height)
+            position.x = CGFloat.random(in: 0...size.width)
+            position.y = CGFloat.random(in: 0...size.height)
+            rotation3D.random()
             rotation3D.angle += Double.random(in: tornado.angleRange.range)
+            // Avoid over flow.
             if rotation3D.angle > 3600 {
                 rotation3D.angle -= 3600
             }
-            rotation3D.random()
         }
     }
 }

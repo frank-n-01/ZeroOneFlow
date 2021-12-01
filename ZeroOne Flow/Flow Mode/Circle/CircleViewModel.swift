@@ -9,25 +9,25 @@ class CircleViewModel: FlowModeViewModel {
     
     @Published var interval: Double {
         didSet {
-            ud.interval = self.interval
+            ud.interval = interval
         }
     }
     
     @Published var depth: Double {
         didSet {
-            ud.depth = self.depth
+            ud.depth = depth
         }
     }
     
     @Published var gap: CGFloat {
         didSet {
-            ud.gap = Double(self.gap)
+            ud.gap = Double(gap)
         }
     }
     
     @Published var rotationAngle: Double {
         didSet {
-            ud.rotationAngle = self.rotationAngle
+            ud.rotationAngle = rotationAngle
         }
     }
     
@@ -38,10 +38,10 @@ class CircleViewModel: FlowModeViewModel {
     let FONT = Fonts(size: 18, design: .random, weight: .random, min: 10, max: 100)
     
     init() {
-        self.interval = INTERVAL
-        self.depth = DEPTH
-        self.gap = GAP
-        self.rotationAngle = ROTATION
+        interval = INTERVAL
+        depth = DEPTH
+        gap = GAP
+        rotationAngle = ROTATION
         super.init(ud: ud, fonts: FONT)
     }
     
@@ -49,10 +49,10 @@ class CircleViewModel: FlowModeViewModel {
         super.makeRandomStyle()
         
         if isRandomStyle {
-            self.interval = Double.random(in: 0.02...0.1)
-            self.depth = Double.random(in: 1...300)
-            self.gap = CGFloat.random(in: 0.01...15)
-            self.rotationAngle = Double.random(in: 60...180)
+            interval = Double.random(in: 0.02...0.1)
+            depth = Double.random(in: 1...300)
+            gap = CGFloat.random(in: 0.01...15)
+            rotationAngle = Double.random(in: 60...180)
         }
     }
     
@@ -60,48 +60,49 @@ class CircleViewModel: FlowModeViewModel {
         super.applyUserDefaults()
         
         if ud.isSaved {
-            self.interval = ud.interval > 0 ? ud.interval : INTERVAL
-            self.depth = ud.depth > 0 ? ud.depth : DEPTH
-            self.gap = ud.gap > 0 ? ud.gap : GAP
-            self.rotationAngle = ud.rotationAngle > 0 ? ud.rotationAngle : ROTATION
+            interval = ud.interval > 0 ? ud.interval : INTERVAL
+            depth = ud.depth > 0 ? ud.depth : DEPTH
+            gap = ud.gap > 0 ? ud.gap : GAP
+            rotationAngle = ud.rotationAngle > 0 ? ud.rotationAngle : ROTATION
         }
     }
     
     override func saveUserDefaults() {
         super.saveUserDefaults()
         
-        ud.interval = self.interval
-        ud.depth = self.depth
-        ud.gap = self.gap
-        ud.rotationAngle = self.rotationAngle
+        ud.interval = interval
+        ud.depth = depth
+        ud.gap = gap
+        ud.rotationAngle = rotationAngle
     }
     
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        self.interval = INTERVAL
-        self.depth = DEPTH
-        self.gap = GAP
-        self.rotationAngle = ROTATION
-        self.fonts = FONT
+        interval = INTERVAL
+        depth = DEPTH
+        gap = GAP
+        rotationAngle = ROTATION
+        fonts = FONT
     }
     
     override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext, _ style: T) {
         guard let style = style as? Circle else { return }
-        self.depth = style.depth
-        self.gap = style.gap
-        self.interval = style.interval
-        self.rotationAngle = style.rotationAngle
+        
+        depth = style.depth
+        gap = style.gap
+        interval = style.interval
+        rotationAngle = style.rotationAngle
        
         super.applyCoreData(context, style)
     }
     
     override func saveCoreData(_ context: NSManagedObjectContext, _ name: String, _ style: FlowMode? = nil) {
         let style = Circle(context: context)
-        style.depth = self.depth
-        style.gap = self.gap
-        style.interval = self.interval
-        style.rotationAngle = self.rotationAngle
+        style.depth = depth
+        style.gap = gap
+        style.interval = interval
+        style.rotationAngle = rotationAngle
        
         super.saveCoreData(context, name, style)
     }

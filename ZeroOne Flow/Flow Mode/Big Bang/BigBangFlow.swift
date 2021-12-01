@@ -16,8 +16,11 @@ struct BigBangFlow: View {
     var body: some View {
         ZStack {
             bigbang.colors.bg.edgesIgnoringSafeArea(.all)
-            screenSizeGetter // Get the screen size and initialize the properties.
-            if isMoving { // Remove the elements when the flow stops. This is important to prevent the memory leak.
+            
+            screenSizeGetter
+            
+            // Remove the elements when the flow stops. This is important to prevent the memory leak.
+            if isMoving {
                 elements.rotationEffect(.degrees(angle))
             } else {
                 centerPoint
@@ -32,6 +35,7 @@ struct BigBangFlow: View {
         }
     }
     
+    /// Get the screen size and initialize the properties.
     private var screenSizeGetter: some View {
         GeometryReader { geometry in
             Text("")
@@ -53,6 +57,7 @@ struct BigBangFlow: View {
         }
     }
     
+    /// The elements of the Big Bang.
     private var elements: some View {
         ForEach(0 ..< loop, id: \.self) { i in
             Text(flow.content[i])
@@ -69,6 +74,7 @@ struct BigBangFlow: View {
         }
     }
     
+    /// A small origin point in the center.
     private var centerPoint: some View {
         Text("‧")
             .font(.system(size: 5.0, weight: .black))
@@ -76,6 +82,7 @@ struct BigBangFlow: View {
             .position(screen.center)
     }
     
+    /// Control the animation.
     private func control() {
         count += 1
         if count == 0 { // Elements appear.
@@ -104,6 +111,7 @@ struct BigBangFlow: View {
         }
     }
     
+    /// The elements start expanding.
     private func bang() {
         for i in (0 ..< loop) {
             flow.position[i].x += CGFloat.random(in: screen.bangRangeX)
@@ -111,6 +119,7 @@ struct BigBangFlow: View {
         }
     }
     
+    /// Expand to the limit and shrink back to the origin.
     private func move() {
         for i in (0 ..< loop) {
             if flow.isExpanding[i] {
@@ -182,6 +191,7 @@ struct BigBangFlow: View {
     }
 }
 
+/// The properties of the big bang flow.
 struct BigBangFlowProperty {
     var loop = 0
     var content: [String] = []
@@ -196,7 +206,7 @@ struct BigBangFlowProperty {
     
     mutating func initContent(with contentType: Contents) {
         for _ in 0 ..< self.loop {
-            self.content.append(ContentMaker.makeContent(with: contentType))
+            self.content.append(ContentMaker.make(with: contentType))
         }
     }
     
@@ -245,6 +255,10 @@ struct BigBangFlowProperty {
         self.rotation3D = Array(repeating: Rotation3D(), count: self.loop)
     }
     
+    /// Toglle the boolean properties.
+    ///
+    /// - isExpanding
+    /// - isReturned
     mutating func toggle() {
         for i in 0 ..< self.loop {
             self.isExpanding[i].toggle()
@@ -253,6 +267,7 @@ struct BigBangFlowProperty {
     }
 }
 
+/// The screen size and border properties of the big bang flow.
 struct ScreenSize {
     var width: CGFloat = 0.0
     var height: CGFloat = 0.0
@@ -278,7 +293,12 @@ struct ScreenSize {
 }
 
 extension UIScreen {
-    static func getScreenSize(smaller: Bool) -> CGFloat {
+    
+    /// Get the current screen size.
+    ///
+    /// - Parameter smaller: Return the smaller one or not.
+    /// - Returns: The smaller or bigger one in the width and height.
+    static func getSize(smaller: Bool) -> CGFloat {
         let width = UIScreen.main.bounds.width
         let height = UIScreen.main.bounds.height
         if smaller {
@@ -288,6 +308,9 @@ extension UIScreen {
         }
     }
     
+    /// Get a random point on the screen.
+    ///
+    /// - Returns: A point with random position.
     static func getRandomPoint() -> CGPoint {
         let width = UIScreen.main.bounds.width
         let height = UIScreen.main.bounds.height

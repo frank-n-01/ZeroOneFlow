@@ -6,11 +6,11 @@ import SwiftUI
 struct LinearFlow: View {
     @ObservedObject var linear: LinearViewModel
     @State private var content = ""
-    @State private var screenHeight: CGFloat = 0
-    @State private var screenWidth: CGFloat = 0
-    @State private var currentHeight: CGFloat = 0
-    @State private var lineSpacing: CGFloat = 0
-    @State private var kerning: CGFloat = 0
+    @State private var screenHeight: CGFloat = 0.0
+    @State private var screenWidth: CGFloat = 0.0
+    @State private var currentHeight: CGFloat = 0.0
+    @State private var lineSpacing: CGFloat = 0.0
+    @State private var kerning: CGFloat = 0.0
     @State private var isStopped = false
     @State private var preservedContent = ""
 
@@ -91,38 +91,59 @@ struct LinearFlow: View {
         if !linear.repeatFlow {
             preservedContent = content
         }
-        content += ContentMaker.makeContent(with: linear.contents)
-        content += ContentMaker.makeRandomLineFeed(linefeed: linear.linefeed)
+        content += ContentMaker.make(with: linear.contents)
+        content += ContentMaker.getRandomLineFeed(linefeed: linear.linefeed)
     }
     
+    /// Adjust the kerning depend on the flow content.
     private func adjustKerning() {
-        if linear.contents.type == .language {
-            if linear.contents.language == .greek {
+        
+        switch linear.contents.type {
+        case .language:
+            switch linear.contents.language {
+            case .greek:
                 kerning = 3.0
-            } else if linear.contents.language == .hieroglyph {
+            case .hieroglyph:
                 kerning = 5.0
-            } else if linear.contents.language != .arabic {
+            case .arabic:
+                kerning = 0.0
+            default:
                 kerning = 1.0
             }
-        } else if linear.contents.type == .symbol {
-            if linear.contents.symbol == .money {
+        case .symbol:
+            switch linear.contents.symbol {
+            case .money:
                 kerning = 3.0
+            default:
+                kerning = 0.0
             }
+        default:
+            kerning = 0.0
         }
     }
     
+    /// Adjust the line spacing depend on the flow content.
     private func adjustLineSpacing() {
-        if linear.contents.type == .language {
-            if linear.contents.language == .cuneiform || linear.contents.language == .hieroglyph {
+        
+        switch linear.contents.type {
+        case .language:
+            switch linear.contents.language {
+            case .cuneiform, .hieroglyph:
                 lineSpacing = 15.0
-                
-            } else if linear.contents.language != .greek {
+            case .greek:
+                lineSpacing = 0.0
+            default:
                 lineSpacing = 5.0
             }
-        } else if linear.contents.type == .symbol {
-            if linear.contents.symbol == .money {
+        case .symbol:
+            switch linear.contents.symbol {
+            case .money:
                 lineSpacing = 1.0
+            default:
+                lineSpacing = 0.0
             }
+        default:
+            lineSpacing = 0.0
         }
     }
 }

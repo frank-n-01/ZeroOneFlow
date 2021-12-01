@@ -5,6 +5,7 @@ import SwiftUI
 /// The super class of the each flow mode's UserDefaults class.
 class FlowModeUserDefaults: ObservableObject {
     
+    /// The key word to identify each flow mode.
     @Published var flowModeKey: String
     
     @Published var fontSize: Double {
@@ -200,8 +201,10 @@ class FlowModeUserDefaults: ObservableObject {
     }
     
     /// Initialize the properties with UserDefaults values.
+    ///
     /// - Parameter flowModeKey: The flow mode's name such as "Linear" and "Fly."
-    ///  Add this flowModeKey to each UserDefaults kye's trailing to identify each flow mode's UserDefaults.
+    ///
+    ///  Add the flow mode key to each UserDefaults kye's trailing to identify each flow mode.
     init(_ flowModeKey: String) {
         self.flowModeKey = flowModeKey
         // fonts
@@ -237,32 +240,32 @@ class FlowModeUserDefaults: ObservableObject {
     }
     
     func saveFonts(_ fonts: Fonts) {
-        self.fontSize = Double(fonts.size)
-        self.fontDesign = fonts.design.rawValue
-        self.fontWeight = fonts.weight.rawValue
-        self.fontSizeMin = Double(fonts.sizeRange.min)
-        self.fontSizeMax = Double(fonts.sizeRange.max)
+        fontSize = Double(fonts.size)
+        fontDesign = fonts.design.rawValue
+        fontWeight = fonts.weight.rawValue
+        fontSizeMin = Double(fonts.sizeRange.min)
+        fontSizeMax = Double(fonts.sizeRange.max)
     }
     
     func saveColors(_ colors: Colors) {
-        self.txtR = Double(UIColor(colors.txt).rgba.red)
-        self.txtG = Double(UIColor(colors.txt).rgba.green)
-        self.txtB = Double(UIColor(colors.txt).rgba.blue)
-        self.txtA = Double(UIColor(colors.txt).rgba.alpha)
-        self.txtRandom = colors.txtRandom
-        self.bgR = Double(UIColor(colors.bg).rgba.red)
-        self.bgG = Double(UIColor(colors.bg).rgba.green)
-        self.bgB = Double(UIColor(colors.bg).rgba.blue)
-        self.bgA = Double(UIColor(colors.bg).rgba.alpha)
-        self.bgRandom = colors.bgRandom
+        txtR = Double(UIColor(colors.txt).rgba.red)
+        txtG = Double(UIColor(colors.txt).rgba.green)
+        txtB = Double(UIColor(colors.txt).rgba.blue)
+        txtA = Double(UIColor(colors.txt).rgba.alpha)
+        txtRandom = colors.txtRandom
+        bgR = Double(UIColor(colors.bg).rgba.red)
+        bgG = Double(UIColor(colors.bg).rgba.green)
+        bgB = Double(UIColor(colors.bg).rgba.blue)
+        bgA = Double(UIColor(colors.bg).rgba.alpha)
+        bgRandom = colors.bgRandom
     }
     
-    func saveContentTypes(_ contentTypes: Contents) {
-        self.contentType = contentTypes.type.rawValue
-        self.number = contentTypes.number.rawValue
-        self.language = contentTypes.language.rawValue
-        self.symbol = contentTypes.symbol.rawValue
-        self.customValue1 = contentTypes.customValue[0]
-        self.customValue2 = contentTypes.customValue[1]
+    func saveContents(_ contents: Contents) {
+        contentType = contents.type.rawValue
+        number = contents.number.rawValue
+        language = contents.language.rawValue
+        symbol = contents.symbol.rawValue
+        customValue1 = contents.customValue[0]
+        customValue2 = contents.customValue[1]
     }
 }

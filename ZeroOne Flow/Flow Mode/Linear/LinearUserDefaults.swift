@@ -33,6 +33,7 @@ class LinearUserDefaults: FlowModeUserDefaults {
         repeatFlow = UserDefaults.standard.bool(forKey: "Repeat_" + flowModeKey)
         isLineFeedOn = UserDefaults.standard.bool(forKey: "isLineFeedOn_" + flowModeKey)
         maxLineLength = UserDefaults.standard.integer(forKey: "maxLineLength_" + flowModeKey)
+        
         super.init(flowModeKey)
     }
 }

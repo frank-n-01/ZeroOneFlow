@@ -32,6 +32,7 @@ class GeometryUserDefaults: FlowModeUserDefaults {
         shape = UserDefaults.standard.integer(forKey: "shape_" + flowModeKey)
         scale = UserDefaults.standard.double(forKey: "scale_" + flowModeKey)
         isFill = UserDefaults.standard.bool(forKey: "is_fill_" + flowModeKey)
+        
         super.init(flowModeKey)
     }
 }

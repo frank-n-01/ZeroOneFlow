@@ -50,6 +50,7 @@ class TornadoUserDefaults: FlowModeUserDefaults {
         durationMax = UserDefaults.standard.double(forKey: "duration_max_" + flowModeKey)
         angleMin = UserDefaults.standard.double(forKey: "angle_min_" + flowModeKey)
         angleMax = UserDefaults.standard.double(forKey: "angle_max_" + flowModeKey)
+        
         super.init(flowModeKey)
     }
 }

@@ -50,6 +50,7 @@ class WormUserDefaults: FlowModeUserDefaults {
         crawling = UserDefaults.standard.double(forKey: "crawling_" + flowModeKey)
         paddingVertical = UserDefaults.standard.double(forKey: "padding_vertical_" + flowModeKey)
         paddingHorizontal = UserDefaults.standard.double(forKey: "padding_horizontal_" + flowModeKey)
+        
         super.init(flowModeKey)
     }
 }

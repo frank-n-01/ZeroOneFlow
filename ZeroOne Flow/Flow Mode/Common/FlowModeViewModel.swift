@@ -3,12 +3,14 @@
 import SwiftUI
 import CoreData
 
-/// A flow mode's view model class.
+/// The super class of the flow mode view modesl.
 class FlowModeViewModel: ObservableObject {
     
+    /// The common UserDefaults properties.
     var flowModeUD: FlowModeUserDefaults
     
-    @Published var start: Bool
+    /// The flow is playing or not.
+    @Published var isFlowing: Bool
     
     @Published var fonts: Fonts {
         didSet {
@@ -24,32 +26,37 @@ class FlowModeViewModel: ObservableObject {
     
     @Published var contents: Contents {
         didSet {
-            flowModeUD.saveContentTypes(contents)
+            flowModeUD.saveContents(contents)
         }
     }
     
+    /// Is the random style mode activated.
     @Published var isRandomStyle: Bool {
         didSet {
-            flowModeUD.isRandomStyle = self.isRandomStyle
+            flowModeUD.isRandomStyle = isRandomStyle
         }
     }
     
     init(ud: FlowModeUserDefaults, fonts: Fonts) {
-        self.start = false
-        self.isRandomStyle = false
-        self.flowModeUD = ud
+        isFlowing = false
+        isRandomStyle = false
+        flowModeUD = ud
         self.fonts = fonts
-        self.colors = Colors()
-        self.contents = Contents()
+        colors = Colors()
+        contents = Contents()
         
         if flowModeUD.isSaved {
+            // Apply the saved style.
             applyUserDefaults()
         } else {
-            saveUserDefaults() // If do not save the first style, the auto save would not be enabled.
+            // Save the first style.
+            saveUserDefaults()
         }
     }
     
     /// Make a random style in the flow mode.
+    ///
+    /// On the condition that the random style button is ON.
     func makeRandomStyle() {
         if isRandomStyle {
             fonts.random()
@@ -67,7 +74,7 @@ class FlowModeViewModel: ObservableObject {
                        bgR: flowModeUD.bgR, bgG: flowModeUD.bgG, bgB: flowModeUD.bgB, bgA: flowModeUD.bgA, bgRandom: flowModeUD.bgRandom)
             contents.set(type: flowModeUD.contentType, number: flowModeUD.number, language: flowModeUD.language,
                              symbol: flowModeUD.symbol, customValue1: flowModeUD.customValue1 ?? "", customValue2: flowModeUD.customValue2 ?? "")
-            self.isRandomStyle = flowModeUD.isRandomStyle
+            isRandomStyle = flowModeUD.isRandomStyle
         }
     }
     
@@ -75,8 +82,9 @@ class FlowModeViewModel: ObservableObject {
     func saveUserDefaults() {
         flowModeUD.saveFonts(fonts)
         flowModeUD.saveColors(colors)
-        flowModeUD.saveContentTypes(contents)
-        flowModeUD.isRandomStyle = self.isRandomStyle
+        flowModeUD.saveContents(contents)
+        flowModeUD.isRandomStyle = isRandomStyle
+        
         if !flowModeUD.isSaved {
             flowModeUD.isSaved = true
         }
@@ -92,32 +100,28 @@ class FlowModeViewModel: ObservableObject {
     
     /// Apply the style from Core Data.
     func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext, _ style: T) {
-        self.fonts.set(size: CGFloat(style.fontSize), design: Int(style.fontDesign), weight: Int(style.fontWeight))
-        self.colors.set(txtR: style.txtR, txtG: style.txtG, txtB: style.txtB, txtA: style.txtA,
-                        bgR: style.bgR, bgG: style.bgG, bgB: style.bgB, bgA: style.bgA)
-        self.contents.set(type: Int(style.valueType), number: Int(style.number), language: Int(style.language),
-                              symbol: Int(style.symbol), customValue1: style.customValue1 ?? "", customValue2: style.customValue2 ?? "")
-        self.isRandomStyle = false
+        fonts.set(size: CGFloat(style.fontSize), design: Int(style.fontDesign), weight: Int(style.fontWeight))
+        colors.set(txtR: style.txtR, txtG: style.txtG, txtB: style.txtB, txtA: style.txtA,
+                   bgR: style.bgR, bgG: style.bgG, bgB: style.bgB, bgA: style.bgA)
+        contents.set(type: Int(style.valueType), number: Int(style.number), language: Int(style.language),
+                     symbol: Int(style.symbol), customValue1: style.customValue1 ?? "", customValue2: style.customValue2 ?? "")
+        isRandomStyle = false
     }
     
     /// Save the style in Core Data.
     func saveCoreData(_ context: NSManagedObjectContext, _ name: String, _ style: FlowMode? = nil) {
         guard let style = style else { return }
+        
         style.date = Date()
         style.name = name
-        self.fonts.save(size: &style.fontSize, design: &style.fontDesign, weight: &style.fontWeight)
-        self.colors.save(txtR: &style.txtR, txtG: &style.txtG, txtB: &style.txtB, txtA: &style.txtA,
-                         bgR: &style.bgR, bgG: &style.bgG, bgB: &style.bgB, bgA: &style.bgA)
-        self.contents.save(type: &style.valueType, number: &style.number, language: &style.language,
-                             symbol: &style.symbol, custom1: &style.customValue1, custom2: &style.customValue2)
+        fonts.save(size: &style.fontSize, design: &style.fontDesign, weight: &style.fontWeight)
+        colors.save(txtR: &style.txtR, txtG: &style.txtG, txtB: &style.txtB, txtA: &style.txtA,
+                    bgR: &style.bgR, bgG: &style.bgG, bgB: &style.bgB, bgA: &style.bgA)
+        contents.save(type: &style.valueType, number: &style.number, language: &style.language,
+                    symbol: &style.symbol, custom1: &style.customValue1, custom2: &style.customValue2)
         
         if context.hasChanges {
             try? context.save()
         }
-    }
-    
-    func getDownCasted<T>(onFailure defaultValue: T) -> T {
-        guard let viewModel = self as? T else { return defaultValue }
-        return viewModel
     }
 }

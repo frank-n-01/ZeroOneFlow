@@ -13,7 +13,7 @@ struct WormFlow: View {
     @State private var height: CGFloat = 0
     
     var body: some View {
-        if worm.start {
+        if worm.isFlowing {
             ZStack {
                 worm.colors.bg.edgesIgnoringSafeArea(.all)
                 wormHead
@@ -22,7 +22,7 @@ struct WormFlow: View {
             .onAppear {
                 loop = Int(worm.length)
                 crawling = Int(worm.crawling)
-                setPosition()
+                initPosition()
             }
         }
     }
@@ -30,7 +30,7 @@ struct WormFlow: View {
     private var wormHead: some View {
         GeometryReader { geometry in
             Text("")
-                .onReceive(Timer.publish(every: worm.start ? worm.interval : 100, on: .current, in: .common).autoconnect()) { _ in
+                .onReceive(Timer.publish(every: worm.isFlowing ? worm.interval : 100, on: .current, in: .common).autoconnect()) { _ in
                     moveHeadX()
                     moveHeadY()
                     turn()
@@ -105,7 +105,7 @@ struct WormFlow: View {
         }
     }
     
-    private func setPosition() {
+    private func initPosition() {
         let x = UIScreen.main.bounds.width / 2
         let y = UIScreen.main.bounds.height / 2
         position = Array(repeating: CGPoint(x: x, y: y), count: loop)
@@ -120,14 +120,14 @@ struct WormParts: View {
     @State private var weight: Font.Weight = .regular
     
     var body: some View {
-        if worm.start {
+        if worm.isFlowing {
             Text(content)
                 .font(.system(size: worm.fonts.size, weight: weight, design: design))
                 .foregroundColor(worm.colors.txt)
                 .position(position)
                 .animation(.linear, value: position)
                 .onAppear {
-                    content = ContentMaker.makeContent(with: worm.contents)
+                    content = ContentMaker.make(with: worm.contents)
                     design = worm.fonts.design.value
                     weight = worm.fonts.weight.value
                 }

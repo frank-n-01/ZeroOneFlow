@@ -14,6 +14,7 @@ class SingleUserDefaults: FlowModeUserDefaults {
     
     override init(_ flowModeKey: String) {
         gradientType = GradientType(rawValue: UserDefaults.standard.integer(forKey: "gradient_type_" + flowModeKey)) ?? .radial
+        
         super.init(flowModeKey)
     }
 }

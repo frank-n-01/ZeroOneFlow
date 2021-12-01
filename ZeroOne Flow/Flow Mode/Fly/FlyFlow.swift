@@ -10,6 +10,7 @@ struct FlyFlow: View {
     var body: some View {
         ZStack {
             fly.colors.bg.edgesIgnoringSafeArea(.all)
+            
             ForEach(0 ..< loop, id: \.self) { i in
                 if i < count {
                     FlyParts(fly: fly, count: $count)
@@ -19,8 +20,9 @@ struct FlyFlow: View {
         .onAppear {
             loop = Int(fly.scale)
         }
-        .onReceive(Timer.publish(every: fly.start ? fly.interval : 100, on: .current, in: .common).autoconnect()) { _ in
+        .onReceive(Timer.publish(every: fly.isFlowing ? fly.interval : 100, on: .current, in: .common).autoconnect()) { _ in
             count += 1
+            // Avoid over flow.
             if count > 100000 {
                 count = 1000
             }
@@ -50,7 +52,7 @@ private struct FlyParts: View {
                 }
         }
         .onAppear {
-            content = ContentMaker.makeContent(with: fly.contents)
+            content = ContentMaker.make(with: fly.contents)
             design = fly.fonts.design.value
             weight = fly.fonts.weight.value
         }

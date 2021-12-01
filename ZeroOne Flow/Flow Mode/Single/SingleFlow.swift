@@ -21,7 +21,7 @@ struct SingleFlow: View {
                     .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                     .fixedSize()
                     .onAppear {
-                        content = ContentMaker.makeContent(with: single.contents)
+                        content = ContentMaker.make(with: single.contents)
                         design = single.fonts.design.value
                         weight = single.fonts.weight.value
                         txtColor = single.colors.txt
@@ -29,19 +29,21 @@ struct SingleFlow: View {
                     }
             }
         }
-        .onReceive(Timer.publish(every: single.start ? single.interval : 100, on: .current, in: .common).autoconnect()) { _ in
-            guard single.start else { return }
-            content = ContentMaker.makeContent(with: single.contents)
+        .onReceive(Timer.publish(every: single.isFlowing ? single.interval : 100, on: .current, in: .common).autoconnect()) { _ in
+            guard single.isFlowing else { return }
+            
+            content = ContentMaker.make(with: single.contents)
             design = single.fonts.design.value
             weight = single.fonts.weight.value
+            
             withAnimation(.easeIn) {
-                makeRandomColors()
+                randomColor()
             }
         }
     }
     
-    private func makeRandomColors() {
-        // ignore the txtRandom property.
+    /// Make random colors if the random color mode is activated.
+    private func randomColor() {
         if single.colors.bgRandom {
             txtColor = Colors.getRandom()
             gradient.random()

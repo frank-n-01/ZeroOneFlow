@@ -32,6 +32,7 @@ class RainUserDefaults: FlowModeUserDefaults {
         scale = UserDefaults.standard.double(forKey: "scale_" + flowModeKey)
         length = UserDefaults.standard.double(forKey: "length_" + flowModeKey)
         step = UserDefaults.standard.double(forKey: "step_" + flowModeKey)
+        
         super.init(flowModeKey)
     }
 }
