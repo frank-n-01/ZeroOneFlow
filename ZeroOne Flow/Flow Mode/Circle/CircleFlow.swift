@@ -13,28 +13,29 @@ struct CircleFlow: View {
         ZStack {
             circle.colors.bg.edgesIgnoringSafeArea(.all)
             
-            ForEach(0 ..< self.loop, id: \.self) { i in
-                if i < self.count {
+            ForEach(0 ..< loop, id: \.self) { i in
+                if i < count {
                     CircleParts(circle: circle, count: $count, centerX: $centerX, centerY: $centerY)
                 }
             }
         }
-        .onReceive(Timer.publish(every: circle.start ? circle.interval : 100, on: .current, in: .common).autoconnect()) { _ in
+        .onReceive(Timer.publish(every: circle.isFlowing ? circle.interval : 100, on: .current, in: .common).autoconnect()) { _ in
             counter()
         }
         .onChange(of: UIScreen.main.bounds) { bounds in
-            self.centerX = bounds.width / 2
-            self.centerY = bounds.height / 2
+            centerX = bounds.width / 2
+            centerY = bounds.height / 2
         }
         .onAppear {
-            self.loop = Int(circle.depth)
+            loop = Int(circle.depth)
         }
     }
     
     private func counter() {
-        self.count += 1
-        if self.count > 1000000000 {
-            self.count = 1000
+        count += 1
+        // Avoid over flow.
+        if count > 100000 {
+            count = 1000
         }
     }
 }
@@ -53,49 +54,49 @@ struct CircleParts: View {
     @State private var clockwise = false
     
     var body: some View {
-        if circle.start {
+        if circle.isFlowing {
             GeometryReader { geometry in
-                Text(self.content)
-                    .font(.system(size: circle.fonts.size, weight: self.weight, design: self.design))
+                Text(content)
+                    .font(.system(size: circle.fonts.size, weight: weight, design: design))
                     .foregroundColor(circle.colors.txt)
-                    .position(x: self.x, y: self.y)
+                    .position(x: x, y: y)
                     .onChange(of: count) { _ in
                         withAnimation(.easeIn) {
-                            moveRotation()
+                            rotate()
                         }
                     }
                     .onAppear {
-                        makePosition()
-                        self.content = ContentMaker.makeContent(with: circle.contents)
-                        self.design = circle.fonts.design.value
-                        self.weight = circle.fonts.weight.value
+                        initPosition()
+                        content = ContentMaker.make(with: circle.contents)
+                        design = circle.fonts.design.value
+                        weight = circle.fonts.weight.value
                     }
-                    .rotationEffect(.degrees(self.angle))
+                    .rotationEffect(.degrees(angle))
             }
         }
     }
     
-    private func moveRotation() {
-        if self.clockwise {
-            self.angle += circle.rotationAngle
-            if self.angle > 36000 {
-                self.clockwise.toggle()
+    private func rotate() {
+        if clockwise {
+            angle += circle.rotationAngle
+            if angle > 36000 {
+                clockwise.toggle()
             }
         } else {
-            self.angle -= circle.rotationAngle
-            if self.angle < 0 {
-                self.clockwise.toggle()
+            angle -= circle.rotationAngle
+            if angle < 0 {
+                clockwise.toggle()
             }
         }
     }
     
-    private func makePosition() {
+    private func initPosition() {
         if centerX < centerY {
-            self.x = centerX
-            self.y = centerY - CGFloat(count) * circle.gap
+            x = centerX
+            y = centerY - CGFloat(count) * circle.gap
         } else {
-            self.x = centerX - CGFloat(count) * circle.gap
-            self.y = centerY
+            x = centerX - CGFloat(count) * circle.gap
+            y = centerY
         }
     }
 }

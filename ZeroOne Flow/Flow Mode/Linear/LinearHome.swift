@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-/// Linear mode's home view. Save and customize the parameters of the flow.
+/// Linear mode's home view. Customize the parameters of the flow.
 struct LinearHome: View {
     @ObservedObject var linear: LinearViewModel
     

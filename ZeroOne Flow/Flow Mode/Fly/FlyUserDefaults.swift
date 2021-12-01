@@ -32,6 +32,7 @@ class FlyUserDefaults: FlowModeUserDefaults {
         scale = UserDefaults.standard.double(forKey: "flies_" + flowModeKey)
         paddingVertical = UserDefaults.standard.double(forKey: "padding_vertical_" + flowModeKey)
         paddingHorizontal = UserDefaults.standard.double(forKey: "padding_horizontal_" + flowModeKey)
+        
         super.init(flowModeKey)
     }
 }

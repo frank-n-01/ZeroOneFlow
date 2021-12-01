@@ -9,19 +9,19 @@ class LinearViewModel: FlowModeViewModel {
     
     @Published var interval: Double {
         didSet {
-            ud.interval = self.interval
+            ud.interval = interval
         }
     }
     
     @Published var repeatFlow: Bool {
         didSet {
-            ud.repeatFlow = self.repeatFlow
+            ud.repeatFlow = repeatFlow
         }
     }
     
     @Published var linefeed: LineFeed {
         didSet {
-            self.linefeed.save(isOn: &ud.isLineFeedOn, maxLineLength: &ud.maxLineLength)
+            linefeed.save(isOn: &ud.isLineFeedOn, maxLineLength: &ud.maxLineLength)
         }
     }
     
@@ -31,9 +31,9 @@ class LinearViewModel: FlowModeViewModel {
     let FONT = Fonts(size: 18, design: .monospaced, weight: .regular, min: 10, max: 100)
     
     init() {
-        self.interval = INTERVAL
-        self.repeatFlow = REPEAT_FLOW
-        self.linefeed = LINEFEED
+        interval = INTERVAL
+        repeatFlow = REPEAT_FLOW
+        linefeed = LINEFEED
         super.init(ud: ud, fonts: FONT)
     }
     
@@ -41,8 +41,8 @@ class LinearViewModel: FlowModeViewModel {
         super.makeRandomStyle()
         
         if isRandomStyle {
-            self.interval = Double.random(in: 0.001...0.01)
-            self.linefeed.random(maxOfMaxLineLength: 30)
+            interval = Double.random(in: 0.001...0.01)
+            linefeed.random(maxOfMaxLineLength: 30)
         }
     }
     
@@ -50,18 +50,18 @@ class LinearViewModel: FlowModeViewModel {
         super.applyUserDefaults()
         
         if ud.isSaved {
-            self.interval = ud.interval > 0 ? ud.interval : INTERVAL
-            self.repeatFlow = ud.repeatFlow
-            self.linefeed.set(isOn: ud.isLineFeedOn, maxLineLength: ud.maxLineLength)
+            interval = ud.interval > 0 ? ud.interval : INTERVAL
+            repeatFlow = ud.repeatFlow
+            linefeed.set(isOn: ud.isLineFeedOn, maxLineLength: ud.maxLineLength)
         }
     }
     
     override func saveUserDefaults() {
         super.saveUserDefaults()
         
-        ud.interval = self.interval
-        ud.repeatFlow = self.repeatFlow
-        self.linefeed.save(isOn: &ud.isLineFeedOn, maxLineLength: &ud.maxLineLength)
+        ud.interval = interval
+        ud.repeatFlow = repeatFlow
+        linefeed.save(isOn: &ud.isLineFeedOn, maxLineLength: &ud.maxLineLength)
     }
     
     override func resetUserDefaults() {
@@ -75,18 +75,19 @@ class LinearViewModel: FlowModeViewModel {
     
     override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext, _ style: T) {
         guard let style = style as? Linear else { return }
-        self.interval = style.interval > 0 ? style.interval : INTERVAL
-        self.repeatFlow = style.repeatFlow
-        self.linefeed.set(isOn: style.isLineFeedOn, maxLineLength: Int(style.maxLineLength))
+        
+        interval = style.interval > 0 ? style.interval : INTERVAL
+        repeatFlow = style.repeatFlow
+        linefeed.set(isOn: style.isLineFeedOn, maxLineLength: Int(style.maxLineLength))
         
         super.applyCoreData(context, style)
     }
     
     override func saveCoreData(_ context: NSManagedObjectContext, _ name: String, _ style: FlowMode? = nil) {
         let style = Linear(context: context)
-        style.interval = self.interval
-        style.repeatFlow = self.repeatFlow
-        self.linefeed.save(isOn: &style.isLineFeedOn, maxLineLength: &style.maxLineLength)
+        style.interval = interval
+        style.repeatFlow = repeatFlow
+        linefeed.save(isOn: &style.isLineFeedOn, maxLineLength: &style.maxLineLength)
         
         super.saveCoreData(context, name, style)
     }

@@ -20,6 +20,7 @@ struct GeometryFlow: View {
     }
 }
 
+/// Draw the shapes using path objects.
 struct GeometryParts: View {
     @ObservedObject var geometry: GeometryViewModel
     @State private var points = GeometryPoints()
@@ -34,8 +35,9 @@ struct GeometryParts: View {
                     path.stroke(geometry.colors.txt, lineWidth: geometry.fonts.size)
                 }
             }
-            .onReceive(Timer.publish(every: geometry.start ? geometry.interval : 100, on: .current, in: .common).autoconnect()) { _ in
-                guard geometry.start else { return }
+            .onReceive(Timer.publish(every: geometry.isFlowing ? geometry.interval : 100, on: .current, in: .common).autoconnect()) { _ in
+                guard geometry.isFlowing else { return }
+                
                 points.random(in: proxy)
                 rotation3D.random()
             }
@@ -46,6 +48,7 @@ struct GeometryParts: View {
         }
     }
     
+    /// The path of the selected shape.
     var path: Path {
         switch geometry.shape {
         case .triangle:
@@ -108,6 +111,7 @@ struct GeometryParts: View {
     }
 }
 
+/// The point properties to draw the shapes using path objects.
 struct GeometryPoints {
     var first: CGPoint = .zero
     var second: CGPoint = .zero

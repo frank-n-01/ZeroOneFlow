@@ -12,7 +12,7 @@ class ContentMaker {
     ///
     /// - Parameter contents: The flow mode's contents property.
     /// - Returns: A random content.
-    static func makeContent(with contents: Contents) -> String {
+    static func make(with contents: Contents) -> String {
         
         switch contents.type {
         case .number:
@@ -30,7 +30,7 @@ class ContentMaker {
     ///
     /// - Parameter linefeed: The flow mode view's linefeed property.
     /// - Returns: A random linefeed.
-    static func makeRandomLineFeed(linefeed: LineFeed) -> String {
+    static func getRandomLineFeed(linefeed: LineFeed) -> String {
         
         if linefeed.isOn && Int.random(in: 0...linefeed.maxLineLength) == 0 {
             return "\n"

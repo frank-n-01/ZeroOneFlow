@@ -59,6 +59,7 @@ class BigBangUserDefaults: FlowModeUserDefaults {
         paddingVertical = UserDefaults.standard.double(forKey: "padding_vertical_" + flowModeKey)
         paddingHorizontal = UserDefaults.standard.double(forKey: "padding_horizontal_" + flowModeKey)
         is3D = UserDefaults.standard.bool(forKey: "is_3D_" + flowModeKey)
+        
         super.init(flowModeKey)
     }
 }

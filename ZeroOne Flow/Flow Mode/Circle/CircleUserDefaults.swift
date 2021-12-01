@@ -32,6 +32,7 @@ class CircleUserDefaults: FlowModeUserDefaults {
         depth = UserDefaults.standard.double(forKey: "depth_" + flowModeKey)
         gap = UserDefaults.standard.double(forKey: "gap_" + flowModeKey)
         rotationAngle = UserDefaults.standard.double(forKey: "rotation_angle_" + flowModeKey)
+        
         super.init(flowModeKey)
     }
 }
