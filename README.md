@@ -1,13 +1,8 @@
 # ZeroOneFlow
-This is the repository of [ZeroOne Flow](https://apps.apple.com/jp/app/zeroone-flow/id1563516711) app.
+The repository of [ZeroOne Flow](https://apps.apple.com/jp/app/zeroone-flow/id1563516711) app.
 
 ## Concept
 A digital art of flowing binary numbers. Zero and One will vividly flow on the screen. Please enjoy the dynamic beauty of 01!
-
-Zero and one are the minimum elements to reveal the ultimate beauty of the whole digital world.
-It's easy to recognize, but truly hard to understand.
-You can try to find anything meaningful in the endless flow, though I don't assure that is not a waste of time.
-The art is various, the truth always turns out to be zero and one.
 
 ## Flow
 There are 9 flow modes with different algorithms:
@@ -19,16 +14,23 @@ There are 9 flow modes with different algorithms:
 5. Circle
 6. Worm
 7. Big Bang
+    - 2D
+    - 3D
 8. Rain
 9. Geometry
+    - Triangle
+    - Line
+    - Rectangle
+    - Ellipse
+    - Curve
 
-## Contents
-The flow content is not only binary numbers, though all of them consist of 01:
+## Content
+The flow content is not only binary numbers:
 
 - Number
     - Binary
-    - Oct
-    - Hex
+    - Octal
+    - Hexadecimal
 - Language
     - Latin
     - Cuneiform
@@ -45,3 +47,7 @@ The flow content is not only binary numbers, though all of them consist of 01:
     - Mahjong
     - Kaomoji
 - Custom
+
+## Style
+- You can customize the contents and movements of the flow to make your own favorite styles and save them.
+- If you turn the "dice" button ON (filled), a random style will be generated every time you play the flow.
