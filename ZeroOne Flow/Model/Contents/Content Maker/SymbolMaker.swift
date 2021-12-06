@@ -6,12 +6,12 @@ class SymbolMaker {
     
     let resource = ContentResource()
     
-    func makeSymbol(symbolType: SymbolType) -> String {
-        switch symbolType {
+    func makeSymbol(type: SymbolType) -> String {
+        switch type {
         case .box:
             return makeBox()
-        case .money:
-            return makeMoney()
+        case .currency:
+            return makeCurrency()
         case .block:
             return makeBlock()
         case .chess:
@@ -27,8 +27,13 @@ class SymbolMaker {
         return String(Unicode.Scalar(UInt16(Int.random(in: 9472...9599)))!)
     }
 
-    func makeMoney() -> String {
-        return String(Unicode.Scalar(UInt16(Int.random(in: 8352...8383)))!)
+    func makeCurrency() -> String {
+        switch Int.random(in: 0...3) {
+        case 0:
+            return resource.currencies.randomElement() ?? "¢"
+        default:
+            return String(Unicode.Scalar(UInt16(Int.random(in: 8352...8383)))!)
+        }
     }
 
     func makeBlock() -> String {
@@ -49,7 +54,6 @@ class SymbolMaker {
     }
 
     func makeKaomoji() -> String {
-        guard let kaomoji = resource.emoticons.randomElement() else { return "" }
-        return kaomoji
+        return resource.emoticons.randomElement() ?? ":)"
     }
 }

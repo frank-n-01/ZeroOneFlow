@@ -4,7 +4,7 @@ import SwiftUI
 
 enum SymbolType: Int, CaseIterable, Equatable, Identifiable {
     case box
-    case money
+    case currency
     case block
     case chess
     case mahjong
@@ -16,8 +16,8 @@ enum SymbolType: Int, CaseIterable, Equatable, Identifiable {
         switch self {
         case .box:
             return "Box"
-        case .money:
-            return "Money"
+        case .currency:
+            return "Currency"
         case .block:
             return "Block"
         case .chess:

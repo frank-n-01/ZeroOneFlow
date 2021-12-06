@@ -20,7 +20,7 @@ class ContentMaker {
         case .language:
             return languageMaker.makeLanguage(languageType: contents.language)
         case .symbol:
-            return symbolMaker.makeSymbol(symbolType: contents.symbol)
+            return symbolMaker.makeSymbol(type: contents.symbol)
         case .custom:
             return contents.customValue[Int.random(in: 0...1)]
         }
