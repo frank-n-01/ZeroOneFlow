@@ -112,7 +112,7 @@ struct LinearFlow: View {
             }
         case .symbol:
             switch linear.contents.symbol {
-            case .money:
+            case .currency:
                 kerning = 3.0
             default:
                 kerning = 0.0
@@ -137,7 +137,7 @@ struct LinearFlow: View {
             }
         case .symbol:
             switch linear.contents.symbol {
-            case .money:
+            case .currency:
                 lineSpacing = 1.0
             default:
                 lineSpacing = 0.0
