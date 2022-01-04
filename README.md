@@ -5,7 +5,7 @@ The repository of [ZeroOne Flow](https://apps.apple.com/jp/app/zeroone-flow/id15
 A digital art of flowing binary numbers. Zero and One will vividly flow on the screen. Please enjoy the dynamic beauty of 01!
 
 ## Flow
-There are 9 flow modes with different algorithms:
+There are 8 flow modes with different algorithms:
 
 1. Linear
 2. Fly
@@ -14,15 +14,7 @@ There are 9 flow modes with different algorithms:
 5. Circle
 6. Worm
 7. Big Bang
-    - 2D
-    - 3D
 8. Rain
-9. Geometry
-    - Triangle
-    - Line
-    - Rectangle
-    - Ellipse
-    - Curve
 
 ## Content
 The flow content is not only binary numbers:
@@ -41,13 +33,20 @@ The flow content is not only binary numbers:
     - Chinese
 - Symbol
     - Box
-    - Money
+    - Currency
     - Block
     - Chess
     - Mahjong
     - Kaomoji
 - Custom
+    - Enter any two strings.
+- Code
+    - COBOL
+    - BASIC
+    - C
+    - SQL
+    - HTML
 
 ## Style
-- You can customize the contents and movements of the flow to make your own favorite styles and save them.
+- You can customize the flow style and save it.
 - If you turn the "dice" button ON (filled), a random style will be generated every time you play the flow.
