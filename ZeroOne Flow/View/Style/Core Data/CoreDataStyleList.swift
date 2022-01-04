@@ -4,9 +4,8 @@ import SwiftUI
 
 struct CoreDataStyleList: View {
     @ObservedObject var viewModel: FlowModeViewModel
-    
+    @State private var showAlert = false
     @Environment(\.managedObjectContext) var context
-    
     @FetchRequest(
         entity: Mode.allCases[ModeUserDefaults.currentMode].entity,
         sortDescriptors: [NSSortDescriptor(keyPath: \FlowMode.date, ascending: false)]
@@ -17,7 +16,6 @@ struct CoreDataStyleList: View {
             Section {
                 SaveStyleView(saveCoreData: saveCoreData)
             }
-            
             Section {
                 styleRows
             }
@@ -26,7 +24,7 @@ struct CoreDataStyleList: View {
             EditButton()
         }
         .listStyle(.insetGrouped)
-        .navigationTitle("My Styles")
+        .navigationTitle("Style")
     }
     
     var styleRows: some View {
@@ -41,8 +39,14 @@ struct CoreDataStyleList: View {
                 }
                 .font(.title3)
                 
-                Button(action: { applyCoreData(index: i) }) {
+                Button(action: { showAlert.toggle() }) {
                     Spacer()
+                }
+                .alert("Apply", isPresented: $showAlert) {
+                    Button("Cancel", role: .cancel) {}
+                    Button("OK", action: { applyCoreData(index: i) })
+                } message: {
+                    Text("apply.message")
                 }
             }
         }

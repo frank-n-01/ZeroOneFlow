@@ -73,7 +73,7 @@ class FlowModeViewModel: ObservableObject {
             colors.set(txtR: flowModeUD.txtR, txtG: flowModeUD.txtG, txtB: flowModeUD.txtB, txtA: flowModeUD.txtA, txtRandom: flowModeUD.txtRandom,
                        bgR: flowModeUD.bgR, bgG: flowModeUD.bgG, bgB: flowModeUD.bgB, bgA: flowModeUD.bgA, bgRandom: flowModeUD.bgRandom)
             contents.set(type: flowModeUD.contentType, number: flowModeUD.number, language: flowModeUD.language,
-                             symbol: flowModeUD.symbol, customValue1: flowModeUD.customValue1 ?? "", customValue2: flowModeUD.customValue2 ?? "")
+                         symbol: flowModeUD.symbol, customValue1: flowModeUD.customValue1 ?? "", customValue2: flowModeUD.customValue2 ?? "", code: flowModeUD.code)
             isRandomStyle = flowModeUD.isRandomStyle
         }
     }
@@ -104,7 +104,7 @@ class FlowModeViewModel: ObservableObject {
         colors.set(txtR: style.txtR, txtG: style.txtG, txtB: style.txtB, txtA: style.txtA,
                    bgR: style.bgR, bgG: style.bgG, bgB: style.bgB, bgA: style.bgA)
         contents.set(type: Int(style.valueType), number: Int(style.number), language: Int(style.language),
-                     symbol: Int(style.symbol), customValue1: style.customValue1 ?? "", customValue2: style.customValue2 ?? "")
+                     symbol: Int(style.symbol), customValue1: style.customValue1 ?? "", customValue2: style.customValue2 ?? "", code: Int(style.code))
         isRandomStyle = false
     }
     
@@ -118,7 +118,7 @@ class FlowModeViewModel: ObservableObject {
         colors.save(txtR: &style.txtR, txtG: &style.txtG, txtB: &style.txtB, txtA: &style.txtA,
                     bgR: &style.bgR, bgG: &style.bgG, bgB: &style.bgB, bgA: &style.bgA)
         contents.save(type: &style.valueType, number: &style.number, language: &style.language,
-                    symbol: &style.symbol, custom1: &style.customValue1, custom2: &style.customValue2)
+                      symbol: &style.symbol, custom1: &style.customValue1, custom2: &style.customValue2, code: &style.code)
         
         if context.hasChanges {
             try? context.save()

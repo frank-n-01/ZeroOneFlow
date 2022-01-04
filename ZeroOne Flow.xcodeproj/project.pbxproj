@@ -44,8 +44,8 @@
 		6537AF43262ACF9A00919C4E /* LinearUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6537AF42262ACF9A00919C4E /* LinearUserDefaults.swift */; };
 		6537AF4B2633AA2D00919C4E /* LinearHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6537AF4A2633AA2D00919C4E /* LinearHome.swift */; };
 		653B2CF12674E77A00A7A921 /* ZeroOne Flow.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 653B2CEF2674E77A00A7A921 /* ZeroOne Flow.xcdatamodeld */; };
-		654241D626CBEE5C003ABF3E /* LineFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654241D526CBEE5C003ABF3E /* LineFeed.swift */; };
-		654241D826CBF594003ABF3E /* LineFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654241D726CBF594003ABF3E /* LineFeedView.swift */; };
+		654241D626CBEE5C003ABF3E /* TextFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654241D526CBEE5C003ABF3E /* TextFormat.swift */; };
+		654241D826CBF594003ABF3E /* TextFormatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654241D726CBF594003ABF3E /* TextFormatView.swift */; };
 		654241DD26CE9456003ABF3E /* RainHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654241DC26CE9456003ABF3E /* RainHome.swift */; };
 		654241E226CEA0C9003ABF3E /* RainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654241E126CEA0C9003ABF3E /* RainFlow.swift */; };
 		654241E726CFD3EE003ABF3E /* FlowModeUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654241E626CFD3EE003ABF3E /* FlowModeUserDefaults.swift */; };
@@ -75,6 +75,9 @@
 		65B9FB6E273954220072CE4F /* RangeSliders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9FB6D273954220072CE4F /* RangeSliders.swift */; };
 		65B9FBAC274FAB0F0072CE4F /* UserDefaultsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9FBAB274FAB0F0072CE4F /* UserDefaultsTest.swift */; };
 		65B9FBD8275662BE0072CE4F /* GradientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9FBD7275662BE0072CE4F /* GradientType.swift */; };
+		65B9FBDA275F96070072CE4F /* CodeMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9FBD9275F96070072CE4F /* CodeMaker.swift */; };
+		65B9FBDC275F96CB0072CE4F /* CodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9FBDB275F96CB0072CE4F /* CodeType.swift */; };
+		65B9FBE0275F98ED0072CE4F /* ContentTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B9FBDF275F98ED0072CE4F /* ContentTypeView.swift */; };
 		65C7384E26AA511A00368CAE /* FontSizeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C7384D26AA511A00368CAE /* FontSizeRange.swift */; };
 		65C7385026AA71E200368CAE /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C7384F26AA71E200368CAE /* Range.swift */; };
 		65DF0E0F265E75EB009421F7 /* WormHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DF0E0E265E75EB009421F7 /* WormHome.swift */; };
@@ -97,7 +100,6 @@
 		65E84C0B2670FCB500378408 /* SandwichedImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C0A2670FCB500378408 /* SandwichedImageSlider.swift */; };
 		65E84C0D2670FCD400378408 /* ToggleWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C0C2670FCD400378408 /* ToggleWithLabel.swift */; };
 		65E84C162670FE0700378408 /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C152670FE0700378408 /* Contents.swift */; };
-		65E84C182670FE1C00378408 /* ContentTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C172670FE1C00378408 /* ContentTypeView.swift */; };
 		65E84C1B26738BE800378408 /* BigBangHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C1A26738BE800378408 /* BigBangHome.swift */; };
 		65E84C1D26738C1600378408 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C1C26738C1600378408 /* Fonts.swift */; };
 		65E84C1F2673A29A00378408 /* FontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C1E2673A29A00378408 /* FontView.swift */; };
@@ -159,8 +161,8 @@
 		6537AF42262ACF9A00919C4E /* LinearUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearUserDefaults.swift; sourceTree = "<group>"; };
 		6537AF4A2633AA2D00919C4E /* LinearHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearHome.swift; sourceTree = "<group>"; };
 		653B2CF02674E77A00A7A921 /* ZeroOne Flow.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ZeroOne Flow.xcdatamodel"; sourceTree = "<group>"; };
-		654241D526CBEE5C003ABF3E /* LineFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineFeed.swift; sourceTree = "<group>"; };
-		654241D726CBF594003ABF3E /* LineFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineFeedView.swift; sourceTree = "<group>"; };
+		654241D526CBEE5C003ABF3E /* TextFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormat.swift; sourceTree = "<group>"; };
+		654241D726CBF594003ABF3E /* TextFormatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormatView.swift; sourceTree = "<group>"; };
 		654241DC26CE9456003ABF3E /* RainHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainHome.swift; sourceTree = "<group>"; };
 		654241E126CEA0C9003ABF3E /* RainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainFlow.swift; sourceTree = "<group>"; };
 		654241E626CFD3EE003ABF3E /* FlowModeUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowModeUserDefaults.swift; sourceTree = "<group>"; };
@@ -198,6 +200,9 @@
 		65B9FBAB274FAB0F0072CE4F /* UserDefaultsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsTest.swift; sourceTree = "<group>"; };
 		65B9FBB6274FAB2B0072CE4F /* ZeroOneFlowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZeroOneFlowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65B9FBD7275662BE0072CE4F /* GradientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientType.swift; sourceTree = "<group>"; };
+		65B9FBD9275F96070072CE4F /* CodeMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeMaker.swift; sourceTree = "<group>"; };
+		65B9FBDB275F96CB0072CE4F /* CodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeType.swift; sourceTree = "<group>"; };
+		65B9FBDF275F98ED0072CE4F /* ContentTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentTypeView.swift; sourceTree = "<group>"; };
 		65C7384D26AA511A00368CAE /* FontSizeRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeRange.swift; sourceTree = "<group>"; };
 		65C7384F26AA71E200368CAE /* Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
 		65DF0E0E265E75EB009421F7 /* WormHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WormHome.swift; sourceTree = "<group>"; };
@@ -220,7 +225,6 @@
 		65E84C0A2670FCB500378408 /* SandwichedImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandwichedImageSlider.swift; sourceTree = "<group>"; };
 		65E84C0C2670FCD400378408 /* ToggleWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleWithLabel.swift; sourceTree = "<group>"; };
 		65E84C152670FE0700378408 /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
-		65E84C172670FE1C00378408 /* ContentTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentTypeView.swift; path = ../Style/ContentTypeView.swift; sourceTree = "<group>"; };
 		65E84C1A26738BE800378408 /* BigBangHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBangHome.swift; sourceTree = "<group>"; };
 		65E84C1C26738C1600378408 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		65E84C1E2673A29A00378408 /* FontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontView.swift; sourceTree = "<group>"; };
@@ -260,7 +264,7 @@
 				65E84BE32670ED2D00378408 /* Font */,
 				65E84BE42670ED3A00378408 /* Color */,
 				657066322726EA2700C37C19 /* Gradient */,
-				654241D426CBEDDF003ABF3E /* Line Feed */,
+				654241D426CBEDDF003ABF3E /* Text Format */,
 				65E84BF22670F5EE00378408 /* Padding */,
 				65E84BE62670ED5500378408 /* Content Type */,
 				657633752675B9290006981A /* Style */,
@@ -275,6 +279,7 @@
 				651EE0C126509E3E007389AC /* NumberMaker.swift */,
 				654263092642B24A0025BFB7 /* LanguageMaker.swift */,
 				6535DEB1266903D200CFA77B /* SymbolMaker.swift */,
+				65B9FBD9275F96070072CE4F /* CodeMaker.swift */,
 			);
 			path = "Content Maker";
 			sourceTree = "<group>";
@@ -318,12 +323,12 @@
 			path = Circle;
 			sourceTree = "<group>";
 		};
-		654241D426CBEDDF003ABF3E /* Line Feed */ = {
+		654241D426CBEDDF003ABF3E /* Text Format */ = {
 			isa = PBXGroup;
 			children = (
-				654241D726CBF594003ABF3E /* LineFeedView.swift */,
+				654241D726CBF594003ABF3E /* TextFormatView.swift */,
 			);
-			path = "Line Feed";
+			path = "Text Format";
 			sourceTree = "<group>";
 		};
 		654241DB26CE91E2003ABF3E /* Rain */ = {
@@ -457,7 +462,7 @@
 				657EB83226F5FB7F0001A71A /* Range */,
 				657EB84026FA2D880001A71A /* Padding */,
 				657EB82B26F578C60001A71A /* Rotation */,
-				657EB83F26FA2D7A0001A71A /* Line Feed */,
+				657EB83F26FA2D7A0001A71A /* Text Format */,
 				657EB82D26F579210001A71A /* Contents */,
 				657EB82F26F57A690001A71A /* Core Data */,
 			);
@@ -501,6 +506,7 @@
 				657EB84126FA2DBF0001A71A /* NumberType.swift */,
 				657EB84326FA2DE40001A71A /* LanguageType.swift */,
 				657EB84526FA2E000001A71A /* SymbolType.swift */,
+				65B9FBDB275F96CB0072CE4F /* CodeType.swift */,
 				651EE0C026509DF9007389AC /* Content Maker */,
 			);
 			path = Contents;
@@ -588,12 +594,12 @@
 			path = "Random Style";
 			sourceTree = "<group>";
 		};
-		657EB83F26FA2D7A0001A71A /* Line Feed */ = {
+		657EB83F26FA2D7A0001A71A /* Text Format */ = {
 			isa = PBXGroup;
 			children = (
-				654241D526CBEE5C003ABF3E /* LineFeed.swift */,
+				654241D526CBEE5C003ABF3E /* TextFormat.swift */,
 			);
-			path = "Line Feed";
+			path = "Text Format";
 			sourceTree = "<group>";
 		};
 		657EB84026FA2D880001A71A /* Padding */ = {
@@ -685,7 +691,7 @@
 		65E84BE62670ED5500378408 /* Content Type */ = {
 			isa = PBXGroup;
 			children = (
-				65E84C172670FE1C00378408 /* ContentTypeView.swift */,
+				65B9FBDF275F98ED0072CE4F /* ContentTypeView.swift */,
 			);
 			path = "Content Type";
 			sourceTree = "<group>";
@@ -853,7 +859,7 @@
 				65092F9E26D3E7EA00E769C6 /* CircleUserDefaults.swift in Sources */,
 				65E84BFD2670F80800378408 /* TextColorView.swift in Sources */,
 				651EE0B9264D340E007389AC /* Colors.swift in Sources */,
-				65E84C182670FE1C00378408 /* ContentTypeView.swift in Sources */,
+				65B9FBDA275F96070072CE4F /* CodeMaker.swift in Sources */,
 				654241DD26CE9456003ABF3E /* RainHome.swift in Sources */,
 				65092FB626E2ED7800E769C6 /* ContentType.swift in Sources */,
 				65E84C1F2673A29A00378408 /* FontView.swift in Sources */,
@@ -889,6 +895,7 @@
 				651EE0C226509E3E007389AC /* NumberMaker.swift in Sources */,
 				65B9FB6C273947380072CE4F /* SliderWithSingleImage.swift in Sources */,
 				6576337D2676214C0006981A /* ContentResource.swift in Sources */,
+				65B9FBDC275F96CB0072CE4F /* CodeType.swift in Sources */,
 				65092F8D26D2890100E769C6 /* FlyViewModel.swift in Sources */,
 				65E84BEB2670F53000378408 /* CGFloatSlider.swift in Sources */,
 				65590A902611C601004AB0D3 /* ContentView.swift in Sources */,
@@ -896,7 +903,7 @@
 				657EB81C26F0E6750001A71A /* GeometryHome.swift in Sources */,
 				6542630A2642B24A0025BFB7 /* LanguageMaker.swift in Sources */,
 				6537AF38262AB35C00919C4E /* LinearFlow.swift in Sources */,
-				654241D626CBEE5C003ABF3E /* LineFeed.swift in Sources */,
+				654241D626CBEE5C003ABF3E /* TextFormat.swift in Sources */,
 				651EE0C92650B132007389AC /* SingleHome.swift in Sources */,
 				65E84BFA2670F78B00378408 /* ColorView.swift in Sources */,
 				65092FA626D5244B00E769C6 /* BigBangUserDefaults.swift in Sources */,
@@ -915,6 +922,7 @@
 				65763381267CD5780006981A /* BackgroundGradientView.swift in Sources */,
 				65E84BF82670F75C00378408 /* RandomGradient.swift in Sources */,
 				65092F9626D3CA9E00E769C6 /* Rotation3D.swift in Sources */,
+				65B9FBE0275F98ED0072CE4F /* ContentTypeView.swift in Sources */,
 				65E84BF42670F60400378408 /* Padding.swift in Sources */,
 				65DF0E0F265E75EB009421F7 /* WormHome.swift in Sources */,
 				657EB84426FA2DE40001A71A /* LanguageType.swift in Sources */,
@@ -924,7 +932,7 @@
 				65E84BF12670F5AE00378408 /* FontDesignWeightView.swift in Sources */,
 				65092FBA26E4492400E769C6 /* FontWeight.swift in Sources */,
 				65E7FCF62702048500C4E3CE /* FlowModeHome.swift in Sources */,
-				654241D826CBF594003ABF3E /* LineFeedView.swift in Sources */,
+				654241D826CBF594003ABF3E /* TextFormatView.swift in Sources */,
 				65590A8E2611C601004AB0D3 /* ZeroOne_FlowApp.swift in Sources */,
 				65092F9A26D3D19C00E769C6 /* SingleUserDefaults.swift in Sources */,
 				657633742674F0020006981A /* Persistence.swift in Sources */,

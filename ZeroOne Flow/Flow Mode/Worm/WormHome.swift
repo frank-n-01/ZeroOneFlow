@@ -10,7 +10,7 @@ struct WormHome: View {
         
         ColorView(colors: $worm.colors, random: false)
         
-        ContentTypeView(contentType: $worm.contents)
+        ContentTypeView(contents: $worm.contents)
         
         Section {
             SliderWithSingleImage(value: $worm.length, min: 1, max: 300, image: "ruler.fill", format: "%.0f")

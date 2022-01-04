@@ -23,6 +23,7 @@
 "Language" = "语言";
 "Symbol" = "符号";
 "Custom" = "自由";
+"Code" = "程序";
 
 // Number
 "Binary" = "二进制";
@@ -40,7 +41,7 @@
 
 // Symbol
 "Box" = "箱子";
-"Money" = "货币";
+"Currency" = "货币";
 "Block" = "方块";
 "Chess" = "西洋棋";
 "Mahjong" = "麻将";
@@ -91,12 +92,15 @@
 
 // MARK: - Style
 "Style" = "样式";
-"My Styles" = "我的样式";
 
 // Save
 "Save" = "保存";
 "save.message" = "保存您现在的样式？";
 "unnamed" = "無名";
+
+// Apply
+"Apply" = "采用";
+"apply.message" = "采用这个样式?";
 
 // Reset
 "Reset" = "初始化";
@@ -119,9 +123,10 @@
 "Crawling" = "爬行";
 "Stretch" = "伸缩";
 
-// MARK: - LineFeed
+// MARK: - Text Format
 "LineFeed" = "换行";
 "Activate" = "启用";
+"Indent" = "缩进";
 
 // MARK: - Scale
 "Scale" = "规模";

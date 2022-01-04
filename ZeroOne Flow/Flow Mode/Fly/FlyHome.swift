@@ -16,7 +16,7 @@ struct FlyHome: View {
         
         ColorView(colors: $fly.colors, random: false)
         
-        ContentTypeView(contentType: $fly.contents)
+        ContentTypeView(contents: $fly.contents)
         
         Section {
             SandwichedImageSlider(interval: $fly.interval, min: 0.01, max: 1.0)

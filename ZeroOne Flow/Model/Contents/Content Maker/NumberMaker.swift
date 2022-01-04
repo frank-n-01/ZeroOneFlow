@@ -4,8 +4,8 @@ import Foundation
 
 class NumberMaker {
     
-    func makeNumber(numberType: NumberType) -> String {
-        switch numberType {
+    static func make(type: NumberType) -> String {
+        switch type {
         case .binary:
             return String(Int.random(in: 0...1))
         case .octal:

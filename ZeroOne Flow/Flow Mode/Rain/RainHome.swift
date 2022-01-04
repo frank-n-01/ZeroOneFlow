@@ -10,7 +10,7 @@ struct RainHome: View {
         
         ColorView(colors: $rain.colors, random: false)
         
-        ContentTypeView(contentType: $rain.contents)
+        ContentTypeView(contents: $rain.contents)
         
         Section {
             SliderWithSingleImage(value: $rain.scale, min: 1, max: 300, image: "cloud.rain.fill", format: "%.0f")
