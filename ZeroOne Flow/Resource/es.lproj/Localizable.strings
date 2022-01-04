@@ -14,7 +14,6 @@
 "Worm" = "Gusano";
 "Big Bang" = "Big Bang";
 "Rain" = "Lluvia";
-"Geometry" = "Geometría";
 
 // MARK: - Content Type
 "Content" = "Contenido";
@@ -137,14 +136,3 @@
 "Padding" = "Relleno";
 "V" = "V";
 "H" = "H";
-
-// MARK: - Shape
-"Shape" = "Forma";
-"Line Width" = "Ancho de Línea";
-"Fill" = "Llenar";
-
-"Line" = "Línea";
-"Triangle" = "Triángulo";
-"Rectangle" = "Rectángulo";
-"Ellipse" = "Ellipse";
-"Curve" = "Curva";

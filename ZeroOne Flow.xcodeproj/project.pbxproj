@@ -61,10 +61,6 @@
 		6576337D2676214C0006981A /* ContentResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576337C2676214C0006981A /* ContentResource.swift */; };
 		65763381267CD5780006981A /* BackgroundGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65763380267CD5780006981A /* BackgroundGradientView.swift */; };
 		657EB80E26E64CF40001A71A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 657EB81026E64CF40001A71A /* Localizable.strings */; };
-		657EB81826F0A9DC0001A71A /* GeometryUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657EB81726F0A9DC0001A71A /* GeometryUserDefaults.swift */; };
-		657EB81A26F0AA5E0001A71A /* GeometryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657EB81926F0AA5E0001A71A /* GeometryViewModel.swift */; };
-		657EB81C26F0E6750001A71A /* GeometryHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657EB81B26F0E6750001A71A /* GeometryHome.swift */; };
-		657EB81E26F0F3EE0001A71A /* GeometryFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657EB81D26F0F3EE0001A71A /* GeometryFlow.swift */; };
 		657EB82626F574A60001A71A /* ModeUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657EB82526F574A60001A71A /* ModeUserDefaults.swift */; };
 		657EB84226FA2DBF0001A71A /* NumberType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657EB84126FA2DBF0001A71A /* NumberType.swift */; };
 		657EB84426FA2DE40001A71A /* LanguageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657EB84326FA2DE40001A71A /* LanguageType.swift */; };
@@ -184,10 +180,6 @@
 		657EB81226E64CFC0001A71A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		657EB81326E64CFD0001A71A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		657EB81426E64CFE0001A71A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		657EB81726F0A9DC0001A71A /* GeometryUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryUserDefaults.swift; sourceTree = "<group>"; };
-		657EB81926F0AA5E0001A71A /* GeometryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryViewModel.swift; sourceTree = "<group>"; };
-		657EB81B26F0E6750001A71A /* GeometryHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryHome.swift; sourceTree = "<group>"; };
-		657EB81D26F0F3EE0001A71A /* GeometryFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryFlow.swift; sourceTree = "<group>"; };
 		657EB82526F574A60001A71A /* ModeUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeUserDefaults.swift; sourceTree = "<group>"; };
 		657EB84126FA2DBF0001A71A /* NumberType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberType.swift; sourceTree = "<group>"; };
 		657EB84326FA2DE40001A71A /* LanguageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageType.swift; sourceTree = "<group>"; };
@@ -296,7 +288,6 @@
 				65DF0E0D265E74B3009421F7 /* Worm */,
 				65E84C1926738B0F00378408 /* Big Bang */,
 				654241DB26CE91E2003ABF3E /* Rain */,
-				657EB81626F0A95E0001A71A /* Geometry */,
 			);
 			path = "Flow Mode";
 			sourceTree = "<group>";
@@ -430,17 +421,6 @@
 				6576337A26761E610006981A /* ModePicker.swift */,
 			);
 			path = Mode;
-			sourceTree = "<group>";
-		};
-		657EB81626F0A95E0001A71A /* Geometry */ = {
-			isa = PBXGroup;
-			children = (
-				657EB81B26F0E6750001A71A /* GeometryHome.swift */,
-				657EB81D26F0F3EE0001A71A /* GeometryFlow.swift */,
-				657EB81926F0AA5E0001A71A /* GeometryViewModel.swift */,
-				657EB81726F0A9DC0001A71A /* GeometryUserDefaults.swift */,
-			);
-			path = Geometry;
 			sourceTree = "<group>";
 		};
 		657EB82126F56C790001A71A /* Common */ = {
@@ -850,7 +830,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				657EB81826F0A9DC0001A71A /* GeometryUserDefaults.swift in Sources */,
 				65092F8926D085C800E769C6 /* FlowModeViewModel.swift in Sources */,
 				654241E726CFD3EE003ABF3E /* FlowModeUserDefaults.swift in Sources */,
 				657066312726E81E00C37C19 /* RandomGradientView.swift in Sources */,
@@ -870,7 +849,6 @@
 				65092FAA26D5332200E769C6 /* RainUserDefaults.swift in Sources */,
 				659AD81F2633F211009A1426 /* FlyFlow.swift in Sources */,
 				650F31852712E52B000D39D3 /* RandomStyleButton.swift in Sources */,
-				657EB81E26F0F3EE0001A71A /* GeometryFlow.swift in Sources */,
 				650F318127107830000D39D3 /* StyleName.swift in Sources */,
 				651EE0CB2650B19D007389AC /* SingleFlow.swift in Sources */,
 				65C7384E26AA511A00368CAE /* FontSizeRange.swift in Sources */,
@@ -883,7 +861,6 @@
 				65DF0E11265E75F5009421F7 /* WormFlow.swift in Sources */,
 				654241E926CFF9D2003ABF3E /* LinearViewModel.swift in Sources */,
 				6576337B26761E610006981A /* ModePicker.swift in Sources */,
-				657EB81A26F0AA5E0001A71A /* GeometryViewModel.swift in Sources */,
 				65E84BF62670F68800378408 /* PaddingView.swift in Sources */,
 				6537AF4B2633AA2D00919C4E /* LinearHome.swift in Sources */,
 				65092FAC26D5335200E769C6 /* RainViewModel.swift in Sources */,
@@ -900,7 +877,6 @@
 				65E84BEB2670F53000378408 /* CGFloatSlider.swift in Sources */,
 				65590A902611C601004AB0D3 /* ContentView.swift in Sources */,
 				6535DEB2266903D200CFA77B /* SymbolMaker.swift in Sources */,
-				657EB81C26F0E6750001A71A /* GeometryHome.swift in Sources */,
 				6542630A2642B24A0025BFB7 /* LanguageMaker.swift in Sources */,
 				6537AF38262AB35C00919C4E /* LinearFlow.swift in Sources */,
 				654241D626CBEE5C003ABF3E /* TextFormat.swift in Sources */,

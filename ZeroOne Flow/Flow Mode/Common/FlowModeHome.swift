@@ -14,7 +14,6 @@ struct FlowModeHome: View {
     @StateObject var worm = WormViewModel()
     @StateObject var bigbang = BigBangViewModel()
     @StateObject var rain = RainViewModel()
-    @StateObject var geometry = GeometryViewModel()
     
     /// Start the flow in the home view.
     ///
@@ -138,8 +137,6 @@ struct FlowModeHome: View {
             return bigbang
         case .rain:
             return rain
-        case .geometry:
-            return geometry
         }
     }
     
@@ -163,8 +160,6 @@ struct FlowModeHome: View {
                 BigBangHome(bigbang: bigbang)
             case .rain:
                 RainHome(rain: rain)
-            case .geometry:
-                GeometryHome(geometry: geometry)
             }
         }
     }
@@ -189,8 +184,6 @@ struct FlowModeHome: View {
                 BigBangFlow(bigbang: bigbang)
             case .rain:
                 RainFlow(rain: rain)
-            case .geometry:
-                GeometryFlow(geometry: geometry)
             }
         }
     }

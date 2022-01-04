@@ -14,7 +14,6 @@
 "Worm" = "虫";
 "Big Bang" = "大爆炸";
 "Rain" = "雨";
-"Geometry" = "几何学";
 
 // MARK: - Content Type
 "Content" = "内容";
@@ -137,14 +136,3 @@
 "Padding" = "空白";
 "V" = "纵";
 "H" = "横";
-
-// MARK: - Shape
-"Shape" = "形状";
-"Line Width" = "轮廓线";
-"Fill" = "填";
-
-"Line" = "线";
-"Triangle" = "三角形";
-"Rectangle" = "长方形";
-"Ellipse" = "椭圆";
-"Curve" = "曲线";
