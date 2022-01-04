@@ -4,7 +4,6 @@ import SwiftUI
 
 struct SaveStyleView: View {
     var saveCoreData: (String) -> Void
-    
     @State private var showAlert = false
     @StateObject private var styleName = StyleName()
     

@@ -9,66 +9,80 @@ struct Contents: Equatable, Identifiable {
     var language: LanguageType
     var symbol: SymbolType
     var customValue: [String]
+    var code: CodeType
     
     var id: UUID { return UUID() }
     
+    static let TYPE: ContentType = .number
+    static let NUMBER: NumberType = .binary
+    static let LANGUAGE: LanguageType = .hieroglyph
+    static let SYMBOL: SymbolType = .block
+    static let CUSTOM = ["Fizz", "Buzz"]
+    static let CODE: CodeType = .cobol
+    
     init() {
-        self.type = .number
-        self.number = .binary
-        self.language = .hieroglyph
-        self.symbol = .block
-        self.customValue = ["Fizz", "Buzz"]
+        self.type = Self.TYPE
+        self.number = Self.NUMBER
+        self.language = Self.LANGUAGE
+        self.symbol = Self.SYMBOL
+        self.customValue = Self.CUSTOM
+        self.code = Self.CODE
     }
     
-    mutating func set(type: ContentType, number: NumberType, language: LanguageType, symbol: SymbolType, customValue1: String, customValue2: String) {
+    mutating func set(type: ContentType, number: NumberType, language: LanguageType, symbol: SymbolType, customValue1: String, customValue2: String, code: CodeType) {
         self.type = type
         self.number = number
         self.language = language
         self.symbol = symbol
         self.customValue[0] = customValue1
         self.customValue[1] = customValue2
+        self.code = code
     }
     
-    mutating func set(type: Int, number: Int, language: Int, symbol: Int, customValue1: String, customValue2: String) {
-        self.type = ContentType(rawValue: type) ?? .number
-        self.number = NumberType(rawValue: number) ?? .binary
-        self.language = LanguageType(rawValue: language) ?? .hieroglyph
-        self.symbol = SymbolType(rawValue: symbol) ?? .block
+    mutating func set(type: Int, number: Int, language: Int, symbol: Int, customValue1: String, customValue2: String, code: Int) {
+        self.type = ContentType(rawValue: type) ?? Self.TYPE
+        self.number = NumberType(rawValue: number) ?? Self.NUMBER
+        self.language = LanguageType(rawValue: language) ?? Self.LANGUAGE
+        self.symbol = SymbolType(rawValue: symbol) ?? Self.SYMBOL
         self.customValue[0] = customValue1
         self.customValue[1] = customValue2
+        self.code = CodeType(rawValue: code) ?? Self.CODE
     }
     
-    func save(type: inout Int, number: inout Int, language: inout Int, symbol: inout Int, custom1: inout String?, custom2: inout String?) {
+    func save(type: inout Int, number: inout Int, language: inout Int, symbol: inout Int, custom1: inout String?, custom2: inout String?, code: inout Int) {
         type = self.type.rawValue
         number = self.number.rawValue
         language = self.language.rawValue
         symbol = self.symbol.rawValue
         custom1 = self.customValue[0]
         custom2 = self.customValue[1]
+        code = self.code.rawValue
     }
     
-    func save(type: inout Int16, number: inout Int16, language: inout Int16, symbol: inout Int16, custom1: inout String?, custom2: inout String?) {
+    func save(type: inout Int16, number: inout Int16, language: inout Int16, symbol: inout Int16, custom1: inout String?, custom2: inout String?, code: inout Int16) {
         type = Int16(self.type.rawValue)
         number = Int16(self.number.rawValue)
         language = Int16(self.language.rawValue)
         symbol = Int16(self.symbol.rawValue)
         custom1 = self.customValue[0]
         custom2 = self.customValue[1]
+        code = Int16(self.code.rawValue)
     }
     
     mutating func reset() {
-        self.type = .number
-        self.number = .binary
-        self.language = .hieroglyph
-        self.symbol = .block
-        self.customValue = ["Fizz", "Buzz"]
+        self.type = Self.TYPE
+        self.number = Self.NUMBER
+        self.language = Self.LANGUAGE
+        self.symbol = Self.SYMBOL
+        self.customValue = Self.CUSTOM
+        self.code = Self.CODE
     }
     
     mutating func random() {
-        let types = ContentType.allCases
-        self.type = types[Int.random(in: 0 ..< types.count - 1)] // remove "Custom"
-        self.number = NumberType.allCases.randomElement() ?? .binary
-        self.language = LanguageType.allCases.randomElement() ?? .hieroglyph
-        self.symbol = SymbolType.allCases.randomElement() ?? .block
+        self.type = ContentType.allCasesWithoutCustom.randomElement() ?? Self.TYPE
+        self.number = NumberType.allCases.randomElement() ?? Self.NUMBER
+        self.language = LanguageType.allCases.randomElement() ?? Self.LANGUAGE
+        self.symbol = SymbolType.allCases.randomElement() ?? Self.SYMBOL
+        self.code = CodeType.allCases.randomElement() ?? Self.CODE
     }
 }

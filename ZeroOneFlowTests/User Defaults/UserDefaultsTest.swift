@@ -52,6 +52,7 @@ class UserDefaultsTest: XCTestCase {
         XCTAssertEqual(linear.interval, linear.INTERVAL)
         XCTAssertEqual(linear.repeatFlow, linear.REPEAT_FLOW)
         XCTAssertEqual(linear.linefeed, linear.LINEFEED)
+        XCTAssertEqual(linear.indents, linear.INDENTS)
         
         // Save the test data and check if it has been saved correctly.
         let random = LinearViewModel()
@@ -64,6 +65,8 @@ class UserDefaultsTest: XCTestCase {
         XCTAssertEqual(linear.interval, random.interval)
         XCTAssertEqual(linear.repeatFlow, random.repeatFlow)
         XCTAssertEqual(linear.linefeed, random.linefeed)
+        XCTAssertEqual(linear.indents, random.indents)
+        
         // Clear the changes.
         linear.resetUserDefaults()
     }

@@ -10,7 +10,7 @@ struct SingleHome: View {
         
         ColorView(colors: $single.colors, random: true)
         
-        ContentTypeView(contentType: $single.contents)
+        ContentTypeView(contents: $single.contents)
         
         Section {
             SandwichedImageSlider(interval: $single.interval, min: 0.001, max: 2.0)

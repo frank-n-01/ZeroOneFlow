@@ -10,7 +10,7 @@ struct CircleHome: View {
         
         ColorView(colors: $circle.colors, random: false)
         
-        ContentTypeView(contentType: $circle.contents)
+        ContentTypeView(contents: $circle.contents)
         
         Section {
             SliderWithSingleImage(value: $circle.depth, min: 1, max: 300, image: "smallcircle.circle")

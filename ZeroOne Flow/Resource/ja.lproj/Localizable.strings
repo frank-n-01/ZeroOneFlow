@@ -23,6 +23,7 @@
 "Language" = "言語";
 "Symbol" = "記号";
 "Custom" = "カスタム";
+"Code" = "コード";
 
 // Number
 "Binary" = "2進数";
@@ -40,7 +41,7 @@
 
 // Symbol
 "Box" = "ボックス";
-"Money" = "通貨";
+"Currency" = "通貨";
 "Block" = "ブロック";
 "Chess" = "チェス";
 "Mahjong" = "麻雀";
@@ -91,12 +92,15 @@
 
 // MARK: - Style
 "Style" = "スタイル";
-"My Styles" = "マイスタイル";
 
 // Save
 "Save" = "保存";
 "save.message" = "現在のスタイルを保存しますか？";
 "unnamed" = "無名";
+
+// Apply
+"Apply" = "適用";
+"apply.message" = "このスタイルを適用しますか?";
 
 // Reset
 "Reset" = "リセット";
@@ -119,9 +123,10 @@
 "Crawling" = "爬行";
 "Stretch" = "伸縮";
 
-// MARK: - LineFeed
+// MARK: - Text Format
 "LineFeed" = "改行";
 "Activate" = "有効化";
+"Indent" = "インデント";
 
 // MARK: - Scale
 "Scale" = "規模";

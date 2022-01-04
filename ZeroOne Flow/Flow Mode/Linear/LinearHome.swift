@@ -11,7 +11,7 @@ struct LinearHome: View {
         
         ColorView(colors: $linear.colors, random: true)
         
-        ContentTypeView(contentType: $linear.contents)
+        ContentTypeView(contents: $linear.contents)
         
         Section {
             SandwichedImageSlider(interval: $linear.interval, min: 0.001, max: 0.5)
@@ -20,6 +20,10 @@ struct LinearHome: View {
             Text("Speed")
         }
         
-        LineFeedView(linefeed: $linear.linefeed, min: 1, max: 200)
+        TextFormatView(format: $linear.linefeed, min: 0, max: 100,
+                       header: "LineFeed", image: "ruler.fill")
+        
+        TextFormatView(format: $linear.indents, min: 0, max: 50,
+                       header: "Indent", image: "list.bullet.indent")
     }
 }

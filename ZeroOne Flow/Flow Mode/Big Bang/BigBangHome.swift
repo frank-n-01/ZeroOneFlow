@@ -10,7 +10,7 @@ struct BigBangHome: View {
         
         ColorView(colors: $bigbang.colors, random: false)
         
-        ContentTypeView(contentType: $bigbang.contents)
+        ContentTypeView(contents: $bigbang.contents)
         
         Section {
             SliderWithSingleImage(value: $bigbang.scale, min: 1, max: 500, image: "hurricane", format: "%.0f")

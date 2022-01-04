@@ -23,6 +23,7 @@
 "Language" = "Language";
 "Symbol" = "Symbol";
 "Custom" = "Custom";
+"Code" = "Code";
 
 // Number
 "Binary" = "Binary";
@@ -40,7 +41,7 @@
 
 // Symbol
 "Box" = "Box";
-"Money" = "Money";
+"Currency" = "Currency";
 "Block" = "Block";
 "Chess" = "Chess";
 "Mahjong" = "Mahjong";
@@ -91,12 +92,15 @@
 
 // MARK: - Style
 "Style" = "Style";
-"My Styles" = "My Styles";
 
 // Save
 "Save" = "Save";
 "save.message" = "Save your current style?";
 "unnamed" = "unnamed";
+
+// Apply
+"Apply" = "Apply";
+"apply.message" = "Apply this style?";
 
 // Reset
 "Reset" = "Reset";
@@ -119,9 +123,10 @@
 "Crawling" = "Crawling";
 "Stretch" = "Stretch";
 
-// MARK: - LineFeed
+// MARK: - Text Format
 "LineFeed" = "Line Feed";
 "Activate" = "Activate";
+"Indent" = "Indent";
 
 // MARK: - Scale
 "Scale" = "Scale";

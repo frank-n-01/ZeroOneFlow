@@ -19,21 +19,30 @@ class LinearViewModel: FlowModeViewModel {
         }
     }
     
-    @Published var linefeed: LineFeed {
+    @Published var linefeed: TextFormat {
         didSet {
-            linefeed.save(isOn: &ud.isLineFeedOn, maxLineLength: &ud.maxLineLength)
+            linefeed.save(isOn: &ud.isLineFeedOn, value: &ud.maxLineLength)
+        }
+    }
+    
+    @Published var indents: TextFormat {
+        didSet {
+            indents.save(isOn: &ud.isIndentOn, value: &ud.maxNumberOfIndents)
         }
     }
     
     let INTERVAL = 0.005
     let REPEAT_FLOW = true
-    let LINEFEED = LineFeed(isOn: true, maxLineLength: 10)
+    let LINEFEED = TextFormat(isOn: false, value: 1)
     let FONT = Fonts(size: 18, design: .monospaced, weight: .regular, min: 10, max: 100)
+    let INDENTS = TextFormat(isOn: false, value: 3)
     
     init() {
         interval = INTERVAL
         repeatFlow = REPEAT_FLOW
         linefeed = LINEFEED
+        indents = INDENTS
+        
         super.init(ud: ud, fonts: FONT)
     }
     
@@ -42,7 +51,8 @@ class LinearViewModel: FlowModeViewModel {
         
         if isRandomStyle {
             interval = Double.random(in: 0.001...0.01)
-            linefeed.random(maxOfMaxLineLength: 30)
+            linefeed.random(max: 30)
+            indents.random(max: 5)
         }
     }
     
@@ -52,7 +62,8 @@ class LinearViewModel: FlowModeViewModel {
         if ud.isSaved {
             interval = ud.interval > 0 ? ud.interval : INTERVAL
             repeatFlow = ud.repeatFlow
-            linefeed.set(isOn: ud.isLineFeedOn, maxLineLength: ud.maxLineLength)
+            linefeed.set(isOn: ud.isLineFeedOn, value: ud.maxLineLength)
+            indents.set(isOn: ud.isIndentOn, value: ud.maxNumberOfIndents)
         }
     }
     
@@ -61,7 +72,8 @@ class LinearViewModel: FlowModeViewModel {
         
         ud.interval = interval
         ud.repeatFlow = repeatFlow
-        linefeed.save(isOn: &ud.isLineFeedOn, maxLineLength: &ud.maxLineLength)
+        linefeed.save(isOn: &ud.isLineFeedOn, value: &ud.maxLineLength)
+        indents.save(isOn: &ud.isIndentOn, value: &ud.maxNumberOfIndents)
     }
     
     override func resetUserDefaults() {
@@ -71,6 +83,7 @@ class LinearViewModel: FlowModeViewModel {
         interval = INTERVAL
         repeatFlow = REPEAT_FLOW
         linefeed = LINEFEED
+        indents = INDENTS
     }
     
     override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext, _ style: T) {
@@ -78,7 +91,8 @@ class LinearViewModel: FlowModeViewModel {
         
         interval = style.interval > 0 ? style.interval : INTERVAL
         repeatFlow = style.repeatFlow
-        linefeed.set(isOn: style.isLineFeedOn, maxLineLength: Int(style.maxLineLength))
+        linefeed.set(isOn: style.isLineFeedOn, value: style.maxLineLength)
+        indents.set(isOn: style.isIndentOn, value: style.maxNumberOfIndents)
         
         super.applyCoreData(context, style)
     }
@@ -87,7 +101,8 @@ class LinearViewModel: FlowModeViewModel {
         let style = Linear(context: context)
         style.interval = interval
         style.repeatFlow = repeatFlow
-        linefeed.save(isOn: &style.isLineFeedOn, maxLineLength: &style.maxLineLength)
+        linefeed.save(isOn: &style.isLineFeedOn, value: &style.maxLineLength)
+        indents.save(isOn: &style.isIndentOn, value: &style.maxNumberOfIndents)
         
         super.saveCoreData(context, name, style)
     }

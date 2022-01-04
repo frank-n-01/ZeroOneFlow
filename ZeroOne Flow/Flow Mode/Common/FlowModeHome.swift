@@ -65,7 +65,7 @@ struct FlowModeHome: View {
             HStack {
                 Image(systemName: "doc.on.doc")
                     .foregroundColor(.gray)
-                Text("My Styles")
+                Text("Style")
                     .bold()
                     .padding(.leading, 1)
             }
@@ -116,6 +116,7 @@ struct FlowModeHome: View {
     func startFlow() {
         start.toggle()
         viewModel.makeRandomStyle()
+        ContentMaker.reset()
     }
     
     /// The current flow mode's view model.

@@ -8,21 +8,21 @@ struct Colors: Equatable {
     var bg: Color
     var bgRandom: Bool
     
-    let TEXT = Color("Text")
-    let BACKGROUND = Color.black
+    static let TEXT = Color("Text")
+    static let BACKGROUND = Color.black
     
     init() {
-        self.txt = TEXT
+        self.txt = Self.TEXT
         self.txtRandom = false
-        self.bg = BACKGROUND
+        self.bg = Self.BACKGROUND
         self.bgRandom = false
     }
     
     static func == (lhs: Colors, rhs: Colors) -> Bool {
         return
-            lhs.txt.description == rhs.txt.description &&
+            UIColor(lhs.txt).rgba == UIColor(rhs.txt).rgba &&
             lhs.txtRandom == rhs.txtRandom &&
-            lhs.bg.description == rhs.bg.description &&
+            UIColor(lhs.bg).rgba == UIColor(rhs.bg).rgba &&
             lhs.bgRandom == rhs.bgRandom
     }
         
@@ -55,9 +55,9 @@ struct Colors: Equatable {
     }
     
     mutating func reset() {
-        self.txt = TEXT
+        self.txt = Self.TEXT
         self.txtRandom = false
-        self.bg = BACKGROUND
+        self.bg = Self.BACKGROUND
         self.bgRandom = false
     }
     

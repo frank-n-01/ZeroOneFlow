@@ -7,8 +7,13 @@ enum ContentType: Int, CaseIterable, Equatable, Identifiable {
     case language
     case symbol
     case custom
+    case code
     
     var id: UUID { return UUID() }
+    
+    static var allCasesWithoutCustom: [ContentType] {
+        return [.number, .language, .symbol, .code]
+    }
     
     var name: LocalizedStringKey {
         switch self {
@@ -20,6 +25,8 @@ enum ContentType: Int, CaseIterable, Equatable, Identifiable {
             return "Symbol"
         case .custom:
             return "Custom"
+        case .code:
+            return "Code"
         }
     }
 }

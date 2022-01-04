@@ -4,9 +4,7 @@ import Foundation
 
 class SymbolMaker {
     
-    let resource = ContentResource()
-    
-    func makeSymbol(type: SymbolType) -> String {
+    static func make(type: SymbolType) -> String {
         switch type {
         case .box:
             return makeBox()
@@ -23,28 +21,28 @@ class SymbolMaker {
         }
     }
 
-    func makeBox() -> String {
+    static func makeBox() -> String {
         return String(Unicode.Scalar(UInt16(Int.random(in: 9472...9599)))!)
     }
 
-    func makeCurrency() -> String {
+    static func makeCurrency() -> String {
         switch Int.random(in: 0...3) {
         case 0:
-            return resource.currencies.randomElement() ?? "¢"
+            return ContentResource.CURRENCIES.randomElement() ?? "¢"
         default:
             return String(Unicode.Scalar(UInt16(Int.random(in: 8352...8383)))!)
         }
     }
 
-    func makeBlock() -> String {
+    static func makeBlock() -> String {
         return String(Unicode.Scalar(UInt16(Int.random(in: 9600...9631)))!)
     }
 
-    func makeChess() -> String {
+    static func makeChess() -> String {
         return String(Unicode.Scalar(UInt16(Int.random(in: 9812...9822)))!)
     }
 
-    func makeMahjong() -> String {
+    static func makeMahjong() -> String {
         switch Int.random(in: 0...10) {
         case 0:
             return String(Unicode.Scalar(UInt32(Int.random(in: 126976...126979)))!)
@@ -53,7 +51,7 @@ class SymbolMaker {
         }
     }
 
-    func makeKaomoji() -> String {
-        return resource.emoticons.randomElement() ?? ":)"
+    static func makeKaomoji() -> String {
+        return ContentResource.EMOTICONS.randomElement() ?? ":)"
     }
 }

@@ -184,6 +184,14 @@ class FlowModeUserDefaults: ObservableObject {
         }
     }
     
+    @Published var code: Int {
+        didSet {
+            if code != oldValue {
+                UserDefaults.standard.set(code, forKey: "code_" + flowModeKey)
+            }
+        }
+    }
+    
     @Published var isSaved: Bool {
         didSet {
             if isSaved != oldValue {
@@ -233,6 +241,7 @@ class FlowModeUserDefaults: ObservableObject {
         symbol = UserDefaults.standard.integer(forKey: "symbol_" + flowModeKey)
         customValue1 = UserDefaults.standard.string(forKey: "customValue1_" + flowModeKey)
         customValue2 = UserDefaults.standard.string(forKey: "customValue2_" + flowModeKey)
+        code = UserDefaults.standard.integer(forKey: "code_" + flowModeKey)
         // saved or not
         isSaved = UserDefaults.standard.bool(forKey: "saved_" + flowModeKey)
         // is random style on
@@ -267,5 +276,6 @@ class FlowModeUserDefaults: ObservableObject {
         symbol = contents.symbol.rawValue
         customValue1 = contents.customValue[0]
         customValue2 = contents.customValue[1]
+        code = contents.code.rawValue
     }
 }

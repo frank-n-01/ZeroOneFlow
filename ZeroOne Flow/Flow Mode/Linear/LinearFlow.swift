@@ -11,7 +11,7 @@ struct LinearFlow: View {
     @State private var currentHeight: CGFloat = 0.0
     @State private var lineSpacing: CGFloat = 0.0
     @State private var kerning: CGFloat = 0.0
-    @State private var isStopped = false
+    @State private var stopped = false
     @State private var preservedContent = ""
 
     var body: some View {
@@ -20,7 +20,9 @@ struct LinearFlow: View {
             screenSizeGetter
             GeometryReader { _ in
                 Text(content)
-                    .font(.system(size: linear.fonts.size, weight: linear.fonts.weight.value, design: linear.fonts.design.value))
+                    .font(.system(size: linear.fonts.size,
+                                  weight: linear.fonts.weight.value,
+                                  design: linear.fonts.design.value))
                     .foregroundColor(linear.colors.txt)
                     .kerning(kerning)
                     .lineSpacing(lineSpacing)
@@ -29,12 +31,14 @@ struct LinearFlow: View {
                     .background(currentHeightGetter)
             }
         }
-        .onReceive(Timer.publish(every: !isStopped ? linear.interval : 100, on: .current, in: .common).autoconnect()) { _ in
+        .onReceive(Timer.publish(every: !stopped ? linear.interval : 100,
+                                 on: .current, in: .common).autoconnect()) { _ in
             move()
         }
         .onAppear {
             adjustKerning()
             adjustLineSpacing()
+            CodeMaker.reset()
         }
     }
     
@@ -73,9 +77,10 @@ struct LinearFlow: View {
             // If the flow has filled the screen, it will be cleared and repeated.
             if currentHeight > screenHeight {
                 content = ""
+                ContentMaker.reset()
             }
         } else if currentHeight > screenHeight {
-            isStopped = true
+            stopped = true
             content = preservedContent
         }
     }
@@ -92,12 +97,12 @@ struct LinearFlow: View {
             preservedContent = content
         }
         content += ContentMaker.make(with: linear.contents)
-        content += ContentMaker.getRandomLineFeed(linefeed: linear.linefeed)
+        content += ContentMaker.getRandomLineFeed(linear.linefeed, linear.indents,
+                                                  linear.contents)
     }
     
     /// Adjust the kerning depend on the flow content.
     private func adjustKerning() {
-        
         switch linear.contents.type {
         case .language:
             switch linear.contents.language {
@@ -124,12 +129,11 @@ struct LinearFlow: View {
     
     /// Adjust the line spacing depend on the flow content.
     private func adjustLineSpacing() {
-        
         switch linear.contents.type {
         case .language:
             switch linear.contents.language {
             case .cuneiform, .hieroglyph:
-                lineSpacing = 15.0
+                lineSpacing = 10.0
             case .greek:
                 lineSpacing = 0.0
             default:

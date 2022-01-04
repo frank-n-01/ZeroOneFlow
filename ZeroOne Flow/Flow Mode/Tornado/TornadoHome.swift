@@ -16,7 +16,7 @@ struct TornadoHome: View {
         
         ColorView(colors: $tornado.colors, random: false)
         
-        ContentTypeView(contentType: $tornado.contents)
+        ContentTypeView(contents: $tornado.contents)
         
         Section {
             RangeSliders(range: $tornado.durationRange, min: 0.01, max: 10.0)
