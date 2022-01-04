@@ -43,11 +43,6 @@
         <attribute name="paddingH" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="paddingV" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="Geometry" representedClassName="Geometry" parentEntity="FlowMode" syncable="YES" codeGenerationType="class">
-        <attribute name="isFill" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="scale" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="shape" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-    </entity>
     <entity name="Linear" representedClassName="Linear" parentEntity="FlowMode" syncable="YES" codeGenerationType="class">
         <attribute name="isIndentOn" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isLineFeedOn" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -88,7 +83,6 @@
         <element name="Circle" positionX="98.680419921875" positionY="204.4788208007812" width="128" height="59"/>
         <element name="FlowMode" positionX="7.2943115234375" positionY="-508.8889770507812" width="128" height="344"/>
         <element name="Fly" positionX="-324.9453125" positionY="80.95050048828125" width="128" height="59"/>
-        <element name="Geometry" positionX="-207" positionY="-351" width="128" height="74"/>
         <element name="Linear" positionX="-412.2183837890625" positionY="-4.8612060546875" width="128" height="104"/>
         <element name="Rain" positionX="515.4153442382812" positionY="34.66864013671875" width="128" height="104"/>
         <element name="Single" positionX="-97.5491943359375" positionY="198.019287109375" width="128" height="74"/>

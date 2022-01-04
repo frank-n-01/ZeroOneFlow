@@ -14,7 +14,6 @@
 "Worm" = "Worm";
 "Big Bang" = "Big Bang";
 "Rain" = "Rain";
-"Geometry" = "Geometry";
 
 // MARK: - Content Type
 "Content" = "Content";
@@ -137,14 +136,3 @@
 "Padding" = "Padding";
 "V" = "V";
 "H" = "H";
-
-// MARK: - Shape
-"Shape" = "Shape";
-"Line Width" = "Line Width";
-"Fill" = "Fill";
-
-"Line" = "Line";
-"Triangle" = "Triangle";
-"Rectangle" = "Rectangle";
-"Ellipse" = "Ellipse";
-"Curve" = "Curve";
