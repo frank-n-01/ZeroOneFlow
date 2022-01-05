@@ -41,7 +41,7 @@ struct FlowModeHome: View {
         .navigationViewStyle(.stack)
     }
     
-    /// Control the style of flow.
+    /// Control the parameters and customize the style of flow.
     var homeView: some View {
         Form {
             Section {
@@ -56,7 +56,7 @@ struct FlowModeHome: View {
         }
     }
     
-    /// Save and apply the styles.
+    /// Save and apply the flow styles.
     var styleLink: some View {
         NavigationLink {
             CoreDataStyleList(viewModel: viewModel)
@@ -73,7 +73,7 @@ struct FlowModeHome: View {
         }
     }
     
-    /// Play the flow animation.
+    /// Play the animation of flow.
     var flowView: some View {
         NavigationLink(isActive: $start) {
             flowSwitch
@@ -112,6 +112,7 @@ struct FlowModeHome: View {
     /// Start the flow.
     ///
     /// If the random style mode is activated, make a random style everytime.
+    /// The generated random style will be preserved in the view model.
     func startFlow() {
         start.toggle()
         viewModel.makeRandomStyle()

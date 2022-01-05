@@ -60,6 +60,7 @@
 		6576337B26761E610006981A /* ModePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576337A26761E610006981A /* ModePicker.swift */; };
 		6576337D2676214C0006981A /* ContentResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576337C2676214C0006981A /* ContentResource.swift */; };
 		65763381267CD5780006981A /* BackgroundGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65763380267CD5780006981A /* BackgroundGradientView.swift */; };
+		657D64212785D86C00C5D5BE /* BigBangFlowProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657D64202785D86C00C5D5BE /* BigBangFlowProperty.swift */; };
 		657EB80E26E64CF40001A71A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 657EB81026E64CF40001A71A /* Localizable.strings */; };
 		657EB82626F574A60001A71A /* ModeUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657EB82526F574A60001A71A /* ModeUserDefaults.swift */; };
 		657EB84226FA2DBF0001A71A /* NumberType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657EB84126FA2DBF0001A71A /* NumberType.swift */; };
@@ -175,6 +176,7 @@
 		6576337A26761E610006981A /* ModePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModePicker.swift; sourceTree = "<group>"; };
 		6576337C2676214C0006981A /* ContentResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentResource.swift; sourceTree = "<group>"; };
 		65763380267CD5780006981A /* BackgroundGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradientView.swift; sourceTree = "<group>"; };
+		657D64202785D86C00C5D5BE /* BigBangFlowProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBangFlowProperty.swift; sourceTree = "<group>"; };
 		657EB80F26E64CF40001A71A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		657EB81126E64CFA0001A71A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		657EB81226E64CFC0001A71A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -689,6 +691,7 @@
 			children = (
 				65E84C1A26738BE800378408 /* BigBangHome.swift */,
 				65E84C202673AE0E00378408 /* BigBangFlow.swift */,
+				657D64202785D86C00C5D5BE /* BigBangFlowProperty.swift */,
 				65092FA726D5246E00E769C6 /* BigBangViewModel.swift */,
 				65092FA526D5244B00E769C6 /* BigBangUserDefaults.swift */,
 			);
@@ -873,6 +876,7 @@
 				65B9FB6C273947380072CE4F /* SliderWithSingleImage.swift in Sources */,
 				6576337D2676214C0006981A /* ContentResource.swift in Sources */,
 				65B9FBDC275F96CB0072CE4F /* CodeType.swift in Sources */,
+				657D64212785D86C00C5D5BE /* BigBangFlowProperty.swift in Sources */,
 				65092F8D26D2890100E769C6 /* FlyViewModel.swift in Sources */,
 				65E84BEB2670F53000378408 /* CGFloatSlider.swift in Sources */,
 				65590A902611C601004AB0D3 /* ContentView.swift in Sources */,

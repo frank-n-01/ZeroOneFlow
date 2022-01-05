@@ -8,17 +8,18 @@ class ModeUserDefaults: ObservableObject {
     /// Enable access to the current mode from everywhere if necessary.
     static var currentMode = 0
     
-    let KEY = "current_mode"
+    static let KEY = "current_mode"
     
     @Published var mode: Mode {
         didSet {
-            UserDefaults.standard.set(mode.rawValue, forKey: KEY)
+            UserDefaults.standard.set(mode.rawValue, forKey: Self.KEY)
             ModeUserDefaults.currentMode = mode.rawValue
         }
     }
     
     init() {
-        self.mode = Mode(rawValue: UserDefaults.standard.integer(forKey: KEY)) ?? .linear
+        self.mode = Mode(rawValue: UserDefaults.standard
+                            .integer(forKey: Self.KEY)) ?? .linear
         Self.currentMode = mode.rawValue
     }
 }

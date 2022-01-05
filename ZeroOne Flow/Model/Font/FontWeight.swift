@@ -14,7 +14,9 @@ enum FontWeight: Int, CaseIterable, Identifiable {
     case black
     case random
     
-    static var allCasesWithoutRandom: [FontWeight] = [ultraLight, .thin, .light, .regular, .medium, .semibold, .bold, .heavy, .black]
+    static var allCasesWithoutRandom: [FontWeight] = [
+        ultraLight, .thin, .light, .regular, .medium, .semibold, .bold, .heavy, .black
+    ]
     
     var id: UUID {
         return UUID()
@@ -66,7 +68,8 @@ enum FontWeight: Int, CaseIterable, Identifiable {
         case .black:
             return .black
         case .random:
-            return FontWeight.allCases[Int.random(in: 0...8)].value
+            return FontWeight.allCasesWithoutRandom
+                .randomElement()?.value ?? .regular
         }
     }
 }

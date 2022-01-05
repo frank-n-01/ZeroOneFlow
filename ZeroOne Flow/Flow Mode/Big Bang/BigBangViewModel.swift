@@ -33,7 +33,8 @@ class BigBangViewModel: FlowModeViewModel {
     
     @Published var padding: Padding {
         didSet {
-            padding.save(vertical: &ud.paddingVertical, horizontal: &ud.paddingHorizontal)
+            padding.save(vertical: &ud.paddingVertical,
+                         horizontal: &ud.paddingHorizontal)
         }
     }
     
@@ -43,22 +44,25 @@ class BigBangViewModel: FlowModeViewModel {
         }
     }
     
-    let SCALE = 150.0
-    let INTERVAL = 0.1
-    let GAP = 20.0
-    let ROTATION = 15.0
-    let PADDING = Padding(vertical: -100, horizontal: -100)
-    let FONT = Fonts(size: 0, design: .random, weight: .random, min: 5, max: 30)
-    let IS_3D = true
+    static let SCALE = 150.0
+    static let INTERVAL = 0.1
+    static let GAP = 20.0
+    static let ROTATION = 15.0
+    static let PADDING = Padding(vertical: -100, horizontal: -100)
+    static let FONT = Fonts(size: 0,
+                            design: .random,
+                            weight: .random,
+                            min: 5, max: 30)
+    static let IS_3D = true
     
     init() {
-        scale = SCALE
-        interval = INTERVAL
-        gap = GAP
-        rotationAngle = ROTATION
-        padding = PADDING
-        is3D = IS_3D
-        super.init(ud: ud, fonts: FONT)
+        scale = Self.SCALE
+        interval = Self.INTERVAL
+        gap = Self.GAP
+        rotationAngle = Self.ROTATION
+        padding = Self.PADDING
+        is3D = Self.IS_3D
+        super.init(ud: ud, fonts: Self.FONT)
     }
     
     override func makeRandomStyle() {
@@ -78,11 +82,12 @@ class BigBangViewModel: FlowModeViewModel {
         super.applyUserDefaults()
         
         if ud.isSaved {
-            scale = ud.scale > 0 ? ud.scale : SCALE
-            interval = ud.interval > 0 ? ud.interval : INTERVAL
-            gap = ud.gap > 0 ? ud.gap : GAP
-            rotationAngle = ud.rotationAngle > 0 ? ud.rotationAngle : ROTATION
-            padding.set(vertical: ud.paddingVertical, horizontal: ud.paddingHorizontal)
+            scale = ud.scale > 0 ? ud.scale : Self.SCALE
+            interval = ud.interval > 0 ? ud.interval : Self.INTERVAL
+            gap = ud.gap > 0 ? ud.gap : Self.GAP
+            rotationAngle = ud.rotationAngle > 0 ? ud.rotationAngle : Self.ROTATION
+            padding.set(vertical: ud.paddingVertical,
+                        horizontal: ud.paddingHorizontal)
             is3D = ud.is3D
         }
     }
@@ -94,23 +99,25 @@ class BigBangViewModel: FlowModeViewModel {
         ud.interval = interval
         ud.gap = gap
         ud.rotationAngle = rotationAngle
-        padding.save(vertical: &ud.paddingVertical, horizontal: &ud.paddingHorizontal)
+        padding.save(vertical: &ud.paddingVertical,
+                     horizontal: &ud.paddingHorizontal)
         ud.is3D = is3D
     }
     
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        scale = SCALE
-        interval = INTERVAL
-        gap = GAP
-        rotationAngle = ROTATION
-        padding = PADDING
-        is3D = IS_3D
-        fonts = FONT
+        scale = Self.SCALE
+        interval = Self.INTERVAL
+        gap = Self.GAP
+        rotationAngle = Self.ROTATION
+        padding = Self.PADDING
+        is3D = Self.IS_3D
+        fonts = Self.FONT
     }
     
-    override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext, _ style: T) {
+    override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
+                                             _ style: T) {
         guard let style = style as? BigBang else { return }
         
         scale = style.scale
@@ -123,7 +130,8 @@ class BigBangViewModel: FlowModeViewModel {
         super.applyCoreData(context, style)
     }
     
-    override func saveCoreData(_ context: NSManagedObjectContext, _ name: String, _ style: FlowMode? = nil) {
+    override func saveCoreData(_ context: NSManagedObjectContext,
+                               _ name: String, _ style: FlowMode? = nil) {
         let style = BigBang(context: context)
         fonts.sizeRange.save(min: &style.fontSizeMin, max: &style.fontSizeMax)
         style.scale = scale

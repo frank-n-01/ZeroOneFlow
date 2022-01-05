@@ -51,8 +51,7 @@ class LinearUserDefaults: FlowModeUserDefaults {
         isLineFeedOn = UserDefaults.standard.bool(forKey: "isLineFeedOn_" + flowModeKey)
         maxLineLength = UserDefaults.standard.double(forKey: "maxLineLength_" + flowModeKey)
         isIndentOn = UserDefaults.standard.bool(forKey: "is_indent_on_" + flowModeKey)
-        maxNumberOfIndents = UserDefaults.standard
-            .double(forKey: "max_number_of_indents_" + flowModeKey)
+        maxNumberOfIndents = UserDefaults.standard.double(forKey: "max_number_of_indents_" + flowModeKey)
         
         super.init(flowModeKey)
     }

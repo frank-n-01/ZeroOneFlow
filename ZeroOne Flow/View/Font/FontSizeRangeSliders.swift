@@ -21,7 +21,8 @@ struct FontSizeRangeSliders: View {
             Text(String(format: "%.f", fontSizeRange.max))
                 .font(.title3)
                 .foregroundColor(.gray)
-                .frame(width: fontSizeRange.max >= 1000 || fontSizeRange.max <= -100 ? 60 : 50)
+                .frame(width: fontSizeRange.max >= 1000
+                       || fontSizeRange.max <= -100 ? 60 : 50)
                 .lineLimit(1)
                 .minimumScaleFactor(0.1)
         }
@@ -36,7 +37,8 @@ struct FontSizeRangeSliders: View {
             Text(String(format: "%.f", fontSizeRange.min))
                 .font(.title3)
                 .foregroundColor(.gray)
-                .frame(width: fontSizeRange.min >= 1000 || fontSizeRange.min <= -100 ? 60 : 50)
+                .frame(width: fontSizeRange.min >= 1000
+                       || fontSizeRange.min <= -100 ? 60 : 50)
                 .lineLimit(1)
                 .minimumScaleFactor(0.1)
         }

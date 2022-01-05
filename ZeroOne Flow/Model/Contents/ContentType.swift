@@ -11,9 +11,9 @@ enum ContentType: Int, CaseIterable, Equatable, Identifiable {
     
     var id: UUID { return UUID() }
     
-    static var allCasesWithoutCustom: [ContentType] {
-        return [.number, .language, .symbol, .code]
-    }
+    static var allCasesWithoutCustom: [ContentType] = [
+        .number, .language, .symbol, .code
+    ]
     
     var name: LocalizedStringKey {
         switch self {

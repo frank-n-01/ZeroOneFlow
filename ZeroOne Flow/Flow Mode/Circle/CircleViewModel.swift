@@ -31,18 +31,21 @@ class CircleViewModel: FlowModeViewModel {
         }
     }
     
-    let INTERVAL = 0.1
-    let DEPTH = 150.0
-    let GAP = 5.0
-    let ROTATION = 112.0
-    let FONT = Fonts(size: 18, design: .random, weight: .random, min: 10, max: 100)
+    static let INTERVAL = 0.1
+    static let DEPTH = 150.0
+    static let GAP = 5.0
+    static let ROTATION = 112.0
+    static let FONT = Fonts(size: 18,
+                            design: .random,
+                            weight: .random,
+                            min: 10, max: 100)
     
     init() {
-        interval = INTERVAL
-        depth = DEPTH
-        gap = GAP
-        rotationAngle = ROTATION
-        super.init(ud: ud, fonts: FONT)
+        interval = Self.INTERVAL
+        depth = Self.DEPTH
+        gap = Self.GAP
+        rotationAngle = Self.ROTATION
+        super.init(ud: ud, fonts: Self.FONT)
     }
     
     override func makeRandomStyle() {
@@ -60,10 +63,10 @@ class CircleViewModel: FlowModeViewModel {
         super.applyUserDefaults()
         
         if ud.isSaved {
-            interval = ud.interval > 0 ? ud.interval : INTERVAL
-            depth = ud.depth > 0 ? ud.depth : DEPTH
-            gap = ud.gap > 0 ? ud.gap : GAP
-            rotationAngle = ud.rotationAngle > 0 ? ud.rotationAngle : ROTATION
+            interval = ud.interval > 0 ? ud.interval : Self.INTERVAL
+            depth = ud.depth > 0 ? ud.depth : Self.DEPTH
+            gap = ud.gap > 0 ? ud.gap : Self.GAP
+            rotationAngle = ud.rotationAngle > 0 ? ud.rotationAngle : Self.ROTATION
         }
     }
     
@@ -79,14 +82,15 @@ class CircleViewModel: FlowModeViewModel {
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        interval = INTERVAL
-        depth = DEPTH
-        gap = GAP
-        rotationAngle = ROTATION
-        fonts = FONT
+        interval = Self.INTERVAL
+        depth = Self.DEPTH
+        gap = Self.GAP
+        rotationAngle = Self.ROTATION
+        fonts = Self.FONT
     }
     
-    override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext, _ style: T) {
+    override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
+                                             _ style: T) {
         guard let style = style as? Circle else { return }
         
         depth = style.depth
@@ -97,7 +101,8 @@ class CircleViewModel: FlowModeViewModel {
         super.applyCoreData(context, style)
     }
     
-    override func saveCoreData(_ context: NSManagedObjectContext, _ name: String, _ style: FlowMode? = nil) {
+    override func saveCoreData(_ context: NSManagedObjectContext,
+                               _ name: String, _ style: FlowMode? = nil) {
         let style = Circle(context: context)
         style.depth = depth
         style.gap = gap

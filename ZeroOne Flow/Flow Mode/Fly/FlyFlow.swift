@@ -20,7 +20,8 @@ struct FlyFlow: View {
         .onAppear {
             loop = Int(fly.scale)
         }
-        .onReceive(Timer.publish(every: fly.isFlowing ? fly.interval : 100, on: .current, in: .common).autoconnect()) { _ in
+        .onReceive(Timer.publish(every: fly.isFlowing ? fly.interval : 100,
+                                 on: .current, in: .common).autoconnect()) { _ in
             count += 1
             // Avoid over flow.
             if count > 100000 {
@@ -41,7 +42,9 @@ private struct FlyParts: View {
     var body: some View {
         GeometryReader { geometry in
             Text(content)
-                .font(.system(size: fly.fonts.size, weight: weight, design: design))
+                .font(.system(size: fly.fonts.size,
+                              weight: weight,
+                              design: design))
                 .foregroundColor(fly.colors.txt)
                 .position(position)
                 .onChange(of: count) { _ in
@@ -60,8 +63,12 @@ private struct FlyParts: View {
     
     private func move(_ geometry: GeometryProxy) {
         withAnimation(.easeIn) {
-            position.x = CGFloat.random(in: fly.padding.hor...(geometry.size.width - fly.padding.hor))
-            position.y = CGFloat.random(in: fly.padding.ver...(geometry.size.height - fly.padding.ver))
+            position.x = CGFloat.random(
+                in: fly.padding.hor...(geometry.size.width - fly.padding.hor)
+            )
+            position.y = CGFloat.random(
+                in: fly.padding.ver...(geometry.size.height - fly.padding.ver)
+            )
         }
     }
 }

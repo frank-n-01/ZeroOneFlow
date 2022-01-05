@@ -31,18 +31,21 @@ class RainViewModel: FlowModeViewModel {
         }
     }
     
-    let SCALE = 100.0
-    let INTERVAL = 0.05
-    let LENGTH = 200.0
-    let STEP = 200.0
-    let FONT = Fonts(size: 0, design: .random, weight: .ultraLight, min: 15, max: 50)
+    static let SCALE = 100.0
+    static let INTERVAL = 0.05
+    static let LENGTH = 200.0
+    static let STEP = 200.0
+    static let FONT = Fonts(size: 0,
+                            design: .random,
+                            weight: .ultraLight,
+                            min: 15, max: 50)
     
     init() {
-        scale = SCALE
-        interval = INTERVAL
-        length = LENGTH
-        step = STEP
-        super.init(ud: ud, fonts: FONT)
+        scale = Self.SCALE
+        interval = Self.INTERVAL
+        length = Self.LENGTH
+        step = Self.STEP
+        super.init(ud: ud, fonts: Self.FONT)
     }
     
     override func makeRandomStyle() {
@@ -61,10 +64,10 @@ class RainViewModel: FlowModeViewModel {
         super.applyUserDefaults()
         
         if ud.isSaved {
-            scale = ud.scale > 0 ? ud.scale : SCALE
-            interval = ud.interval > 0 ? ud.interval : INTERVAL
-            length = ud.length > 0 ? ud.length : LENGTH
-            step = ud.step > 0 ? ud.step : STEP
+            scale = ud.scale > 0 ? ud.scale : Self.SCALE
+            interval = ud.interval > 0 ? ud.interval : Self.INTERVAL
+            length = ud.length > 0 ? ud.length : Self.LENGTH
+            step = ud.step > 0 ? ud.step : Self.STEP
         }
     }
     
@@ -80,26 +83,29 @@ class RainViewModel: FlowModeViewModel {
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        fonts = FONT
-        scale = SCALE
-        interval = INTERVAL
-        length = LENGTH
-        step = STEP
+        fonts = Self.FONT
+        scale = Self.SCALE
+        interval = Self.INTERVAL
+        length = Self.LENGTH
+        step = Self.STEP
     }
     
-    override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext, _ style: T) {
+    override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
+                                             _ style: T) {
         guard let style = style as? Rain else { return }
         
-        fonts.sizeRange.set(min: CGFloat(style.fontSizeMin), max: CGFloat(style.fontSizeMax))
-        scale = style.scale > 0 ? style.scale : SCALE
-        interval = style.interval > 0 ? style.interval : INTERVAL
-        length = style.length > 0 ? style.length : LENGTH
-        step = style.step > 0 ? style.step : STEP
+        fonts.sizeRange.set(min: style.fontSizeMin,
+                            max: style.fontSizeMax)
+        scale = style.scale > 0 ? style.scale : Self.SCALE
+        interval = style.interval > 0 ? style.interval : Self.INTERVAL
+        length = style.length > 0 ? style.length : Self.LENGTH
+        step = style.step > 0 ? style.step : Self.STEP
         
         super.applyCoreData(context, style)
     }
     
-    override func saveCoreData(_ context: NSManagedObjectContext, _ name: String, _ style: FlowMode? = nil) {
+    override func saveCoreData(_ context: NSManagedObjectContext,
+                               _ name: String, _ style: FlowMode? = nil) {
         let style = Rain(context: context)
         fonts.sizeRange.save(min: &style.fontSizeMin, max: &style.fontSizeMax)
         style.scale = scale

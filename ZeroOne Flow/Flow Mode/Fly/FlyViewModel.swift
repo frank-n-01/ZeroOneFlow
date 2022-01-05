@@ -21,20 +21,24 @@ class FlyViewModel: FlowModeViewModel {
     
     @Published var padding: Padding {
         didSet {
-            padding.save(vertical: &ud.paddingVertical, horizontal: &ud.paddingHorizontal)
+            padding.save(vertical: &ud.paddingVertical,
+                         horizontal: &ud.paddingHorizontal)
         }
     }
     
-    let SCALE = 10.0
-    let INTERVAL = 0.1
-    let PADDING = Padding(vertical: 0, horizontal: 0)
-    let FONT = Fonts(size: 20, design: .random, weight: .random, min: 10, max: 100)
+    static let SCALE = 10.0
+    static let INTERVAL = 0.1
+    static let PADDING = Padding(vertical: 0, horizontal: 0)
+    static let FONT = Fonts(size: 20,
+                            design: .random,
+                            weight: .random,
+                            min: 10, max: 100)
     
     init() {
-        scale = SCALE
-        interval = INTERVAL
-        padding = PADDING
-        super.init(ud: ud, fonts: FONT)
+        scale = Self.SCALE
+        interval = Self.INTERVAL
+        padding = Self.PADDING
+        super.init(ud: ud, fonts: Self.FONT)
     }
     
     override func makeRandomStyle() {
@@ -51,9 +55,10 @@ class FlyViewModel: FlowModeViewModel {
         super.applyUserDefaults()
         
         if ud.isSaved {
-            scale = ud.scale > 0 ? ud.scale : SCALE
-            interval = ud.interval > 0 ? ud.interval : INTERVAL
-            padding.set(vertical: ud.paddingVertical, horizontal: ud.paddingHorizontal)
+            scale = ud.scale > 0 ? ud.scale : Self.SCALE
+            interval = ud.interval > 0 ? ud.interval : Self.INTERVAL
+            padding.set(vertical: ud.paddingVertical,
+                        horizontal: ud.paddingHorizontal)
         }
     }
     
@@ -62,19 +67,21 @@ class FlyViewModel: FlowModeViewModel {
         
         ud.scale = scale
         ud.interval = interval
-        padding.save(vertical: &ud.paddingVertical, horizontal: &ud.paddingHorizontal)
+        padding.save(vertical: &ud.paddingVertical,
+                     horizontal: &ud.paddingHorizontal)
     }
     
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        scale = SCALE
-        fonts = FONT
-        interval = INTERVAL
-        padding = PADDING
+        scale = Self.SCALE
+        fonts = Self.FONT
+        interval = Self.INTERVAL
+        padding = Self.PADDING
     }
     
-    override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext, _ style: T) {
+    override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
+                                             _ style: T) {
         guard let style = style as? Fly else { return }
         
         scale = style.numberOfFlies
@@ -84,7 +91,8 @@ class FlyViewModel: FlowModeViewModel {
         super.applyCoreData(context, style)
     }
     
-    override func saveCoreData(_ context: NSManagedObjectContext, _ name: String, _ style: FlowMode? = nil) {
+    override func saveCoreData(_ context: NSManagedObjectContext,
+                               _ name: String, _ style: FlowMode? = nil) {
         let style = Fly(context: context)
         style.numberOfFlies = scale
         style.interval = interval

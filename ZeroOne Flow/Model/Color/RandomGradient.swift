@@ -18,8 +18,10 @@ struct RandomGradient {
     var angle: Double
     // Unit
     var center: UnitPoint
-    static let unitPoints: [UnitPoint] = [.top, .bottom, .leading, .trailing, .topLeading,
-                                        .topTrailing, .bottomLeading, .bottomTrailing, .center]
+    static let unitPoints: [UnitPoint] = [
+        .top, .bottom, .leading, .trailing, .topLeading,
+        .topTrailing, .bottomLeading, .bottomTrailing, .center
+    ]
     
     init(type: GradientType = .radial) {
         self.type = type

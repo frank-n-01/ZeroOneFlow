@@ -13,10 +13,13 @@ struct FontDesignWeightPicker: View {
     
     var designPicker: some View {
         Picker(selection: $fonts.design) {
-            ForEach(isRandom ? FontDesign.allCases : FontDesign.allCasesWithoutRandom) { design in
+            ForEach(isRandom ? FontDesign.allCases
+                    : FontDesign.allCasesWithoutRandom) { design in
                 Text(design.name)
-                    .font(.system(.title3, design: design != .random ? design.value : .default))
-                    .fontWeight(fonts.weight == .random ? .regular : fonts.weight.value)
+                    .font(.system(.title3, design: design != .random
+                                  ? design.value : .default))
+                    .fontWeight(fonts.weight == .random
+                                ? .regular : fonts.weight.value)
                     .tag(design)
             }
         } label: {
@@ -27,10 +30,13 @@ struct FontDesignWeightPicker: View {
     
     var weightPicker: some View {
         Picker(selection: $fonts.weight) {
-            ForEach(isRandom ? FontWeight.allCases : FontWeight.allCasesWithoutRandom) { weight in
+            ForEach(isRandom ? FontWeight.allCases
+                    : FontWeight.allCasesWithoutRandom) { weight in
                 Text(weight.name)
-                    .font(.system(.title3, design: fonts.design == .random ? .default : fonts.design.value))
-                    .fontWeight(weight != .random ? weight.value : .regular)
+                    .font(.system(.title3, design: fonts.design == .random
+                                  ? .default : fonts.design.value))
+                    .fontWeight(weight != .random
+                                ? weight.value : .regular)
                     .tag(weight)
             }
         } label: {

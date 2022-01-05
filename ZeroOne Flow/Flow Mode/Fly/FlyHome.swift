@@ -7,19 +7,24 @@ struct FlyHome: View {
 
     var body: some View {
         Section {
-            SliderWithSingleImage(value: $fly.scale, min: 1, max: 500, image: "ladybug.fill")
+            SliderWithSingleImage(value: $fly.scale,
+                                  min: 1, max: 500,
+                                  image: "ladybug.fill")
         } header: {
             Text("Scale")
         }
         
-        FontView(fonts: $fly.fonts, minSize: 5, maxSize: 500, isRandom: true)
+        FontView(fonts: $fly.fonts,
+                 minSize: 5, maxSize: 500,
+                 isRandom: true)
         
         ColorView(colors: $fly.colors, random: false)
         
         ContentTypeView(contents: $fly.contents)
         
         Section {
-            SandwichedImageSlider(interval: $fly.interval, min: 0.01, max: 1.0)
+            SandwichedImageSlider(interval: $fly.interval,
+                                  min: 0.01, max: 1.0)
         } header: {
             Text("Speed")
         }
