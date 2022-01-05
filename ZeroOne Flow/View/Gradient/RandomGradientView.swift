@@ -4,7 +4,7 @@ import SwiftUI
 
 struct RandomGradientView: View {
     @Binding var colors: Colors
-    @Binding var gradientType: GradientType
+    @Binding var type: GradientType
     
     var body: some View {
         typePicker
@@ -12,7 +12,7 @@ struct RandomGradientView: View {
     }
     
     private var typePicker: some View {
-        Picker(selection: $gradientType) {
+        Picker(selection: $type) {
             ForEach(0 ..< GradientType.allCases.count, id: \.self) { i in
                 Text(GradientType.allCases[i].name)
                     .tag(GradientType.allCases[i])

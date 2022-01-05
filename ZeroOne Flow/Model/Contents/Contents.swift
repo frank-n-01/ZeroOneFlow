@@ -29,7 +29,9 @@ struct Contents: Equatable, Identifiable {
         self.code = Self.CODE
     }
     
-    mutating func set(type: ContentType, number: NumberType, language: LanguageType, symbol: SymbolType, customValue1: String, customValue2: String, code: CodeType) {
+    mutating func set(type: ContentType, number: NumberType,
+                      language: LanguageType, symbol: SymbolType,
+                      customValue1: String, customValue2: String, code: CodeType) {
         self.type = type
         self.number = number
         self.language = language
@@ -39,7 +41,8 @@ struct Contents: Equatable, Identifiable {
         self.code = code
     }
     
-    mutating func set(type: Int, number: Int, language: Int, symbol: Int, customValue1: String, customValue2: String, code: Int) {
+    mutating func set(type: Int, number: Int, language: Int, symbol: Int,
+                      customValue1: String, customValue2: String, code: Int) {
         self.type = ContentType(rawValue: type) ?? Self.TYPE
         self.number = NumberType(rawValue: number) ?? Self.NUMBER
         self.language = LanguageType(rawValue: language) ?? Self.LANGUAGE
@@ -49,7 +52,9 @@ struct Contents: Equatable, Identifiable {
         self.code = CodeType(rawValue: code) ?? Self.CODE
     }
     
-    func save(type: inout Int, number: inout Int, language: inout Int, symbol: inout Int, custom1: inout String?, custom2: inout String?, code: inout Int) {
+    func save(type: inout Int, number: inout Int,
+              language: inout Int, symbol: inout Int, custom1: inout String?,
+              custom2: inout String?, code: inout Int) {
         type = self.type.rawValue
         number = self.number.rawValue
         language = self.language.rawValue
@@ -59,7 +64,9 @@ struct Contents: Equatable, Identifiable {
         code = self.code.rawValue
     }
     
-    func save(type: inout Int16, number: inout Int16, language: inout Int16, symbol: inout Int16, custom1: inout String?, custom2: inout String?, code: inout Int16) {
+    func save(type: inout Int16, number: inout Int16,
+              language: inout Int16, symbol: inout Int16,
+              custom1: inout String?, custom2: inout String?, code: inout Int16) {
         type = Int16(self.type.rawValue)
         number = Int16(self.number.rawValue)
         language = Int16(self.language.rawValue)

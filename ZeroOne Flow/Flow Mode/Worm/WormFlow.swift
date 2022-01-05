@@ -30,7 +30,8 @@ struct WormFlow: View {
     private var wormHead: some View {
         GeometryReader { geometry in
             Text("")
-                .onReceive(Timer.publish(every: worm.isFlowing ? worm.interval : 100, on: .current, in: .common).autoconnect()) { _ in
+                .onReceive(Timer.publish(every: worm.isFlowing ? worm.interval : 100,
+                                         on: .current, in: .common).autoconnect()) { _ in
                     moveHeadX()
                     moveHeadY()
                     turn()
@@ -54,7 +55,9 @@ struct WormFlow: View {
     }
     
     private func moveHeadX() {
-        let step = CGFloat(Double.random(in: 0...Double(worm.step)))
+        let step = CGFloat(
+            Double.random(in: 0...Double(worm.step))
+        )
         if isToLeft {
             if position[0].x > worm.padding.hor {
                 position[0].x -= step
@@ -122,7 +125,9 @@ struct WormParts: View {
     var body: some View {
         if worm.isFlowing {
             Text(content)
-                .font(.system(size: worm.fonts.size, weight: weight, design: design))
+                .font(.system(size: worm.fonts.size,
+                              weight: weight,
+                              design: design))
                 .foregroundColor(worm.colors.txt)
                 .position(position)
                 .animation(.linear, value: position)

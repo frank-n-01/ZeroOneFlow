@@ -28,7 +28,8 @@ struct BackgroundGradientView: View {
     
     private var radialGradient: some View {
         RadialGradient(gradient: Gradient(colors: [gradient.startColor, gradient.endColor]),
-                       center: .center, startRadius: gradient.startRadius, endRadius: gradient.endRadius)
+                       center: .center, startRadius: gradient.startRadius,
+                       endRadius: gradient.endRadius)
     }
     
     private var linearGradient: some View {
@@ -43,6 +44,7 @@ struct BackgroundGradientView: View {
     
     private var ellipticalGradient: some View {
         EllipticalGradient(gradient: Gradient(colors: [gradient.startColor, gradient.endColor]),
-                           center: gradient.center, startRadiusFraction: CGFloat.random(in: 0...1), endRadiusFraction: CGFloat.random(in: 0...1))
+                           center: gradient.center, startRadiusFraction: CGFloat.random(in: 0...1),
+                           endRadiusFraction: CGFloat.random(in: 0...1))
     }
 }

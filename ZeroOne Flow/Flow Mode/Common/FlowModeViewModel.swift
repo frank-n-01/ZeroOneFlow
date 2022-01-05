@@ -56,7 +56,7 @@ class FlowModeViewModel: ObservableObject {
     
     /// Make a random style in the flow mode.
     ///
-    /// On the condition that the random style button is ON.
+    /// On the condition that the random style mode is activated.
     func makeRandomStyle() {
         if isRandomStyle {
             fonts.random()
@@ -68,12 +68,28 @@ class FlowModeViewModel: ObservableObject {
     /// Apply the style saved in the flow mode's UserDefaults.
     func applyUserDefaults() {
         if flowModeUD.isSaved {
-            fonts.set(size: flowModeUD.fontSize, design: flowModeUD.fontDesign, weight: flowModeUD.fontWeight,
-                      min: flowModeUD.fontSizeMin, max: flowModeUD.fontSizeMax)
-            colors.set(txtR: flowModeUD.txtR, txtG: flowModeUD.txtG, txtB: flowModeUD.txtB, txtA: flowModeUD.txtA, txtRandom: flowModeUD.txtRandom,
-                       bgR: flowModeUD.bgR, bgG: flowModeUD.bgG, bgB: flowModeUD.bgB, bgA: flowModeUD.bgA, bgRandom: flowModeUD.bgRandom)
-            contents.set(type: flowModeUD.contentType, number: flowModeUD.number, language: flowModeUD.language,
-                         symbol: flowModeUD.symbol, customValue1: flowModeUD.customValue1 ?? "", customValue2: flowModeUD.customValue2 ?? "", code: flowModeUD.code)
+            fonts.set(size: flowModeUD.fontSize,
+                      design: flowModeUD.fontDesign,
+                      weight: flowModeUD.fontWeight,
+                      min: flowModeUD.fontSizeMin,
+                      max: flowModeUD.fontSizeMax)
+            colors.set(txtR: flowModeUD.txtR,
+                       txtG: flowModeUD.txtG,
+                       txtB: flowModeUD.txtB,
+                       txtA: flowModeUD.txtA,
+                       txtRandom: flowModeUD.txtRandom,
+                       bgR: flowModeUD.bgR,
+                       bgG: flowModeUD.bgG,
+                       bgB: flowModeUD.bgB,
+                       bgA: flowModeUD.bgA,
+                       bgRandom: flowModeUD.bgRandom)
+            contents.set(type: flowModeUD.contentType,
+                         number: flowModeUD.number,
+                         language: flowModeUD.language,
+                         symbol: flowModeUD.symbol,
+                         customValue1: flowModeUD.customValue1 ?? "",
+                         customValue2: flowModeUD.customValue2 ?? "",
+                         code: flowModeUD.code)
             isRandomStyle = flowModeUD.isRandomStyle
         }
     }
@@ -100,11 +116,24 @@ class FlowModeViewModel: ObservableObject {
     
     /// Apply the style from Core Data.
     func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext, _ style: T) {
-        fonts.set(size: CGFloat(style.fontSize), design: Int(style.fontDesign), weight: Int(style.fontWeight))
-        colors.set(txtR: style.txtR, txtG: style.txtG, txtB: style.txtB, txtA: style.txtA,
-                   bgR: style.bgR, bgG: style.bgG, bgB: style.bgB, bgA: style.bgA)
-        contents.set(type: Int(style.valueType), number: Int(style.number), language: Int(style.language),
-                     symbol: Int(style.symbol), customValue1: style.customValue1 ?? "", customValue2: style.customValue2 ?? "", code: Int(style.code))
+        fonts.set(size: CGFloat(style.fontSize),
+                  design: Int(style.fontDesign),
+                  weight: Int(style.fontWeight))
+        colors.set(txtR: style.txtR,
+                   txtG: style.txtG,
+                   txtB: style.txtB,
+                   txtA: style.txtA,
+                   bgR: style.bgR,
+                   bgG: style.bgG,
+                   bgB: style.bgB,
+                   bgA: style.bgA)
+        contents.set(type: Int(style.valueType),
+                     number: Int(style.number),
+                     language: Int(style.language),
+                     symbol: Int(style.symbol),
+                     customValue1: style.customValue1 ?? "",
+                     customValue2: style.customValue2 ?? "",
+                     code: Int(style.code))
         isRandomStyle = false
     }
     
@@ -114,11 +143,24 @@ class FlowModeViewModel: ObservableObject {
         
         style.date = Date()
         style.name = name
-        fonts.save(size: &style.fontSize, design: &style.fontDesign, weight: &style.fontWeight)
-        colors.save(txtR: &style.txtR, txtG: &style.txtG, txtB: &style.txtB, txtA: &style.txtA,
-                    bgR: &style.bgR, bgG: &style.bgG, bgB: &style.bgB, bgA: &style.bgA)
-        contents.save(type: &style.valueType, number: &style.number, language: &style.language,
-                      symbol: &style.symbol, custom1: &style.customValue1, custom2: &style.customValue2, code: &style.code)
+        fonts.save(size: &style.fontSize,
+                   design: &style.fontDesign,
+                   weight: &style.fontWeight)
+        colors.save(txtR: &style.txtR,
+                    txtG: &style.txtG,
+                    txtB: &style.txtB,
+                    txtA: &style.txtA,
+                    bgR: &style.bgR,
+                    bgG: &style.bgG,
+                    bgB: &style.bgB,
+                    bgA: &style.bgA)
+        contents.save(type: &style.valueType,
+                      number: &style.number,
+                      language: &style.language,
+                      symbol: &style.symbol,
+                      custom1: &style.customValue1,
+                      custom2: &style.customValue2,
+                      code: &style.code)
         
         if context.hasChanges {
             try? context.save()

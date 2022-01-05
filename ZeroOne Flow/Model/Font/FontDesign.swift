@@ -9,7 +9,9 @@ enum FontDesign: Int, CaseIterable, Identifiable {
     case serif
     case random
     
-    static var allCasesWithoutRandom: [FontDesign] = [.defaultDesign, .monospaced, .rounded, .serif]
+    static var allCasesWithoutRandom: [FontDesign] = [
+        .defaultDesign, .monospaced, .rounded, .serif
+    ]
     
     var id: UUID {
         return UUID()
@@ -41,7 +43,8 @@ enum FontDesign: Int, CaseIterable, Identifiable {
         case .serif:
             return .serif
         case .random:
-            return FontDesign.allCases[Int.random(in: 0...3)].value
+            return FontDesign.allCasesWithoutRandom
+                .randomElement()?.value ?? .monospaced
         }
     }
 }

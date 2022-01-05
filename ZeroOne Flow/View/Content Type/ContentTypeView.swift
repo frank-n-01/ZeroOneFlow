@@ -85,7 +85,8 @@ struct ContentTypeView: View {
     
     var customTextField: some View {
         ForEach(0 ..< 2) { i in
-            TextField( i == 0 ? "First Content" : "Second Content", text: $contents.customValue[i])
+            TextField( i == 0 ? "First Content" : "Second Content",
+                       text: $contents.customValue[i])
                 .autocapitalization(.none)
         }
     }

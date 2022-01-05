@@ -16,9 +16,12 @@ struct SingleFlow: View {
             
             GeometryReader { geometry in
                 Text(content)
-                    .font(.system(size: single.fonts.size, weight: weight, design: design))
+                    .font(.system(size: single.fonts.size,
+                                  weight: weight,
+                                  design: design))
                     .foregroundColor(txtColor)
-                    .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
+                    .position(x: geometry.size.width / 2,
+                              y: geometry.size.height / 2)
                     .fixedSize()
                     .onAppear {
                         content = ContentMaker.make(with: single.contents)
@@ -29,7 +32,8 @@ struct SingleFlow: View {
                     }
             }
         }
-        .onReceive(Timer.publish(every: single.isFlowing ? single.interval : 100, on: .current, in: .common).autoconnect()) { _ in
+        .onReceive(Timer.publish(every: single.isFlowing ? single.interval : 100,
+                                 on: .current, in: .common).autoconnect()) { _ in
             guard single.isFlowing else { return }
             
             content = ContentMaker.make(with: single.contents)

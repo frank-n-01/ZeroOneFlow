@@ -33,24 +33,28 @@ class WormViewModel: FlowModeViewModel {
     
     @Published var padding: Padding {
         didSet {
-            padding.save(vertical: &ud.paddingVertical, horizontal: &ud.paddingHorizontal)
+            padding.save(vertical: &ud.paddingVertical,
+                         horizontal: &ud.paddingHorizontal)
         }
     }
     
-    let INTERVAL = 0.08
-    let LENGTH = 20.0
-    let STEP = 20.0
-    let CRAWLING = 20.0
-    let PADDING = Padding(vertical: 30, horizontal: 30)
-    let FONT = Fonts(size: 20, design: .random, weight: .random, min: 5, max: 100)
+    static let INTERVAL = 0.08
+    static let LENGTH = 20.0
+    static let STEP = 20.0
+    static let CRAWLING = 20.0
+    static let PADDING = Padding(vertical: 30, horizontal: 30)
+    static let FONT = Fonts(size: 20,
+                            design: .random,
+                            weight: .random,
+                            min: 5, max: 100)
     
     init() {
-        interval = INTERVAL
-        length = LENGTH
-        step = STEP
-        crawling = CRAWLING
-        padding = PADDING
-        super.init(ud: ud, fonts: FONT)
+        interval = Self.INTERVAL
+        length = Self.LENGTH
+        step = Self.STEP
+        crawling = Self.CRAWLING
+        padding = Self.PADDING
+        super.init(ud: ud, fonts: Self.FONT)
     }
     
     override func makeRandomStyle() {
@@ -68,11 +72,12 @@ class WormViewModel: FlowModeViewModel {
         super.applyUserDefaults()
         
         if ud.isSaved {
-            interval = ud.interval > 0 ? ud.interval : INTERVAL
-            length = ud.length > 0 ? ud.length : LENGTH
-            step = ud.step  > 0 ? ud.step : STEP
-            crawling = ud.crawling > 0 ? ud.crawling : CRAWLING
-            padding.set(vertical: ud.paddingVertical, horizontal: ud.paddingHorizontal)
+            interval = ud.interval > 0 ? ud.interval : Self.INTERVAL
+            length = ud.length > 0 ? ud.length : Self.LENGTH
+            step = ud.step  > 0 ? ud.step : Self.STEP
+            crawling = ud.crawling > 0 ? ud.crawling : Self.CRAWLING
+            padding.set(vertical: ud.paddingVertical,
+                        horizontal: ud.paddingHorizontal)
         }
     }
     
@@ -83,33 +88,36 @@ class WormViewModel: FlowModeViewModel {
         ud.length = length
         ud.step = step
         ud.crawling = crawling
-        padding.save(vertical: &ud.paddingVertical, horizontal: &ud.paddingHorizontal)
+        padding.save(vertical: &ud.paddingVertical,
+                     horizontal: &ud.paddingHorizontal)
     }
     
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        interval = INTERVAL
-        length = LENGTH
-        step = STEP
-        crawling = CRAWLING
-        padding = PADDING
-        fonts = FONT
+        interval = Self.INTERVAL
+        length = Self.LENGTH
+        step = Self.STEP
+        crawling = Self.CRAWLING
+        padding = Self.PADDING
+        fonts = Self.FONT
     }
     
-    override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext, _ style: T) {
+    override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
+                                             _ style: T) {
         guard let style = style as? Worm else { return }
         
-        interval = style.interval > 0 ? style.interval : INTERVAL
-        length = style.length > 0 ? style.length : LENGTH
-        step = style.step > 0 ? style.step : STEP
-        crawling = style.crawling > 0 ? style.crawling : CRAWLING
+        interval = style.interval > 0 ? style.interval : Self.INTERVAL
+        length = style.length > 0 ? style.length : Self.LENGTH
+        step = style.step > 0 ? style.step : Self.STEP
+        crawling = style.crawling > 0 ? style.crawling : Self.CRAWLING
         padding.set(vertical: style.paddingV, horizontal: style.paddingH)
        
         super.applyCoreData(context, style)
     }
     
-    override func saveCoreData(_ context: NSManagedObjectContext, _ name: String, _ style: FlowMode? = nil) {
+    override func saveCoreData(_ context: NSManagedObjectContext, _ name: String,
+                               _ style: FlowMode? = nil) {
         let style = Worm(context: context)
         style.interval = interval
         style.length = length

@@ -25,9 +25,9 @@ struct TornadoFlow: View {
             loop = Int(tornado.scale)
             duration = Double.random(in: tornado.durationRange.range)
         }
-        .onReceive(Timer.publish(every: tornado.isFlowing ? 0.1 : 100, on: .current, in: .common).autoconnect()) { _ in
+        .onReceive(Timer.publish(every: tornado.isFlowing ? 0.1 : 100,
+                                 on: .current, in: .common).autoconnect()) { _ in
             counter()
-            
             withAnimation(.easeIn) {
                 rotate()
             }
@@ -82,7 +82,9 @@ struct TornadoParts: View {
                     .foregroundColor(tornado.colors.txt)
                     .position(position)
                     .rotation3DEffect(.degrees(rotation3D.angle),
-                                      axis: (x: rotation3D.axis.x, y: rotation3D.axis.y, z: rotation3D.axis.z),
+                                      axis: (x: rotation3D.axis.x,
+                                             y: rotation3D.axis.y,
+                                             z: rotation3D.axis.z),
                                       anchorZ: rotation3D.anchorZ,
                                       perspective: rotation3D.perspective)
                     .onChange(of: count) { _ in
@@ -102,12 +104,12 @@ struct TornadoParts: View {
     }
     
     private func move(in size: CGSize) {
-        
         withAnimation(.easeIn(duration: duration)) {
             position.x = CGFloat.random(in: 0...size.width)
             position.y = CGFloat.random(in: 0...size.height)
             rotation3D.random()
             rotation3D.angle += Double.random(in: tornado.angleRange.range)
+            
             // Avoid over flow.
             if rotation3D.angle > 3600 {
                 rotation3D.angle -= 3600

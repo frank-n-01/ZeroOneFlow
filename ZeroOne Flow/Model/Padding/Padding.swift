@@ -19,7 +19,9 @@ struct Padding: Equatable {
         let max = (UIScreen.main.bounds.width < UIScreen.main.bounds.height
                  ? UIScreen.main.bounds.width : UIScreen.main.bounds.height) / 2 - 50
         
-        self.init(vertical: vertical, horizontal: horizontal, min: -(max * 1.5), max: max)
+        self.init(vertical: vertical,
+                  horizontal: horizontal,
+                  min: -(max * 1.5), max: max)
     }
     
     mutating func set(vertical: Double, horizontal: Double) {

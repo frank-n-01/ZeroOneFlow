@@ -4,8 +4,8 @@ import SwiftUI
 
 struct CircleFlow: View {
     @ObservedObject var circle: CircleViewModel
-    @State var centerX: CGFloat = UIScreen.main.bounds.width / 2
-    @State var centerY: CGFloat = UIScreen.main.bounds.height / 2
+    @State var center = CGPoint(x: UIScreen.main.bounds.width / 2,
+                                y: UIScreen.main.bounds.height / 2)
     @State private var loop = 0
     @State private var count = 0
     
@@ -15,16 +15,17 @@ struct CircleFlow: View {
             
             ForEach(0 ..< loop, id: \.self) { i in
                 if i < count {
-                    CircleParts(circle: circle, count: $count, centerX: $centerX, centerY: $centerY)
+                    CircleParts(circle: circle, count: $count, center: $center)
                 }
             }
         }
-        .onReceive(Timer.publish(every: circle.isFlowing ? circle.interval : 100, on: .current, in: .common).autoconnect()) { _ in
+        .onReceive(Timer.publish(every: circle.isFlowing ? circle.interval : 100,
+                                 on: .current, in: .common).autoconnect()) { _ in
             counter()
         }
         .onChange(of: UIScreen.main.bounds) { bounds in
-            centerX = bounds.width / 2
-            centerY = bounds.height / 2
+            center.x = bounds.width / 2
+            center.y = bounds.height / 2
         }
         .onAppear {
             loop = Int(circle.depth)
@@ -43,23 +44,24 @@ struct CircleFlow: View {
 struct CircleParts: View {
     @ObservedObject var circle: CircleViewModel
     @Binding var count: Int
-    @Binding var centerX: CGFloat
-    @Binding var centerY:CGFloat
+    @Binding var center: CGPoint
     @State private var content = ""
     @State private var design: Font.Design = .monospaced
     @State private var weight: Font.Weight = .regular
-    @State private var x = UIScreen.main.bounds.width / 2
-    @State private var y = UIScreen.main.bounds.height / 2
+    @State private var position = CGPoint(x: UIScreen.main.bounds.width / 2,
+                                          y: UIScreen.main.bounds.height / 2)
     @State private var angle: Double = 0.0
-    @State private var clockwise = false
+    @State private var isClockwise = false
     
     var body: some View {
         if circle.isFlowing {
             GeometryReader { geometry in
                 Text(content)
-                    .font(.system(size: circle.fonts.size, weight: weight, design: design))
+                    .font(.system(size: circle.fonts.size,
+                                  weight: weight,
+                                  design: design))
                     .foregroundColor(circle.colors.txt)
-                    .position(x: x, y: y)
+                    .position(position)
                     .onChange(of: count) { _ in
                         withAnimation(.easeIn) {
                             rotate()
@@ -77,26 +79,26 @@ struct CircleParts: View {
     }
     
     private func rotate() {
-        if clockwise {
+        if isClockwise {
             angle += circle.rotationAngle
             if angle > 36000 {
-                clockwise.toggle()
+                isClockwise.toggle()
             }
         } else {
             angle -= circle.rotationAngle
             if angle < 0 {
-                clockwise.toggle()
+                isClockwise.toggle()
             }
         }
     }
     
     private func initPosition() {
-        if centerX < centerY {
-            x = centerX
-            y = centerY - CGFloat(count) * circle.gap
+        if center.x < center.y {
+            position.x = center.x
+            position.y = center.y - CGFloat(count) * circle.gap
         } else {
-            x = centerX - CGFloat(count) * circle.gap
-            y = centerY
+            position.x = center.x - CGFloat(count) * circle.gap
+            position.y = center.y
         }
     }
 }

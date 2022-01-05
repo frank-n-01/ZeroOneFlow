@@ -25,16 +25,19 @@ class TornadoViewModel: FlowModeViewModel {
         }
     }
     
-    let SCALE = 15.0
-    let DURATION = Range(min: 0.01, max: 3.0)
-    let ANGLE = Range(min: 1, max: 30)
-    let FONT = Fonts(size: 0, design: .random, weight: .random, min: 5, max: 50)
+    static let SCALE = 15.0
+    static let DURATION = Range(min: 0.01, max: 3.0)
+    static let ANGLE = Range(min: 1, max: 30)
+    static let FONT = Fonts(size: 0,
+                            design: .random,
+                            weight: .random,
+                            min: 5, max: 50)
     
     init() {
-        scale = SCALE
-        durationRange = DURATION
-        angleRange = ANGLE
-        super.init(ud: ud, fonts: FONT)
+        scale = Self.SCALE
+        durationRange = Self.DURATION
+        angleRange = Self.ANGLE
+        super.init(ud: ud, fonts: Self.FONT)
     }
     
     override func makeRandomStyle() {
@@ -51,7 +54,7 @@ class TornadoViewModel: FlowModeViewModel {
         super.applyUserDefaults()
         
         if ud.isSaved {
-            scale = ud.scale > 0 ? ud.scale : SCALE
+            scale = ud.scale > 0 ? ud.scale : Self.SCALE
             durationRange.set(min: ud.durationMin, max: ud.durationMax)
             angleRange.set(min: ud.angleMin, max: ud.angleMax)
         }
@@ -68,24 +71,27 @@ class TornadoViewModel: FlowModeViewModel {
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        scale = SCALE
-        fonts = FONT
-        durationRange = DURATION
-        angleRange = ANGLE
+        scale = Self.SCALE
+        fonts = Self.FONT
+        durationRange = Self.DURATION
+        angleRange = Self.ANGLE
     }
     
-    override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext, _ style: T) {
+    override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
+                                             _ style: T) {
         guard let style = style as? Tornado else { return }
         
         scale = style.scale
-        fonts.sizeRange.set(min: CGFloat(style.fontSizeMin), max: CGFloat(style.fontSizeMax))
+        fonts.sizeRange.set(min: CGFloat(style.fontSizeMin),
+                            max: CGFloat(style.fontSizeMax))
         durationRange.set(min: style.durationMin, max: style.durationMax)
         angleRange.set(min: style.angleMin, max: style.angleMax)
         
         super.applyCoreData(context, style)
     }
     
-    override func saveCoreData(_ context: NSManagedObjectContext, _ name: String, _ style: FlowMode? = nil) {
+    override func saveCoreData(_ context: NSManagedObjectContext,
+                               _ name: String, _ style: FlowMode? = nil) {
         let style = Tornado(context: context)
         style.scale = scale
         fonts.sizeRange.save(min: &style.fontSizeMin, max: &style.fontSizeMax)
