@@ -5,7 +5,7 @@ The repository of [ZeroOne Flow](https://apps.apple.com/jp/app/zeroone-flow/id15
 A digital art of flowing binary numbers. Zero and One will vividly flow on the screen. Please enjoy the dynamic beauty of 01!
 
 ## Flow
-There are 8 flow modes with different algorithms:
+There are multiple flow modes with different algorithms:
 
 1. Linear
 2. Fly
@@ -18,7 +18,7 @@ There are 8 flow modes with different algorithms:
 9. Chat
 
 ## Content
-The flow content is not only binary numbers:
+Actually, the flow content is not only binary numbers:
 
 - Number
     - Binary
