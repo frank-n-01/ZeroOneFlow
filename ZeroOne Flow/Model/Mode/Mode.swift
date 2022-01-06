@@ -12,6 +12,7 @@ enum Mode: Int, CaseIterable, Identifiable {
     case worm
     case bigbang
     case rain
+    case chat
     
     var id: UUID {
         return UUID()
@@ -35,6 +36,8 @@ enum Mode: Int, CaseIterable, Identifiable {
             return "Big Bang"
         case .rain:
             return "Rain"
+        case .chat:
+            return "Chat"
         }
     }
     
@@ -57,6 +60,8 @@ enum Mode: Int, CaseIterable, Identifiable {
             return "BigBang"
         case .rain:
             return "Rain"
+        case .chat:
+            return "Chat"
         }
     }
     
@@ -79,6 +84,8 @@ enum Mode: Int, CaseIterable, Identifiable {
             return BigBang.entity()
         case .rain:
             return Rain.entity()
+        case .chat:
+            return Chat.entity()
         }
     }
 }

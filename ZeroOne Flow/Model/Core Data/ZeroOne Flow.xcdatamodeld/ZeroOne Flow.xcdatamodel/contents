@@ -10,6 +10,7 @@
         <attribute name="rotationAngle" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="scale" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
+    <entity name="Chat" representedClassName="Chat" parentEntity="FlowMode" syncable="YES" codeGenerationType="class"/>
     <entity name="Circle" representedClassName="Circle" parentEntity="FlowMode" syncable="YES" codeGenerationType="class">
         <attribute name="depth" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="gap" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -88,5 +89,6 @@
         <element name="Single" positionX="-97.5491943359375" positionY="198.019287109375" width="128" height="74"/>
         <element name="Tornado" positionX="-243.3117065429688" positionY="147.4387817382812" width="128" height="119"/>
         <element name="Worm" positionX="295.2474365234375" positionY="190.4984130859375" width="128" height="104"/>
+        <element name="Chat" positionX="-207" positionY="-351" width="128" height="29"/>
     </elements>
 </model>

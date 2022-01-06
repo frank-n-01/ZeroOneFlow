@@ -14,6 +14,7 @@
 "Worm" = "Gusano";
 "Big Bang" = "Big Bang";
 "Rain" = "Lluvia";
+"Chat" = "Chat";
 
 // MARK: - Content Type
 "Content" = "Contenido";

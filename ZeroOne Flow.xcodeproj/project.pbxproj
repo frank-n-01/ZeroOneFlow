@@ -61,6 +61,10 @@
 		6576337D2676214C0006981A /* ContentResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576337C2676214C0006981A /* ContentResource.swift */; };
 		65763381267CD5780006981A /* BackgroundGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65763380267CD5780006981A /* BackgroundGradientView.swift */; };
 		657D64212785D86C00C5D5BE /* BigBangFlowProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657D64202785D86C00C5D5BE /* BigBangFlowProperty.swift */; };
+		657D64242787365F00C5D5BE /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657D64232787365F00C5D5BE /* ChatViewModel.swift */; };
+		657D6426278736DE00C5D5BE /* ChatUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657D6425278736DE00C5D5BE /* ChatUserDefaults.swift */; };
+		657D64282787370E00C5D5BE /* ChatHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657D64272787370E00C5D5BE /* ChatHome.swift */; };
+		657D642A2787373B00C5D5BE /* ChatFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657D64292787373B00C5D5BE /* ChatFlow.swift */; };
 		657EB80E26E64CF40001A71A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 657EB81026E64CF40001A71A /* Localizable.strings */; };
 		657EB82626F574A60001A71A /* ModeUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657EB82526F574A60001A71A /* ModeUserDefaults.swift */; };
 		657EB84226FA2DBF0001A71A /* NumberType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657EB84126FA2DBF0001A71A /* NumberType.swift */; };
@@ -177,6 +181,10 @@
 		6576337C2676214C0006981A /* ContentResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentResource.swift; sourceTree = "<group>"; };
 		65763380267CD5780006981A /* BackgroundGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradientView.swift; sourceTree = "<group>"; };
 		657D64202785D86C00C5D5BE /* BigBangFlowProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBangFlowProperty.swift; sourceTree = "<group>"; };
+		657D64232787365F00C5D5BE /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		657D6425278736DE00C5D5BE /* ChatUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserDefaults.swift; sourceTree = "<group>"; };
+		657D64272787370E00C5D5BE /* ChatHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHome.swift; sourceTree = "<group>"; };
+		657D64292787373B00C5D5BE /* ChatFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFlow.swift; sourceTree = "<group>"; };
 		657EB80F26E64CF40001A71A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		657EB81126E64CFA0001A71A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		657EB81226E64CFC0001A71A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -290,6 +298,7 @@
 				65DF0E0D265E74B3009421F7 /* Worm */,
 				65E84C1926738B0F00378408 /* Big Bang */,
 				654241DB26CE91E2003ABF3E /* Rain */,
+				657D64222787363000C5D5BE /* Chat */,
 			);
 			path = "Flow Mode";
 			sourceTree = "<group>";
@@ -423,6 +432,17 @@
 				6576337A26761E610006981A /* ModePicker.swift */,
 			);
 			path = Mode;
+			sourceTree = "<group>";
+		};
+		657D64222787363000C5D5BE /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				657D64272787370E00C5D5BE /* ChatHome.swift */,
+				657D64292787373B00C5D5BE /* ChatFlow.swift */,
+				657D64232787365F00C5D5BE /* ChatViewModel.swift */,
+				657D6425278736DE00C5D5BE /* ChatUserDefaults.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		657EB82126F56C790001A71A /* Common */ = {
@@ -849,6 +869,7 @@
 				654241E226CEA0C9003ABF3E /* RainFlow.swift in Sources */,
 				65092FA826D5246E00E769C6 /* BigBangViewModel.swift in Sources */,
 				65E84C042670F8CD00378408 /* BackgroundColorView.swift in Sources */,
+				657D6426278736DE00C5D5BE /* ChatUserDefaults.swift in Sources */,
 				65092FAA26D5332200E769C6 /* RainUserDefaults.swift in Sources */,
 				659AD81F2633F211009A1426 /* FlyFlow.swift in Sources */,
 				650F31852712E52B000D39D3 /* RandomStyleButton.swift in Sources */,
@@ -887,6 +908,7 @@
 				651EE0C92650B132007389AC /* SingleHome.swift in Sources */,
 				65E84BFA2670F78B00378408 /* ColorView.swift in Sources */,
 				65092FA626D5244B00E769C6 /* BigBangUserDefaults.swift in Sources */,
+				657D64282787370E00C5D5BE /* ChatHome.swift in Sources */,
 				65E84C1B26738BE800378408 /* BigBangHome.swift in Sources */,
 				65E84C212673AE0E00378408 /* BigBangFlow.swift in Sources */,
 				65092F9026D3B12E00E769C6 /* TornadoUserDefaults.swift in Sources */,
@@ -911,6 +933,7 @@
 				65E84BEF2670F58900378408 /* FontSizeRangeSliders.swift in Sources */,
 				65E84BF12670F5AE00378408 /* FontDesignWeightView.swift in Sources */,
 				65092FBA26E4492400E769C6 /* FontWeight.swift in Sources */,
+				657D64242787365F00C5D5BE /* ChatViewModel.swift in Sources */,
 				65E7FCF62702048500C4E3CE /* FlowModeHome.swift in Sources */,
 				654241D826CBF594003ABF3E /* TextFormatView.swift in Sources */,
 				65590A8E2611C601004AB0D3 /* ZeroOne_FlowApp.swift in Sources */,
@@ -923,6 +946,7 @@
 				65092FAE26DFB2F700E769C6 /* ContentMaker.swift in Sources */,
 				657EB82626F574A60001A71A /* ModeUserDefaults.swift in Sources */,
 				65092F8B26D2879200E769C6 /* FlyUserDefaults.swift in Sources */,
+				657D642A2787373B00C5D5BE /* ChatFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,7 @@ struct FlowModeHome: View {
     @StateObject var worm = WormViewModel()
     @StateObject var bigbang = BigBangViewModel()
     @StateObject var rain = RainViewModel()
+    @StateObject var chat = ChatViewModel()
     
     /// Start the flow in the home view.
     ///
@@ -138,6 +139,8 @@ struct FlowModeHome: View {
             return bigbang
         case .rain:
             return rain
+        case .chat:
+            return chat
         }
     }
     
@@ -161,6 +164,8 @@ struct FlowModeHome: View {
                 BigBangHome(bigbang: bigbang)
             case .rain:
                 RainHome(rain: rain)
+            case .chat:
+                ChatHome(chat: chat)
             }
         }
     }
@@ -185,6 +190,8 @@ struct FlowModeHome: View {
                 BigBangFlow(bigbang: bigbang)
             case .rain:
                 RainFlow(rain: rain)
+            case .chat:
+                ChatFlow(chat: chat)
             }
         }
     }
