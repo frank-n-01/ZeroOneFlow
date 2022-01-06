@@ -15,6 +15,7 @@ There are 8 flow modes with different algorithms:
 6. Worm
 7. Big Bang
 8. Rain
+9. Chat
 
 ## Content
 The flow content is not only binary numbers:
@@ -48,5 +49,5 @@ The flow content is not only binary numbers:
     - HTML
 
 ## Style
-- You can customize the flow style and save it.
+- You can customize the style of flow and save it.
 - If you turn the "dice" button ON (filled), a random style will be generated every time you play the flow.
