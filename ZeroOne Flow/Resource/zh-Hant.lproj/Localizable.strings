@@ -106,6 +106,10 @@
 "Reset" = "初始化";
 "reset.message" = "初始化您現在的樣式？";
 
+// Random Style
+"Random Style" = "隨機樣式";
+"random-style.message" = "每次開始流動時產生一個隨機的樣式。";
+
 // Button
 "Cancel" = "取消";
 "OK" = "是";

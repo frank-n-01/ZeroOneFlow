@@ -106,6 +106,10 @@
 "Reset" = "Reset";
 "reset.message" = "Reset your style?";
 
+// Random Style
+"Random Style" = "Random Style";
+"random-style.message" = "Generate a random style every time you start the flow.";
+
 // Button
 "Cancel" = "Cancel";
 "OK" = "OK";

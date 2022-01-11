@@ -106,6 +106,10 @@
 "Reset" = "Restablecer";
 "reset.message" = "¿Restablecer tu estilo?";
 
+// Random Style
+"Random Style" = "Estilo aleatorio";
+"random-style.message" = "Genera un estilo aleatorio cada vez que inicias el flujo.";
+
 // Button
 "Cancel" = "Cancelar";
 "OK" = "OK";

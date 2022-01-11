@@ -106,9 +106,13 @@
 "Reset" = "リセット";
 "reset.message" = "現在のスタイルをリセットしますか？";
 
+// Random Style
+"Random Style" = "ランダムスタイル";
+"random-style.message" = "フローを開始する度にランダムなスタイルが生成されます。";
+
 // Button
 "Cancel" = "キャンセル";
-"OK" = "はい";
+"OK" = "OK";
 
 // MARK: - Movement
 "Speed" = "速度";

@@ -5,11 +5,19 @@ import SwiftUI
 struct RandomStyleButton: View {
     @ObservedObject var viewModel: FlowModeViewModel
     @State private var image = "die.face.1"
+    @State private var showAlert = false
     
     var body: some View {
-        Button(action: { viewModel.isRandomStyle.toggle() }) {
-            Image(systemName: self.image)
+        Button(action: {
+            if !viewModel.isRandomStyle {
+                showAlert.toggle()
+            } else {
+                viewModel.isRandomStyle.toggle()
+            }
+        }) {
+            Image(systemName: image)
                 .font(.title2)
+                .padding()
         }
         .onAppear {
             throwDice()
@@ -17,14 +25,19 @@ struct RandomStyleButton: View {
         .onChange(of: viewModel.isRandomStyle) { _ in
             throwDice()
         }
-        .padding()
+        .alert("Random Style", isPresented: $showAlert) {
+            Button("Cancel", role: .cancel) {}
+            Button("OK", action: { viewModel.isRandomStyle.toggle() })
+        } message: {
+            Text("random-style.message")
+        }
     }
     
     func throwDice() {
-        self.image = "die.face.\(Int.random(in: 1...6))"
+        image = "die.face.\(Int.random(in: 1...6))"
         
         if viewModel.isRandomStyle {
-            self.image += ".fill"
+            image += ".fill"
         }
     }
 }
