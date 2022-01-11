@@ -7,6 +7,9 @@ class CodeMaker {
     /// The line number of BASIC.
     static var lineNumber = 0
     
+    /// If the line number is equal to this first value, that is the first line of the flow.
+    static var firstLineNumber = 0
+    
     /// Operators and symbols may not be appear continuously.
     static var isAfterKeyWord = false
         
@@ -42,7 +45,7 @@ class CodeMaker {
             basic += " \(Int.random(in: 1...99) * 10)"
         }
         // Add the first line number.
-        if lineNumber == 0 {
+        if lineNumber == firstLineNumber {
             basic = getLineNumber() + basic
         }
         return basic
@@ -99,12 +102,13 @@ class CodeMaker {
     }
     
     static func getLineNumber() -> String {
-        lineNumber += 10
+        lineNumber += Int.random(in: 1...5) * 10
         return "\(lineNumber) "
     }
     
     static func reset() {
-        lineNumber = 0
+        lineNumber = Int.random(in: 0...10) * 10
+        firstLineNumber = lineNumber
         isAfterKeyWord = false
     }
 }

@@ -36,7 +36,7 @@ class ContentMaker {
         }
         // BASIC does not need indents.
         if contents.type == .code && contents.code == .basic {
-            return "\n" + CodeMaker.getLineNumber()
+            return "\n" + getRandomIndent(indents) + CodeMaker.getLineNumber()
         }
         return "\n" + getRandomIndent(indents)
     }
