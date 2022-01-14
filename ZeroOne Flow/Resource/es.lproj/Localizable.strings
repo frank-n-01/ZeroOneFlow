@@ -37,6 +37,9 @@
 "Arabic" = "Arábica";
 "Devanagari" = "Devanagari";
 "Chinese" = "Chino";
+"English" = "Inglés";
+"Japanese" = "Japonés";
+"Spanish" = "Español";
 
 // Symbol
 "Box" = "Caja";

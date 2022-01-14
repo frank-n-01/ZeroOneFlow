@@ -17,7 +17,7 @@ struct LinearHome: View {
         
         Section {
             SandwichedImageSlider(interval: $linear.interval,
-                                  min: 0.001, max: 0.5)
+                                  min: 0.001, max: 1.0)
             ToggleWithLabel(value: $linear.repeatFlow,
                             label: "Repeat")
         } header: {

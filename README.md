@@ -24,13 +24,18 @@ The flow content is not only binary numbers:
     - Octal
     - Hexadecimal
 - Language
-    - Latin
-    - Cuneiform
-    - Greek
-    - Hieroglyph
-    - Arabic
-    - Devanagari
-    - Chinese
+    - Scripts
+        - Latin
+        - Cuneiform
+        - Greek
+        - Hieroglyph
+        - Arabic
+        - Devanagari
+        - Chinese
+    - Words
+        - English
+        - Japanese
+        - Spanish
 - Symbol
     - Box
     - Currency
@@ -49,4 +54,4 @@ The flow content is not only binary numbers:
 
 ## Style
 - You can customize the flow style and save it.
-- If you turn the "dice" button ON (filled), a random style will be generated every time you play the flow.
+- If you turn the "dice" button ON (filled), a random style will be generated every time you start the flow.
