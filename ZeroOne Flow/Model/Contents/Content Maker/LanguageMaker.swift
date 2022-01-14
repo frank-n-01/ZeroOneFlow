@@ -5,6 +5,8 @@ import Foundation
 class LanguageMaker {
     
     static func make(type: LanguageType) -> String {
+        var language = ""
+        
         switch type {
         case .latin:
             return makeLatin()
@@ -20,7 +22,18 @@ class LanguageMaker {
             return makeDevanagari()
         case .chinese:
             return makeChinese()
+        case .english:
+            language = makeEnglish()
+        case .japanese:
+            return makeJapanese()
+        case .spanish:
+            language = makeSpanish()
         }
+        
+        if ModeUserDefaults.currentMode == Mode.linear.rawValue {
+            language += " "
+        }
+        return language
     }
 
     static func makeLatin() -> String {
@@ -75,5 +88,17 @@ class LanguageMaker {
 
     static func makeChinese() -> String {
         return String(Unicode.Scalar(UInt16(Int.random(in: 19968...40879)))!)
+    }
+    
+    static func makeEnglish() -> String {
+        return ContentResource.ENGLISH.randomElement() ?? ""
+    }
+    
+    static func makeJapanese() -> String {
+        return ContentResource.JAPANESE.randomElement() ?? ""
+    }
+    
+    static func makeSpanish() -> String {
+        return ContentResource.SPANISH.randomElement() ?? ""
     }
 }

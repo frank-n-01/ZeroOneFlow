@@ -203,7 +203,7 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var isRandomStyle: Bool {
         didSet {
             if isRandomStyle != oldValue {
-                UserDefaults.standard.set(isRandomStyle, forKey: "is_random_style")
+                UserDefaults.standard.set(isRandomStyle, forKey: "is_random_style_" + flowModeKey)
             }
         }
     }
@@ -245,7 +245,7 @@ class FlowModeUserDefaults: ObservableObject {
         // saved or not
         isSaved = UserDefaults.standard.bool(forKey: "saved_" + flowModeKey)
         // is random style on
-        isRandomStyle = UserDefaults.standard.bool(forKey: "is_random_style")
+        isRandomStyle = UserDefaults.standard.bool(forKey: "is_random_style_" + flowModeKey)
     }
     
     func saveFonts(_ fonts: Fonts) {

@@ -37,6 +37,9 @@
 "Arabic" = "アラビア";
 "Devanagari" = "サンスクリット";
 "Chinese" = "漢字";
+"English" = "英語";
+"Japanese" = "日本語";
+"Spanish" = "スペイン語";
 
 // Symbol
 "Box" = "ボックス";

@@ -10,6 +10,9 @@ enum LanguageType: Int, CaseIterable, Equatable, Identifiable {
     case arabic
     case devanagari
     case chinese
+    case english
+    case japanese
+    case spanish
     
     var id: UUID { return UUID() }
     
@@ -29,50 +32,12 @@ enum LanguageType: Int, CaseIterable, Equatable, Identifiable {
             return "Devanagari"
         case .chinese:
             return "Chinese"
-        }
-    }
-    
-    var comma: String {
-        switch self {
-        case .latin, .greek, .devanagari:
-            return ", "
-        case .cuneiform, .hieroglyph, .arabic:
-            return ""
-        case .chinese:
-            return "，"
-        }
-    }
-    
-    var period: String {
-        switch self {
-        case .latin, .greek:
-            return ". "
-        case .cuneiform, .hieroglyph, .arabic:
-            return ""
-        case .devanagari:
-            return " । "
-        case .chinese:
-            return "。"
-        }
-    }
-    
-    var indent: String {
-        switch self {
-        case .latin, .greek:
-            return "\t"
-        case .cuneiform, .hieroglyph, .devanagari, .arabic:
-            return ""
-        case .chinese:
-            return "　　"
-        }
-    }
-    
-    var space: String {
-        switch self {
-        case .latin, .greek, .devanagari:
-            return " "
-        case .cuneiform, .hieroglyph, .arabic, .chinese:
-            return ""
+        case .english:
+            return "English"
+        case .japanese:
+            return "Japanese"
+        case .spanish:
+            return "Spanish"
         }
     }
 }
