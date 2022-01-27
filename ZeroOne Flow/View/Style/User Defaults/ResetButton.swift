@@ -3,6 +3,7 @@
 import SwiftUI
 
 struct ResetButton: View {
+    @EnvironmentObject var mode: ModeUserDefaults
     let reset: () -> Void
     @State private var showAlert = false
     
@@ -27,7 +28,10 @@ struct ResetButton: View {
     var alertButtons: some View {
         Group {
             Button("Cancel", role: .cancel, action: {})
-            Button("OK", role: .destructive, action: { reset() })
+            Button("OK", role: .destructive, action: {
+                reset()
+                mode.isRandomStyle = false
+            })
         }
     }
 }

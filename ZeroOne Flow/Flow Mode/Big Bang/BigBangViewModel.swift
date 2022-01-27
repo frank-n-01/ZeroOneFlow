@@ -68,14 +68,12 @@ class BigBangViewModel: FlowModeViewModel {
     override func makeRandomStyle() {
         super.makeRandomStyle()
         
-        if isRandomStyle {
-            fonts.sizeRange.random(max: 100)
-            scale = Double.random(in: 1...300)
-            interval = Double.random(in: 0.01...0.15)
-            gap = CGFloat.random(in: 5...50)
-            rotationAngle = Double.random(in: 0.1...60)
-            padding.random()
-        }
+        fonts.sizeRange.random(max: 100)
+        scale = Double.random(in: 1...300)
+        interval = Double.random(in: 0.01...0.15)
+        gap = CGFloat.random(in: 5...50)
+        rotationAngle = Double.random(in: 0.1...60)
+        padding.random()
     }
     
     override func applyUserDefaults() {

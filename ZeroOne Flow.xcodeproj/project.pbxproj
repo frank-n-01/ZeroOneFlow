@@ -425,6 +425,14 @@
 			path = Mode;
 			sourceTree = "<group>";
 		};
+		657D642F27A1961300C5D5BE /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				650F318027107830000D39D3 /* StyleName.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
 		657EB82126F56C790001A71A /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +454,7 @@
 				657EB82B26F578C60001A71A /* Rotation */,
 				657EB83F26FA2D7A0001A71A /* Text Format */,
 				657EB82D26F579210001A71A /* Contents */,
+				657D642F27A1961300C5D5BE /* Style */,
 				657EB82F26F57A690001A71A /* Core Data */,
 			);
 			path = Model;
@@ -509,7 +518,6 @@
 			children = (
 				653B2CEF2674E77A00A7A921 /* ZeroOne Flow.xcdatamodeld */,
 				657633732674F0020006981A /* Persistence.swift */,
-				650F318027107830000D39D3 /* StyleName.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";

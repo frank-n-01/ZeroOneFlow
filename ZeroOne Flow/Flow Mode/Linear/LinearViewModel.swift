@@ -52,11 +52,9 @@ class LinearViewModel: FlowModeViewModel {
     override func makeRandomStyle() {
         super.makeRandomStyle()
         
-        if isRandomStyle {
-            interval = Double.random(in: 0.001...0.01)
-            linefeed.random(max: 30)
-            indents.random(max: 5)
-        }
+        interval = Double.random(in: 0.001...0.01)
+        linefeed.random(max: 30)
+        indents.random(max: 5)
     }
     
     override func applyUserDefaults() {

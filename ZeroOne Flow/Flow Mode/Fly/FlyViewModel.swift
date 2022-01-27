@@ -44,11 +44,9 @@ class FlyViewModel: FlowModeViewModel {
     override func makeRandomStyle() {
         super.makeRandomStyle()
         
-        if isRandomStyle {
-            scale = Double.random(in: 1...300)
-            interval = Double.random(in: 0.01...0.1)
-            padding.random()
-        }
+        scale = Double.random(in: 1...300)
+        interval = Double.random(in: 0.01...0.1)
+        padding.random()
     }
     
     override func applyUserDefaults() {

@@ -24,7 +24,7 @@ struct RainHome: View {
         
         Section {
             SliderWithSingleImage(value: $rain.length,
-                                  min: 1, max: 500,
+                                  min: 1, max: 300,
                                   image: "ruler.fill", format: "%.0f")
         } header: {
             Text("Length")
@@ -39,7 +39,7 @@ struct RainHome: View {
         
         Section {
             SliderWithSingleImage(value: $rain.step,
-                                  min: 1, max: 9999,
+                                  min: 1, max: 300,
                                   image: "arrowshape.zigzag.right.fill",
                                   format: "%.0f")
         } header: {

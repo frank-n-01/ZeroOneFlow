@@ -3,18 +3,19 @@
 import SwiftUI
 
 struct RandomStyleButton: View {
+    @EnvironmentObject var mode: ModeUserDefaults
     @ObservedObject var viewModel: FlowModeViewModel
     @State private var image = "die.face.1"
     
     var body: some View {
-        Button(action: { viewModel.isRandomStyle.toggle() }) {
+        Button(action: { mode.isRandomStyle.toggle() }) {
             Image(systemName: self.image)
                 .font(.title2)
         }
         .onAppear {
             throwDice()
         }
-        .onChange(of: viewModel.isRandomStyle) { _ in
+        .onChange(of: mode.isRandomStyle) { _ in
             throwDice()
         }
         .padding()
@@ -23,7 +24,7 @@ struct RandomStyleButton: View {
     func throwDice() {
         self.image = "die.face.\(Int.random(in: 1...6))"
         
-        if viewModel.isRandomStyle {
+        if mode.isRandomStyle {
             self.image += ".fill"
         }
     }
