@@ -8,7 +8,6 @@ class UserDefaultsTest: XCTestCase {
     
     /// Assert Equal of the common properties.
     func assertEqual(viewModel: FlowModeViewModel, with random: FlowModeViewModel) {
-        XCTAssertEqual(viewModel.isRandomStyle, random.isRandomStyle)
         XCTAssertEqual(viewModel.fonts, random.fonts)
         XCTAssertEqual(viewModel.colors, random.colors)
         XCTAssertEqual(viewModel.contents, random.contents)
@@ -18,25 +17,26 @@ class UserDefaultsTest: XCTestCase {
         // Preserve the current state.
         var ud = ModeUserDefaults()
         let preserved = ud.mode
+        let isRandomStyle = !ud.isRandomStyle
         
         // Set a random mode and check if the mode has been saved.
         let mode = Mode.allCases.randomElement()!
         ud.mode = mode
+        ud.isRandomStyle = isRandomStyle
         ud = ModeUserDefaults()
         
         XCTAssertEqual(ud.mode, mode)
         XCTAssertEqual(ModeUserDefaults.currentMode, mode.rawValue)
+        XCTAssertEqual(ud.isRandomStyle, isRandomStyle)
         
         // Reset the change.
         ud.mode = preserved
     }
-
+    
     func test02_Linear() {
         // Save the test data and check if it has been saved correctly.
         let random = LinearViewModel()
-        random.isRandomStyle = true
         random.makeRandomStyle()
-        random.isRandomStyle = false
         let linear = LinearViewModel()
         
         assertEqual(viewModel: linear, with: random)
@@ -53,9 +53,7 @@ class UserDefaultsTest: XCTestCase {
     func test03_Fly() {
         // Save the test data and check if it has been saved correctly.
         let random = FlyViewModel()
-        random.isRandomStyle = true
         random.makeRandomStyle()
-        random.isRandomStyle = false
         let fly = FlyViewModel()
         
         assertEqual(viewModel: fly, with: random)
@@ -70,9 +68,7 @@ class UserDefaultsTest: XCTestCase {
     func test04_Tornado() {
         // Save the test data and check if it has been saved correctly.
         let random = TornadoViewModel()
-        random.isRandomStyle = true
         random.makeRandomStyle()
-        random.isRandomStyle = false
         let tornado = TornadoViewModel()
         
         assertEqual(viewModel: tornado, with: random)
@@ -87,9 +83,7 @@ class UserDefaultsTest: XCTestCase {
     func test05_Single() {
         // Save the test data and check if it has been saved correctly.
         let random = SingleViewModel()
-        random.isRandomStyle = true
         random.makeRandomStyle()
-        random.isRandomStyle = false
         let single = SingleViewModel()
         
         assertEqual(viewModel: single, with: random)
@@ -103,9 +97,7 @@ class UserDefaultsTest: XCTestCase {
     func test06_Circle() {
         // Save the test data and check if it has been saved correctly.
         let random = CircleViewModel()
-        random.isRandomStyle = true
         random.makeRandomStyle()
-        random.isRandomStyle = false
         let circle = CircleViewModel()
         
         assertEqual(viewModel: circle, with: random)
@@ -121,9 +113,7 @@ class UserDefaultsTest: XCTestCase {
     func test07_Worm() {
         // Save the test data and check if it has been saved correctly.
         let random = WormViewModel()
-        random.isRandomStyle = true
         random.makeRandomStyle()
-        random.isRandomStyle = false
         let worm = WormViewModel()
         
         assertEqual(viewModel: worm, with: random)
@@ -140,9 +130,7 @@ class UserDefaultsTest: XCTestCase {
     func test08_BigBang() {
         // Save the test data and check if it has been saved correctly.
         let random = BigBangViewModel()
-        random.isRandomStyle = true
         random.makeRandomStyle()
-        random.isRandomStyle = false
         let bigbang = BigBangViewModel()
         
         assertEqual(viewModel: bigbang, with: random)
@@ -160,9 +148,7 @@ class UserDefaultsTest: XCTestCase {
     func test09_Rain() {
         // Save the test data and check if it has been saved correctly.
         let random = RainViewModel()
-        random.isRandomStyle = true
         random.makeRandomStyle()
-        random.isRandomStyle = false
         let rain = RainViewModel()
         
         assertEqual(viewModel: rain, with: random)
