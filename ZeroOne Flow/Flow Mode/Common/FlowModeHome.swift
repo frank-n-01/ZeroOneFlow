@@ -3,9 +3,7 @@
 import SwiftUI
 
 struct FlowModeHome: View {
-    @EnvironmentObject var modeUD: ModeUserDefaults
-    
-    // View models of each flow mode.
+    @EnvironmentObject var mode: ModeUserDefaults
     @StateObject var linear = LinearViewModel()
     @StateObject var fly = FlyViewModel()
     @StateObject var tornado = TornadoViewModel()
@@ -45,7 +43,7 @@ struct FlowModeHome: View {
     var homeView: some View {
         Form {
             Section {
-                ModePicker(mode: $modeUD.mode)
+                ModePicker(mode: $mode.mode)
                 styleLink
             }
             homeSwitch
@@ -115,13 +113,15 @@ struct FlowModeHome: View {
     /// The generated random style will be preserved in the view model.
     func startFlow() {
         start.toggle()
-        viewModel.makeRandomStyle()
+        if mode.isRandomStyle {
+            viewModel.makeRandomStyle()
+        }
         ContentMaker.reset()
     }
     
     /// The current flow mode's view model.
     var viewModel: FlowModeViewModel {
-        switch modeUD.mode {
+        switch mode.mode {
         case .linear:
             return linear
         case .fly:
@@ -144,7 +144,7 @@ struct FlowModeHome: View {
     /// The current flow mode's home view.
     var homeSwitch: some View {
         Group {
-            switch modeUD.mode {
+            switch mode.mode {
             case .linear:
                 LinearHome(linear: linear)
             case .fly:
@@ -168,7 +168,7 @@ struct FlowModeHome: View {
     /// The current flow mode's flow view.
     var flowSwitch: some View {
         Group {
-            switch modeUD.mode {
+            switch mode.mode {
             case .linear:
                 LinearFlow(linear: linear)
             case .fly:

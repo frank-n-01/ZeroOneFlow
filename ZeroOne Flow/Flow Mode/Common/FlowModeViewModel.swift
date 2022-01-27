@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-22 Ni Fu. All rights reserved.
 
 import SwiftUI
 import CoreData
@@ -30,16 +30,8 @@ class FlowModeViewModel: ObservableObject {
         }
     }
     
-    /// Is the random style mode activated.
-    @Published var isRandomStyle: Bool {
-        didSet {
-            flowModeUD.isRandomStyle = isRandomStyle
-        }
-    }
-    
     init(ud: FlowModeUserDefaults, fonts: Fonts) {
         isFlowing = false
-        isRandomStyle = false
         flowModeUD = ud
         self.fonts = fonts
         colors = Colors()
@@ -58,11 +50,9 @@ class FlowModeViewModel: ObservableObject {
     ///
     /// On the condition that the random style mode is activated.
     func makeRandomStyle() {
-        if isRandomStyle {
-            fonts.random()
-            colors.random()
-            contents.random()
-        }
+        fonts.random()
+        colors.random()
+        contents.random()
     }
     
     /// Apply the style saved in the flow mode's UserDefaults.
@@ -90,7 +80,6 @@ class FlowModeViewModel: ObservableObject {
                          customValue1: flowModeUD.customValue1 ?? "",
                          customValue2: flowModeUD.customValue2 ?? "",
                          code: flowModeUD.code)
-            isRandomStyle = flowModeUD.isRandomStyle
         }
     }
     
@@ -99,7 +88,6 @@ class FlowModeViewModel: ObservableObject {
         flowModeUD.saveFonts(fonts)
         flowModeUD.saveColors(colors)
         flowModeUD.saveContents(contents)
-        flowModeUD.isRandomStyle = isRandomStyle
         
         if !flowModeUD.isSaved {
             flowModeUD.isSaved = true
@@ -111,7 +99,6 @@ class FlowModeViewModel: ObservableObject {
         flowModeUD.isSaved = false
         colors.reset()
         contents.reset()
-        isRandomStyle = false
     }
     
     /// Apply the style from Core Data.
@@ -134,7 +121,6 @@ class FlowModeViewModel: ObservableObject {
                      customValue1: style.customValue1 ?? "",
                      customValue2: style.customValue2 ?? "",
                      code: Int(style.code))
-        isRandomStyle = false
     }
     
     /// Save the style in Core Data.
