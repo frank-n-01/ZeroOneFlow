@@ -60,12 +60,10 @@ class WormViewModel: FlowModeViewModel {
     override func makeRandomStyle() {
         super.makeRandomStyle()
         
-        if isRandomStyle {
-            interval = Double.random(in: 0.01...0.05)
-            length = Double.random(in: 1...100)
-            step = Double.random(in: 10...100)
-            crawling = Double.random(in: 10...100)
-        }
+        interval = Double.random(in: 0.01...0.05)
+        length = Double.random(in: 1...100)
+        step = Double.random(in: 10...100)
+        crawling = Double.random(in: 10...100)
     }
     
     override func applyUserDefaults() {

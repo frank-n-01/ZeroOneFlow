@@ -33,16 +33,14 @@ class SingleViewModel: FlowModeViewModel {
     }
     
     override func makeRandomStyle() {
-        if isRandomStyle {
-            interval = Double.random(in: 0.01...0.2)
-            fonts.size = CGFloat.random(
-                in: Self.MAX_FONT_SIZE * 0.3 ..< Self.MAX_FONT_SIZE * 0.6
-            )
-            contents.random()
-            colors.txtRandom = true
-            colors.bgRandom = true
-            gradientType = GradientType.allCases.randomElement() ?? Self.GRADIENT_TYPE
-        }
+        interval = Double.random(in: 0.01...0.2)
+        fonts.size = CGFloat.random(
+            in: Self.MAX_FONT_SIZE * 0.3 ..< Self.MAX_FONT_SIZE * 0.6
+        )
+        contents.random()
+        colors.txtRandom = true
+        colors.bgRandom = true
+        gradientType = GradientType.allCases.randomElement() ?? Self.GRADIENT_TYPE
     }
     
     override func applyUserDefaults() {

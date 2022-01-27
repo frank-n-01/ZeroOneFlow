@@ -43,11 +43,9 @@ class TornadoViewModel: FlowModeViewModel {
     override func makeRandomStyle() {
         super.makeRandomStyle()
         
-        if isRandomStyle {
-            fonts.sizeRange.random(max: 150)
-            scale = Double.random(in: 1...200)
-            angleRange.random(max: 100)
-        }
+        fonts.sizeRange.random(max: 150)
+        scale = Double.random(in: 1...200)
+        angleRange.random(max: 100)
     }
     
     override func applyUserDefaults() {

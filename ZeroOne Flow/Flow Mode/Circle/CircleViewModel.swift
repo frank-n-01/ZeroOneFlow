@@ -51,12 +51,10 @@ class CircleViewModel: FlowModeViewModel {
     override func makeRandomStyle() {
         super.makeRandomStyle()
         
-        if isRandomStyle {
-            interval = Double.random(in: 0.02...0.1)
-            depth = Double.random(in: 1...300)
-            gap = CGFloat.random(in: 0.01...15)
-            rotationAngle = Double.random(in: 60...180)
-        }
+        interval = Double.random(in: 0.02...0.1)
+        depth = Double.random(in: 1...300)
+        gap = CGFloat.random(in: 0.01...15)
+        rotationAngle = Double.random(in: 60...180)
     }
     
     override func applyUserDefaults() {

@@ -31,7 +31,7 @@ class RainViewModel: FlowModeViewModel {
         }
     }
     
-    static let SCALE = 100.0
+    static let SCALE = 150.0
     static let INTERVAL = 0.05
     static let LENGTH = 200.0
     static let STEP = 200.0
@@ -51,13 +51,11 @@ class RainViewModel: FlowModeViewModel {
     override func makeRandomStyle() {
         super.makeRandomStyle()
         
-        if isRandomStyle {
-            scale = Double.random(in: 1...200)
-            interval = Double.random(in: 0.01...0.05)
-            fonts.sizeRange.random(max: 100)
-            length = Double.random(in: 50...300)
-            step = CGFloat.random(in: 100...500)
-        }
+        scale = Double.random(in: 1...150)
+        interval = Double.random(in: 0.01...0.2)
+        fonts.sizeRange.random(max: 100)
+        length = Double.random(in: 50...200)
+        step = CGFloat.random(in: 50...200)
     }
     
     override func applyUserDefaults() {
