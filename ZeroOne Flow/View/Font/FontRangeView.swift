@@ -10,7 +10,7 @@ struct FontRangeView: View {
     
     var body: some View {
         Section {
-            FontSizeRangeSliders(fontSizeRange: $fonts.sizeRange,
+            FontSizeRangeSliders(range: $fonts.sizeRange,
                                  min: min, max: max)
             FontDesignWeightPicker(fonts: $fonts, isRandom: isRandom)
         } header: {
