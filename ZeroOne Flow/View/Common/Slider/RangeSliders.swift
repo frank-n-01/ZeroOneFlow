@@ -25,6 +25,11 @@ struct RangeSliders: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.1)
         }
+        .onAppear {
+            if range.min > max {
+                range.min = max
+            }
+        }
     }
     
     private var minSlider: some View {
@@ -39,6 +44,11 @@ struct RangeSliders: View {
                 .frame(width: range.min >= 1000 || range.min <= -100 ? 60 : 50)
                 .lineLimit(1)
                 .minimumScaleFactor(0.1)
+        }
+        .onAppear {
+            if range.max < min {
+                range.max = min
+            }
         }
     }
     
