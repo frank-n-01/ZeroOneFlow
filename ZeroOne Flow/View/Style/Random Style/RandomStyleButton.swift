@@ -15,8 +15,11 @@ struct RandomStyleButton: View {
         .onAppear {
             throwDice()
         }
-        .onChange(of: mode.isRandomStyle) { _ in
+        .onChange(of: mode.isRandomStyle) { isOn in
             throwDice()
+            if isOn {
+                viewModel.makeRandomStyle()
+            }
         }
         .padding()
     }
