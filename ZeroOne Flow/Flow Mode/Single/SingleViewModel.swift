@@ -46,7 +46,7 @@ class SingleViewModel: FlowModeViewModel {
     override func applyUserDefaults() {
         super.applyUserDefaults()
         
-        if ud.isSaved {
+        if ud.isInitialized {
             interval = ud.interval > 0 ? ud.interval : Self.INTERVAL
             gradientType = ud.gradientType
         }

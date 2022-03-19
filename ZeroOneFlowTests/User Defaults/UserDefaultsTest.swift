@@ -16,21 +16,21 @@ class UserDefaultsTest: XCTestCase {
     func test01_Mode() {
         // Preserve the current state.
         var ud = ModeUserDefaults()
-        let preserved = ud.mode
+        let preserved = ud.flowMode
         let isRandomStyle = !ud.isRandomStyle
         
         // Set a random mode and check if the mode has been saved.
         let mode = Mode.allCases.randomElement()!
-        ud.mode = mode
+        ud.flowMode = mode
         ud.isRandomStyle = isRandomStyle
         ud = ModeUserDefaults()
         
-        XCTAssertEqual(ud.mode, mode)
-        XCTAssertEqual(ModeUserDefaults.currentMode, mode.rawValue)
+        XCTAssertEqual(ud.flowMode, mode)
+        XCTAssertEqual(ModeUserDefaults.sharedCurrentMode, mode.rawValue)
         XCTAssertEqual(ud.isRandomStyle, isRandomStyle)
         
         // Reset the change.
-        ud.mode = preserved
+        ud.flowMode = preserved
     }
     
     func test02_Linear() {

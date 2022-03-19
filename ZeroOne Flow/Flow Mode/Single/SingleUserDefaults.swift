@@ -8,7 +8,7 @@ class SingleUserDefaults: FlowModeUserDefaults {
         didSet {
             if gradientType != oldValue {
                 UserDefaults.standard.set(
-                    gradientType.rawValue, forKey: "gradient_type_" + flowModeKey
+                    gradientType.rawValue, forKey: "gradient_type_" + flowMode
                 )
             }
         }

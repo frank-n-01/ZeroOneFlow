@@ -2,12 +2,12 @@
 
 import SwiftUI
 
-struct CoreDataStyleList: View {
+struct CoreDataStyleView: View {
     @ObservedObject var viewModel: FlowModeViewModel
     @State private var showAlert = false
     @Environment(\.managedObjectContext) var context
     @FetchRequest(
-        entity: Mode.allCases[ModeUserDefaults.currentMode].entity,
+        entity: Mode.allCases[ModeUserDefaults.sharedCurrentMode].entity,
         sortDescriptors: [NSSortDescriptor(keyPath: \FlowMode.date, ascending: false)]
     ) var styles: FetchedResults<FlowMode>
     

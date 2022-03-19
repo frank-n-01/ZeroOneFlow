@@ -25,7 +25,7 @@ class CodeMaker {
             code += makeHTML()
         }
         // In Linear mode, a space is necessary after each word.
-        if ModeUserDefaults.currentMode == Mode.linear.rawValue {
+        if ModeUserDefaults.sharedCurrentMode == Mode.linear.rawValue {
             code += " "
         }
         return code

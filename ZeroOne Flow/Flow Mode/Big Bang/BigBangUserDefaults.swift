@@ -7,7 +7,7 @@ class BigBangUserDefaults: FlowModeUserDefaults {
     @Published var scale: Double {
         didSet {
             if scale != oldValue {
-                UserDefaults.standard.set(scale, forKey: "scale_" + flowModeKey)
+                UserDefaults.standard.set(scale, forKey: "scale_" + flowMode)
             }
         }
     }
@@ -15,7 +15,7 @@ class BigBangUserDefaults: FlowModeUserDefaults {
     @Published var gap: Double {
         didSet {
             if gap != oldValue {
-                UserDefaults.standard.set(gap, forKey: "gap_" + flowModeKey)
+                UserDefaults.standard.set(gap, forKey: "gap_" + flowMode)
             }
         }
     }
@@ -23,7 +23,7 @@ class BigBangUserDefaults: FlowModeUserDefaults {
     @Published var rotationAngle: Double {
         didSet {
             if rotationAngle != oldValue {
-                UserDefaults.standard.set(rotationAngle, forKey: "rotation_angle_" + flowModeKey)
+                UserDefaults.standard.set(rotationAngle, forKey: "rotation_angle_" + flowMode)
             }
         }
     }
@@ -31,7 +31,7 @@ class BigBangUserDefaults: FlowModeUserDefaults {
     @Published var paddingVertical: Double {
         didSet {
             if paddingVertical != oldValue {
-                UserDefaults.standard.set(paddingVertical, forKey: "padding_vertical_" + flowModeKey)
+                UserDefaults.standard.set(paddingVertical, forKey: "padding_vertical_" + flowMode)
             }
         }
     }
@@ -39,7 +39,7 @@ class BigBangUserDefaults: FlowModeUserDefaults {
     @Published var paddingHorizontal: Double {
         didSet {
             if paddingHorizontal != oldValue {
-                UserDefaults.standard.set(paddingHorizontal, forKey: "padding_horizontal_" + flowModeKey)
+                UserDefaults.standard.set(paddingHorizontal, forKey: "padding_horizontal_" + flowMode)
             }
         }
     }
@@ -47,7 +47,7 @@ class BigBangUserDefaults: FlowModeUserDefaults {
     @Published var is3D: Bool {
         didSet {
             if is3D != oldValue {
-                UserDefaults.standard.set(is3D, forKey: "is_3D_" + flowModeKey)
+                UserDefaults.standard.set(is3D, forKey: "is_3D_" + flowMode)
             }
         }
     }

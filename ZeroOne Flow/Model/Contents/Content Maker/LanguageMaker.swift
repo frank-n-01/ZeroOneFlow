@@ -30,7 +30,7 @@ class LanguageMaker {
             language = makeSpanish()
         }
         
-        if ModeUserDefaults.currentMode == Mode.linear.rawValue {
+        if ModeUserDefaults.sharedCurrentMode == Mode.linear.rawValue {
             language += " "
         }
         return language

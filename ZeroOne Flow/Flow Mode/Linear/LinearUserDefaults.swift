@@ -8,7 +8,7 @@ class LinearUserDefaults: FlowModeUserDefaults {
     @Published var repeatFlow: Bool {
         didSet {
             if repeatFlow != oldValue {
-                UserDefaults.standard.set(repeatFlow, forKey: "Repeat_" + flowModeKey)
+                UserDefaults.standard.set(repeatFlow, forKey: "Repeat_" + flowMode)
             }
         }
     }
@@ -16,7 +16,7 @@ class LinearUserDefaults: FlowModeUserDefaults {
     @Published var isLineFeedOn: Bool {
         didSet {
             if isLineFeedOn != oldValue {
-                UserDefaults.standard.set(isLineFeedOn, forKey: "isLineFeedOn_" + flowModeKey)
+                UserDefaults.standard.set(isLineFeedOn, forKey: "isLineFeedOn_" + flowMode)
             }
         }
     }
@@ -24,7 +24,7 @@ class LinearUserDefaults: FlowModeUserDefaults {
     @Published var maxLineLength: Double {
         didSet {
             if maxLineLength != oldValue {
-                UserDefaults.standard.set(maxLineLength, forKey: "maxLineLength_" + flowModeKey)
+                UserDefaults.standard.set(maxLineLength, forKey: "maxLineLength_" + flowMode)
             }
         }
     }
@@ -32,7 +32,7 @@ class LinearUserDefaults: FlowModeUserDefaults {
     @Published var isIndentOn: Bool {
         didSet {
             if isIndentOn != oldValue {
-                UserDefaults.standard.set(isIndentOn, forKey: "is_indent_on_" + flowModeKey)
+                UserDefaults.standard.set(isIndentOn, forKey: "is_indent_on_" + flowMode)
             }
         }
     }
@@ -41,7 +41,7 @@ class LinearUserDefaults: FlowModeUserDefaults {
         didSet {
             if maxNumberOfIndents != oldValue {
                 UserDefaults.standard
-                    .set(maxNumberOfIndents, forKey: "max_number_of_indents_" + flowModeKey)
+                    .set(maxNumberOfIndents, forKey: "max_number_of_indents_" + flowMode)
             }
         }
     }

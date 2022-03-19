@@ -7,7 +7,7 @@ class FlyUserDefaults: FlowModeUserDefaults {
     @Published var scale: Double {
         didSet {
             if scale != oldValue {
-                UserDefaults.standard.set(scale, forKey: "flies_" + flowModeKey)
+                UserDefaults.standard.set(scale, forKey: "flies_" + flowMode)
             }
         }
     }
@@ -15,7 +15,7 @@ class FlyUserDefaults: FlowModeUserDefaults {
     @Published var paddingVertical: Double {
         didSet {
             if paddingVertical != oldValue {
-                UserDefaults.standard.set(paddingVertical, forKey: "padding_vertical_" + flowModeKey)
+                UserDefaults.standard.set(paddingVertical, forKey: "padding_vertical_" + flowMode)
             }
         }
     }
@@ -23,7 +23,7 @@ class FlyUserDefaults: FlowModeUserDefaults {
     @Published var paddingHorizontal: Double {
         didSet {
             if paddingHorizontal != oldValue {
-                UserDefaults.standard.set(paddingHorizontal, forKey: "padding_horizontal_" + flowModeKey)
+                UserDefaults.standard.set(paddingHorizontal, forKey: "padding_horizontal_" + flowMode)
             }
         }
     }

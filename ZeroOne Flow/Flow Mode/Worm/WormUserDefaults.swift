@@ -7,7 +7,7 @@ class WormUserDefaults: FlowModeUserDefaults {
     @Published var length: Double {
         didSet {
             if length != oldValue {
-                UserDefaults.standard.set(length, forKey: "length_" + flowModeKey)
+                UserDefaults.standard.set(length, forKey: "length_" + flowMode)
             }
         }
     }
@@ -15,7 +15,7 @@ class WormUserDefaults: FlowModeUserDefaults {
     @Published var step: Double {
         didSet {
             if step != oldValue {
-                UserDefaults.standard.set(step, forKey: "step_" + flowModeKey)
+                UserDefaults.standard.set(step, forKey: "step_" + flowMode)
             }
         }
     }
@@ -23,7 +23,7 @@ class WormUserDefaults: FlowModeUserDefaults {
     @Published var crawling: Double {
         didSet {
             if crawling != oldValue {
-                UserDefaults.standard.set(crawling, forKey: "crawling_" + flowModeKey)
+                UserDefaults.standard.set(crawling, forKey: "crawling_" + flowMode)
             }
         }
     }
@@ -31,7 +31,7 @@ class WormUserDefaults: FlowModeUserDefaults {
     @Published var paddingVertical: Double {
         didSet {
             if paddingVertical != oldValue {
-                UserDefaults.standard.set(paddingVertical, forKey: "padding_vertical_" + flowModeKey)
+                UserDefaults.standard.set(paddingVertical, forKey: "padding_vertical_" + flowMode)
             }
         }
     }
@@ -39,7 +39,7 @@ class WormUserDefaults: FlowModeUserDefaults {
     @Published var paddingHorizontal: Double {
         didSet {
             if paddingHorizontal != oldValue {
-                UserDefaults.standard.set(paddingHorizontal, forKey: "padding_horizontal_" + flowModeKey)
+                UserDefaults.standard.set(paddingHorizontal, forKey: "padding_horizontal_" + flowMode)
             }
         }
     }

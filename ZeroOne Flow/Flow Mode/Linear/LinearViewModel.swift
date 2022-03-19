@@ -60,7 +60,7 @@ class LinearViewModel: FlowModeViewModel {
     override func applyUserDefaults() {
         super.applyUserDefaults()
         
-        if ud.isSaved {
+        if ud.isInitialized {
             interval = ud.interval > 0 ? ud.interval : Self.INTERVAL
             repeatFlow = ud.repeatFlow
             linefeed.set(isOn: ud.isLineFeedOn, value: ud.maxLineLength)

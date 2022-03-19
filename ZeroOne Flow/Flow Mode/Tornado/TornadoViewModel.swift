@@ -51,7 +51,7 @@ class TornadoViewModel: FlowModeViewModel {
     override func applyUserDefaults() {
         super.applyUserDefaults()
         
-        if ud.isSaved {
+        if ud.isInitialized {
             scale = ud.scale > 0 ? ud.scale : Self.SCALE
             durationRange.set(min: ud.durationMin, max: ud.durationMax)
             angleRange.set(min: ud.angleMin, max: ud.angleMax)

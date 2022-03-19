@@ -4,14 +4,14 @@ import SwiftUI
 
 @main
 struct ZeroOne_FlowApp: App {
-    let persistenceController = PersistenceController.shared
-    @StateObject var modeUD = ModeUserDefaults()
+    @StateObject var mode = ModeUserDefaults()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environmentObject(modeUD)
+                .environment(\.managedObjectContext,
+                              PersistenceController.shared.container.viewContext)
+                .environmentObject(mode)
         }
     }
 }

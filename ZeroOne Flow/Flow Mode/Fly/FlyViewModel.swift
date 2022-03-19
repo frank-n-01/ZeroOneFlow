@@ -52,7 +52,7 @@ class FlyViewModel: FlowModeViewModel {
     override func applyUserDefaults() {
         super.applyUserDefaults()
         
-        if ud.isSaved {
+        if ud.isInitialized {
             scale = ud.scale > 0 ? ud.scale : Self.SCALE
             interval = ud.interval > 0 ? ud.interval : Self.INTERVAL
             padding.set(vertical: ud.paddingVertical,

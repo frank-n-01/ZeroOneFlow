@@ -7,7 +7,7 @@ class TornadoUserDefaults: FlowModeUserDefaults {
     @Published var scale: Double {
         didSet {
             if scale != oldValue {
-                UserDefaults.standard.set(scale, forKey: "scale_" + flowModeKey)
+                UserDefaults.standard.set(scale, forKey: "scale_" + flowMode)
             }
         }
     }
@@ -15,7 +15,7 @@ class TornadoUserDefaults: FlowModeUserDefaults {
     @Published var durationMin: Double {
         didSet {
             if durationMin != oldValue {
-                UserDefaults.standard.set(durationMin, forKey: "duration_min_" + flowModeKey)
+                UserDefaults.standard.set(durationMin, forKey: "duration_min_" + flowMode)
             }
         }
     }
@@ -23,7 +23,7 @@ class TornadoUserDefaults: FlowModeUserDefaults {
     @Published var durationMax: Double {
         didSet {
             if durationMax != oldValue {
-                UserDefaults.standard.set(durationMax, forKey: "duration_max_" + flowModeKey)
+                UserDefaults.standard.set(durationMax, forKey: "duration_max_" + flowMode)
             }
         }
     }
@@ -31,7 +31,7 @@ class TornadoUserDefaults: FlowModeUserDefaults {
     @Published var angleMin: Double {
         didSet {
             if angleMin != oldValue {
-                UserDefaults.standard.set(angleMin, forKey: "angle_min_" + flowModeKey)
+                UserDefaults.standard.set(angleMin, forKey: "angle_min_" + flowMode)
             }
         }
     }
@@ -39,7 +39,7 @@ class TornadoUserDefaults: FlowModeUserDefaults {
     @Published var angleMax: Double {
         didSet {
             if angleMax != oldValue {
-                UserDefaults.standard.set(angleMax, forKey: "angle_max_" + flowModeKey)
+                UserDefaults.standard.set(angleMax, forKey: "angle_max_" + flowMode)
             }
         }
     }

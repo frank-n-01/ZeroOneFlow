@@ -29,7 +29,7 @@
 		65092FB626E2ED7800E769C6 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65092FB526E2ED7800E769C6 /* ContentType.swift */; };
 		65092FB826E4462C00E769C6 /* FontDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65092FB726E4462C00E769C6 /* FontDesign.swift */; };
 		65092FBA26E4492400E769C6 /* FontWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65092FB926E4492400E769C6 /* FontWeight.swift */; };
-		650F317F270F27A3000D39D3 /* CoreDataStyleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650F317E270F27A3000D39D3 /* CoreDataStyleList.swift */; };
+		650F317F270F27A3000D39D3 /* CoreDataStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650F317E270F27A3000D39D3 /* CoreDataStyleView.swift */; };
 		650F318127107830000D39D3 /* StyleName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650F318027107830000D39D3 /* StyleName.swift */; };
 		650F318327107D0C000D39D3 /* SaveStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650F318227107D0C000D39D3 /* SaveStyleView.swift */; };
 		650F31852712E52B000D39D3 /* RandomStyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650F31842712E52B000D39D3 /* RandomStyleButton.swift */; };
@@ -79,6 +79,7 @@
 		65C7385026AA71E200368CAE /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C7384F26AA71E200368CAE /* Range.swift */; };
 		65DF0E0F265E75EB009421F7 /* WormHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DF0E0E265E75EB009421F7 /* WormHome.swift */; };
 		65DF0E11265E75F5009421F7 /* WormFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DF0E10265E75F5009421F7 /* WormFlow.swift */; };
+		65E2039D27E4D1B300ED1BE3 /* CommonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2039C27E4D1B300ED1BE3 /* CommonStyles.swift */; };
 		65E722BC263EE44500564A48 /* TornadoHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E722BB263EE44500564A48 /* TornadoHome.swift */; };
 		65E722BE263EE45D00564A48 /* TornadoFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E722BD263EE45D00564A48 /* TornadoFlow.swift */; };
 		65E7FCF62702048500C4E3CE /* FlowModeHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E7FCF52702048500C4E3CE /* FlowModeHome.swift */; };
@@ -143,7 +144,7 @@
 		65092FB526E2ED7800E769C6 /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
 		65092FB726E4462C00E769C6 /* FontDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontDesign.swift; sourceTree = "<group>"; };
 		65092FB926E4492400E769C6 /* FontWeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontWeight.swift; sourceTree = "<group>"; };
-		650F317E270F27A3000D39D3 /* CoreDataStyleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStyleList.swift; sourceTree = "<group>"; };
+		650F317E270F27A3000D39D3 /* CoreDataStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStyleView.swift; sourceTree = "<group>"; };
 		650F318027107830000D39D3 /* StyleName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleName.swift; sourceTree = "<group>"; };
 		650F318227107D0C000D39D3 /* SaveStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveStyleView.swift; sourceTree = "<group>"; };
 		650F31842712E52B000D39D3 /* RandomStyleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomStyleButton.swift; sourceTree = "<group>"; };
@@ -201,6 +202,7 @@
 		65C7384F26AA71E200368CAE /* Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
 		65DF0E0E265E75EB009421F7 /* WormHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WormHome.swift; sourceTree = "<group>"; };
 		65DF0E10265E75F5009421F7 /* WormFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WormFlow.swift; sourceTree = "<group>"; };
+		65E2039C27E4D1B300ED1BE3 /* CommonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonStyles.swift; sourceTree = "<group>"; };
 		65E722BB263EE44500564A48 /* TornadoHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TornadoHome.swift; sourceTree = "<group>"; };
 		65E722BD263EE45D00564A48 /* TornadoFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TornadoFlow.swift; sourceTree = "<group>"; };
 		65E7FCF52702048500C4E3CE /* FlowModeHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowModeHome.swift; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 				65E7FD07270746DA00C4E3CE /* Button */,
 				657EB83826FA21D50001A71A /* Slider */,
 				657EB83726FA21CB0001A71A /* Toggle */,
+				65E2039C27E4D1B300ED1BE3 /* CommonStyles.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -562,7 +565,7 @@
 		657EB83A26FA2A8C0001A71A /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				650F317E270F27A3000D39D3 /* CoreDataStyleList.swift */,
+				650F317E270F27A3000D39D3 /* CoreDataStyleView.swift */,
 				650F318227107D0C000D39D3 /* SaveStyleView.swift */,
 			);
 			path = "Core Data";
@@ -852,6 +855,7 @@
 				65B9FBDA275F96070072CE4F /* CodeMaker.swift in Sources */,
 				654241DD26CE9456003ABF3E /* RainHome.swift in Sources */,
 				65092FB626E2ED7800E769C6 /* ContentType.swift in Sources */,
+				65E2039D27E4D1B300ED1BE3 /* CommonStyles.swift in Sources */,
 				65E84C1F2673A29A00378408 /* FontView.swift in Sources */,
 				65092F9C26D3D45500E769C6 /* SingleViewModel.swift in Sources */,
 				654241E226CEA0C9003ABF3E /* RainFlow.swift in Sources */,
@@ -876,7 +880,7 @@
 				6537AF4B2633AA2D00919C4E /* LinearHome.swift in Sources */,
 				65092FAC26D5335200E769C6 /* RainViewModel.swift in Sources */,
 				65092FA026D3E81200E769C6 /* CircleViewModel.swift in Sources */,
-				650F317F270F27A3000D39D3 /* CoreDataStyleList.swift in Sources */,
+				650F317F270F27A3000D39D3 /* CoreDataStyleView.swift in Sources */,
 				65092FA426D51CEC00E769C6 /* WormViewModel.swift in Sources */,
 				65B9FB6E273954220072CE4F /* RangeSliders.swift in Sources */,
 				65E84C1D26738C1600378408 /* Fonts.swift in Sources */,

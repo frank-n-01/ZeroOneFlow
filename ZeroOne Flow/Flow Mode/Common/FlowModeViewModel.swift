@@ -3,13 +3,9 @@
 import SwiftUI
 import CoreData
 
-/// The super class of the flow mode view modesl.
 class FlowModeViewModel: ObservableObject {
-    
-    /// The common UserDefaults properties.
     var flowModeUD: FlowModeUserDefaults
     
-    /// The flow is playing or not.
     @Published var isFlowing: Bool
     
     @Published var fonts: Fonts {
@@ -31,33 +27,27 @@ class FlowModeViewModel: ObservableObject {
     }
     
     init(ud: FlowModeUserDefaults, fonts: Fonts) {
-        isFlowing = false
-        flowModeUD = ud
+        self.isFlowing = false
+        self.flowModeUD = ud
         self.fonts = fonts
-        colors = Colors()
-        contents = Contents()
+        self.colors = Colors()
+        self.contents = Contents()
         
-        if flowModeUD.isSaved {
-            // Apply the saved style.
+        if self.flowModeUD.isInitialized {
             applyUserDefaults()
         } else {
-            // Save the first style.
             saveUserDefaults()
         }
     }
     
-    /// Make a random style in the flow mode.
-    ///
-    /// On the condition that the random style mode is activated.
     func makeRandomStyle() {
         fonts.random()
         colors.random()
         contents.random()
     }
     
-    /// Apply the style saved in the flow mode's UserDefaults.
     func applyUserDefaults() {
-        if flowModeUD.isSaved {
+        if flowModeUD.isInitialized {
             fonts.set(size: flowModeUD.fontSize,
                       design: flowModeUD.fontDesign,
                       weight: flowModeUD.fontWeight,
@@ -83,25 +73,22 @@ class FlowModeViewModel: ObservableObject {
         }
     }
     
-    /// Save the current style int the flow mode's UserDefaults.
     func saveUserDefaults() {
         flowModeUD.saveFonts(fonts)
         flowModeUD.saveColors(colors)
         flowModeUD.saveContents(contents)
         
-        if !flowModeUD.isSaved {
-            flowModeUD.isSaved = true
+        if !flowModeUD.isInitialized {
+            flowModeUD.isInitialized = true
         }
     }
     
-    /// Reset the style saved in the flow mode's UserDefaults.
     func resetUserDefaults() {
-        flowModeUD.isSaved = false
+        flowModeUD.isInitialized = false
         colors.reset()
         contents.reset()
     }
     
-    /// Apply the style from Core Data.
     func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext, _ style: T) {
         fonts.set(size: CGFloat(style.fontSize),
                   design: Int(style.fontDesign),
@@ -123,7 +110,6 @@ class FlowModeViewModel: ObservableObject {
                      code: Int(style.code))
     }
     
-    /// Save the style in Core Data.
     func saveCoreData(_ context: NSManagedObjectContext, _ name: String, _ style: FlowMode? = nil) {
         guard let style = style else { return }
         

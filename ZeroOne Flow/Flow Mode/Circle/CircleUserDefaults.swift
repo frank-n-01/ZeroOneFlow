@@ -7,7 +7,7 @@ class CircleUserDefaults: FlowModeUserDefaults {
     @Published var depth: Double {
         didSet {
             if depth != oldValue {
-                UserDefaults.standard.set(depth, forKey: "depth_" + flowModeKey)
+                UserDefaults.standard.set(depth, forKey: "depth_" + flowMode)
             }
         }
     }
@@ -15,7 +15,7 @@ class CircleUserDefaults: FlowModeUserDefaults {
     @Published var gap: Double {
         didSet {
             if gap != oldValue {
-                UserDefaults.standard.set(gap, forKey: "gap_" + flowModeKey)
+                UserDefaults.standard.set(gap, forKey: "gap_" + flowMode)
             }
         }
     }
@@ -23,7 +23,7 @@ class CircleUserDefaults: FlowModeUserDefaults {
     @Published var rotationAngle: Double {
         didSet {
             if rotationAngle != oldValue {
-                UserDefaults.standard.set(rotationAngle, forKey: "rotation_angle_" + flowModeKey)
+                UserDefaults.standard.set(rotationAngle, forKey: "rotation_angle_" + flowMode)
             }
         }
     }

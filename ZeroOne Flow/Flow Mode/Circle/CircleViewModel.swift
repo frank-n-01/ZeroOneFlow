@@ -60,7 +60,7 @@ class CircleViewModel: FlowModeViewModel {
     override func applyUserDefaults() {
         super.applyUserDefaults()
         
-        if ud.isSaved {
+        if ud.isInitialized {
             interval = ud.interval > 0 ? ud.interval : Self.INTERVAL
             depth = ud.depth > 0 ? ud.depth : Self.DEPTH
             gap = ud.gap > 0 ? ud.gap : Self.GAP

@@ -7,7 +7,7 @@ class RainUserDefaults: FlowModeUserDefaults {
     @Published var scale: Double {
         didSet {
             if scale != oldValue {
-                UserDefaults.standard.set(scale, forKey: "scale_" + flowModeKey)
+                UserDefaults.standard.set(scale, forKey: "scale_" + flowMode)
             }
         }
     }
@@ -15,7 +15,7 @@ class RainUserDefaults: FlowModeUserDefaults {
     @Published var length: Double {
         didSet {
             if length != oldValue {
-                UserDefaults.standard.set(length, forKey: "length_" + flowModeKey)
+                UserDefaults.standard.set(length, forKey: "length_" + flowMode)
             }
         }
     }
@@ -23,7 +23,7 @@ class RainUserDefaults: FlowModeUserDefaults {
     @Published var step: Double {
         didSet {
             if step != oldValue {
-                UserDefaults.standard.set(step, forKey: "step_" + flowModeKey)
+                UserDefaults.standard.set(step, forKey: "step_" + flowMode)
             }
         }
     }
