@@ -103,14 +103,14 @@ class LinearViewModel: FlowModeViewModel {
 }
 
 fileprivate class LinearDefaultStyle {
-    fileprivate static let FONT = Fonts(size: 18, design: .monospaced,
+    static let FONT = Fonts(size: 18, design: .monospaced,
                                     weight: .regular, min: 10, max: 100)
     
-    fileprivate static let INTERVAL = 0.005
+    static let INTERVAL = 0.005
     
-    fileprivate static let REPEAT_FLOW = true
+    static let REPEAT_FLOW = true
     
-    fileprivate static let LINEFEED = TextFormat(isOn: false, value: 1)
+    static let LINEFEED = TextFormat(isOn: false, value: 1)
     
-    fileprivate static let INDENTS = TextFormat(isOn: false, value: 3)
+    static let INDENTS = TextFormat(isOn: false, value: 3)
 }

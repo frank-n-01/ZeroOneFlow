@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct TornadoHome: View {
-    @ObservedObject var tornado = TornadoViewModel()
+    @ObservedObject var tornado: TornadoViewModel
     
     var body: some View {
         Section {

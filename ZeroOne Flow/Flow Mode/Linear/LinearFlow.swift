@@ -8,8 +8,7 @@ struct LinearFlow: View {
 
     var body: some View {
         ZStack {
-            linear.colors.bg
-                .edgesIgnoringSafeArea(.all)
+            linear.colors.bg.edgesIgnoringSafeArea(.all)
             
             screenSizeGetter
             

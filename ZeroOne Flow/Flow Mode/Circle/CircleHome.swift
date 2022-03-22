@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct CircleHome: View {
-    @ObservedObject var circle = CircleViewModel()
+    @ObservedObject var circle: CircleViewModel
     
     var body: some View {
         FontView(fonts: $circle.fonts,

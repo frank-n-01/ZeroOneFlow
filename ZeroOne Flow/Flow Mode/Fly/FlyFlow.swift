@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -23,15 +23,12 @@ struct FlyFlow: View {
         .onReceive(Timer.publish(every: fly.isFlowing ? fly.interval : 100,
                                  on: .current, in: .common).autoconnect()) { _ in
             count += 1
-            // Avoid over flow.
-            if count > 100000 {
-                count = 1000
-            }
+            if count > 65534 { count = 1000 }
         }
     }
 }
 
-private struct FlyParts: View {
+fileprivate struct FlyParts: View {
     @ObservedObject var fly: FlyViewModel
     @Binding var count: Int
     @State private var content = ""
@@ -64,11 +61,10 @@ private struct FlyParts: View {
     private func move(_ geometry: GeometryProxy) {
         withAnimation(.easeIn) {
             position.x = CGFloat.random(
-                in: fly.padding.hor...(geometry.size.width - fly.padding.hor)
-            )
+                in: fly.padding.hor...(geometry.size.width - fly.padding.hor))
+            
             position.y = CGFloat.random(
-                in: fly.padding.ver...(geometry.size.height - fly.padding.ver)
-            )
+                in: fly.padding.ver...(geometry.size.height - fly.padding.ver))
         }
     }
 }

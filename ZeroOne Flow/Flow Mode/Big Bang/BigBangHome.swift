@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct BigBangHome: View {
-    @ObservedObject var bigbang = BigBangViewModel()
+    @ObservedObject var bigbang: BigBangViewModel
 
     var body: some View {
         FontRangeView(fonts: $bigbang.fonts,

@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 import CoreData
@@ -26,19 +26,11 @@ class FlyViewModel: FlowModeViewModel {
         }
     }
     
-    static let SCALE = 10.0
-    static let INTERVAL = 0.1
-    static let PADDING = Padding(vertical: 0, horizontal: 0)
-    static let FONT = Fonts(size: 20,
-                            design: .random,
-                            weight: .random,
-                            min: 10, max: 100)
-    
     init() {
-        scale = Self.SCALE
-        interval = Self.INTERVAL
-        padding = Self.PADDING
-        super.init(ud: ud, fonts: Self.FONT)
+        scale = FlyDefaultStyle.SCALE
+        interval = FlyDefaultStyle.INTERVAL
+        padding = FlyDefaultStyle.PADDING
+        super.init(ud: ud, fonts: FlyDefaultStyle.FONT)
     }
     
     override func makeRandomStyle() {
@@ -53,8 +45,8 @@ class FlyViewModel: FlowModeViewModel {
         super.applyUserDefaults()
         
         if ud.isInitialized {
-            scale = ud.scale > 0 ? ud.scale : Self.SCALE
-            interval = ud.interval > 0 ? ud.interval : Self.INTERVAL
+            scale = ud.scale > 0 ? ud.scale : FlyDefaultStyle.SCALE
+            interval = ud.interval > 0 ? ud.interval : FlyDefaultStyle.INTERVAL
             padding.set(vertical: ud.paddingVertical,
                         horizontal: ud.paddingHorizontal)
         }
@@ -72,10 +64,10 @@ class FlyViewModel: FlowModeViewModel {
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        scale = Self.SCALE
-        fonts = Self.FONT
-        interval = Self.INTERVAL
-        padding = Self.PADDING
+        scale = FlyDefaultStyle.SCALE
+        fonts = FlyDefaultStyle.FONT
+        interval = FlyDefaultStyle.INTERVAL
+        padding = FlyDefaultStyle.PADDING
     }
     
     override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
@@ -98,4 +90,15 @@ class FlyViewModel: FlowModeViewModel {
        
         super.saveCoreData(context, name, style)
     }
+}
+
+fileprivate class FlyDefaultStyle {
+    static let FONT = Fonts(size: 20, design: .random, weight: .random,
+                            min: 10, max: 100)
+    
+    static let SCALE = 10.0
+    
+    static let INTERVAL = 0.1
+    
+    static let PADDING = Padding(vertical: 0, horizontal: 0)
 }

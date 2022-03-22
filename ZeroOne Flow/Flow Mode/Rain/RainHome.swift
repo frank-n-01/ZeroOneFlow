@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct RainHome: View {
-    @ObservedObject var rain = RainViewModel()
+    @ObservedObject var rain: RainViewModel
     
     var body: some View {
         FontRangeView(fonts: $rain.fonts,

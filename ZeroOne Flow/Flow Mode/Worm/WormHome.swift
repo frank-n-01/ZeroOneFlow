@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct WormHome: View {
-    @ObservedObject var worm = WormViewModel()
+    @ObservedObject var worm: WormViewModel
     
     var body: some View {
         FontView(fonts: $worm.fonts,
