@@ -20,7 +20,7 @@ struct TextFormat: Equatable {
             return
         }
         self.isOn = isOn
-        self.value = Double(value)
+        self.value = value
     }
     
     nonmutating func save(isOn: inout Bool, value: inout Double) {

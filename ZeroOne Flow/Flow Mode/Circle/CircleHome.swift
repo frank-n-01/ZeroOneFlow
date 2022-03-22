@@ -10,7 +10,7 @@ struct CircleHome: View {
                  minSize: 5, maxSize: 300,
                  isRandom: true)
         
-        ColorView(colors: $circle.colors, random: false)
+        ColorView(colors: $circle.colors)
         
         ContentTypeView(contents: $circle.contents)
         
@@ -23,7 +23,7 @@ struct CircleHome: View {
         }
         
         Section {
-            SandwichedImageSlider(interval: $circle.interval,
+            SpeedSlider(interval: $circle.interval,
                                   min: 0.01, max: 1.0)
         } header: {
             Text("Speed")

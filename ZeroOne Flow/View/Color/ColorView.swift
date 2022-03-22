@@ -4,7 +4,6 @@ import SwiftUI
 
 struct ColorView: View {
     @Binding var colors: Colors
-    let random: Bool
     
     var body: some View {
         Section {

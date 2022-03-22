@@ -18,7 +18,7 @@ struct TornadoHome: View {
                       min: 5, max: 300,
                       isRandom: true)
         
-        ColorView(colors: $tornado.colors, random: false)
+        ColorView(colors: $tornado.colors)
         
         ContentTypeView(contents: $tornado.contents)
         

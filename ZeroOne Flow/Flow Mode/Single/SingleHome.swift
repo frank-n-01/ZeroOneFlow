@@ -10,12 +10,12 @@ struct SingleHome: View {
                  minSize: 10, maxSize: SingleViewModel.MAX_FONT_SIZE,
                  isRandom: true)
         
-        ColorView(colors: $single.colors, random: true)
+        ColorView(colors: $single.colors)
         
         ContentTypeView(contents: $single.contents)
         
         Section {
-            SandwichedImageSlider(interval: $single.interval,
+            SpeedSlider(interval: $single.interval,
                                   min: 0.001, max: 2.0)
         } header: {
             Text("Speed")

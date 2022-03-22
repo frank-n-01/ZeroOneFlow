@@ -10,7 +10,7 @@ struct WormHome: View {
                  minSize: 5, maxSize: 300,
                  isRandom: true)
         
-        ColorView(colors: $worm.colors, random: false)
+        ColorView(colors: $worm.colors)
         
         ContentTypeView(contents: $worm.contents)
         
@@ -23,7 +23,7 @@ struct WormHome: View {
         }
         
         Section {
-            SandwichedImageSlider(interval: $worm.interval,
+            SpeedSlider(interval: $worm.interval,
                                   min: 0.01, max: 1.0)
         } header: {
             Text("Speed")

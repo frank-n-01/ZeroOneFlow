@@ -1,4 +1,4 @@
-// Copyright © 2021-22 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 import CoreData
@@ -53,6 +53,7 @@ class FlowModeViewModel: ObservableObject {
                       weight: flowModeUD.fontWeight,
                       min: flowModeUD.fontSizeMin,
                       max: flowModeUD.fontSizeMax)
+            
             colors.set(txtR: flowModeUD.txtR,
                        txtG: flowModeUD.txtG,
                        txtB: flowModeUD.txtB,
@@ -63,6 +64,7 @@ class FlowModeViewModel: ObservableObject {
                        bgB: flowModeUD.bgB,
                        bgA: flowModeUD.bgA,
                        bgRandom: flowModeUD.bgRandom)
+            
             contents.set(type: flowModeUD.contentType,
                          number: flowModeUD.number,
                          language: flowModeUD.language,
@@ -93,6 +95,7 @@ class FlowModeViewModel: ObservableObject {
         fonts.set(size: CGFloat(style.fontSize),
                   design: Int(style.fontDesign),
                   weight: Int(style.fontWeight))
+        
         colors.set(txtR: style.txtR,
                    txtG: style.txtG,
                    txtB: style.txtB,
@@ -101,6 +104,7 @@ class FlowModeViewModel: ObservableObject {
                    bgG: style.bgG,
                    bgB: style.bgB,
                    bgA: style.bgA)
+        
         contents.set(type: Int(style.valueType),
                      number: Int(style.number),
                      language: Int(style.language),
@@ -115,9 +119,11 @@ class FlowModeViewModel: ObservableObject {
         
         style.date = Date()
         style.name = name
+        
         fonts.save(size: &style.fontSize,
                    design: &style.fontDesign,
                    weight: &style.fontWeight)
+        
         colors.save(txtR: &style.txtR,
                     txtG: &style.txtG,
                     txtB: &style.txtB,
@@ -126,6 +132,7 @@ class FlowModeViewModel: ObservableObject {
                     bgG: &style.bgG,
                     bgB: &style.bgB,
                     bgA: &style.bgA)
+        
         contents.save(type: &style.valueType,
                       number: &style.number,
                       language: &style.language,

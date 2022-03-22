@@ -5,7 +5,6 @@ import SwiftUI
 struct RandomStyleButton: View {
     @EnvironmentObject var mode: ModeUserDefaults
     @State private var image = "die.face.1"
-    var makeRandomStyle: () -> Void
     
     var body: some View {
         Button(action: { mode.isRandomStyle.toggle() }) {
@@ -17,9 +16,6 @@ struct RandomStyleButton: View {
         }
         .onChange(of: mode.isRandomStyle) { isOn in
             throwDice()
-            if isOn {
-                makeRandomStyle()
-            }
         }
         .padding()
     }

@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct SandwichedImageSlider: View {
+struct SpeedSlider: View {
     @Binding var interval: Double
     var min: Double
     var max: Double

@@ -1,14 +1,15 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
-/// Linear mode's UserDefaults properties.
 class LinearUserDefaults: FlowModeUserDefaults {
     
-    @Published var repeatFlow: Bool {
+    @Published var isRepeat: Bool {
         didSet {
-            if repeatFlow != oldValue {
-                UserDefaults.standard.set(repeatFlow, forKey: "Repeat_" + flowMode)
+            if isRepeat != oldValue {
+                UserDefaults.standard
+                    .set(isRepeat,
+                         forKey: Keys.isRepeat.rawValue + flowMode)
             }
         }
     }
@@ -16,7 +17,9 @@ class LinearUserDefaults: FlowModeUserDefaults {
     @Published var isLineFeedOn: Bool {
         didSet {
             if isLineFeedOn != oldValue {
-                UserDefaults.standard.set(isLineFeedOn, forKey: "isLineFeedOn_" + flowMode)
+                UserDefaults.standard
+                    .set(isLineFeedOn,
+                         forKey: Keys.isLineFeedOn.rawValue + flowMode)
             }
         }
     }
@@ -24,7 +27,9 @@ class LinearUserDefaults: FlowModeUserDefaults {
     @Published var maxLineLength: Double {
         didSet {
             if maxLineLength != oldValue {
-                UserDefaults.standard.set(maxLineLength, forKey: "maxLineLength_" + flowMode)
+                UserDefaults.standard
+                    .set(maxLineLength,
+                         forKey: Keys.maxLineLength.rawValue + flowMode)
             }
         }
     }
@@ -32,7 +37,9 @@ class LinearUserDefaults: FlowModeUserDefaults {
     @Published var isIndentOn: Bool {
         didSet {
             if isIndentOn != oldValue {
-                UserDefaults.standard.set(isIndentOn, forKey: "is_indent_on_" + flowMode)
+                UserDefaults.standard
+                    .set(isIndentOn,
+                         forKey: Keys.isIndentOn.rawValue + flowMode)
             }
         }
     }
@@ -41,18 +48,36 @@ class LinearUserDefaults: FlowModeUserDefaults {
         didSet {
             if maxNumberOfIndents != oldValue {
                 UserDefaults.standard
-                    .set(maxNumberOfIndents, forKey: "max_number_of_indents_" + flowMode)
+                    .set(maxNumberOfIndents,
+                         forKey: Keys.maxNumberOfIndents.rawValue + flowMode)
             }
         }
     }
     
     override init(_ flowModeKey: String) {
-        repeatFlow = UserDefaults.standard.bool(forKey: "Repeat_" + flowModeKey)
-        isLineFeedOn = UserDefaults.standard.bool(forKey: "isLineFeedOn_" + flowModeKey)
-        maxLineLength = UserDefaults.standard.double(forKey: "maxLineLength_" + flowModeKey)
-        isIndentOn = UserDefaults.standard.bool(forKey: "is_indent_on_" + flowModeKey)
-        maxNumberOfIndents = UserDefaults.standard.double(forKey: "max_number_of_indents_" + flowModeKey)
+        isRepeat = UserDefaults.standard
+            .bool(forKey: Keys.isRepeat.rawValue + flowModeKey)
+        
+        isLineFeedOn = UserDefaults.standard
+            .bool(forKey: Keys.isLineFeedOn.rawValue + flowModeKey)
+        
+        maxLineLength = UserDefaults.standard
+            .double(forKey: Keys.maxLineLength.rawValue + flowModeKey)
+        
+        isIndentOn = UserDefaults.standard
+            .bool(forKey: Keys.isIndentOn.rawValue + flowModeKey)
+        
+        maxNumberOfIndents = UserDefaults.standard
+            .double(forKey: Keys.maxNumberOfIndents.rawValue + flowModeKey)
         
         super.init(flowModeKey)
+    }
+    
+    private enum Keys: String {
+        case isRepeat = "Repeat_"
+        case isLineFeedOn = "isLineFeedOn_"
+        case maxLineLength = "maxLineLength_"
+        case isIndentOn = "is_indent_on_"
+        case maxNumberOfIndents = "max_number_of_indents_"
     }
 }

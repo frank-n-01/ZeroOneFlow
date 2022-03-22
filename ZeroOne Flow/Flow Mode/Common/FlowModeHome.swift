@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -89,7 +89,7 @@ struct FlowModeHome: View {
         ToolbarItemGroup(placement: .bottomBar) {
             if !isFlowing {
                 HStack {
-                    RandomStyleButton(makeRandomStyle: viewModel.makeRandomStyle)
+                    RandomStyleButton()
                     Spacer()
                     SimpleImageButton(image: "play.fill", action: startFlow)
                     Spacer()

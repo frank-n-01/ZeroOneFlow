@@ -41,7 +41,7 @@ class UserDefaultsTest: XCTestCase {
         
         assertEqual(viewModel: linear, with: random)
         XCTAssertEqual(linear.interval, random.interval)
-        XCTAssertEqual(linear.repeatFlow, random.repeatFlow)
+        XCTAssertEqual(linear.isRepeat, random.isRepeat)
         XCTAssertEqual(linear.linefeed, random.linefeed)
         XCTAssertEqual(linear.indents, random.indents)
         

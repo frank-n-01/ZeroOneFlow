@@ -10,7 +10,7 @@ struct BigBangHome: View {
                       min: 5, max: 200,
                       isRandom: true)
         
-        ColorView(colors: $bigbang.colors, random: false)
+        ColorView(colors: $bigbang.colors)
         
         ContentTypeView(contents: $bigbang.contents)
         
@@ -23,7 +23,7 @@ struct BigBangHome: View {
         }
         
         Section {
-            SandwichedImageSlider(interval: $bigbang.interval,
+            SpeedSlider(interval: $bigbang.interval,
                                   min: 0.01, max: 0.2)
         } header: {
             Text("Speed")

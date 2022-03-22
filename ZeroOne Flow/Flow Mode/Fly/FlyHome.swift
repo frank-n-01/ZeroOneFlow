@@ -18,12 +18,12 @@ struct FlyHome: View {
                  minSize: 5, maxSize: 500,
                  isRandom: true)
         
-        ColorView(colors: $fly.colors, random: false)
+        ColorView(colors: $fly.colors)
         
         ContentTypeView(contents: $fly.contents)
         
         Section {
-            SandwichedImageSlider(interval: $fly.interval,
+            SpeedSlider(interval: $fly.interval,
                                   min: 0.01, max: 1.0)
         } header: {
             Text("Speed")

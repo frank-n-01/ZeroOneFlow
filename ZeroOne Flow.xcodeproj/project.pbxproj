@@ -95,7 +95,7 @@
 		65E84BFA2670F78B00378408 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84BF92670F78B00378408 /* ColorView.swift */; };
 		65E84BFD2670F80800378408 /* TextColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84BFC2670F80800378408 /* TextColorView.swift */; };
 		65E84C042670F8CD00378408 /* BackgroundColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C032670F8CD00378408 /* BackgroundColorView.swift */; };
-		65E84C0B2670FCB500378408 /* SandwichedImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C0A2670FCB500378408 /* SandwichedImageSlider.swift */; };
+		65E84C0B2670FCB500378408 /* SpeedSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C0A2670FCB500378408 /* SpeedSlider.swift */; };
 		65E84C0D2670FCD400378408 /* ToggleWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C0C2670FCD400378408 /* ToggleWithLabel.swift */; };
 		65E84C162670FE0700378408 /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C152670FE0700378408 /* Contents.swift */; };
 		65E84C1B26738BE800378408 /* BigBangHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C1A26738BE800378408 /* BigBangHome.swift */; };
@@ -218,7 +218,7 @@
 		65E84BF92670F78B00378408 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		65E84BFC2670F80800378408 /* TextColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextColorView.swift; sourceTree = "<group>"; };
 		65E84C032670F8CD00378408 /* BackgroundColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorView.swift; sourceTree = "<group>"; };
-		65E84C0A2670FCB500378408 /* SandwichedImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandwichedImageSlider.swift; sourceTree = "<group>"; };
+		65E84C0A2670FCB500378408 /* SpeedSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedSlider.swift; sourceTree = "<group>"; };
 		65E84C0C2670FCD400378408 /* ToggleWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleWithLabel.swift; sourceTree = "<group>"; };
 		65E84C152670FE0700378408 /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
 		65E84C1A26738BE800378408 /* BigBangHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBangHome.swift; sourceTree = "<group>"; };
@@ -556,7 +556,7 @@
 			children = (
 				65B9FB6B273947380072CE4F /* SliderWithSingleImage.swift */,
 				65E84BEA2670F53000378408 /* CGFloatSlider.swift */,
-				65E84C0A2670FCB500378408 /* SandwichedImageSlider.swift */,
+				65E84C0A2670FCB500378408 /* SpeedSlider.swift */,
 				65B9FB6D273954220072CE4F /* RangeSliders.swift */,
 			);
 			path = Slider;
@@ -903,7 +903,7 @@
 				65E84C212673AE0E00378408 /* BigBangFlow.swift in Sources */,
 				65092F9026D3B12E00E769C6 /* TornadoUserDefaults.swift in Sources */,
 				657EB84226FA2DBF0001A71A /* NumberType.swift in Sources */,
-				65E84C0B2670FCB500378408 /* SandwichedImageSlider.swift in Sources */,
+				65E84C0B2670FCB500378408 /* SpeedSlider.swift in Sources */,
 				65E722BE263EE45D00564A48 /* TornadoFlow.swift in Sources */,
 				65E7FD09270746F400C4E3CE /* SimpleImageButton.swift in Sources */,
 				65092F9426D3BD9F00E769C6 /* FontRangeView.swift in Sources */,

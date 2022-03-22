@@ -1,111 +1,114 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
-/// Run the flow of Linear mode.
 struct LinearFlow: View {
     @ObservedObject var linear: LinearViewModel
-    @State private var content = ""
-    @State private var screenHeight: CGFloat = 0.0
-    @State private var screenWidth: CGFloat = 0.0
-    @State private var currentHeight: CGFloat = 0.0
-    @State private var lineSpacing: CGFloat = 0.0
-    @State private var kerning: CGFloat = 0.0
-    @State private var stopped = false
-    @State private var preservedContent = ""
+    @ObservedObject private var flow = LinearFlowController()
 
     var body: some View {
         ZStack {
-            linear.colors.bg.edgesIgnoringSafeArea(.all)
+            linear.colors.bg
+                .edgesIgnoringSafeArea(.all)
+            
             screenSizeGetter
+            
             GeometryReader { _ in
-                Text(content)
+                Text(flow.content)
                     .font(.system(size: linear.fonts.size,
                                   weight: linear.fonts.weight.value,
                                   design: linear.fonts.design.value))
                     .foregroundColor(linear.colors.txt)
-                    .kerning(kerning)
-                    .lineSpacing(lineSpacing)
+                    .kerning(flow.kerning)
+                    .lineSpacing(flow.lineSpacing)
                     .fixedSize(horizontal: false, vertical: true)
-                    .frame(width: screenWidth, alignment: .topLeading)
+                    .frame(width: flow.screenWidth, alignment: .topLeading)
                     .background(currentHeightGetter)
             }
         }
-        .onReceive(Timer.publish(every: !stopped ? linear.interval : 100,
+        .onReceive(Timer.publish(every: !flow.isStopped ? linear.interval : 100,
                                  on: .current, in: .common).autoconnect()) { _ in
             move()
         }
         .onAppear {
-            adjustKerning()
-            adjustLineSpacing()
+            flow.isRepeat = linear.isRepeat
+            flow.adjustKerning(contents: linear.contents)
+            flow.adjustLineSpacing(contents: linear.contents)
             CodeMaker.reset()
         }
     }
     
-    /// Get the current screen size.
     private var screenSizeGetter: some View {
         GeometryReader { geometry in
             Text("")
                 .onAppear {
-                    screenHeight = geometry.size.height
-                    screenWidth = geometry.size.width
+                    flow.screenHeight = geometry.size.height
+                    flow.screenWidth = geometry.size.width
                 }
                 .onChange(of: geometry.size) { _ in
-                    screenHeight = geometry.size.height
-                    screenWidth = geometry.size.width
+                    flow.screenHeight = geometry.size.height
+                    flow.screenWidth = geometry.size.width
                 }
         }
     }
     
-    /// Get the current height of the view from its background.
     private var currentHeightGetter: some View {
         GeometryReader { geometry in
             Text("")
                 .onAppear {
-                    currentHeight = geometry.size.height
+                    flow.currentHeight = geometry.size.height
                 }
                 .onChange(of: geometry.size.height) { _ in
-                    currentHeight = geometry.size.height
-                    controlFlowRepeat()
+                    flow.currentHeight = geometry.size.height
+                    flow.controlRepeat()
                 }
         }
     }
     
-    /// Control the repeat of the flow.
-    private func controlFlowRepeat() {
-        if linear.repeatFlow {
-            // If the flow has filled the screen, it will be cleared and repeated.
+    private func move() {
+        guard flow.currentHeight <= flow.screenHeight else {
+            flow.controlRepeat()
+            return
+        }
+        
+        if !linear.isRepeat {
+            flow.preservedContent = flow.content
+        }
+        
+        flow.content += ContentMaker.make(with: linear.contents)
+        flow.content += ContentMaker
+            .getRandomLineFeed(linear.linefeed, linear.indents, linear.contents)
+    }
+}
+
+fileprivate class LinearFlowController: ObservableObject {
+    @Published var content = ""
+    @Published var preservedContent = ""
+    @Published var screenHeight: CGFloat = 0.0
+    @Published var screenWidth: CGFloat = 0.0
+    @Published var currentHeight: CGFloat = 0.0
+    @Published var lineSpacing: CGFloat = 0.0
+    @Published var kerning: CGFloat = 0.0
+    @Published var isStopped = false
+    var isRepeat: Bool = true
+    
+    func controlRepeat() {
+        if isRepeat {
             if currentHeight > screenHeight {
                 content = ""
                 ContentMaker.reset()
             }
         } else if currentHeight > screenHeight {
-            stopped = true
+            isStopped = true
             content = preservedContent
+            preservedContent = ""
         }
     }
     
-    /// Move the flow by adding contents to the view.
-    func move() {
-        // If the flow has already filled the screen, add no more content.
-        guard currentHeight <= screenHeight else {
-            controlFlowRepeat()
-            return
-        }
-        // If don't repeat the flow, preserve the current content.
-        if !linear.repeatFlow {
-            preservedContent = content
-        }
-        content += ContentMaker.make(with: linear.contents)
-        content += ContentMaker.getRandomLineFeed(linear.linefeed, linear.indents,
-                                                  linear.contents)
-    }
-    
-    /// Adjust the kerning depend on the flow content.
-    private func adjustKerning() {
-        switch linear.contents.type {
+    func adjustKerning(contents: Contents) {
+        switch contents.type {
         case .language:
-            switch linear.contents.language {
+            switch contents.language {
             case .greek:
                 kerning = 3.0
             case .hieroglyph:
@@ -116,7 +119,7 @@ struct LinearFlow: View {
                 kerning = 1.0
             }
         case .symbol:
-            switch linear.contents.symbol {
+            switch contents.symbol {
             case .currency:
                 kerning = 3.0
             default:
@@ -127,11 +130,10 @@ struct LinearFlow: View {
         }
     }
     
-    /// Adjust the line spacing depend on the flow content.
-    private func adjustLineSpacing() {
-        switch linear.contents.type {
+    func adjustLineSpacing(contents: Contents) {
+        switch contents.type {
         case .language:
-            switch linear.contents.language {
+            switch contents.language {
             case .cuneiform, .hieroglyph:
                 lineSpacing = 10.0
             case .greek:
@@ -140,7 +142,7 @@ struct LinearFlow: View {
                 lineSpacing = 5.0
             }
         case .symbol:
-            switch linear.contents.symbol {
+            switch contents.symbol {
             case .currency:
                 lineSpacing = 1.0
             default:
