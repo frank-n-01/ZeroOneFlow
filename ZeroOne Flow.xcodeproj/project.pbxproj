@@ -80,6 +80,7 @@
 		65DF0E0F265E75EB009421F7 /* WormHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DF0E0E265E75EB009421F7 /* WormHome.swift */; };
 		65DF0E11265E75F5009421F7 /* WormFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DF0E10265E75F5009421F7 /* WormFlow.swift */; };
 		65E2039D27E4D1B300ED1BE3 /* CommonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2039C27E4D1B300ED1BE3 /* CommonStyles.swift */; };
+		65E203A327EA194D00ED1BE3 /* FlowCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E203A227EA194D00ED1BE3 /* FlowCount.swift */; };
 		65E722BC263EE44500564A48 /* TornadoHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E722BB263EE44500564A48 /* TornadoHome.swift */; };
 		65E722BE263EE45D00564A48 /* TornadoFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E722BD263EE45D00564A48 /* TornadoFlow.swift */; };
 		65E7FCF62702048500C4E3CE /* FlowModeHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E7FCF52702048500C4E3CE /* FlowModeHome.swift */; };
@@ -203,6 +204,7 @@
 		65DF0E0E265E75EB009421F7 /* WormHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WormHome.swift; sourceTree = "<group>"; };
 		65DF0E10265E75F5009421F7 /* WormFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WormFlow.swift; sourceTree = "<group>"; };
 		65E2039C27E4D1B300ED1BE3 /* CommonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonStyles.swift; sourceTree = "<group>"; };
+		65E203A227EA194D00ED1BE3 /* FlowCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCount.swift; sourceTree = "<group>"; };
 		65E722BB263EE44500564A48 /* TornadoHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TornadoHome.swift; sourceTree = "<group>"; };
 		65E722BD263EE45D00564A48 /* TornadoFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TornadoFlow.swift; sourceTree = "<group>"; };
 		65E7FCF52702048500C4E3CE /* FlowModeHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowModeHome.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				651EE0C62650AF98007389AC /* Flow Mode */,
 				657EB82226F56E5A0001A71A /* Model */,
 				651EE0B5264D2B23007389AC /* View */,
+				65E203A127EA192D00ED1BE3 /* Utility */,
 				657EB82E26F579F40001A71A /* Resource */,
 				65590A932611C603004AB0D3 /* Preview Content */,
 			);
@@ -641,6 +644,14 @@
 			path = Worm;
 			sourceTree = "<group>";
 		};
+		65E203A127EA192D00ED1BE3 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				65E203A227EA194D00ED1BE3 /* FlowCount.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		65E722BA263EE41600564A48 /* Tornado */ = {
 			isa = PBXGroup;
 			children = (
@@ -848,6 +859,7 @@
 				654241E726CFD3EE003ABF3E /* FlowModeUserDefaults.swift in Sources */,
 				657066312726E81E00C37C19 /* RandomGradientView.swift in Sources */,
 				65092F9826D3CABB00E769C6 /* Axis3D.swift in Sources */,
+				65E203A327EA194D00ED1BE3 /* FlowCount.swift in Sources */,
 				651EE0D02653E2B5007389AC /* CircleHome.swift in Sources */,
 				65092F9E26D3E7EA00E769C6 /* CircleUserDefaults.swift in Sources */,
 				65E84BFD2670F80800378408 /* TextColorView.swift in Sources */,

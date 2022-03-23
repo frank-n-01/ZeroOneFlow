@@ -25,19 +25,11 @@ class TornadoViewModel: FlowModeViewModel {
         }
     }
     
-    static let SCALE = 15.0
-    static let DURATION = Range(min: 0.01, max: 3.0)
-    static let ANGLE = Range(min: 1, max: 30)
-    static let FONT = Fonts(size: 0,
-                            design: .random,
-                            weight: .random,
-                            min: 5, max: 50)
-    
     init() {
-        scale = Self.SCALE
-        durationRange = Self.DURATION
-        angleRange = Self.ANGLE
-        super.init(ud: ud, fonts: Self.FONT)
+        scale = TornadoDefaultStyle.SCALE
+        durationRange = TornadoDefaultStyle.DURATION
+        angleRange = TornadoDefaultStyle.ANGLE
+        super.init(ud: ud, fonts: TornadoDefaultStyle.FONT)
     }
     
     override func makeRandomStyle() {
@@ -52,7 +44,7 @@ class TornadoViewModel: FlowModeViewModel {
         super.applyUserDefaults()
         
         if ud.isInitialized {
-            scale = ud.scale > 0 ? ud.scale : Self.SCALE
+            scale = ud.scale > 0 ? ud.scale : TornadoDefaultStyle.SCALE
             durationRange.set(min: ud.durationMin, max: ud.durationMax)
             angleRange.set(min: ud.angleMin, max: ud.angleMax)
         }
@@ -69,10 +61,10 @@ class TornadoViewModel: FlowModeViewModel {
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        scale = Self.SCALE
-        fonts = Self.FONT
-        durationRange = Self.DURATION
-        angleRange = Self.ANGLE
+        scale = TornadoDefaultStyle.SCALE
+        fonts = TornadoDefaultStyle.FONT
+        durationRange = TornadoDefaultStyle.DURATION
+        angleRange = TornadoDefaultStyle.ANGLE
     }
     
     override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
@@ -98,4 +90,15 @@ class TornadoViewModel: FlowModeViewModel {
        
         super.saveCoreData(context, name, style)
     }
+}
+
+private class TornadoDefaultStyle {
+    static let FONT = Fonts(size: 0, design: .random,
+                            weight: .random, min: 5, max: 50)
+    
+    static let SCALE = 15.0
+    
+    static let DURATION = Range(min: 0.01, max: 3.0)
+    
+    static let ANGLE = Range(min: 1, max: 30)
 }

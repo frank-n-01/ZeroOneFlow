@@ -102,7 +102,7 @@ class LinearViewModel: FlowModeViewModel {
     }
 }
 
-fileprivate class LinearDefaultStyle {
+private class LinearDefaultStyle {
     static let FONT = Fonts(size: 18, design: .monospaced,
                                     weight: .regular, min: 10, max: 100)
     

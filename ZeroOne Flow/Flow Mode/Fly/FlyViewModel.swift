@@ -92,7 +92,7 @@ class FlyViewModel: FlowModeViewModel {
     }
 }
 
-fileprivate class FlyDefaultStyle {
+private class FlyDefaultStyle {
     static let FONT = Fonts(size: 20, design: .random, weight: .random,
                             min: 10, max: 100)
     

@@ -4,7 +4,7 @@ import SwiftUI
 
 struct LinearFlow: View {
     @ObservedObject var linear: LinearViewModel
-    @ObservedObject private var flow = LinearFlowController()
+    @State private var flow = LinearFlowParameters()
 
     var body: some View {
         ZStack {
@@ -80,18 +80,18 @@ struct LinearFlow: View {
     }
 }
 
-fileprivate class LinearFlowController: ObservableObject {
-    @Published var content = ""
-    @Published var preservedContent = ""
-    @Published var screenHeight: CGFloat = 0.0
-    @Published var screenWidth: CGFloat = 0.0
-    @Published var currentHeight: CGFloat = 0.0
-    @Published var lineSpacing: CGFloat = 0.0
-    @Published var kerning: CGFloat = 0.0
-    @Published var isStopped = false
+private struct LinearFlowParameters {
+    var content = ""
+    var preservedContent = ""
+    var screenHeight: CGFloat = 0.0
+    var screenWidth: CGFloat = 0.0
+    var currentHeight: CGFloat = 0.0
+    var lineSpacing: CGFloat = 0.0
+    var kerning: CGFloat = 0.0
+    var isStopped = false
     var isRepeat: Bool = true
     
-    func controlRepeat() {
+    mutating func controlRepeat() {
         if isRepeat {
             if currentHeight > screenHeight {
                 content = ""
@@ -104,7 +104,7 @@ fileprivate class LinearFlowController: ObservableObject {
         }
     }
     
-    func adjustKerning(contents: Contents) {
+    mutating func adjustKerning(contents: Contents) {
         switch contents.type {
         case .language:
             switch contents.language {
@@ -129,7 +129,7 @@ fileprivate class LinearFlowController: ObservableObject {
         }
     }
     
-    func adjustLineSpacing(contents: Contents) {
+    mutating func adjustLineSpacing(contents: Contents) {
         switch contents.type {
         case .language:
             switch contents.language {

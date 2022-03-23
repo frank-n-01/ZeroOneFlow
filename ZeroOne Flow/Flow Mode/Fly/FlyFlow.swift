@@ -4,15 +4,15 @@ import SwiftUI
 
 struct FlyFlow: View {
     @ObservedObject var fly: FlyViewModel
-    @State private var count = 0
     @State private var loop = 0
+    @State private var count = FlowCount()
     
     var body: some View {
         ZStack {
             fly.colors.bg.edgesIgnoringSafeArea(.all)
             
             ForEach(0 ..< loop, id: \.self) { i in
-                if i < count {
+                if i < count.value {
                     FlyParts(fly: fly, count: $count)
                 }
             }
@@ -22,29 +22,25 @@ struct FlyFlow: View {
         }
         .onReceive(Timer.publish(every: fly.isFlowing ? fly.interval : 100,
                                  on: .current, in: .common).autoconnect()) { _ in
-            count += 1
-            if count > 65534 { count = 1000 }
+            count.increment()
         }
     }
 }
 
-fileprivate struct FlyParts: View {
+private struct FlyParts: View {
     @ObservedObject var fly: FlyViewModel
-    @Binding var count: Int
-    @State private var content = ""
-    @State private var design: Font.Design = .monospaced
-    @State private var weight: Font.Weight = .regular
-    @State private var position: CGPoint = UIScreen.getRandomPoint()
+    @Binding var count: FlowCount
+    @State private var flow = FlyFlowParameters()
     
     var body: some View {
         GeometryReader { geometry in
-            Text(content)
+            Text(flow.content)
                 .font(.system(size: fly.fonts.size,
-                              weight: weight,
-                              design: design))
+                              weight: flow.weight,
+                              design: flow.design))
                 .foregroundColor(fly.colors.txt)
-                .position(position)
-                .onChange(of: count) { _ in
+                .position(flow.position)
+                .onChange(of: count.value) { _ in
                     move(geometry)
                 }
                 .onAppear {
@@ -52,19 +48,26 @@ fileprivate struct FlyParts: View {
                 }
         }
         .onAppear {
-            content = ContentMaker.make(with: fly.contents)
-            design = fly.fonts.design.value
-            weight = fly.fonts.weight.value
+            flow.content = ContentMaker.make(with: fly.contents)
+            flow.design = fly.fonts.design.value
+            flow.weight = fly.fonts.weight.value
         }
     }
     
     private func move(_ geometry: GeometryProxy) {
         withAnimation(.easeIn) {
-            position.x = CGFloat.random(
+            flow.position.x = CGFloat.random(
                 in: fly.padding.hor...(geometry.size.width - fly.padding.hor))
             
-            position.y = CGFloat.random(
+            flow.position.y = CGFloat.random(
                 in: fly.padding.ver...(geometry.size.height - fly.padding.ver))
         }
     }
+}
+
+private struct FlyFlowParameters {
+    var content = ""
+    var design: Font.Design = .monospaced
+    var weight: Font.Weight = .regular
+    var position: CGPoint = UIScreen.getRandomPoint()
 }

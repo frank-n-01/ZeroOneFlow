@@ -79,7 +79,7 @@ struct FlowModeHome: View {
         }
         .onChange(of: isFlowing) { _ in
             if isFlowing {
-                // dismiss the navigate animation when the flow starts.
+                // Dismiss the navigate animation when the flow starts.
                 UINavigationBar.setAnimationsEnabled(false)
             }
         }

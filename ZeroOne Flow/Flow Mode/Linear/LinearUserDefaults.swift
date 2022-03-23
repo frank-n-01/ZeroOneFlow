@@ -54,23 +54,23 @@ class LinearUserDefaults: FlowModeUserDefaults {
         }
     }
     
-    override init(_ flowModeKey: String) {
+    override init(_ flowMode: String) {
         isRepeat = UserDefaults.standard
-            .bool(forKey: Keys.isRepeat.rawValue + flowModeKey)
+            .bool(forKey: Keys.isRepeat.rawValue + flowMode)
         
         isLineFeedOn = UserDefaults.standard
-            .bool(forKey: Keys.isLineFeedOn.rawValue + flowModeKey)
+            .bool(forKey: Keys.isLineFeedOn.rawValue + flowMode)
         
         maxLineLength = UserDefaults.standard
-            .double(forKey: Keys.maxLineLength.rawValue + flowModeKey)
+            .double(forKey: Keys.maxLineLength.rawValue + flowMode)
         
         isIndentOn = UserDefaults.standard
-            .bool(forKey: Keys.isIndentOn.rawValue + flowModeKey)
+            .bool(forKey: Keys.isIndentOn.rawValue + flowMode)
         
         maxNumberOfIndents = UserDefaults.standard
-            .double(forKey: Keys.maxNumberOfIndents.rawValue + flowModeKey)
+            .double(forKey: Keys.maxNumberOfIndents.rawValue + flowMode)
         
-        super.init(flowModeKey)
+        super.init(flowMode)
     }
     
     private enum Keys: String {
