@@ -57,16 +57,12 @@ class LinearUserDefaults: FlowModeUserDefaults {
     override init(_ flowMode: String) {
         isRepeat = UserDefaults.standard
             .bool(forKey: Keys.isRepeat.rawValue + flowMode)
-        
         isLineFeedOn = UserDefaults.standard
             .bool(forKey: Keys.isLineFeedOn.rawValue + flowMode)
-        
         maxLineLength = UserDefaults.standard
             .double(forKey: Keys.maxLineLength.rawValue + flowMode)
-        
         isIndentOn = UserDefaults.standard
             .bool(forKey: Keys.isIndentOn.rawValue + flowMode)
-        
         maxNumberOfIndents = UserDefaults.standard
             .double(forKey: Keys.maxNumberOfIndents.rawValue + flowMode)
         

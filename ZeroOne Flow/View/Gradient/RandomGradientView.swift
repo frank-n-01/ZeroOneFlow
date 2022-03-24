@@ -16,6 +16,7 @@ struct RandomGradientView: View {
             ForEach(0 ..< GradientType.allCases.count, id: \.self) { i in
                 Text(GradientType.allCases[i].name)
                     .tag(GradientType.allCases[i])
+                    .font(.title3)
             }
         } label: {
             Text("Type")

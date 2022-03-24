@@ -229,23 +229,17 @@ class FlowModeUserDefaults: ObservableObject {
         isInitialized = UserDefaults.standard
             .bool(forKey: Keys.isInitialized.rawValue + flowMode)
         
-        // Fonts
         fontSize = UserDefaults.standard
             .double(forKey: Keys.fontSize.rawValue + flowMode)
-        
         fontSizeMin = UserDefaults.standard
             .double(forKey: Keys.fontSizeMin.rawValue + flowMode)
-        
         fontSizeMax = UserDefaults.standard
             .double(forKey: Keys.fontSizeMax.rawValue + flowMode)
-        
         fontDesign = UserDefaults.standard
             .integer(forKey: Keys.fontDesign.rawValue + flowMode)
-        
         fontWeight = UserDefaults.standard
             .integer(forKey: Keys.fontWeight.rawValue + flowMode)
         
-        // Colors
         txtR = UserDefaults.standard.double(forKey: Keys.txtR.rawValue + flowMode)
         txtG = UserDefaults.standard.double(forKey: Keys.txtG.rawValue + flowMode)
         txtB = UserDefaults.standard.double(forKey: Keys.txtB.rawValue + flowMode)
@@ -263,25 +257,18 @@ class FlowModeUserDefaults: ObservableObject {
         interval = UserDefaults.standard
             .double(forKey: Keys.interval.rawValue + flowMode)
         
-        // Contents
         contentType = UserDefaults.standard
             .integer(forKey: Keys.contentType.rawValue + flowMode)
-        
         number = UserDefaults.standard
             .integer(forKey: Keys.number.rawValue + flowMode)
-        
         language = UserDefaults.standard
             .integer(forKey: Keys.language.rawValue + flowMode)
-        
         symbol = UserDefaults.standard
             .integer(forKey: Keys.symbol.rawValue + flowMode)
-        
         customValue1 = UserDefaults.standard
             .string(forKey: Keys.customValue1.rawValue + flowMode)
-        
         customValue2 = UserDefaults.standard
             .string(forKey: Keys.customValue2.rawValue + flowMode)
-        
         code = UserDefaults.standard
             .integer(forKey: Keys.code.rawValue + flowMode)
     }

@@ -52,16 +52,12 @@ class TornadoUserDefaults: FlowModeUserDefaults {
     override init(_ flowMode: String) {
         scale = UserDefaults.standard
             .double(forKey: Keys.scale.rawValue + flowMode)
-        
         durationMin = UserDefaults.standard
             .double(forKey: Keys.durationMin.rawValue + flowMode)
-        
         durationMax = UserDefaults.standard
             .double(forKey: Keys.durationMax.rawValue + flowMode)
-        
         angleMin = UserDefaults.standard
             .double(forKey: Keys.angleMin.rawValue + flowMode)
-        
         angleMax = UserDefaults.standard
             .double(forKey: Keys.angleMax.rawValue + flowMode)
         
