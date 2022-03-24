@@ -22,7 +22,7 @@ struct WormFlow: View {
             .onAppear {
                 loop = Int(worm.length)
                 crawling = Int(worm.crawling)
-                initPosition()
+                position = Array(repeating: UIScreen.centerPoint, count: loop)
             }
         }
     }
@@ -92,26 +92,16 @@ struct WormFlow: View {
     
     /// Change the head direction randomly.
     private func turn() {
-        if Int.random(in: 0...crawling) == 0 {
-            isToLeft.toggle()
-        }
-        if Int.random(in: 0...crawling) == 0 {
-            isUpward.toggle()
-        }
+        if Int.random(in: 0...crawling) == 0 { isToLeft.toggle() }
+        if Int.random(in: 0...crawling) == 0 { isUpward.toggle() }
     }
     
-    /// The  worm body follows the head.
+    /// The body follows the head.
     private func moveBody() {
         for i in (1 ..< loop).reversed() {
             position[i].x = position[i - 1].x
             position[i].y = position[i - 1].y
         }
-    }
-    
-    private func initPosition() {
-        let x = UIScreen.main.bounds.width / 2
-        let y = UIScreen.main.bounds.height / 2
-        position = Array(repeating: CGPoint(x: x, y: y), count: loop)
     }
 }
 
