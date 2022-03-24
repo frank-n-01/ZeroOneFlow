@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -40,17 +40,12 @@ struct SingleFlow: View {
             design = single.fonts.design.value
             weight = single.fonts.weight.value
             
-            withAnimation(.easeIn) {
-                randomColor()
+            if single.colors.bgRandom {
+                withAnimation(.easeIn) {
+                    txtColor = Colors.random()
+                    gradient.random()
+                }
             }
-        }
-    }
-    
-    /// Make random colors if the random color mode is activated.
-    private func randomColor() {
-        if single.colors.bgRandom {
-            txtColor = Colors.getRandom()
-            gradient.random()
         }
     }
 }

@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -49,23 +49,23 @@ class TornadoUserDefaults: FlowModeUserDefaults {
         }
     }
     
-    override init(_ flowModeKey: String) {
+    override init(_ flowMode: String) {
         scale = UserDefaults.standard
-            .double(forKey: Keys.scale.rawValue + flowModeKey)
+            .double(forKey: Keys.scale.rawValue + flowMode)
         
         durationMin = UserDefaults.standard
-            .double(forKey: Keys.durationMin.rawValue + flowModeKey)
+            .double(forKey: Keys.durationMin.rawValue + flowMode)
         
         durationMax = UserDefaults.standard
-            .double(forKey: Keys.durationMax.rawValue + flowModeKey)
+            .double(forKey: Keys.durationMax.rawValue + flowMode)
         
         angleMin = UserDefaults.standard
-            .double(forKey: Keys.angleMin.rawValue + flowModeKey)
+            .double(forKey: Keys.angleMin.rawValue + flowMode)
         
         angleMax = UserDefaults.standard
-            .double(forKey: Keys.angleMax.rawValue + flowModeKey)
+            .double(forKey: Keys.angleMax.rawValue + flowMode)
         
-        super.init(flowModeKey)
+        super.init(flowMode)
     }
     
     private enum Keys: String {

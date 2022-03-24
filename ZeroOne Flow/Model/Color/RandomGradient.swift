@@ -25,8 +25,8 @@ struct RandomGradient {
     
     init(type: GradientType = .radial) {
         self.type = type
-        self.startColor = Colors.getRandom()
-        self.endColor = Colors.getRandom()
+        self.startColor = Colors.random()
+        self.endColor = Colors.random()
         self.startRadius = 5.0
         self.endRadius = 500.0
         self.max = UIScreen.main.bounds.height > UIScreen.main.bounds.width
@@ -53,8 +53,8 @@ struct RandomGradient {
     }
     
     mutating func randomColor() {
-        startColor = Colors.getRandom()
-        endColor = Colors.getRandom()
+        startColor = Colors.random()
+        endColor = Colors.random()
     }
     
     mutating func randomRadius() {

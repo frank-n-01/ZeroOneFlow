@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 import CoreData
@@ -19,11 +19,10 @@ class SingleViewModel: FlowModeViewModel {
         }
     }
     
+    static let FONT = Fonts(size: UIScreen.getSize(smaller: true),
+                            design: .random, weight: .random)
     static let INTERVAL = 0.1
     static let GRADIENT_TYPE: GradientType = .radial
-    static let FONT = Fonts(size: UIScreen.getSize(smaller: true),
-                            design: .random,
-                            weight: .random)
     static let MAX_FONT_SIZE = UIScreen.getSize(smaller: false)
     
     init() {
@@ -35,8 +34,7 @@ class SingleViewModel: FlowModeViewModel {
     override func makeRandomStyle() {
         interval = Double.random(in: 0.01...0.2)
         fonts.size = CGFloat.random(
-            in: Self.MAX_FONT_SIZE * 0.3 ..< Self.MAX_FONT_SIZE * 0.6
-        )
+            in: Self.MAX_FONT_SIZE * 0.3 ..< Self.MAX_FONT_SIZE * 0.6)
         contents.random()
         colors.txtRandom = true
         colors.bgRandom = true

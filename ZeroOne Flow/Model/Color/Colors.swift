@@ -66,20 +66,21 @@ struct Colors: Equatable {
     }
     
     mutating func random() {
-        self.txt = Colors.getRandom()
-        self.bg = Colors.getRandom()
+        self.txt = Colors.random()
+        self.bg = Colors.random()
     }
     
     mutating func randomOnCondition() {
         if txtRandom {
-            self.txt = Colors.getRandom()
+            self.txt = Colors.random()
         }
+        
         if bgRandom {
-            self.bg = Colors.getRandom()
+            self.bg = Colors.random()
         }
     }
     
-    static func getRandom() -> Color {
+    static func random() -> Color {
         return Color(red: Double.random(in: 0...1.0),
                      green: Double.random(in: 0...1.0),
                      blue: Double.random(in: 0...1.0),

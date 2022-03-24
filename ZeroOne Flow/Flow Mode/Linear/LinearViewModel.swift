@@ -32,12 +32,12 @@ class LinearViewModel: FlowModeViewModel {
     }
     
     init() {
-        interval = LinearDefaultStyle.INTERVAL
-        isRepeat = LinearDefaultStyle.REPEAT_FLOW
-        linefeed = LinearDefaultStyle.LINEFEED
-        indents = LinearDefaultStyle.INDENTS
+        interval = LinearDefault.INTERVAL
+        isRepeat = LinearDefault.REPEAT_FLOW
+        linefeed = LinearDefault.LINEFEED
+        indents = LinearDefault.INDENTS
         
-        super.init(ud: ud, fonts: LinearDefaultStyle.FONT)
+        super.init(ud: ud, fonts: LinearDefault.FONT)
     }
     
     override func makeRandomStyle() {
@@ -52,7 +52,7 @@ class LinearViewModel: FlowModeViewModel {
         super.applyUserDefaults()
         
         if ud.isInitialized {
-            interval = ud.interval > 0 ? ud.interval : LinearDefaultStyle.INTERVAL
+            interval = ud.interval > 0 ? ud.interval : LinearDefault.INTERVAL
             isRepeat = ud.isRepeat
             linefeed.set(isOn: ud.isLineFeedOn, value: ud.maxLineLength)
             indents.set(isOn: ud.isIndentOn, value: ud.maxNumberOfIndents)
@@ -71,18 +71,18 @@ class LinearViewModel: FlowModeViewModel {
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        fonts = LinearDefaultStyle.FONT
-        interval = LinearDefaultStyle.INTERVAL
-        isRepeat = LinearDefaultStyle.REPEAT_FLOW
-        linefeed = LinearDefaultStyle.LINEFEED
-        indents = LinearDefaultStyle.INDENTS
+        fonts = LinearDefault.FONT
+        interval = LinearDefault.INTERVAL
+        isRepeat = LinearDefault.REPEAT_FLOW
+        linefeed = LinearDefault.LINEFEED
+        indents = LinearDefault.INDENTS
     }
     
     override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
                                              _ style: T) {
         guard let style = style as? Linear else { return }
         
-        interval = style.interval > 0 ? style.interval : LinearDefaultStyle.INTERVAL
+        interval = style.interval > 0 ? style.interval : LinearDefault.INTERVAL
         isRepeat = style.repeatFlow
         linefeed.set(isOn: style.isLineFeedOn, value: style.maxLineLength)
         indents.set(isOn: style.isIndentOn, value: style.maxNumberOfIndents)
@@ -102,15 +102,11 @@ class LinearViewModel: FlowModeViewModel {
     }
 }
 
-private class LinearDefaultStyle {
+private class LinearDefault {
     static let FONT = Fonts(size: 18, design: .monospaced,
                                     weight: .regular, min: 10, max: 100)
-    
     static let INTERVAL = 0.005
-    
     static let REPEAT_FLOW = true
-    
     static let LINEFEED = TextFormat(isOn: false, value: 1)
-    
     static let INDENTS = TextFormat(isOn: false, value: 3)
 }

@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 import CoreData
@@ -26,10 +26,10 @@ class TornadoViewModel: FlowModeViewModel {
     }
     
     init() {
-        scale = TornadoDefaultStyle.SCALE
-        durationRange = TornadoDefaultStyle.DURATION
-        angleRange = TornadoDefaultStyle.ANGLE
-        super.init(ud: ud, fonts: TornadoDefaultStyle.FONT)
+        scale = TornadoDefault.SCALE
+        durationRange = TornadoDefault.DURATION
+        angleRange = TornadoDefault.ANGLE
+        super.init(ud: ud, fonts: TornadoDefault.FONT)
     }
     
     override func makeRandomStyle() {
@@ -44,7 +44,7 @@ class TornadoViewModel: FlowModeViewModel {
         super.applyUserDefaults()
         
         if ud.isInitialized {
-            scale = ud.scale > 0 ? ud.scale : TornadoDefaultStyle.SCALE
+            scale = ud.scale > 0 ? ud.scale : TornadoDefault.SCALE
             durationRange.set(min: ud.durationMin, max: ud.durationMax)
             angleRange.set(min: ud.angleMin, max: ud.angleMax)
         }
@@ -61,10 +61,10 @@ class TornadoViewModel: FlowModeViewModel {
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        scale = TornadoDefaultStyle.SCALE
-        fonts = TornadoDefaultStyle.FONT
-        durationRange = TornadoDefaultStyle.DURATION
-        angleRange = TornadoDefaultStyle.ANGLE
+        scale = TornadoDefault.SCALE
+        fonts = TornadoDefault.FONT
+        durationRange = TornadoDefault.DURATION
+        angleRange = TornadoDefault.ANGLE
     }
     
     override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
@@ -92,13 +92,10 @@ class TornadoViewModel: FlowModeViewModel {
     }
 }
 
-private class TornadoDefaultStyle {
+private class TornadoDefault {
     static let FONT = Fonts(size: 0, design: .random,
                             weight: .random, min: 5, max: 50)
-    
     static let SCALE = 15.0
-    
     static let DURATION = Range(min: 0.01, max: 3.0)
-    
     static let ANGLE = Range(min: 1, max: 30)
 }
