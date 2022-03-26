@@ -4,7 +4,6 @@ import SwiftUI
 
 struct CoreDataStyleView: View {
     @ObservedObject var viewModel: FlowModeViewModel
-    @State private var showAlert = false
     @Environment(\.managedObjectContext) var context
     @FetchRequest(
         entity: Mode.allCases[ModeUserDefaults.sharedCurrentMode].entity,
@@ -28,25 +27,19 @@ struct CoreDataStyleView: View {
     }
     
     var styleRows: some View {
-        ForEach(styles.indices, id: \.self) { i in
+        ForEach(styles, id: \.self) { style in
             HStack {
                 Group {
-                    if styles[i].name ?? "" == "unnamed" {
-                        Text(LocalizedStringKey(styles[i].name ?? ""))
+                    if style.name ?? "" == "unnamed" {
+                        Text(LocalizedStringKey(style.name ?? ""))
                     } else {
-                        Text(styles[i].name ?? "")
+                        Text(style.name ?? "")
                     }
                 }
                 .font(.title3)
                 
-                Button(action: { showAlert.toggle() }) {
+                Button(action: { viewModel.applyCoreData(context, style) }) {
                     Spacer()
-                }
-                .alert("Apply", isPresented: $showAlert) {
-                    Button("Cancel", role: .cancel) {}
-                    Button("OK", action: { applyCoreData(index: i) })
-                } message: {
-                    Text("apply.message")
                 }
             }
         }
@@ -56,10 +49,6 @@ struct CoreDataStyleView: View {
     
     func saveCoreData(name: String) {
         viewModel.saveCoreData(context, name)
-    }
-    
-    func applyCoreData(index: Int) {
-        viewModel.applyCoreData(context, styles[index])
     }
     
     private func remove(at offsets: IndexSet) {
