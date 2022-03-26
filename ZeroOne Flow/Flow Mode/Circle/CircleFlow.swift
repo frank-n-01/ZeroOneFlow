@@ -35,69 +35,61 @@ struct CircleParts: View {
     @ObservedObject var circle: CircleViewModel
     @Binding var count: FlowCount
     @Binding var center: CGPoint
-    @State private var flow = CircleFlowParameters()
+    @State private var content = ""
+    @State private var design: Font.Design = .monospaced
+    @State private var weight: Font.Weight = .regular
+    @State private var position = UIScreen.centerPoint
+    @State private var angle: Double = 0.0
+    @State private var isClockwise = false
     
     var body: some View {
         if circle.isFlowing {
             GeometryReader { _ in
-                Text(flow.content)
+                Text(content)
                     .font(.system(size: circle.fonts.size,
-                                  weight: flow.weight,
-                                  design: flow.design))
+                                  weight: weight,
+                                  design: design))
                     .foregroundColor(circle.colors.txt)
-                    .position(flow.position)
+                    .position(position)
                     .onChange(of: count.value) { _ in
                         withAnimation(.easeIn) {
                             rotate()
                         }
                     }
                     .onAppear {
-                        initPosition()
-                        flow.content = ContentMaker.make(with: circle.contents)
-                        flow.design = circle.fonts.design.value
-                        flow.weight = circle.fonts.weight.value
+                        withAnimation(.easeIn) {
+                            initPosition()
+                            content = ContentMaker.make(with: circle.contents)
+                        }
+                        design = circle.fonts.design.value
+                        weight = circle.fonts.weight.value
                     }
-                    .rotationEffect(.degrees(flow.angle))
+                    .rotationEffect(.degrees(angle))
             }
         }
     }
     
     private func rotate() {
-        if flow.isClockwise {
-            flow.angle += circle.rotationAngle
-            if flow.angle > 36000 {
-                flow.isClockwise.toggle()
+        if isClockwise {
+            angle += circle.rotationAngle
+            if angle > 36000 {
+                isClockwise.toggle()
             }
         } else {
-            flow.angle -= circle.rotationAngle
-            if flow.angle < 0 {
-                flow.isClockwise.toggle()
+            angle -= circle.rotationAngle
+            if angle < 0 {
+                isClockwise.toggle()
             }
         }
     }
     
     private func initPosition() {
         if center.x < center.y {
-            flow.position.x = center.x
-            flow.position.y = center.y - CGFloat(count.value) * circle.gap
+            position.x = center.x
+            position.y = center.y - CGFloat(count.value) * circle.gap
         } else {
-            flow.position.x = center.x - CGFloat(count.value) * circle.gap
-            flow.position.y = center.y
+            position.x = center.x - CGFloat(count.value) * circle.gap
+            position.y = center.y
         }
-    }
-}
-
-private struct CircleFlowParameters {
-    var content = ""
-    var design: Font.Design = .monospaced
-    var weight: Font.Weight = .regular
-    var position = UIScreen.centerPoint
-    var angle: Double = 0.0
-    var isClockwise = false
-}
-
-extension UIScreen {
-    static var centerPoint: CGPoint {
-        CGPoint(x: main.bounds.width / 2, y: main.bounds.height / 2)
     }
 }

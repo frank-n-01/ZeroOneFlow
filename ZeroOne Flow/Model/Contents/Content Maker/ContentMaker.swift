@@ -10,7 +10,6 @@ class ContentMaker {
     /// - Parameter contents: The flow mode's contents property.
     /// - Returns: A random content.
     static func make(with contents: Contents) -> String {
-        
         switch contents.type {
         case .number:
             return NumberMaker.make(type: contents.number)

@@ -7,7 +7,7 @@ class RainUserDefaults: FlowModeUserDefaults {
     @Published var scale: Double {
         didSet {
             if scale != oldValue {
-                UserDefaults.standard.set(scale, forKey: "scale_" + flowMode)
+                UserDefaults.standard.set(scale, forKey: Keys.scale.rawValue + flowMode)
             }
         }
     }
@@ -15,7 +15,7 @@ class RainUserDefaults: FlowModeUserDefaults {
     @Published var length: Double {
         didSet {
             if length != oldValue {
-                UserDefaults.standard.set(length, forKey: "length_" + flowMode)
+                UserDefaults.standard.set(length, forKey: Keys.length.rawValue + flowMode)
             }
         }
     }
@@ -23,16 +23,22 @@ class RainUserDefaults: FlowModeUserDefaults {
     @Published var step: Double {
         didSet {
             if step != oldValue {
-                UserDefaults.standard.set(step, forKey: "step_" + flowMode)
+                UserDefaults.standard.set(step, forKey: Keys.step.rawValue + flowMode)
             }
         }
     }
     
     override init(_ flowModeKey: String) {
-        scale = UserDefaults.standard.double(forKey: "scale_" + flowModeKey)
-        length = UserDefaults.standard.double(forKey: "length_" + flowModeKey)
-        step = UserDefaults.standard.double(forKey: "step_" + flowModeKey)
+        scale = UserDefaults.standard.double(forKey: Keys.scale.rawValue + flowModeKey)
+        length = UserDefaults.standard.double(forKey: Keys.length.rawValue + flowModeKey)
+        step = UserDefaults.standard.double(forKey: Keys.step.rawValue + flowModeKey)
         
         super.init(flowModeKey)
+    }
+    
+    private enum Keys: String {
+        case scale = "scale_"
+        case length = "length_"
+        case step = "step_"
     }
 }

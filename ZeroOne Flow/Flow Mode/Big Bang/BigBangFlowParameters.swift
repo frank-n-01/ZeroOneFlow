@@ -64,4 +64,8 @@ extension UIScreen {
         CGPoint(x: CGFloat.random(in: 0...UIScreen.main.bounds.width),
                 y: CGFloat.random(in: 0...UIScreen.main.bounds.height))
     }
+    
+    static var centerPoint: CGPoint {
+        CGPoint(x: main.bounds.width / 2, y: main.bounds.height / 2)
+    }
 }

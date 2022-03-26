@@ -28,11 +28,9 @@ struct TornadoFlow: View {
         .onReceive(Timer.publish(every: tornado.isFlowing ? 0.1 : 100,
                                  on: .current, in: .common).autoconnect()) { _ in
             count.increment()
-            
             if count.value % 10 == 0 {
                 duration = Double.random(in: tornado.durationRange.range)
             }
-            
             withAnimation(.easeIn) {
                 rotate()
             }
@@ -60,15 +58,18 @@ struct TornadoParts: View {
     @ObservedObject var tornado: TornadoViewModel
     @Binding var duration: Double
     @Binding var count: FlowCount
-    @State private var flow = TornadoFlowParameters()
+    @State private var content = ""
+    @State private var fontSize: CGFloat = 0
+    @State private var design: Font.Design = .monospaced
+    @State private var weight: Font.Weight = .regular
     @State private var rotation3D = Rotation3D()
     @State private var position: CGPoint = UIScreen.getRandomPoint()
     
     var body: some View {
         if tornado.isFlowing {
             GeometryReader { geometry in
-                Text(flow.content)
-                    .font(.system(size: flow.fontSize, weight: flow.weight, design: flow.design))
+                Text(content)
+                    .font(.system(size: fontSize, weight: weight, design: design))
                     .foregroundColor(tornado.colors.txt)
                     .position(position)
                     .rotation3DEffect(.degrees(rotation3D.angle),
@@ -85,10 +86,10 @@ struct TornadoParts: View {
                     }
             }
             .onAppear {
-                flow.content = ContentMaker.make(with: tornado.contents)
-                flow.fontSize = tornado.fonts.sizeRange.getRandomSizeInRange()
-                flow.design = tornado.fonts.design.value
-                flow.weight = tornado.fonts.weight.value
+                content = ContentMaker.make(with: tornado.contents)
+                fontSize = tornado.fonts.sizeRange.getRandomSizeInRange()
+                design = tornado.fonts.design.value
+                weight = tornado.fonts.weight.value
             }
         }
     }
@@ -105,11 +106,4 @@ struct TornadoParts: View {
             }
         }
     }
-}
-
-private struct TornadoFlowParameters {
-    var content = ""
-    var fontSize: CGFloat = 0
-    var design: Font.Design = .monospaced
-    var weight: Font.Weight = .regular
 }

@@ -30,16 +30,19 @@ struct FlyFlow: View {
 private struct FlyParts: View {
     @ObservedObject var fly: FlyViewModel
     @Binding var count: FlowCount
-    @State private var flow = FlyFlowParameters()
+    @State private var content = ""
+    @State private var design: Font.Design = .monospaced
+    @State private var weight: Font.Weight = .regular
+    @State private var position: CGPoint = UIScreen.getRandomPoint()
     
     var body: some View {
         GeometryReader { geometry in
-            Text(flow.content)
+            Text(content)
                 .font(.system(size: fly.fonts.size,
-                              weight: flow.weight,
-                              design: flow.design))
+                              weight: weight,
+                              design: design))
                 .foregroundColor(fly.colors.txt)
-                .position(flow.position)
+                .position(position)
                 .onChange(of: count.value) { _ in
                     move(geometry)
                 }
@@ -48,26 +51,19 @@ private struct FlyParts: View {
                 }
         }
         .onAppear {
-            flow.content = ContentMaker.make(with: fly.contents)
-            flow.design = fly.fonts.design.value
-            flow.weight = fly.fonts.weight.value
+            content = ContentMaker.make(with: fly.contents)
+            design = fly.fonts.design.value
+            weight = fly.fonts.weight.value
         }
     }
     
     private func move(_ geometry: GeometryProxy) {
         withAnimation(.easeIn) {
-            flow.position.x = CGFloat.random(
+            position.x = CGFloat.random(
                 in: fly.padding.hor...(geometry.size.width - fly.padding.hor))
             
-            flow.position.y = CGFloat.random(
+            position.y = CGFloat.random(
                 in: fly.padding.ver...(geometry.size.height - fly.padding.ver))
         }
     }
-}
-
-private struct FlyFlowParameters {
-    var content = ""
-    var design: Font.Design = .monospaced
-    var weight: Font.Weight = .regular
-    var position: CGPoint = UIScreen.getRandomPoint()
 }
