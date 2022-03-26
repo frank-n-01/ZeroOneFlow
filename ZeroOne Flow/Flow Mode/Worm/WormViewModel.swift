@@ -118,8 +118,7 @@ class WormViewModel: FlowModeViewModel {
 }
 
 private class WormDefault {
-    static let FONT = Fonts(size: 20, design: .random, weight: .random,
-                            min: 5, max: 100)
+    static let FONT = Fonts(size: 20, design: .random, weight: .random, min: 5, max: 100)
     static let INTERVAL = 0.08
     static let LENGTH = 20.0
     static let STEP = 20.0

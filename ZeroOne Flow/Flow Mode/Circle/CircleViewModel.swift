@@ -103,8 +103,7 @@ class CircleViewModel: FlowModeViewModel {
 }
 
 private class CircleDefault {
-    static let FONT = Fonts(size: 18, design: .random, weight: .random,
-                            min: 10, max: 100)
+    static let FONT = Fonts(size: 18, design: .random, weight: .random, min: 10, max: 100)
     static let INTERVAL = 0.1
     static let DEPTH = 150.0
     static let GAP = 5.0

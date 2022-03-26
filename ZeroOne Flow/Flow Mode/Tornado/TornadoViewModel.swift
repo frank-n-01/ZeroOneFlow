@@ -93,8 +93,7 @@ class TornadoViewModel: FlowModeViewModel {
 }
 
 private class TornadoDefault {
-    static let FONT = Fonts(size: 0, design: .random,
-                            weight: .random, min: 5, max: 50)
+    static let FONT = Fonts(size: 0, design: .random, weight: .random, min: 5, max: 50)
     static let SCALE = 15.0
     static let DURATION = Range(min: 0.01, max: 3.0)
     static let ANGLE = Range(min: 1, max: 30)

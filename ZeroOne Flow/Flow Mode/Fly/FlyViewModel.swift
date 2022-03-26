@@ -93,8 +93,7 @@ class FlyViewModel: FlowModeViewModel {
 }
 
 private class FlyDefault {
-    static let FONT = Fonts(size: 20, design: .random, weight: .random,
-                            min: 10, max: 100)
+    static let FONT = Fonts(size: 20, design: .random, weight: .random, min: 10, max: 100)
     static let SCALE = 10.0
     static let INTERVAL = 0.1
     static let PADDING = Padding(vertical: 0, horizontal: 0)

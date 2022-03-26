@@ -20,8 +20,10 @@ struct FontSizeRange: Equatable {
     }
     
     mutating func set(min: CGFloat, max: CGFloat) {
-        self.min = min
-        self.max = max
+        if min > 0 && min < max {
+            self.min = min
+            self.max = max
+        }
     }
     
     nonmutating func save(min: inout Double, max: inout Double) {
