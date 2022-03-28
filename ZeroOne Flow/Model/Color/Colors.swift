@@ -7,14 +7,11 @@ struct Colors: Equatable {
     var txtRandom: Bool
     var bg: Color
     var bgRandom: Bool
-    
-    static let TEXT = Color("Text")
-    static let BACKGROUND = Color.black
-    
+        
     init() {
-        self.txt = Self.TEXT
+        self.txt = CommonStyle.TEXT_COLOR
         self.txtRandom = false
-        self.bg = Self.BACKGROUND
+        self.bg = CommonStyle.BACKGROUND_COLOR
         self.bgRandom = false
     }
     
@@ -59,27 +56,28 @@ struct Colors: Equatable {
     }
     
     mutating func reset() {
-        self.txt = Self.TEXT
+        self.txt = CommonStyle.TEXT_COLOR
         self.txtRandom = false
-        self.bg = Self.BACKGROUND
+        self.bg = CommonStyle.BACKGROUND_COLOR
         self.bgRandom = false
     }
     
     mutating func random() {
-        self.txt = Colors.getRandom()
-        self.bg = Colors.getRandom()
+        self.txt = Colors.random()
+        self.bg = Colors.random()
     }
     
     mutating func randomOnCondition() {
         if txtRandom {
-            self.txt = Colors.getRandom()
+            self.txt = Colors.random()
         }
+        
         if bgRandom {
-            self.bg = Colors.getRandom()
+            self.bg = Colors.random()
         }
     }
     
-    static func getRandom() -> Color {
+    static func random() -> Color {
         return Color(red: Double.random(in: 0...1.0),
                      green: Double.random(in: 0...1.0),
                      blue: Double.random(in: 0...1.0),

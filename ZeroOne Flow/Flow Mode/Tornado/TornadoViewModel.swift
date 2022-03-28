@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 import CoreData
@@ -25,19 +25,11 @@ class TornadoViewModel: FlowModeViewModel {
         }
     }
     
-    static let SCALE = 15.0
-    static let DURATION = Range(min: 0.01, max: 3.0)
-    static let ANGLE = Range(min: 1, max: 30)
-    static let FONT = Fonts(size: 0,
-                            design: .random,
-                            weight: .random,
-                            min: 5, max: 50)
-    
     init() {
-        scale = Self.SCALE
-        durationRange = Self.DURATION
-        angleRange = Self.ANGLE
-        super.init(ud: ud, fonts: Self.FONT)
+        scale = TornadoDefault.SCALE
+        durationRange = TornadoDefault.DURATION
+        angleRange = TornadoDefault.ANGLE
+        super.init(ud: ud, fonts: TornadoDefault.FONT)
     }
     
     override func makeRandomStyle() {
@@ -51,8 +43,8 @@ class TornadoViewModel: FlowModeViewModel {
     override func applyUserDefaults() {
         super.applyUserDefaults()
         
-        if ud.isSaved {
-            scale = ud.scale > 0 ? ud.scale : Self.SCALE
+        if ud.isInitialized {
+            scale = ud.scale > 0 ? ud.scale : TornadoDefault.SCALE
             durationRange.set(min: ud.durationMin, max: ud.durationMax)
             angleRange.set(min: ud.angleMin, max: ud.angleMax)
         }
@@ -69,10 +61,10 @@ class TornadoViewModel: FlowModeViewModel {
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        scale = Self.SCALE
-        fonts = Self.FONT
-        durationRange = Self.DURATION
-        angleRange = Self.ANGLE
+        scale = TornadoDefault.SCALE
+        fonts = TornadoDefault.FONT
+        durationRange = TornadoDefault.DURATION
+        angleRange = TornadoDefault.ANGLE
     }
     
     override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
@@ -98,4 +90,11 @@ class TornadoViewModel: FlowModeViewModel {
        
         super.saveCoreData(context, name, style)
     }
+}
+
+private class TornadoDefault {
+    static let FONT = Fonts(size: 0, design: .random, weight: .random, min: 5, max: 50)
+    static let SCALE = 15.0
+    static let DURATION = Range(min: 0.01, max: 3.0)
+    static let ANGLE = Range(min: 1, max: 30)
 }

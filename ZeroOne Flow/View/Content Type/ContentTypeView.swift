@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -18,12 +18,12 @@ struct ContentTypeView: View {
         Picker(selection: $contents.type) {
             ForEach(ContentType.allCases) { type in
                 Text(type.name)
-                    .font(.title3)
+                    .font(CommonStyle.LABEL_FONT)
                     .tag(type)
             }
         } label: {
             Text("Type")
-                .font(.title3)
+                .font(CommonStyle.LABEL_FONT)
         }
     }
     
@@ -48,12 +48,12 @@ struct ContentTypeView: View {
         Picker(selection: $contents.number) {
             ForEach(NumberType.allCases) { number in
                 Text(number.name)
-                    .font(.title3)
+                    .font(CommonStyle.LABEL_FONT)
                     .tag(number)
             }
         } label: {
             Text("Number")
-                .font(.title3)
+                .font(CommonStyle.LABEL_FONT)
         }
     }
     
@@ -61,12 +61,12 @@ struct ContentTypeView: View {
         Picker(selection: $contents.language) {
             ForEach(LanguageType.allCases) { language in
                 Text(language.name)
-                    .font(.title3)
+                    .font(CommonStyle.LABEL_FONT)
                     .tag(language)
             }
         } label: {
             Text("Language")
-                .font(.title3)
+                .font(CommonStyle.LABEL_FONT)
         }
     }
     
@@ -74,19 +74,19 @@ struct ContentTypeView: View {
         Picker(selection: $contents.symbol) {
             ForEach(SymbolType.allCases) { symbol in
                 Text(symbol.name)
-                    .font(.title3)
+                    .font(CommonStyle.LABEL_FONT)
                     .tag(symbol)
             }
         } label: {
             Text("Symbol")
-                .font(.title3)
+                .font(CommonStyle.LABEL_FONT)
         }
     }
     
     var customTextField: some View {
-        ForEach(0 ..< 2) { i in
-            TextField( i == 0 ? "First Content" : "Second Content",
-                       text: $contents.customValue[i])
+        ForEach(0 ..< 2) { index in
+            TextField( index == 0 ? "First Content" : "Second Content",
+                       text: $contents.customValue[index])
                 .autocapitalization(.none)
         }
     }
@@ -95,12 +95,12 @@ struct ContentTypeView: View {
         Picker(selection: $contents.code) {
             ForEach(CodeType.allCases) { code in
                 Text(code.name)
-                    .font(.title3)
+                    .font(CommonStyle.LABEL_FONT)
                     .tag(code)
             }
         } label: {
             Text("Code")
-                .font(.title3)
+                .font(CommonStyle.LABEL_FONT)
         }
     }
 }

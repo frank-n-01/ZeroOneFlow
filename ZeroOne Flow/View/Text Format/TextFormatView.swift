@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -21,18 +21,18 @@ struct TextFormatView: View {
     private var toggle: some View {
         Toggle(isOn: $format.isOn) {
             Text("Activate")
-                .font(.title3)
+                .font(CommonStyle.LABEL_FONT)
         }
     }
     
     private var slider: some View {
         HStack(spacing: 10) {
             Image(systemName: image)
-                .font(.title3)
+                .font(CommonStyle.LABEL_FONT)
                 .foregroundColor(.gray)
             Slider(value: $format.value, in: min...max)
             Text(String(format: "%.0f", format.value))
-                .font(.title3)
+                .font(CommonStyle.LABEL_FONT)
                 .foregroundColor(.gray)
                 .frame(width: 50)
                 .lineLimit(1)

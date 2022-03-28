@@ -1,8 +1,8 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
-struct SandwichedImageSlider: View {
+struct SpeedSlider: View {
     @Binding var interval: Double
     var min: Double
     var max: Double
@@ -15,7 +15,7 @@ struct SandwichedImageSlider: View {
             Slider(value: $interval, in: min...max)
             Image(systemName: secondImage)
         }
-        .font(.title3)
+        .font(CommonStyle.LABEL_FONT)
         .foregroundColor(.gray)
     }
 }

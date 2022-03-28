@@ -6,7 +6,7 @@ struct FontView: View {
     @Binding var fonts: Fonts
     var minSize: CGFloat
     var maxSize: CGFloat
-    var isRandom: Bool
+    var isRandom: Bool = false
     
     var body: some View {
         Section {

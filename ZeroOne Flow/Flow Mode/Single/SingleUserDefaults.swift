@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -8,17 +8,20 @@ class SingleUserDefaults: FlowModeUserDefaults {
         didSet {
             if gradientType != oldValue {
                 UserDefaults.standard.set(
-                    gradientType.rawValue, forKey: "gradient_type_" + flowModeKey
+                    gradientType.rawValue, forKey: Keys.gradientType.rawValue + flowMode
                 )
             }
         }
     }
     
-    override init(_ flowModeKey: String) {
+    override init(_ flowMode: String) {
         gradientType = GradientType(rawValue: UserDefaults.standard.integer(
-            forKey: "gradient_type_" + flowModeKey)
-        ) ?? SingleViewModel.GRADIENT_TYPE
+            forKey: Keys.gradientType.rawValue + flowMode)) ?? SingleViewModel.GRADIENT_TYPE
         
-        super.init(flowModeKey)
+        super.init(flowMode)
+    }
+    
+    private enum Keys: String {
+        case gradientType = "gradient_type_"
     }
 }

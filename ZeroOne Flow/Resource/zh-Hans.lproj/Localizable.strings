@@ -100,10 +100,6 @@
 "save.message" = "保存您现在的样式？";
 "unnamed" = "無名";
 
-// Apply
-"Apply" = "采用";
-"apply.message" = "采用这个样式?";
-
 // Reset
 "Reset" = "初始化";
 "reset.message" = "初始化您的样式？";

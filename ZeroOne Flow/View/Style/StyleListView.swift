@@ -1,20 +1,19 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
-struct CoreDataStyleList: View {
+struct StyleListView: View {
     @ObservedObject var viewModel: FlowModeViewModel
-    @State private var showAlert = false
     @Environment(\.managedObjectContext) var context
     @FetchRequest(
-        entity: Mode.allCases[ModeUserDefaults.currentMode].entity,
+        entity: Mode.allCases[ModeUserDefaults.sharedCurrentMode].entity,
         sortDescriptors: [NSSortDescriptor(keyPath: \FlowMode.date, ascending: false)]
     ) var styles: FetchedResults<FlowMode>
     
     var body: some View {
         List {
             Section {
-                SaveStyleView(saveCoreData: saveCoreData)
+                SaveStyleField(saveCoreData: saveCoreData)
             }
             Section {
                 styleRows
@@ -28,25 +27,19 @@ struct CoreDataStyleList: View {
     }
     
     var styleRows: some View {
-        ForEach(styles.indices, id: \.self) { i in
+        ForEach(styles, id: \.self) { style in
             HStack {
                 Group {
-                    if styles[i].name ?? "" == "unnamed" {
-                        Text(LocalizedStringKey(styles[i].name ?? ""))
+                    if style.name ?? "" == "unnamed" {
+                        Text(LocalizedStringKey(style.name ?? ""))
                     } else {
-                        Text(styles[i].name ?? "")
+                        Text(style.name ?? "")
                     }
                 }
-                .font(.title3)
+                .font(CommonStyle.LABEL_FONT)
                 
-                Button(action: { showAlert.toggle() }) {
+                Button(action: { viewModel.applyCoreData(context, style) }) {
                     Spacer()
-                }
-                .alert("Apply", isPresented: $showAlert) {
-                    Button("Cancel", role: .cancel) {}
-                    Button("OK", action: { applyCoreData(index: i) })
-                } message: {
-                    Text("apply.message")
                 }
             }
         }
@@ -58,11 +51,7 @@ struct CoreDataStyleList: View {
         viewModel.saveCoreData(context, name)
     }
     
-    func applyCoreData(index: Int) {
-        viewModel.applyCoreData(context, styles[index])
-    }
-    
-    private func remove(at offsets: IndexSet) {
+    func remove(at offsets: IndexSet) {
         guard !styles.isEmpty else { return }
         
         for index in offsets {
@@ -74,7 +63,7 @@ struct CoreDataStyleList: View {
         }
     }
     
-    private func move(from source: IndexSet, to destination: Int) {
+    func move(from source: IndexSet, to destination: Int) {
         guard let source = source.first else { return }
         
         let tmp = styles[source].date

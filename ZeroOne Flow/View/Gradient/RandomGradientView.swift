@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -13,20 +13,21 @@ struct RandomGradientView: View {
     
     private var typePicker: some View {
         Picker(selection: $type) {
-            ForEach(0 ..< GradientType.allCases.count, id: \.self) { i in
-                Text(GradientType.allCases[i].name)
-                    .tag(GradientType.allCases[i])
+            ForEach(0 ..< GradientType.allCases.count, id: \.self) { index in
+                Text(GradientType.allCases[index].name)
+                    .tag(GradientType.allCases[index])
+                    .font(CommonStyle.LABEL_FONT)
             }
         } label: {
             Text("Type")
-                .font(.title3)
+                .font(CommonStyle.LABEL_FONT)
         }
     }
     
     private var activateToggle: some View {
         Toggle(isOn: $colors.bgRandom) {
             Text("Activate")
-                .font(.title3)
+                .font(CommonStyle.LABEL_FONT)
         }
     }
 }

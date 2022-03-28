@@ -1,28 +1,25 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
-struct SaveStyleView: View {
+struct SaveStyleField: View {
     var saveCoreData: (String) -> Void
     @State private var showAlert = false
-    @StateObject private var styleName = StyleName()
+    @State private var name = ""
     
     var body: some View {
         HStack(spacing: 10) {
-            styleNameTextField
+            TextField("style name", text: $name)
+                .autocapitalization(.none)
+            
             saveButton
         }
-    }
-    
-    private var styleNameTextField: some View {
-        TextField("style name", text: $styleName.name)
-            .autocapitalization(.none)
     }
     
     private var saveButton: some View {
         Button(action: { showAlert.toggle() }) {
             Image(systemName: "tray.and.arrow.down.fill")
-                .font(.title3)
+                .font(CommonStyle.LABEL_FONT)
         }
         .alert("Save", isPresented: $showAlert) {
             Button("Cancel", role: .cancel) {}
@@ -32,12 +29,12 @@ struct SaveStyleView: View {
         }
     }
     
-    private func save() {
-        if styleName.name.isEmpty {
-            styleName.name = "unnamed"
+    func save() {
+        if name.isEmpty {
+            name = "unnamed"
         }
         
-        saveCoreData(styleName.name)
-        styleName.name = ""
+        saveCoreData(name)
+        name = ""
     }
 }

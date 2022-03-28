@@ -1,21 +1,21 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
 struct TornadoFlow: View {
     @ObservedObject var tornado: TornadoViewModel
-    @State private var duration = 0.0
     @State private var loop = 0
+    @State private var count = FlowCount()
+    @State private var duration = 0.0
     @State private var angle = 0.0
     @State private var isClockwise = true
-    @State private var count = 0
         
     var body: some View {
         ZStack {
             tornado.colors.bg.edgesIgnoringSafeArea(.all)
             
             ForEach(0 ..< loop, id: \.self) { i in
-                if i < count {
+                if i < count.value {
                     TornadoParts(tornado: tornado, duration: $duration, count: $count)
                 }
             }
@@ -27,22 +27,13 @@ struct TornadoFlow: View {
         }
         .onReceive(Timer.publish(every: tornado.isFlowing ? 0.1 : 100,
                                  on: .current, in: .common).autoconnect()) { _ in
-            counter()
+            count.increment()
+            if count.value % 10 == 0 {
+                duration = Double.random(in: tornado.durationRange.range)
+            }
             withAnimation(.easeIn) {
                 rotate()
             }
-        }
-    }
-    
-    private func counter() {
-        count += 1
-        // Change the duration of animation.
-        if count % 10 == 0 {
-            duration = Double.random(in: tornado.durationRange.range)
-        }
-        // Avoid over flow.
-        if count > 10000 {
-            count = 1000
         }
     }
     
@@ -66,7 +57,7 @@ struct TornadoFlow: View {
 struct TornadoParts: View {
     @ObservedObject var tornado: TornadoViewModel
     @Binding var duration: Double
-    @Binding var count: Int
+    @Binding var count: FlowCount
     @State private var content = ""
     @State private var fontSize: CGFloat = 0
     @State private var design: Font.Design = .monospaced
@@ -87,7 +78,7 @@ struct TornadoParts: View {
                                              z: rotation3D.axis.z),
                                       anchorZ: rotation3D.anchorZ,
                                       perspective: rotation3D.perspective)
-                    .onChange(of: count) { _ in
+                    .onChange(of: count.value) { _ in
                         move(in: geometry.size)
                     }
                     .onAppear {
@@ -110,7 +101,6 @@ struct TornadoParts: View {
             rotation3D.random()
             rotation3D.angle += Double.random(in: tornado.angleRange.range)
             
-            // Avoid over flow.
             if rotation3D.angle > 3600 {
                 rotation3D.angle -= 3600
             }

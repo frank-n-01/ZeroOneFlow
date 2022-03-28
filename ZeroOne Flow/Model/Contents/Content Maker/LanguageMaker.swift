@@ -1,9 +1,8 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import Foundation
 
 class LanguageMaker {
-    
     static func make(type: LanguageType) -> String {
         var language = ""
         
@@ -30,7 +29,7 @@ class LanguageMaker {
             language = makeSpanish()
         }
         
-        if ModeUserDefaults.currentMode == Mode.linear.rawValue {
+        if ModeUserDefaults.sharedCurrentMode == Mode.linear.rawValue {
             language += " "
         }
         return language

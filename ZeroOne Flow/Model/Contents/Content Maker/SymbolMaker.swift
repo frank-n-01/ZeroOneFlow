@@ -1,9 +1,8 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import Foundation
 
 class SymbolMaker {
-    
     static func make(type: SymbolType) -> String {
         switch type {
         case .box:

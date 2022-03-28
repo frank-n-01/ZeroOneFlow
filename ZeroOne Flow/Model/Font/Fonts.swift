@@ -1,8 +1,7 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
-/// Font properties of each flow mode.
 struct Fonts: Equatable, Identifiable {
     var size: CGFloat
     var design: FontDesign

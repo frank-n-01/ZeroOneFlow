@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -12,8 +12,7 @@ enum ContentType: Int, CaseIterable, Equatable, Identifiable {
     var id: UUID { return UUID() }
     
     static var allCasesWithoutCustom: [ContentType] = [
-        .number, .language, .symbol, .code
-    ]
+        .number, .language, .symbol, .code]
     
     var name: LocalizedStringKey {
         switch self {

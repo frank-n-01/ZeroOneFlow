@@ -1,12 +1,9 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
-// Common model of line feeds and indents.
 struct TextFormat: Equatable {
-    
     var isOn: Bool
-    
     var value: Double
     
     init(isOn: Bool, value: Double) {
@@ -20,7 +17,7 @@ struct TextFormat: Equatable {
             return
         }
         self.isOn = isOn
-        self.value = Double(value)
+        self.value = value
     }
     
     nonmutating func save(isOn: inout Bool, value: inout Double) {

@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -7,7 +7,7 @@ class WormUserDefaults: FlowModeUserDefaults {
     @Published var length: Double {
         didSet {
             if length != oldValue {
-                UserDefaults.standard.set(length, forKey: "length_" + flowModeKey)
+                UserDefaults.standard.set(length, forKey: Keys.length.rawValue + flowMode)
             }
         }
     }
@@ -15,7 +15,7 @@ class WormUserDefaults: FlowModeUserDefaults {
     @Published var step: Double {
         didSet {
             if step != oldValue {
-                UserDefaults.standard.set(step, forKey: "step_" + flowModeKey)
+                UserDefaults.standard.set(step, forKey: Keys.step.rawValue + flowMode)
             }
         }
     }
@@ -23,7 +23,8 @@ class WormUserDefaults: FlowModeUserDefaults {
     @Published var crawling: Double {
         didSet {
             if crawling != oldValue {
-                UserDefaults.standard.set(crawling, forKey: "crawling_" + flowModeKey)
+                UserDefaults.standard.set(
+                    crawling, forKey: Keys.crawling.rawValue + flowMode)
             }
         }
     }
@@ -31,7 +32,8 @@ class WormUserDefaults: FlowModeUserDefaults {
     @Published var paddingVertical: Double {
         didSet {
             if paddingVertical != oldValue {
-                UserDefaults.standard.set(paddingVertical, forKey: "padding_vertical_" + flowModeKey)
+                UserDefaults.standard.set(
+                    paddingVertical, forKey: Keys.paddingVertical.rawValue + flowMode)
             }
         }
     }
@@ -39,18 +41,32 @@ class WormUserDefaults: FlowModeUserDefaults {
     @Published var paddingHorizontal: Double {
         didSet {
             if paddingHorizontal != oldValue {
-                UserDefaults.standard.set(paddingHorizontal, forKey: "padding_horizontal_" + flowModeKey)
+                UserDefaults.standard.set(
+                    paddingHorizontal, forKey: Keys.paddingHorizontal.rawValue + flowMode)
             }
         }
     }
     
-    override init(_ flowModeKey: String) {
-        length = UserDefaults.standard.double(forKey: "length_" + flowModeKey)
-        step = UserDefaults.standard.double(forKey: "step_" + flowModeKey)
-        crawling = UserDefaults.standard.double(forKey: "crawling_" + flowModeKey)
-        paddingVertical = UserDefaults.standard.double(forKey: "padding_vertical_" + flowModeKey)
-        paddingHorizontal = UserDefaults.standard.double(forKey: "padding_horizontal_" + flowModeKey)
+    override init(_ flowMode: String) {
+        length = UserDefaults.standard
+            .double(forKey: Keys.length.rawValue + flowMode)
+        step = UserDefaults.standard
+            .double(forKey: Keys.step.rawValue + flowMode)
+        crawling = UserDefaults.standard
+            .double(forKey: Keys.crawling.rawValue + flowMode)
+        paddingVertical = UserDefaults.standard
+            .double(forKey: Keys.paddingVertical.rawValue + flowMode)
+        paddingHorizontal = UserDefaults.standard
+            .double(forKey: Keys.paddingHorizontal.rawValue + flowMode)
         
-        super.init(flowModeKey)
+        super.init(flowMode)
+    }
+    
+    private enum Keys: String {
+        case length = "length_"
+        case step = "step_"
+        case crawling = "crawling_"
+        case paddingVertical = "padding_vertical_"
+        case paddingHorizontal = "padding_horizontal_"
     }
 }

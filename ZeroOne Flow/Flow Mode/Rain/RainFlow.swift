@@ -1,11 +1,11 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
 struct RainFlow: View {
     @ObservedObject var rain: RainViewModel
     @State private var loop = 0
-    @State private var count = 0
+    @State private var count = FlowCount()
     @State private var height: CGFloat = 0
     @State private var width: CGFloat = 0
     
@@ -20,16 +20,13 @@ struct RainFlow: View {
         }
         .onReceive(Timer.publish(every: rain.isFlowing ? rain.interval : 100,
                                  on: .current, in: .common).autoconnect()) { _ in
-            count += 1
-            if count > 100000 {
-                count = 0
-            }
+            count.increment()
         }
     }
     
     private var rainDrops: some View {
         ForEach(0 ..< loop, id: \.self) { i in
-            if i < count {
+            if i < count.value {
                 RainDrop(rain: rain, height: $height, width: $width, count: $count)
             }
         }
@@ -54,8 +51,9 @@ struct RainDrop: View {
     @ObservedObject var rain: RainViewModel
     @Binding var height: CGFloat
     @Binding var width: CGFloat
-    @Binding var count: Int
+    @Binding var count: FlowCount
     @State private var content = ""
+    @State private var length = 0
     @State private var fontSize: CGFloat = 0
     @State private var design: Font.Design = .monospaced
     @State private var weight: Font.Weight = .regular
@@ -75,14 +73,19 @@ struct RainDrop: View {
             .fixedSize(horizontal: false, vertical: true)
             .background(contentSizeGetter)
             .onAppear {
-                initializeParameters()
+                fontSize = rain.fonts.sizeRange.getRandomSizeInRange()
+                design = rain.fonts.design.value
+                weight = rain.fonts.weight.value
+                position.x = CGFloat.random(in: 0...width)
+                position.y = CGFloat.random(in: 0...height)
+                length = Int.random(in: 1...Int(rain.length))
+                makeContent()
             }
-            .onChange(of: count) { _ in
+            .onChange(of: count.value) { _ in
                 move()
             }
     }
     
-    /// Define the vertical range of movement depend on the content and screen height.
     private var contentSizeGetter: some View {
         GeometryReader { geometry in
             Text("")
@@ -97,20 +100,18 @@ struct RainDrop: View {
         }
     }
     
-    private func initializeParameters() {
-        fontSize = rain.fonts.sizeRange.getRandomSizeInRange()
-        design = rain.fonts.design.value
-        weight = rain.fonts.weight.value
-        
-        position.x = CGFloat.random(in: 0...width)
-        position.y = CGFloat.random(in: 0...height)
-        
-        for _ in 0 ..< Int.random(in: 1...Int(rain.length)) {
-            content += ContentMaker.make(with: rain.contents) + "\n"
+    private func makeContent() {
+        DispatchQueue.global().async {
+            var rainString = ""
+            for _ in 0..<length {
+                rainString += ContentMaker.make(with: rain.contents) + "\n"
+            }
+            DispatchQueue.main.async {
+                content = rainString
+            }
         }
     }
     
-    /// Move the rain drops upward and downward repeatedly.
     private func move() {
         if isFalling {
             withAnimation(.linear) {

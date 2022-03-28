@@ -1,30 +1,25 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
 struct FlyHome: View {
-    @ObservedObject var fly = FlyViewModel()
+    @ObservedObject var fly: FlyViewModel
 
     var body: some View {
         Section {
-            SliderWithSingleImage(value: $fly.scale,
-                                  min: 1, max: 500,
-                                  image: "ladybug.fill")
+            SingleImageSlider(value: $fly.scale, min: 1, max: 500, image: "ladybug.fill")
         } header: {
             Text("Scale")
         }
         
-        FontView(fonts: $fly.fonts,
-                 minSize: 5, maxSize: 500,
-                 isRandom: true)
+        FontView(fonts: $fly.fonts, minSize: 5, maxSize: 500, isRandom: true)
         
-        ColorView(colors: $fly.colors, random: false)
+        ColorView(colors: $fly.colors)
         
         ContentTypeView(contents: $fly.contents)
         
         Section {
-            SandwichedImageSlider(interval: $fly.interval,
-                                  min: 0.01, max: 1.0)
+            SpeedSlider(interval: $fly.interval, min: 0.01, max: 1.0)
         } header: {
             Text("Speed")
         }
