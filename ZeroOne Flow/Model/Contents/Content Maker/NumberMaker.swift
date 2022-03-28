@@ -1,9 +1,8 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import Foundation
 
 class NumberMaker {
-    
     static func make(type: NumberType) -> String {
         switch type {
         case .binary:

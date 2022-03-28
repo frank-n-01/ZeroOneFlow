@@ -14,7 +14,6 @@
 		65092F9226D3B22000E769C6 /* TornadoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65092F9126D3B22000E769C6 /* TornadoViewModel.swift */; };
 		65092F9426D3BD9F00E769C6 /* FontRangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65092F9326D3BD9F00E769C6 /* FontRangeView.swift */; };
 		65092F9626D3CA9E00E769C6 /* Rotation3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65092F9526D3CA9E00E769C6 /* Rotation3D.swift */; };
-		65092F9826D3CABB00E769C6 /* Axis3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65092F9726D3CABB00E769C6 /* Axis3D.swift */; };
 		65092F9A26D3D19C00E769C6 /* SingleUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65092F9926D3D19C00E769C6 /* SingleUserDefaults.swift */; };
 		65092F9C26D3D45500E769C6 /* SingleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65092F9B26D3D45500E769C6 /* SingleViewModel.swift */; };
 		65092F9E26D3E7EA00E769C6 /* CircleUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65092F9D26D3E7EA00E769C6 /* CircleUserDefaults.swift */; };
@@ -130,7 +129,6 @@
 		65092F9126D3B22000E769C6 /* TornadoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TornadoViewModel.swift; sourceTree = "<group>"; };
 		65092F9326D3BD9F00E769C6 /* FontRangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontRangeView.swift; sourceTree = "<group>"; };
 		65092F9526D3CA9E00E769C6 /* Rotation3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rotation3D.swift; sourceTree = "<group>"; };
-		65092F9726D3CABB00E769C6 /* Axis3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axis3D.swift; sourceTree = "<group>"; };
 		65092F9926D3D19C00E769C6 /* SingleUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleUserDefaults.swift; sourceTree = "<group>"; };
 		65092F9B26D3D45500E769C6 /* SingleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleViewModel.swift; sourceTree = "<group>"; };
 		65092F9D26D3E7EA00E769C6 /* CircleUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleUserDefaults.swift; sourceTree = "<group>"; };
@@ -490,7 +488,6 @@
 			isa = PBXGroup;
 			children = (
 				65092F9526D3CA9E00E769C6 /* Rotation3D.swift */,
-				65092F9726D3CABB00E769C6 /* Axis3D.swift */,
 			);
 			path = Rotation;
 			sourceTree = "<group>";
@@ -858,7 +855,6 @@
 				65092F8926D085C800E769C6 /* FlowModeViewModel.swift in Sources */,
 				654241E726CFD3EE003ABF3E /* FlowModeUserDefaults.swift in Sources */,
 				657066312726E81E00C37C19 /* RandomGradientView.swift in Sources */,
-				65092F9826D3CABB00E769C6 /* Axis3D.swift in Sources */,
 				65E203A327EA194D00ED1BE3 /* FlowCount.swift in Sources */,
 				651EE0D02653E2B5007389AC /* CircleHome.swift in Sources */,
 				65092F9E26D3E7EA00E769C6 /* CircleUserDefaults.swift in Sources */,

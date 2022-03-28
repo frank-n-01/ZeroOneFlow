@@ -1,8 +1,7 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
-/// Define the content of the flow.
 struct Contents: Equatable, Identifiable {
     var type: ContentType
     var number: NumberType

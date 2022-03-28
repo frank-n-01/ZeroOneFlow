@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -15,8 +15,7 @@ enum FontWeight: Int, CaseIterable, Identifiable {
     case random
     
     static var allCasesWithoutRandom: [FontWeight] = [
-        ultraLight, .thin, .light, .regular, .medium, .semibold, .bold, .heavy, .black
-    ]
+        .ultraLight, .thin, .light, .regular, .medium, .semibold, .bold, .heavy, .black]
     
     var id: UUID {
         return UUID()
@@ -68,8 +67,7 @@ enum FontWeight: Int, CaseIterable, Identifiable {
         case .black:
             return .black
         case .random:
-            return FontWeight.allCasesWithoutRandom
-                .randomElement()?.value ?? .regular
+            return Self.allCasesWithoutRandom.randomElement()?.value ?? .regular
         }
     }
 }

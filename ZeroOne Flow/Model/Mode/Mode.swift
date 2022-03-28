@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 import CoreData
@@ -38,7 +38,6 @@ enum Mode: Int, CaseIterable, Identifiable {
         }
     }
     
-    /// User Defaults Key.
     var key: String {
         switch self {
         case .linear:
@@ -60,7 +59,6 @@ enum Mode: Int, CaseIterable, Identifiable {
         }
     }
     
-    /// Core Data Entity.
     var entity: NSEntityDescription {
         switch self {
         case .linear:

@@ -1,27 +1,22 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
 struct RandomGradient {
     var type: GradientType
-    // Color
     var startColor: Color
     var endColor: Color
-    // Radius
     var startRadius: CGFloat
     var endRadius: CGFloat
     let max: CGFloat
-    // Point
     var startPoint: UnitPoint
     var endPoint: UnitPoint
-    // Angle
     var angle: Double
-    // Unit
     var center: UnitPoint
-    static let unitPoints: [UnitPoint] = [
+    
+    static let UNIT_POINTS: [UnitPoint] = [
         .top, .bottom, .leading, .trailing, .topLeading,
-        .topTrailing, .bottomLeading, .bottomTrailing, .center
-    ]
+        .topTrailing, .bottomLeading, .bottomTrailing, .center]
     
     init(type: GradientType = .radial) {
         self.type = type
@@ -29,8 +24,7 @@ struct RandomGradient {
         self.endColor = Colors.random()
         self.startRadius = 5.0
         self.endRadius = 500.0
-        self.max = UIScreen.main.bounds.height > UIScreen.main.bounds.width
-                 ? UIScreen.main.bounds.height : UIScreen.main.bounds.width
+        self.max = UIScreen.getSize(smaller: false)
         self.startPoint = .bottom
         self.endPoint = .top
         self.angle = 90
@@ -63,8 +57,8 @@ struct RandomGradient {
     }
     
     mutating func randomPoint() {
-        startPoint = RandomGradient.unitPoints[Int.random(in: 0...8)]
-        endPoint = RandomGradient.unitPoints[Int.random(in: 0...8)]
+        startPoint = RandomGradient.UNIT_POINTS.randomElement() ?? .bottom
+        endPoint = RandomGradient.UNIT_POINTS.randomElement() ?? .top
     }
     
     mutating func randomAngle() {
@@ -72,6 +66,6 @@ struct RandomGradient {
     }
     
     mutating func randomCenter() {
-        center = RandomGradient.unitPoints[Int.random(in: 0...8)]
+        center = RandomGradient.UNIT_POINTS[Int.random(in: 0...8)]
     }
 }

@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -11,16 +11,20 @@ struct Padding: Equatable {
     init(vertical: CGFloat, horizontal: CGFloat, min: CGFloat, max: CGFloat) {
         self.ver = vertical
         self.hor = horizontal
-        self.min = min
-        self.max = max
+        
+        if min <= max {
+            self.min = min
+            self.max = max
+        } else {
+            self.min = max
+            self.max = min
+        }
     }
     
     init(vertical: CGFloat, horizontal: CGFloat) {
-        let max = (UIScreen.main.bounds.width < UIScreen.main.bounds.height
-                 ? UIScreen.main.bounds.width : UIScreen.main.bounds.height) / 2 - 50
+        let max = UIScreen.getSize(smaller: true) / 2 - 50
         
-        self.init(vertical: vertical,
-                  horizontal: horizontal,
+        self.init(vertical: vertical, horizontal: horizontal,
                   min: -(max * 1.5), max: max)
     }
     

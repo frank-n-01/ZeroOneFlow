@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -10,8 +10,7 @@ enum FontDesign: Int, CaseIterable, Identifiable {
     case random
     
     static var allCasesWithoutRandom: [FontDesign] = [
-        .defaultDesign, .monospaced, .rounded, .serif
-    ]
+        .defaultDesign, .monospaced, .rounded, .serif]
     
     var id: UUID {
         return UUID()
@@ -43,8 +42,7 @@ enum FontDesign: Int, CaseIterable, Identifiable {
         case .serif:
             return .serif
         case .random:
-            return FontDesign.allCasesWithoutRandom
-                .randomElement()?.value ?? .monospaced
+            return Self.allCasesWithoutRandom.randomElement()?.value ?? .monospaced
         }
     }
 }

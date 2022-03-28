@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -11,11 +11,17 @@ struct Range: Equatable {
     }
     
     init(min: Double, max: Double) {
-        self.min = min
-        self.max = max
+        if min <= max {
+            self.min = min
+            self.max = max
+        } else {
+            self.min = max
+            self.max = min
+        }
     }
     
     mutating func set(min: Double, max: Double) {
+        guard min <= max else { return }
         self.min = min
         self.max = max
     }
