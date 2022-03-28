@@ -7,8 +7,7 @@ struct FlyHome: View {
 
     var body: some View {
         Section {
-            SliderWithSingleImage(value: $fly.scale, min: 1, max: 500,
-                                  image: "ladybug.fill")
+            SingleImageSlider(value: $fly.scale, min: 1, max: 500, image: "ladybug.fill")
         } header: {
             Text("Scale")
         }

@@ -13,8 +13,8 @@ struct CircleHome: View {
         ContentTypeView(contents: $circle.contents)
         
         Section {
-            SliderWithSingleImage(value: $circle.depth, min: 1, max: 300,
-                                  image: "smallcircle.circle")
+            SingleImageSlider(value: $circle.depth,
+                              min: 1, max: 300, image: "smallcircle.circle")
         } header: {
             Text("Scale")
         }
@@ -26,15 +26,15 @@ struct CircleHome: View {
         }
         
         Section {
-            CGFloatSlider(value: $circle.gap, min: 0.01, max: 100,image: "circlebadge.2",
-                          format: gapSliderNumberFormat)
+            CGFloatSlider(value: $circle.gap, min: 0.01, max: 100,
+                          image: "circlebadge.2", format: gapSliderNumberFormat)
         } header: {
             Text("Gap")
         }
         
         Section {
-            SliderWithSingleImage(value: $circle.rotationAngle, min: 0, max: 360,
-                                  image: "crop.rotate")
+            SingleImageSlider(value: $circle.rotationAngle,
+                              min: 0, max: 360, image: "crop.rotate")
         } header: {
             Text("Rotation")
         }

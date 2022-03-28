@@ -7,7 +7,7 @@ struct SingleFlow: View {
     @State private var content = ""
     @State private var design: Font.Design = .monospaced
     @State private var weight: Font.Weight = .regular
-    @State private var txtColor = Color("Text")
+    @State private var txtColor = CommonStyle.TEXT_COLOR
     @State private var gradient = RandomGradient()
     
     var body: some View {

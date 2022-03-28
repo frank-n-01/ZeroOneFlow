@@ -7,8 +7,7 @@ struct TornadoHome: View {
     
     var body: some View {
         Section {
-            SliderWithSingleImage(value: $tornado.scale,
-                                  min: 1, max: 300, image: "tornado")
+            SingleImageSlider(value: $tornado.scale, min: 1, max: 300, image: "tornado")
         } header: {
             Text("Scale")
         }

@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -13,18 +13,16 @@ struct FontDesignWeightPicker: View {
     
     var designPicker: some View {
         Picker(selection: $fonts.design) {
-            ForEach(isRandom ? FontDesign.allCases
-                    : FontDesign.allCasesWithoutRandom) { design in
+            ForEach(isRandom ? FontDesign.allCases : FontDesign.allCasesWithoutRandom) { design in
                 Text(design.name)
-                    .font(.system(.title3, design: design != .random
-                                  ? design.value : .default))
-                    .fontWeight(fonts.weight == .random
-                                ? .regular : fonts.weight.value)
+                    .font(.system(CommonStyle.LABEL_TEXT_STYLE,
+                                  design: design != .random ? design.value : .default))
+                    .fontWeight(fonts.weight == .random ? .regular : fonts.weight.value)
                     .tag(design)
             }
         } label: {
             Text("Design")
-                .font(.title3)
+                .font(CommonStyle.LABEL_FONT)
         }
     }
     
@@ -33,15 +31,14 @@ struct FontDesignWeightPicker: View {
             ForEach(isRandom ? FontWeight.allCases
                     : FontWeight.allCasesWithoutRandom) { weight in
                 Text(weight.name)
-                    .font(.system(.title3, design: fonts.design == .random
-                                  ? .default : fonts.design.value))
-                    .fontWeight(weight != .random
-                                ? weight.value : .regular)
+                    .font(.system(CommonStyle.LABEL_TEXT_STYLE,
+                                  design: fonts.design == .random ? .default : fonts.design.value))
+                    .fontWeight(weight != .random ? weight.value : .regular)
                     .tag(weight)
             }
         } label: {
             Text("Weight")
-                .font(.title3)
+                .font(CommonStyle.LABEL_FONT)
         }
     }
 }

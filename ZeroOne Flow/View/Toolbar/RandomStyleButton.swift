@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -9,7 +9,7 @@ struct RandomStyleButton: View {
     var body: some View {
         Button(action: { mode.isRandomStyle.toggle() }) {
             Image(systemName: self.image)
-                .font(.title2)
+                .font(CommonStyle.TOOLBAR_BUTTON_FONT)
         }
         .onAppear {
             throwDice()

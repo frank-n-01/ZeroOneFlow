@@ -1,8 +1,8 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
-struct CoreDataStyleView: View {
+struct StyleListView: View {
     @ObservedObject var viewModel: FlowModeViewModel
     @Environment(\.managedObjectContext) var context
     @FetchRequest(
@@ -13,7 +13,7 @@ struct CoreDataStyleView: View {
     var body: some View {
         List {
             Section {
-                SaveStyleView(saveCoreData: saveCoreData)
+                SaveStyleField(saveCoreData: saveCoreData)
             }
             Section {
                 styleRows
@@ -36,7 +36,7 @@ struct CoreDataStyleView: View {
                         Text(style.name ?? "")
                     }
                 }
-                .font(.title3)
+                .font(CommonStyle.LABEL_FONT)
                 
                 Button(action: { viewModel.applyCoreData(context, style) }) {
                     Spacer()
@@ -51,7 +51,7 @@ struct CoreDataStyleView: View {
         viewModel.saveCoreData(context, name)
     }
     
-    private func remove(at offsets: IndexSet) {
+    func remove(at offsets: IndexSet) {
         guard !styles.isEmpty else { return }
         
         for index in offsets {
@@ -63,7 +63,7 @@ struct CoreDataStyleView: View {
         }
     }
     
-    private func move(from source: IndexSet, to destination: Int) {
+    func move(from source: IndexSet, to destination: Int) {
         guard let source = source.first else { return }
         
         let tmp = styles[source].date

@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -20,7 +20,7 @@ struct ResetButton: View {
     var resetButton: some View {
         Button(action: { showAlert.toggle() }) {
             Image(systemName: "arrow.uturn.left")
-                .font(.title2)
+                .font(CommonStyle.TOOLBAR_BUTTON_FONT)
                 .foregroundColor(.red)
         }
     }

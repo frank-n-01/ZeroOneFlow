@@ -13,8 +13,8 @@ struct BigBangHome: View {
         ContentTypeView(contents: $bigbang.contents)
         
         Section {
-            SliderWithSingleImage(value: $bigbang.scale, min: 1, max: 500,
-                                  image: "hurricane", format: "%.0f")
+            SingleImageSlider(value: $bigbang.scale, min: 1, max: 500,
+                              image: "hurricane", format: "%.0f")
         } header: {
             Text("Scale")
         }
@@ -34,8 +34,8 @@ struct BigBangHome: View {
         }
         
         Section {
-            SliderWithSingleImage(value: $bigbang.rotationAngle, min: 0, max: 360,
-                                  image: "crop.rotate", format: "%.0f")
+            SingleImageSlider(value: $bigbang.rotationAngle, min: 0, max: 360,
+                              image: "crop.rotate", format: "%.0f")
             ToggleWithLabel(value: $bigbang.is3D, label: "3D",
                             trueImage: "move.3d", falseImage: "move.3d")
         } header: {

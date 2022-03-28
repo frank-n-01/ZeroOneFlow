@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -10,8 +10,7 @@ struct FontRangeView: View {
     
     var body: some View {
         Section {
-            FontSizeRangeSliders(range: $fonts.sizeRange,
-                                 min: min, max: max)
+            FontSizeRangeSliders(range: $fonts.sizeRange, min: min, max: max)
             FontDesignWeightPicker(fonts: $fonts, isRandom: isRandom)
         } header: {
             Text("Font")

@@ -100,10 +100,6 @@
 "save.message" = "Save your current style?";
 "unnamed" = "unnamed";
 
-// Apply
-"Apply" = "Apply";
-"apply.message" = "Apply this style?";
-
 // Reset
 "Reset" = "Reset";
 "reset.message" = "Reset your style?";

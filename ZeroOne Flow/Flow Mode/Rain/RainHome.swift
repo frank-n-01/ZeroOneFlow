@@ -13,15 +13,15 @@ struct RainHome: View {
         ContentTypeView(contents: $rain.contents)
         
         Section {
-            SliderWithSingleImage(value: $rain.scale, min: 1, max: 300,
-                                  image: "cloud.rain.fill", format: "%.0f")
+            SingleImageSlider(value: $rain.scale, min: 1, max: 300,
+                              image: "cloud.rain.fill", format: "%.0f")
         } header: {
             Text("Scale")
         }
         
         Section {
-            SliderWithSingleImage(value: $rain.length, min: 1, max: 300,
-                                  image: "ruler.fill", format: "%.0f")
+            SingleImageSlider(value: $rain.length, min: 1, max: 300,
+                              image: "ruler.fill", format: "%.0f")
         } header: {
             Text("Length")
         }
@@ -33,9 +33,8 @@ struct RainHome: View {
         }
         
         Section {
-            SliderWithSingleImage(value: $rain.step, min: 1, max: 300,
-                                  image: "arrowshape.zigzag.right.fill",
-                                  format: "%.0f")
+            SingleImageSlider(value: $rain.step, min: 1, max: 300,
+                              image: "arrowshape.zigzag.right.fill", format: "%.0f")
         } header: {
             Text("Step")
         }

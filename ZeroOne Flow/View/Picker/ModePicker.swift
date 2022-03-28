@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -9,7 +9,7 @@ struct ModePicker: View {
         Picker(selection: $mode) {
             ForEach(Mode.allCases) { mode in
                 Text(mode.name)
-                    .font(.title3)
+                    .font(CommonStyle.LABEL_FONT)
                     .tag(mode)
             }
         } label: {
@@ -19,7 +19,7 @@ struct ModePicker: View {
                 Text("Mode")
                     .bold()
             }
-            .font(.title3)
+            .font(CommonStyle.LABEL_FONT)
         }
     }
 }

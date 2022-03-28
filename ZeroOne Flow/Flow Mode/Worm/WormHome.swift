@@ -13,8 +13,8 @@ struct WormHome: View {
         ContentTypeView(contents: $worm.contents)
         
         Section {
-            SliderWithSingleImage(value: $worm.length, min: 1, max: 300,
-                                  image: "ruler.fill", format: "%.0f")
+            SingleImageSlider(value: $worm.length, min: 1, max: 300,
+                              image: "ruler.fill", format: "%.0f")
         } header: {
             Text("Length")
         }
@@ -26,16 +26,15 @@ struct WormHome: View {
         }
         
         Section {
-            SliderWithSingleImage(value: $worm.step, min: 1, max: 300,
-                                  image: "arrowshape.zigzag.right.fill",
-                                  format: "%.0f")
+            SingleImageSlider(value: $worm.step, min: 1, max: 300,
+                              image: "arrowshape.zigzag.right.fill", format: "%.0f")
         } header: {
             Text("Step")
         }
 
         Section {
-            SliderWithSingleImage(value: $worm.crawling, min: 0, max: 200,
-                                  image: "scribble.variable", format: "%.0f")
+            SingleImageSlider(value: $worm.crawling, min: 0, max: 200,
+                              image: "scribble.variable", format: "%.0f")
         } header: {
             Text("Crawling")
         }

@@ -52,7 +52,7 @@ struct FlowModeHome: View {
     
     var styleViewLink: some View {
         NavigationLink {
-            CoreDataStyleView(viewModel: viewModel)
+            StyleListView(viewModel: viewModel)
         } label: {
             HStack {
                 Image(systemName: "doc.on.doc")
@@ -61,7 +61,7 @@ struct FlowModeHome: View {
                     .bold()
                     .padding(.leading, 1)
             }
-            .font(CommonStyles.labelFont)
+            .font(CommonStyle.LABEL_FONT)
             .padding(.leading, 2)
         }
     }
@@ -91,7 +91,7 @@ struct FlowModeHome: View {
                 HStack {
                     RandomStyleButton()
                     Spacer()
-                    SimpleImageButton(image: "play.fill", action: startFlow)
+                    PlayButton(play: startFlow)
                     Spacer()
                     ResetButton(reset: viewModel.resetUserDefaults)
                 }

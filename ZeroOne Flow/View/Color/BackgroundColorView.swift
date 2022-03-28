@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -8,7 +8,7 @@ struct BackgroundColorView: View {
     var body: some View {
         HStack {
             Text("Background")
-                .font(.title3)
+                .font(CommonStyle.LABEL_FONT)
             Spacer()
             ColorPicker("", selection: $colors.bg)
                 .frame(width: 45.0)

@@ -1,4 +1,4 @@
-// Copyright © 2021 Ni Fu. All rights reserved.
+// Copyright © 2021-2022 Ni Fu. All rights reserved.
 
 import SwiftUI
 
@@ -8,11 +8,11 @@ struct TextColorView: View {
     var body: some View {
         HStack {
             Text("Text")
-                .font(.title3)
+                .font(CommonStyle.LABEL_FONT)
             Spacer()
             Button(action: swap) {
                 Image(systemName: "arrow.up.arrow.down")
-                    .font(.title3)
+                    .font(CommonStyle.LABEL_FONT)
             }
             ColorPicker("", selection: $colors.txt)
                 .frame(width: 45.0)
