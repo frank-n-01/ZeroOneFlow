@@ -3,8 +3,8 @@
 import SwiftUI
 
 struct RandomGradientView: View {
-    @Binding var colors: Colors
     @Binding var type: GradientType
+    @Binding var isActivated: Bool
     
     var body: some View {
         typePicker
@@ -25,7 +25,7 @@ struct RandomGradientView: View {
     }
     
     private var activateToggle: some View {
-        Toggle(isOn: $colors.bgRandom) {
+        Toggle(isOn: $isActivated) {
             Text("Activate")
                 .font(CommonStyle.LABEL_FONT)
         }

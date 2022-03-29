@@ -6,18 +6,18 @@ struct BigBangHome: View {
     @ObservedObject var bigbang: BigBangViewModel
 
     var body: some View {
-        FontRangeView(fonts: $bigbang.fonts, min: 5, max: 200, isRandom: true)
-        
-        ColorView(colors: $bigbang.colors)
-        
-        ContentTypeView(contents: $bigbang.contents)
-        
         Section {
             SingleImageSlider(value: $bigbang.scale, min: 1, max: 500,
                               image: "hurricane", format: "%.0f")
         } header: {
             Text("Scale")
         }
+        
+        FontRangeView(fonts: $bigbang.fonts, min: 5, max: 200, isRandom: true)
+        
+        ColorView(colors: $bigbang.colors)
+        
+        ContentTypeView(contents: $bigbang.contents)
         
         Section {
             SpeedSlider(interval: $bigbang.interval, min: 0.01, max: 0.2)

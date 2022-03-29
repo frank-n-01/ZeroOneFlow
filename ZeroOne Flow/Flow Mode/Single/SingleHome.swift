@@ -20,7 +20,7 @@ struct SingleHome: View {
         }
         
         Section {
-            RandomGradientView(colors: $single.colors, type: $single.gradientType)
+            RandomGradientView(type: $single.gradientType, isActivated: $single.colors.bgRandom)
         } header: {
             Text("Gradation")
         }

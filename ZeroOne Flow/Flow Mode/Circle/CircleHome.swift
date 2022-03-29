@@ -6,18 +6,18 @@ struct CircleHome: View {
     @ObservedObject var circle: CircleViewModel
     
     var body: some View {
-        FontView(fonts: $circle.fonts, minSize: 5, maxSize: 300, isRandom: true)
-        
-        ColorView(colors: $circle.colors)
-        
-        ContentTypeView(contents: $circle.contents)
-        
         Section {
             SingleImageSlider(value: $circle.depth,
                               min: 1, max: 300, image: "smallcircle.circle")
         } header: {
             Text("Scale")
         }
+        
+        FontView(fonts: $circle.fonts, minSize: 5, maxSize: 300, isRandom: true)
+        
+        ColorView(colors: $circle.colors)
+        
+        ContentTypeView(contents: $circle.contents)
         
         Section {
             SpeedSlider(interval: $circle.interval, min: 0.01, max: 1.0)

@@ -7,8 +7,8 @@ struct WormFlow: View {
     @State var position: [CGPoint] = []
     @State private var loop = 0
     @State private var crawling = 0
-    @State private var isToLeft = false
-    @State private var isUpward = false
+    @State private var isToLeft = Bool.random()
+    @State private var isUpward = Bool.random()
     @State private var width: CGFloat = 0
     @State private var height: CGFloat = 0
     
