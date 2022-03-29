@@ -6,12 +6,6 @@ struct RainHome: View {
     @ObservedObject var rain: RainViewModel
     
     var body: some View {
-        FontRangeView(fonts: $rain.fonts, min: 5, max: 500, isRandom: true)
-        
-        ColorView(colors: $rain.colors)
-        
-        ContentTypeView(contents: $rain.contents)
-        
         Section {
             SingleImageSlider(value: $rain.scale, min: 1, max: 300,
                               image: "cloud.rain.fill", format: "%.0f")
@@ -19,17 +13,23 @@ struct RainHome: View {
             Text("Scale")
         }
         
-        Section {
-            SingleImageSlider(value: $rain.length, min: 1, max: 300,
-                              image: "ruler.fill", format: "%.0f")
-        } header: {
-            Text("Length")
-        }
+        FontRangeView(fonts: $rain.fonts, min: 5, max: 500, isRandom: true)
+        
+        ColorView(colors: $rain.colors)
+        
+        ContentTypeView(contents: $rain.contents)
         
         Section {
             SpeedSlider(interval: $rain.interval, min: 0.01, max: 0.5)
         } header: {
             Text("Speed")
+        }
+        
+        Section {
+            SingleImageSlider(value: $rain.length, min: 1, max: 300,
+                              image: "ruler.fill", format: "%.0f")
+        } header: {
+            Text("Length")
         }
         
         Section {

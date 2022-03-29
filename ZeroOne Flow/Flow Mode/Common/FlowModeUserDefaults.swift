@@ -9,9 +9,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var isInitialized: Bool {
         didSet {
             if isInitialized != oldValue {
-                UserDefaults.standard
-                    .set(isInitialized,
-                         forKey: Keys.isInitialized.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    isInitialized, forKey: Keys.isInitialized.rawValue + flowMode)
             }
         }
     }
@@ -19,8 +18,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var fontSize: Double {
         didSet {
             if fontSize != oldValue {
-                UserDefaults.standard
-                    .set(fontSize, forKey: Keys.fontSize.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    fontSize, forKey: Keys.fontSize.rawValue + flowMode)
             }
         }
     }
@@ -28,8 +27,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var fontSizeMin: Double {
         didSet {
             if fontSizeMin != oldValue {
-                UserDefaults.standard
-                    .set(fontSizeMin, forKey: Keys.fontSizeMin.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    fontSizeMin, forKey: Keys.fontSizeMin.rawValue + flowMode)
             }
         }
     }
@@ -37,8 +36,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var fontSizeMax: Double {
         didSet {
             if fontSizeMax != oldValue {
-                UserDefaults.standard
-                    .set(fontSizeMax, forKey: Keys.fontSizeMax.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    fontSizeMax, forKey: Keys.fontSizeMax.rawValue + flowMode)
             }
         }
     }
@@ -46,8 +45,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var fontDesign: Int {
         didSet {
             if fontDesign != oldValue {
-                UserDefaults.standard
-                    .set(fontDesign, forKey: Keys.fontDesign.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    fontDesign, forKey: Keys.fontDesign.rawValue + flowMode)
             }
         }
     }
@@ -55,8 +54,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var fontWeight: Int {
         didSet {
             if fontWeight != oldValue {
-                UserDefaults.standard
-                    .set(fontWeight, forKey: Keys.fontWeight.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    fontWeight, forKey: Keys.fontWeight.rawValue + flowMode)
             }
         }
     }
@@ -64,8 +63,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var txtR: Double {
         didSet {
             if txtR != oldValue {
-                UserDefaults.standard
-                    .set(txtR, forKey: Keys.txtR.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    txtR, forKey: Keys.txtR.rawValue + flowMode)
             }
         }
     }
@@ -73,8 +72,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var txtG: Double {
         didSet {
             if txtG != oldValue {
-                UserDefaults.standard
-                    .set(txtG, forKey: Keys.txtG.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    txtG, forKey: Keys.txtG.rawValue + flowMode)
             }
         }
     }
@@ -82,8 +81,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var txtB: Double {
         didSet {
             if txtB != oldValue {
-                UserDefaults.standard
-                    .set(txtB, forKey: Keys.txtB.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    txtB, forKey: Keys.txtB.rawValue + flowMode)
             }
         }
     }
@@ -91,8 +90,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var txtA: Double {
         didSet {
             if txtA != oldValue {
-                UserDefaults.standard
-                    .set(txtA, forKey: Keys.txtA.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    txtA, forKey: Keys.txtA.rawValue + flowMode)
             }
         }
     }
@@ -100,8 +99,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var txtRandom: Bool {
         didSet {
             if txtRandom != oldValue {
-                UserDefaults.standard
-                    .set(txtRandom, forKey: Keys.txtRandomColor.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    txtRandom, forKey: Keys.txtRandomColor.rawValue + flowMode)
             }
         }
     }
@@ -109,8 +108,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var bgR: Double {
         didSet {
             if bgR != oldValue {
-                UserDefaults.standard
-                    .set(bgR, forKey: Keys.bgR.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    bgR, forKey: Keys.bgR.rawValue + flowMode)
             }
         }
     }
@@ -118,8 +117,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var bgG: Double {
         didSet {
             if bgG != oldValue {
-                UserDefaults.standard
-                    .set(bgG, forKey: Keys.bgG.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    bgG, forKey: Keys.bgG.rawValue + flowMode)
             }
         }
     }
@@ -127,8 +126,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var bgB: Double {
         didSet {
             if bgB != oldValue {
-                UserDefaults.standard
-                    .set(bgB, forKey: Keys.bgB.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    bgB, forKey: Keys.bgB.rawValue + flowMode)
             }
         }
     }
@@ -136,8 +135,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var bgA: Double {
         didSet {
             if bgA != oldValue {
-                UserDefaults.standard
-                    .set(bgA, forKey: Keys.bgA.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    bgA, forKey: Keys.bgA.rawValue + flowMode)
             }
         }
     }
@@ -145,8 +144,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var bgRandom: Bool {
         didSet {
             if bgRandom != oldValue {
-                UserDefaults.standard
-                    .set(bgRandom, forKey: Keys.bgRandomColor.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    bgRandom, forKey: Keys.bgRandomColor.rawValue + flowMode)
             }
         }
     }
@@ -154,8 +153,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var interval: Double {
         didSet {
             if interval != oldValue {
-                UserDefaults.standard
-                    .set(interval, forKey: Keys.interval.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    interval, forKey: Keys.interval.rawValue + flowMode)
             }
         }
     }
@@ -163,8 +162,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var contentType: Int {
         didSet {
             if contentType != oldValue {
-                UserDefaults.standard
-                    .set(contentType, forKey: Keys.contentType.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    contentType, forKey: Keys.contentType.rawValue + flowMode)
             }
         }
     }
@@ -172,8 +171,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var number: Int {
         didSet {
             if number != oldValue {
-                UserDefaults.standard
-                    .set(number, forKey: Keys.number.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    number, forKey: Keys.number.rawValue + flowMode)
             }
         }
     }
@@ -181,8 +180,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var language: Int {
         didSet {
             if language != oldValue {
-                UserDefaults.standard
-                    .set(language, forKey: Keys.language.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    language, forKey: Keys.language.rawValue + flowMode)
             }
         }
     }
@@ -190,8 +189,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var symbol: Int {
         didSet {
             if symbol != oldValue {
-                UserDefaults.standard
-                    .set(symbol, forKey: Keys.symbol.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    symbol, forKey: Keys.symbol.rawValue + flowMode)
             }
         }
     }
@@ -199,8 +198,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var customValue1: String? {
         didSet {
             if customValue1 != oldValue {
-                UserDefaults.standard
-                    .set(customValue1, forKey: Keys.customValue1.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    customValue1, forKey: Keys.customValue1.rawValue + flowMode)
             }
         }
     }
@@ -208,8 +207,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var customValue2: String? {
         didSet {
             if customValue2 != oldValue {
-                UserDefaults.standard
-                    .set(customValue2, forKey: Keys.customValue2.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    customValue2, forKey: Keys.customValue2.rawValue + flowMode)
             }
         }
     }
@@ -217,8 +216,8 @@ class FlowModeUserDefaults: ObservableObject {
     @Published var code: Int {
         didSet {
             if code != oldValue {
-                UserDefaults.standard
-                    .set(code, forKey: Keys.code.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    code, forKey: Keys.code.rawValue + flowMode)
             }
         }
     }

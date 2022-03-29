@@ -70,11 +70,10 @@ class SingleViewModel: FlowModeViewModel {
         guard let style = style as? Single else { return }
         
         interval = style.interval
+        gradientType = GradientType(rawValue: Int(style.gradientType)) ?? Self.GRADIENT_TYPE
+        super.applyCoreData(context, style)
         colors.txtRandom = style.txtRandom
         colors.bgRandom = style.bgRandom
-        gradientType = GradientType(rawValue: Int(style.gradientType)) ?? Self.GRADIENT_TYPE
-
-        super.applyCoreData(context, style)
     }
     
     override func saveCoreData(_ context: NSManagedObjectContext,
