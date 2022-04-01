@@ -9,8 +9,7 @@ struct LinearFlow: View {
     var body: some View {
         ZStack {
             linear.colors.bg.edgesIgnoringSafeArea(.all)
-            
-            screenSizeGetter
+            ScreenSizeGetter(height: $flow.screenHeight, width: $flow.screenWidth)
             
             GeometryReader { _ in
                 Text(flow.content)
@@ -25,8 +24,9 @@ struct LinearFlow: View {
                     .background(currentHeightGetter)
             }
         }
-        .onReceive(Timer.publish(every: !flow.isStopped ? linear.interval : 100,
-                                 on: .current, in: .common).autoconnect()) { _ in
+        .onReceive(Timer.publish(every: linear.interval, on: .current,
+                                 in: .common).autoconnect()) { _ in
+            guard linear.isFlowing else { return }
             move()
         }
         .onAppear {
@@ -34,20 +34,6 @@ struct LinearFlow: View {
             flow.adjustKerning(contents: linear.contents)
             flow.adjustLineSpacing(contents: linear.contents)
             CodeMaker.reset()
-        }
-    }
-    
-    private var screenSizeGetter: some View {
-        GeometryReader { geometry in
-            Text("")
-                .onAppear {
-                    flow.screenHeight = geometry.size.height
-                    flow.screenWidth = geometry.size.width
-                }
-                .onChange(of: geometry.size) { _ in
-                    flow.screenHeight = geometry.size.height
-                    flow.screenWidth = geometry.size.width
-                }
         }
     }
     

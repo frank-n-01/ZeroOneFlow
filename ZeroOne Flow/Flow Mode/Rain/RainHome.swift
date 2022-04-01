@@ -33,7 +33,7 @@ struct RainHome: View {
         }
         
         Section {
-            SingleImageSlider(value: $rain.step, min: 1, max: 300,
+            SingleImageSlider(value: $rain.step, min: 1, max: 500,
                               image: "arrowshape.zigzag.right.fill", format: "%.0f")
         } header: {
             Text("Step")

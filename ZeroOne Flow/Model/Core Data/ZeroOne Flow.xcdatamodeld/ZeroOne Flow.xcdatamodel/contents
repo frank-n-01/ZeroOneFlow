@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="BigBang" representedClassName="BigBang" parentEntity="FlowMode" syncable="YES" codeGenerationType="class">
         <attribute name="fontSizeMax" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="fontSizeMin" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -62,6 +62,13 @@
         <attribute name="gradientType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="txtRandom" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
+    <entity name="Snow" representedClassName="Snow" parentEntity="FlowMode" syncable="YES" codeGenerationType="class">
+        <attribute name="fall" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="fontSizeMax" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="fontSizeMin" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="scale" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="wind" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="Tornado" representedClassName="Tornado" parentEntity="FlowMode" syncable="YES" codeGenerationType="class">
         <attribute name="angleMax" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="angleMin" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -88,5 +95,6 @@
         <element name="Single" positionX="-97.5491943359375" positionY="198.019287109375" width="128" height="74"/>
         <element name="Tornado" positionX="-243.3117065429688" positionY="147.4387817382812" width="128" height="119"/>
         <element name="Worm" positionX="295.2474365234375" positionY="190.4984130859375" width="128" height="104"/>
+        <element name="Snow" positionX="-207" positionY="-351" width="128" height="104"/>
     </elements>
 </model>

@@ -18,8 +18,9 @@ struct CircleFlow: View {
                 }
             }
         }
-        .onReceive(Timer.publish(every: circle.isFlowing ? circle.interval : 100,
-                                 on: .current, in: .common).autoconnect()) { _ in
+        .onReceive(Timer.publish(every: circle.interval, on: .current,
+                                 in: .common).autoconnect()) { _ in
+            guard circle.isFlowing else { return }
             count.increment()
         }
         .onChange(of: UIScreen.main.bounds) { _ in

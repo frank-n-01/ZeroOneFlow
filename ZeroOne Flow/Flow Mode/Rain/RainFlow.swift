@@ -12,14 +12,15 @@ struct RainFlow: View {
     var body: some View {
         ZStack {
             rain.colors.bg.edgesIgnoringSafeArea(.all)
-            screenSizeGetter
+            ScreenSizeGetter(height: $height, width: $width)
             rainDrops
         }
         .onAppear {
             loop = Int(rain.scale)
         }
-        .onReceive(Timer.publish(every: rain.isFlowing ? rain.interval : 100,
-                                 on: .current, in: .common).autoconnect()) { _ in
+        .onReceive(Timer.publish(every: rain.interval, on: .current,
+                                 in: .common).autoconnect()) { _ in
+            guard rain.isFlowing else { return }
             count.increment()
         }
     }
@@ -31,20 +32,6 @@ struct RainFlow: View {
             }
         }
     }
-    
-    private var screenSizeGetter: some View {
-        GeometryReader { geometry in
-            Text("")
-                .onAppear {
-                    height = geometry.size.height
-                    width = geometry.size.width
-                }
-                .onChange(of: geometry.size) { _ in
-                    height = geometry.size.height
-                    width = geometry.size.width
-                }
-        }
-    }
 }
 
 struct RainDrop: View {
@@ -54,7 +41,7 @@ struct RainDrop: View {
     @Binding var count: FlowCount
     @State private var content = ""
     @State private var length = 0
-    @State private var fontSize: CGFloat = 0
+    @State private var size: CGFloat = 0
     @State private var design: Font.Design = .monospaced
     @State private var weight: Font.Weight = .regular
     @State private var position = CGPoint()
@@ -64,16 +51,14 @@ struct RainDrop: View {
     
     var body: some View {
         Text(content)
-            .font(.system(size: fontSize,
-                          weight: weight,
-                          design: design))
+            .font(.system(size: size, weight: weight, design: design))
             .foregroundColor(rain.colors.txt)
             .position(position)
             .multilineTextAlignment(.center)
             .fixedSize(horizontal: false, vertical: true)
             .background(contentSizeGetter)
             .onAppear {
-                fontSize = rain.fonts.sizeRange.getRandomSizeInRange()
+                size = rain.fonts.sizeRange.getRandomSizeInRange()
                 design = rain.fonts.design.value
                 weight = rain.fonts.weight.value
                 position.x = CGFloat.random(in: 0...width)

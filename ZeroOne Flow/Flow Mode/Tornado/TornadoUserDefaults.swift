@@ -1,6 +1,6 @@
 // Copyright © 2021-2022 Ni Fu. All rights reserved.
 
-import SwiftUI
+import Foundation
 
 class TornadoUserDefaults: FlowModeUserDefaults {
     
