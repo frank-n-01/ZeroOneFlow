@@ -30,8 +30,9 @@ struct WormFlow: View {
     private var wormHead: some View {
         GeometryReader { geometry in
             Text("")
-                .onReceive(Timer.publish(every: worm.isFlowing ? worm.interval : 100,
-                                         on: .current, in: .common).autoconnect()) { _ in
+                .onReceive(Timer.publish(every: worm.interval, on: .current,
+                                         in: .common).autoconnect()) { _ in
+                    guard worm.isFlowing else { return }
                     moveHeadX()
                     moveHeadY()
                     turn()

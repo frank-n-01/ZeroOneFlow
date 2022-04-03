@@ -13,7 +13,7 @@ enum GradientType: Int, CaseIterable, Equatable {
         case .radial:
             return "Radial"
         case .linear:
-            return "Linear"
+            return "Linear.gradient"
         case .angular:
             return "Angular"
         case .elliptical:

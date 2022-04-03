@@ -32,8 +32,8 @@ struct SingleFlow: View {
                     }
             }
         }
-        .onReceive(Timer.publish(every: single.isFlowing ? single.interval : 100,
-                                 on: .current, in: .common).autoconnect()) { _ in
+        .onReceive(Timer.publish(every: single.interval, on: .current,
+                                 in: .common).autoconnect()) { _ in
             guard single.isFlowing else { return }
             
             content = ContentMaker.make(with: single.contents)

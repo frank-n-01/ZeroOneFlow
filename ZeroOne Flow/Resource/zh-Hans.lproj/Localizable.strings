@@ -6,7 +6,7 @@
 
 // MARK: - Flow Mode
 "Mode" = "模式";
-"Linear" = "线形";
+"Linear" = "线性";
 "Fly" = "蝇";
 "Tornado" = "龙卷风";
 "Single" = "孤";
@@ -14,6 +14,7 @@
 "Worm" = "虫";
 "Big Bang" = "大爆炸";
 "Rain" = "雨";
+"Snow" = "雪";
 
 // MARK: - Content Type
 "Content" = "内容";
@@ -88,7 +89,7 @@
 //MARK: - Gradient
 "Gradation" = "渐层";
 "Radial" = "放射";
-"Linear" = "线性";
+"Linear.gradient" = "线性";
 "Angular" = "角度";
 "Elliptical" = "椭圆";
 
@@ -117,6 +118,7 @@
 
 "Gap" = "空隙";
 "Step" = "步骤";
+"Wind" = "风";
 
 "Crawling" = "爬行";
 "Stretch" = "伸缩";

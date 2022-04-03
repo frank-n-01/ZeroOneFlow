@@ -14,6 +14,7 @@
 "Worm" = "Worm";
 "Big Bang" = "Big Bang";
 "Rain" = "Rain";
+"Snow" = "Snow";
 
 // MARK: - Content Type
 "Content" = "Content";
@@ -117,12 +118,13 @@
 
 "Gap" = "Gap";
 "Step" = "Step";
+"Wind" = "Wind";
 
 "Crawling" = "Crawling";
 "Stretch" = "Stretch";
 
 // MARK: - Text Format
-"LineFeed" = "Line Feed";
+"LineFeed.gradient" = "Line Feed";
 "Activate" = "Activate";
 "Indent" = "Indent";
 

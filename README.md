@@ -5,7 +5,7 @@ The repository of [ZeroOne Flow](https://apps.apple.com/jp/app/zeroone-flow/id15
 A digital art of flowing binary numbers. Zero and One will vividly flow on the screen. Please enjoy the dynamic beauty of 01!
 
 ## Flow
-There are 8 flow modes with different algorithms:
+There are 9 flow modes with different algorithms:
 
 1. Linear
 2. Fly
@@ -15,6 +15,7 @@ There are 8 flow modes with different algorithms:
 6. Worm
 7. Big Bang
 8. Rain
+9. Snow
 
 ## Content
 The flow content is not only binary numbers:
@@ -24,18 +25,16 @@ The flow content is not only binary numbers:
     - Octal
     - Hexadecimal
 - Language
-    - Scripts
-        - Latin
-        - Cuneiform
-        - Greek
-        - Hieroglyph
-        - Arabic
-        - Devanagari
-        - Chinese
-    - Words
-        - English
-        - Japanese
-        - Spanish
+    - Latin
+    - Cuneiform
+    - Greek
+    - Hieroglyph
+    - Arabic
+    - Devanagari
+    - Chinese
+    - English
+    - Japanese
+    - Spanish
 - Symbol
     - Box
     - Currency
@@ -54,4 +53,4 @@ The flow content is not only binary numbers:
 
 ## Style
 - You can customize the flow style and save it.
-- If you turn the "dice" button ON (filled), a random style will be generated every time you start the flow.
+- While the "dice" button is ON (filled) a random style will be generated every time you start the flow.

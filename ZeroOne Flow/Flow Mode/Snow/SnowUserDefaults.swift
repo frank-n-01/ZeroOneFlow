@@ -1,21 +1,23 @@
-// Copyright © 2021-2022 Ni Fu. All rights reserved.
+// Copyright © 2022 Ni Fu. All rights reserved.
 
 import Foundation
 
-class RainUserDefaults: FlowModeUserDefaults {
+class SnowUserDefaults: FlowModeUserDefaults {
     
     @Published var scale: Double {
         didSet {
             if scale != oldValue {
-                UserDefaults.standard.set(scale, forKey: Keys.scale.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    scale, forKey: Keys.scale.rawValue + flowMode)
             }
         }
     }
     
-    @Published var length: Double {
+    @Published var wind: Double {
         didSet {
-            if length != oldValue {
-                UserDefaults.standard.set(length, forKey: Keys.length.rawValue + flowMode)
+            if wind != oldValue {
+                UserDefaults.standard.set(
+                    wind, forKey: Keys.windStrength.rawValue + flowMode)
             }
         }
     }
@@ -23,14 +25,15 @@ class RainUserDefaults: FlowModeUserDefaults {
     @Published var step: Double {
         didSet {
             if step != oldValue {
-                UserDefaults.standard.set(step, forKey: Keys.step.rawValue + flowMode)
+                UserDefaults.standard.set(
+                    step, forKey: Keys.step.rawValue + flowMode)
             }
         }
     }
     
     override init(_ flowModeKey: String) {
         scale = UserDefaults.standard.double(forKey: Keys.scale.rawValue + flowModeKey)
-        length = UserDefaults.standard.double(forKey: Keys.length.rawValue + flowModeKey)
+        wind = UserDefaults.standard.double(forKey: Keys.windStrength.rawValue + flowModeKey)
         step = UserDefaults.standard.double(forKey: Keys.step.rawValue + flowModeKey)
         
         super.init(flowModeKey)
@@ -38,7 +41,7 @@ class RainUserDefaults: FlowModeUserDefaults {
     
     private enum Keys: String {
         case scale = "scale_"
-        case length = "length_"
+        case windStrength = "wind_"
         case step = "step_"
     }
 }

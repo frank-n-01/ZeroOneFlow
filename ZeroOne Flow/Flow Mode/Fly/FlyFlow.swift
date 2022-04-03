@@ -20,8 +20,9 @@ struct FlyFlow: View {
         .onAppear {
             loop = Int(fly.scale)
         }
-        .onReceive(Timer.publish(every: fly.isFlowing ? fly.interval : 100,
-                                 on: .current, in: .common).autoconnect()) { _ in
+        .onReceive(Timer.publish(every: fly.interval, on: .current,
+                                 in: .common).autoconnect()) { _ in
+            guard fly.isFlowing else { return }
             count.increment()
         }
     }

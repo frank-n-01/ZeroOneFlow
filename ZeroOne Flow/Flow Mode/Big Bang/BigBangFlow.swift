@@ -32,6 +32,7 @@ struct BigBangFlow: View {
         }
         .onReceive(Timer.publish(every: bigbang.interval, on: .current,
                                  in: .common).autoconnect()) { _ in
+            guard bigbang.isFlowing else { return }
             control()
         }
     }

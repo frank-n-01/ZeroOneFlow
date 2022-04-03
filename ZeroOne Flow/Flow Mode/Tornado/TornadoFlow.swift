@@ -25,9 +25,11 @@ struct TornadoFlow: View {
             loop = Int(tornado.scale)
             duration = Double.random(in: tornado.durationRange.range)
         }
-        .onReceive(Timer.publish(every: tornado.isFlowing ? 0.1 : 100,
-                                 on: .current, in: .common).autoconnect()) { _ in
+        .onReceive(Timer.publish(every: 0.1, on: .current,
+                                 in: .common).autoconnect()) { _ in
+            guard tornado.isFlowing else { return }
             count.increment()
+            
             if count.value % 10 == 0 {
                 duration = Double.random(in: tornado.durationRange.range)
             }

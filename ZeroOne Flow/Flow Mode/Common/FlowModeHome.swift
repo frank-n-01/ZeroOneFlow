@@ -12,6 +12,7 @@ struct FlowModeHome: View {
     @StateObject var worm = WormViewModel()
     @StateObject var bigbang = BigBangViewModel()
     @StateObject var rain = RainViewModel()
+    @StateObject var snow = SnowViewModel()
     
     @State private var isFlowing: Bool = false {
         didSet {
@@ -127,6 +128,8 @@ struct FlowModeHome: View {
             return bigbang
         case .rain:
             return rain
+        case .snow:
+            return snow
         }
     }
     
@@ -149,6 +152,8 @@ struct FlowModeHome: View {
                 BigBangHome(bigbang: bigbang)
             case .rain:
                 RainHome(rain: rain)
+            case .snow:
+                SnowHome(snow: snow)
             }
         }
     }
@@ -172,6 +177,8 @@ struct FlowModeHome: View {
                 BigBangFlow(bigbang: bigbang)
             case .rain:
                 RainFlow(rain: rain)
+            case .snow:
+                SnowFlow(snow: snow)
             }
         }
     }
