@@ -21,7 +21,7 @@ struct SnowFlow: View {
         }
         .onAppear {
             loop = Int(snow.scale)
-            fallRange = (snow.fall / 2)...snow.fall
+            fallRange = (snow.step / 2)...snow.step
             windRange = -snow.wind...snow.wind
         }
         .onChange(of: height) { height in

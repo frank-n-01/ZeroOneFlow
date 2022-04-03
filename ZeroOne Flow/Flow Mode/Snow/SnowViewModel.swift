@@ -25,9 +25,9 @@ class SnowViewModel: FlowModeViewModel {
         }
     }
     
-    @Published var fall: Double {
+    @Published var step: Double {
         didSet {
-            ud.fall = fall
+            ud.step = step
         }
     }
     
@@ -35,7 +35,7 @@ class SnowViewModel: FlowModeViewModel {
         scale = SnowDefault.SCALE
         interval = SnowDefault.INTERVAL
         wind = SnowDefault.WIND
-        fall = SnowDefault.FALL
+        step = SnowDefault.FALL
         super.init(ud: ud, fonts: SnowDefault.FONT)
     }
     
@@ -43,10 +43,10 @@ class SnowViewModel: FlowModeViewModel {
         super.makeRandomStyle()
         
         scale = Double.random(in: 1...200)
-        interval = Double.random(in: 0.02...0.15)
+        interval = Double.random(in: 0.02...0.1)
         fonts.sizeRange.random(max: 100)
         wind = Double.random(in: 20...150)
-        fall = CGFloat.random(in: 20...200)
+        step = CGFloat.random(in: 20...200)
     }
     
     override func applyUserDefaults() {
@@ -56,7 +56,7 @@ class SnowViewModel: FlowModeViewModel {
             scale = ud.scale > 0 ? ud.scale : SnowDefault.SCALE
             interval = ud.interval > 0 ? ud.interval : SnowDefault.INTERVAL
             wind = ud.wind > 0 ? ud.wind : SnowDefault.WIND
-            fall = ud.fall > 0 ? ud.fall : SnowDefault.FALL
+            step = ud.step > 0 ? ud.step : SnowDefault.FALL
         }
     }
     
@@ -66,7 +66,7 @@ class SnowViewModel: FlowModeViewModel {
         ud.scale = scale
         ud.interval = interval
         ud.wind = wind
-        ud.fall = fall
+        ud.step = step
     }
     
     override func resetUserDefaults() {
@@ -76,7 +76,7 @@ class SnowViewModel: FlowModeViewModel {
         scale = SnowDefault.SCALE
         interval = SnowDefault.INTERVAL
         wind = SnowDefault.WIND
-        fall = SnowDefault.FALL
+        step = SnowDefault.FALL
     }
     
     override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
@@ -87,7 +87,7 @@ class SnowViewModel: FlowModeViewModel {
         scale = style.scale > 0 ? style.scale : SnowDefault.SCALE
         interval = style.interval > 0 ? style.interval : SnowDefault.INTERVAL
         wind = style.wind > 0 ? style.wind : SnowDefault.WIND
-        fall = style.fall > 0 ? style.fall : SnowDefault.FALL
+        step = style.step > 0 ? style.step : SnowDefault.FALL
         
         super.applyCoreData(context, style)
     }
@@ -99,7 +99,7 @@ class SnowViewModel: FlowModeViewModel {
         style.scale = scale
         style.interval = interval
         style.wind = wind
-        style.fall = fall
+        style.step = step
         
         super.saveCoreData(context, name, style)
     }

@@ -22,11 +22,11 @@ class SnowUserDefaults: FlowModeUserDefaults {
         }
     }
     
-    @Published var fall: Double {
+    @Published var step: Double {
         didSet {
-            if fall != oldValue {
+            if step != oldValue {
                 UserDefaults.standard.set(
-                    fall, forKey: Keys.step.rawValue + flowMode)
+                    step, forKey: Keys.step.rawValue + flowMode)
             }
         }
     }
@@ -34,14 +34,14 @@ class SnowUserDefaults: FlowModeUserDefaults {
     override init(_ flowModeKey: String) {
         scale = UserDefaults.standard.double(forKey: Keys.scale.rawValue + flowModeKey)
         wind = UserDefaults.standard.double(forKey: Keys.windStrength.rawValue + flowModeKey)
-        fall = UserDefaults.standard.double(forKey: Keys.step.rawValue + flowModeKey)
+        step = UserDefaults.standard.double(forKey: Keys.step.rawValue + flowModeKey)
         
         super.init(flowModeKey)
     }
     
     private enum Keys: String {
         case scale = "scale_"
-        case windStrength = "wind_strength_"
+        case windStrength = "wind_"
         case step = "step_"
     }
 }

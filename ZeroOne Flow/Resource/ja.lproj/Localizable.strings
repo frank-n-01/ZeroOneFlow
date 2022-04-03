@@ -14,6 +14,7 @@
 "Worm" = "ワーム";
 "Big Bang" = "ビッグバン";
 "Rain" = "レイン";
+"Snow" = "スノー";
 
 // MARK: - Content Type
 "Content" = "内容";
@@ -88,7 +89,7 @@
 //MARK: - Gradient
 "Gradation" = "グラデーション";
 "Radial" = "放射";
-"Linear" = "線形";
+"Linear.gradient" = "線形";
 "Angular" = "角度";
 "Elliptical" = "楕円";
 
@@ -117,6 +118,7 @@
 
 "Gap" = "間隔";
 "Step" = "歩幅";
+"Wind" = "風";
 
 "Crawling" = "爬行";
 "Stretch" = "伸縮";

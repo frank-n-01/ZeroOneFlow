@@ -33,10 +33,10 @@ struct SnowHome: View {
         }
         
         Section {
-            SingleImageSlider(value: $snow.fall, min: 1, max: 500,
+            SingleImageSlider(value: $snow.step, min: 1, max: 500,
                               image: "cloud.snow.fill", format: "%.0f")
         } header: {
-            Text("Fall")
+            Text("Step")
         }
     }
 }

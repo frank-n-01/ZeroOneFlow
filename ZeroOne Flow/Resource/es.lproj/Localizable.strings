@@ -14,6 +14,7 @@
 "Worm" = "Gusano";
 "Big Bang" = "Big Bang";
 "Rain" = "Lluvia";
+"Snow" = "Nieve";
 
 // MARK: - Content Type
 "Content" = "Contenido";
@@ -88,7 +89,7 @@
 //MARK: - Gradient
 "Gradation" = "Gradación";
 "Radial" = "Radial";
-"Linear" = "Lineal";
+"Linear.gradient" = "Lineal";
 "Angular" = "Angular";
 "Elliptical" = "Elíptico";
 
@@ -117,6 +118,7 @@
 
 "Gap" = "Brecha";
 "Step" = "Pasco";
+"Wind" = "Viento";
 
 "Crawling" = "Arrastrándose";
 "Stretch" = "Estirar";
