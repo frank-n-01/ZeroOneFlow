@@ -1,0 +1,139 @@
+// Copyright © 2021 Ni Fu. All rights reserved.
+
+// MARK: - Title
+"ZeroOne Flow" = "零一 流";
+"Control" = "控制";
+
+// MARK: - Flow Mode
+"Mode" = "模式";
+"Linear" = "線性";
+"Fly" = "蠅";
+"Tornado" = "龍捲風";
+"Single" = "孤";
+"Circle" = "輪";
+"Worm" = "蟲";
+"Big Bang" = "大爆炸";
+"Rain" = "雨";
+"Snow" = "雪";
+
+// MARK: - Content Type
+"Content" = "內容";
+"Type" = "種類";
+"Number" = "數字";
+"Language" = "語言";
+"Symbol" = "符號";
+"Custom" = "自由";
+"Code" = "程序";
+
+// Number
+"Binary" = "二進制";
+"Oct" = "八進制";
+"Hex" = "十六進制";
+
+// Language
+"Latin" = "拉丁";
+"Cuneiform" = "楔形";
+"Greek" = "希臘";
+"Hieroglyph" = "象形";
+"Arabic" = "阿拉伯";
+"Devanagari" = "梵文";
+"Chinese" = "漢字";
+"English" = "英語";
+"Japanese" = "日語";
+"Spanish" = "西班牙語";
+
+// Symbol
+"Box" = "箱子";
+"Currency" = "貨幣";
+"Block" = "方塊";
+"Chess" = "西洋棋";
+"Mahjong" = "麻將";
+"Kaomoji" = "表情";
+
+// Custom
+"First Content" = "第一個內容";
+"Secong Content" = "第二個內容";
+
+// MARK: - Font
+"Font" = "文字";
+"Font Size" = "文字";
+"Max" = "最大";
+"Min" = "最小";
+
+"Design" = "字體";
+"default" = "默認";
+"monospaced" = "等距";
+"rounded" = "圓角";
+"serif" = "襯線";
+
+"Weight" = "粗細";
+"ultraLight" = "超輕";
+"thin" = "細";
+"light" = "輕";
+"regular" = "常規";
+"medium" = "中等";
+"semibold" = "半粗";
+"bold" = "粗";
+"heavy" = "重";
+"black" = "黑";
+
+// MARK: - Random
+"Random" = "隨機";
+"random" = "隨機";
+
+// MARK: - Color
+"Color" = "顏色";
+"Text" = "文字";
+"Background" = "背景";
+
+//MARK: - Gradient
+"Gradation" = "漸層";
+"Radial" = "放射";
+"Linear.gradient" = "線性";
+"Angular" = "角度";
+"Elliptical" = "橢圓";
+
+// MARK: - Style
+"Style" = "樣式";
+
+// Save
+"Save" = "保存";
+"save.message" = "保存您的樣式？";
+"unnamed" = "無名";
+
+// Reset
+"Reset" = "初始化";
+"reset.message" = "初始化您現在的樣式？";
+
+// Button
+"Cancel" = "取消";
+"OK" = "是";
+
+// MARK: - Movement
+"Speed" = "速度";
+"Repeat" = "反復";
+
+"Duration" = "停頓";
+"Rotation" = "迴轉";
+
+"Gap" = "空隙";
+"Step" = "步驟";
+"Wind" = "風";
+
+"Crawling" = "爬行";
+"Stretch" = "伸縮";
+
+// MARK: - Text Format
+"LineFeed" = "換行";
+"Activate" = "啟用";
+"Indent" = "縮進";
+
+// MARK: - Scale
+"Scale" = "規模";
+"Depth" = "深淺";
+"Length" = "長短";
+
+// MARK: - Padding
+"Padding" = "空白";
+"V" = "縱";
+"H" = "橫";
