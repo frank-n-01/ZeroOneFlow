@@ -16,17 +16,25 @@ struct SnowFlow: View {
     var body: some View {
         ZStack {
             snow.colors.bg.edgesIgnoringSafeArea(.all)
-            ScreenSizeGetter(height: $height, width: $width)
-            snowFlakes
+            
+            ForEach(0 ..< loop, id: \.self) { i in
+                if i < count.value {
+                    SnowFlake(snow: snow, count: $count,
+                              fallRange: $fallRange, windRange: $windRange,
+                              appearRange: $appearRange, bottom: $bottom)
+                }
+            }
         }
         .onAppear {
             loop = Int(snow.scale)
             fallRange = (snow.step / 2)...snow.step
             windRange = -snow.wind...snow.wind
+            appearRange = -UIScreen.main.bounds.height...0
+            bottom = UIScreen.main.bounds.height * 2
         }
-        .onChange(of: height) { height in
+        .onChange(of: UIScreen.main.bounds.height) { height in
             appearRange = -height...0
-            bottom = height + height
+            bottom = height * 2
         }
         .onReceive(Timer.publish(every: snow.interval, on: .current,
                                  in: .common).autoconnect()) { _ in
@@ -34,23 +42,11 @@ struct SnowFlow: View {
             count.increment()
         }
     }
-    
-    private var snowFlakes: some View {
-        ForEach(0 ..< loop, id: \.self) { i in
-            if i < count.value {
-                SnowFlake(snow: snow, count: $count, height: $height, width: $width,
-                          fallRange: $fallRange, windRange: $windRange,
-                          appearRange: $appearRange, bottom: $bottom)
-            }
-        }
-    }
 }
 
 struct SnowFlake: View {
     @ObservedObject var snow: SnowViewModel
     @Binding var count: FlowCount
-    @Binding var height: CGFloat
-    @Binding var width: CGFloat
     @Binding var fallRange: ClosedRange<CGFloat>
     @Binding var windRange: ClosedRange<CGFloat>
     @Binding var appearRange: ClosedRange<CGFloat>
@@ -70,7 +66,7 @@ struct SnowFlake: View {
                 size = snow.fonts.sizeRange.getRandomSizeInRange()
                 design = snow.fonts.design.value
                 weight = snow.fonts.weight.value
-                position.x = CGFloat.random(in: 0...width)
+                position.x = CGFloat.random(in: 0...UIScreen.main.bounds.width)
                 position.y = CGFloat.random(in: appearRange)
                 content = ContentMaker.make(with: snow.contents)
             }
@@ -81,7 +77,7 @@ struct SnowFlake: View {
                 }
                 if position.y > bottom {
                     position.y = CGFloat.random(in: appearRange)
-                    position.x = CGFloat.random(in: 0...width)
+                    position.x = CGFloat.random(in: 0...UIScreen.main.bounds.width)
                 }
             }
     }
