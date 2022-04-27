@@ -38,13 +38,21 @@ class WormViewModel: FlowModeViewModel {
         }
     }
     
+    static let FONT = Fonts(size: 20, design: .random,
+                            weight: .random, min: 5, max: 100)
+    static let INTERVAL = 0.08
+    static let LENGTH = 20.0
+    static let STEP = 20.0
+    static let CRAWLING = 20.0
+    static let PADDING = Padding(vertical: 30, horizontal: 30)
+    
     init() {
-        interval = WormDefault.INTERVAL
-        length = WormDefault.LENGTH
-        step = WormDefault.STEP
-        crawling = WormDefault.CRAWLING
-        padding = WormDefault.PADDING
-        super.init(ud: ud, fonts: WormDefault.FONT)
+        interval = Self.INTERVAL
+        length = Self.LENGTH
+        step = Self.STEP
+        crawling = Self.CRAWLING
+        padding = Self.PADDING
+        super.init(ud: ud, fonts: Self.FONT)
     }
     
     override func makeRandomStyle() {
@@ -60,10 +68,10 @@ class WormViewModel: FlowModeViewModel {
         super.applyUserDefaults()
         
         if ud.isInitialized {
-            interval = ud.interval > 0 ? ud.interval : WormDefault.INTERVAL
-            length = ud.length > 0 ? ud.length : WormDefault.LENGTH
-            step = ud.step  > 0 ? ud.step : WormDefault.STEP
-            crawling = ud.crawling > 0 ? ud.crawling : WormDefault.CRAWLING
+            interval = ud.interval > 0 ? ud.interval : Self.INTERVAL
+            length = ud.length > 0 ? ud.length : Self.LENGTH
+            step = ud.step  > 0 ? ud.step : Self.STEP
+            crawling = ud.crawling > 0 ? ud.crawling : Self.CRAWLING
             padding.set(vertical: ud.paddingVertical,
                         horizontal: ud.paddingHorizontal)
         }
@@ -83,22 +91,22 @@ class WormViewModel: FlowModeViewModel {
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        interval = WormDefault.INTERVAL
-        length = WormDefault.LENGTH
-        step = WormDefault.STEP
-        crawling = WormDefault.CRAWLING
-        padding = WormDefault.PADDING
-        fonts = WormDefault.FONT
+        interval = Self.INTERVAL
+        length = Self.LENGTH
+        step = Self.STEP
+        crawling = Self.CRAWLING
+        padding = Self.PADDING
+        fonts = Self.FONT
     }
     
     override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
                                              _ style: T) {
         guard let style = style as? Worm else { return }
         
-        interval = style.interval > 0 ? style.interval : WormDefault.INTERVAL
-        length = style.length > 0 ? style.length : WormDefault.LENGTH
-        step = style.step > 0 ? style.step : WormDefault.STEP
-        crawling = style.crawling > 0 ? style.crawling : WormDefault.CRAWLING
+        interval = style.interval > 0 ? style.interval : Self.INTERVAL
+        length = style.length > 0 ? style.length : Self.LENGTH
+        step = style.step > 0 ? style.step : Self.STEP
+        crawling = style.crawling > 0 ? style.crawling : Self.CRAWLING
         padding.set(vertical: style.paddingV, horizontal: style.paddingH)
        
         super.applyCoreData(context, style)
@@ -115,13 +123,4 @@ class WormViewModel: FlowModeViewModel {
         
         super.saveCoreData(context, name, style)
     }
-}
-
-private class WormDefault {
-    static let FONT = Fonts(size: 20, design: .random, weight: .random, min: 5, max: 100)
-    static let INTERVAL = 0.08
-    static let LENGTH = 20.0
-    static let STEP = 20.0
-    static let CRAWLING = 20.0
-    static let PADDING = Padding(vertical: 30, horizontal: 30)
 }

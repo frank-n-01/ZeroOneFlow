@@ -17,24 +17,24 @@ struct SnowFlow: View {
         ZStack {
             snow.colors.bg.edgesIgnoringSafeArea(.all)
             
+            ScreenSizeGetter(height: $height, width: $width)
+            
             ForEach(0 ..< loop, id: \.self) { i in
                 if i < count.value {
-                    SnowFlake(snow: snow, count: $count,
-                              fallRange: $fallRange, windRange: $windRange,
-                              appearRange: $appearRange, bottom: $bottom)
+                    SnowFlake(snow: snow, count: $count, fallRange: $fallRange,
+                              appearRange: $appearRange, bottom: $bottom, width: $width)
                 }
             }
         }
         .onAppear {
             loop = Int(snow.scale)
-            fallRange = (snow.step / 2)...snow.step
-            windRange = -snow.wind...snow.wind
-            appearRange = -UIScreen.main.bounds.height...0
-            bottom = UIScreen.main.bounds.height * 2
-        }
-        .onChange(of: UIScreen.main.bounds.height) { height in
+            fallRange = -(snow.step / 3)...snow.step
             appearRange = -height...0
             bottom = height * 2
+        }
+        .onChange(of: height) { newHeight in
+            appearRange = -newHeight...0
+            bottom = newHeight * 2
         }
         .onReceive(Timer.publish(every: snow.interval, on: .current,
                                  in: .common).autoconnect()) { _ in
@@ -48,9 +48,9 @@ struct SnowFlake: View {
     @ObservedObject var snow: SnowViewModel
     @Binding var count: FlowCount
     @Binding var fallRange: ClosedRange<CGFloat>
-    @Binding var windRange: ClosedRange<CGFloat>
     @Binding var appearRange: ClosedRange<CGFloat>
     @Binding var bottom: CGFloat
+    @Binding var width: CGFloat
     @State private var content = ""
     @State private var size: CGFloat = 0
     @State private var design: Font.Design = .monospaced
@@ -66,18 +66,18 @@ struct SnowFlake: View {
                 size = snow.fonts.sizeRange.getRandomSizeInRange()
                 design = snow.fonts.design.value
                 weight = snow.fonts.weight.value
-                position.x = CGFloat.random(in: 0...UIScreen.main.bounds.width)
+                position.x = CGFloat.random(in: 0...width)
                 position.y = CGFloat.random(in: appearRange)
                 content = ContentMaker.make(with: snow.contents)
             }
             .onChange(of: count.value) { _ in
                 withAnimation {
                     position.y += CGFloat.random(in: fallRange)
-                    position.x += CGFloat.random(in: windRange)
+                    position.x += CGFloat.random(in: -snow.wind...snow.wind)
                 }
                 if position.y > bottom {
                     position.y = CGFloat.random(in: appearRange)
-                    position.x = CGFloat.random(in: 0...UIScreen.main.bounds.width)
+                    position.x = CGFloat.random(in: 0...width)
                 }
             }
     }

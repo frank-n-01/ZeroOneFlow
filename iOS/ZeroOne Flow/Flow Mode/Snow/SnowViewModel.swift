@@ -31,12 +31,19 @@ class SnowViewModel: FlowModeViewModel {
         }
     }
     
+    static let FONT = Fonts(size: 0, design: .random,
+                            weight: .ultraLight, min: 5, max: 30)
+    static let SCALE = 100.0
+    static let INTERVAL = 0.05
+    static let WIND = 50.0
+    static let FALL = 100.0
+    
     init() {
-        scale = SnowDefault.SCALE
-        interval = SnowDefault.INTERVAL
-        wind = SnowDefault.WIND
-        step = SnowDefault.FALL
-        super.init(ud: ud, fonts: SnowDefault.FONT)
+        scale = Self.SCALE
+        interval = Self.INTERVAL
+        wind = Self.WIND
+        step = Self.FALL
+        super.init(ud: ud, fonts: Self.FONT)
     }
     
     override func makeRandomStyle() {
@@ -53,10 +60,10 @@ class SnowViewModel: FlowModeViewModel {
         super.applyUserDefaults()
         
         if ud.isInitialized {
-            scale = ud.scale > 0 ? ud.scale : SnowDefault.SCALE
-            interval = ud.interval > 0 ? ud.interval : SnowDefault.INTERVAL
-            wind = ud.wind > 0 ? ud.wind : SnowDefault.WIND
-            step = ud.step > 0 ? ud.step : SnowDefault.FALL
+            scale = ud.scale > 0 ? ud.scale : Self.SCALE
+            interval = ud.interval > 0 ? ud.interval : Self.INTERVAL
+            wind = ud.wind > 0 ? ud.wind : Self.WIND
+            step = ud.step > 0 ? ud.step : Self.FALL
         }
     }
     
@@ -72,11 +79,11 @@ class SnowViewModel: FlowModeViewModel {
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        fonts = SnowDefault.FONT
-        scale = SnowDefault.SCALE
-        interval = SnowDefault.INTERVAL
-        wind = SnowDefault.WIND
-        step = SnowDefault.FALL
+        fonts = Self.FONT
+        scale = Self.SCALE
+        interval = Self.INTERVAL
+        wind = Self.WIND
+        step = Self.FALL
     }
     
     override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
@@ -84,10 +91,10 @@ class SnowViewModel: FlowModeViewModel {
         guard let style = style as? Snow else { return }
         
         fonts.sizeRange.set(min: style.fontSizeMin, max: style.fontSizeMax)
-        scale = style.scale > 0 ? style.scale : SnowDefault.SCALE
-        interval = style.interval > 0 ? style.interval : SnowDefault.INTERVAL
-        wind = style.wind > 0 ? style.wind : SnowDefault.WIND
-        step = style.step > 0 ? style.step : SnowDefault.FALL
+        scale = style.scale > 0 ? style.scale : Self.SCALE
+        interval = style.interval > 0 ? style.interval : Self.INTERVAL
+        wind = style.wind > 0 ? style.wind : Self.WIND
+        step = style.step > 0 ? style.step : Self.FALL
         
         super.applyCoreData(context, style)
     }
@@ -102,14 +109,6 @@ class SnowViewModel: FlowModeViewModel {
         style.step = step
         
         super.saveCoreData(context, name, style)
-    }
-    
-    private class SnowDefault {
-        static let FONT = Fonts(size: 0, design: .random, weight: .ultraLight, min: 5, max: 30)
-        static let SCALE = 100.0
-        static let INTERVAL = 0.05
-        static let WIND = 50.0
-        static let FALL = 100.0
     }
 }
 

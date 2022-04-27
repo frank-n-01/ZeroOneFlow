@@ -114,19 +114,15 @@ struct WormParts: View {
     @State private var weight: Font.Weight = .regular
     
     var body: some View {
-        if worm.isFlowing {
-            Text(content)
-                .font(.system(size: worm.fonts.size,
-                              weight: weight,
-                              design: design))
-                .foregroundColor(worm.colors.txt)
-                .position(position)
-                .animation(.linear, value: position)
-                .onAppear {
-                    content = ContentMaker.make(with: worm.contents)
-                    design = worm.fonts.design.value
-                    weight = worm.fonts.weight.value
-                }
-        }
+        Text(content)
+            .font(.system(size: worm.fonts.size, weight: weight, design: design))
+            .foregroundColor(worm.colors.txt)
+            .position(position)
+            .animation(.linear, value: position)
+            .onAppear {
+                content = ContentMaker.make(with: worm.contents)
+                design = worm.fonts.design.value
+                weight = worm.fonts.weight.value
+            }
     }
 }

@@ -6,14 +6,18 @@ struct RainFlow: View {
     @ObservedObject var rain: RainViewModel
     @State private var loop = 0
     @State private var count = FlowCount()
+    @State private var height: CGFloat = 0
+    @State private var width: CGFloat = 0
     
     var body: some View {
         ZStack {
             rain.colors.bg.edgesIgnoringSafeArea(.all)
             
+            ScreenSizeGetter(height: $height, width: $width)
+            
             ForEach(0 ..< loop, id: \.self) { i in
                 if i < count.value {
-                    RainDrop(rain: rain, count: $count)
+                    RainDrop(rain: rain, count: $count, height: $height, width: $width)
                 }
             }
         }
@@ -31,6 +35,8 @@ struct RainFlow: View {
 struct RainDrop: View {
     @ObservedObject var rain: RainViewModel
     @Binding var count: FlowCount
+    @Binding var height: CGFloat
+    @Binding var width: CGFloat
     @State private var content = ""
     @State private var length = 0
     @State private var position = CGPoint()
@@ -49,8 +55,8 @@ struct RainDrop: View {
                 size = rain.fonts.sizeRange.getRandomSizeInRange()
                 design = rain.fonts.design.value
                 weight = rain.fonts.weight.value
-                position.x = CGFloat.random(in: 0...UIScreen.main.bounds.width)
-                position.y = CGFloat.random(in: -UIScreen.main.bounds.height...0)
+                position.x = CGFloat.random(in: 0...width)
+                position.y = CGFloat.random(in: -height...0)
                 length = Int.random(in: 1...Int(rain.length))
                 makeContent()
             }
@@ -75,9 +81,9 @@ struct RainDrop: View {
         withAnimation() {
             position.y += CGFloat.random(in: 1...rain.step)
         }
-        if position.y > UIScreen.main.bounds.height {
-            position.y = CGFloat.random(in: -UIScreen.main.bounds.height...0)
-            position.x = CGFloat.random(in: 0...UIScreen.main.bounds.width)
+        if position.y > height {
+            position.y = CGFloat.random(in: -height...0)
+            position.x = CGFloat.random(in: 0...width)
         }
     }
 }
