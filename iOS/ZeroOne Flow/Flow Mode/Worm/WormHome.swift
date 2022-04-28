@@ -20,7 +20,7 @@ struct WormHome: View {
         ContentTypeView(contents: $worm.contents)
         
         Section {
-            SpeedSlider(interval: $worm.interval, min: 0.01, max: 1.0)
+            SandwichImageSlider(interval: $worm.interval, min: 0.01, max: 1.0)
         } header: {
             Text("Speed")
         }

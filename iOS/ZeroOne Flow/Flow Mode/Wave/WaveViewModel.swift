@@ -3,9 +3,9 @@
 import SwiftUI
 import CoreData
 
-class SnowViewModel: FlowModeViewModel {
+class WaveViewModel: FlowModeViewModel {
     
-    var ud = SnowUserDefaults(Mode.snow.key)
+    var ud = WaveUserDefaults(Mode.wave.key)
     
     @Published var scale: Double {
         didSet {
@@ -19,38 +19,30 @@ class SnowViewModel: FlowModeViewModel {
         }
     }
 
-    @Published var wind: Double {
+    @Published var gap: Double {
         didSet {
-            ud.wind = wind
+            ud.gap = gap
         }
     }
     
-    @Published var step: Double {
+    @Published var amplitude: Double {
         didSet {
-            ud.step = step
-        }
-    }
-    
-    @Published var floating: Double {
-        didSet {
-            ud.floating = floating
+            ud.amplitude = amplitude
         }
     }
     
     static let FONT = Fonts(size: 0, design: .random,
                             weight: .ultraLight, min: 5, max: 30)
-    static let SCALE = 100.0
+    static let SCALE = 1.0
     static let INTERVAL = 0.05
-    static let WIND = 50.0
-    static let STEP = 100.0
-    static let FLOATING = -10.0
+    static let GAP = 5.0
+    static let AMPLITUDE = 50.0
     
     init() {
         scale = Self.SCALE
         interval = Self.INTERVAL
-        wind = Self.WIND
-        step = Self.STEP
-        floating = Self.FLOATING
+        gap = Self.GAP
+        amplitude = Self.AMPLITUDE
         super.init(ud: ud, fonts: Self.FONT)
     }
     
@@ -58,11 +50,10 @@ class SnowViewModel: FlowModeViewModel {
         super.makeRandomStyle()
         
         scale = Double.random(in: 1...200)
-        interval = Double.random(in: 0.02...0.08)
-        fonts.sizeRange.random(max: 150)
-        wind = Double.random(in: 10...150)
-        step = CGFloat.random(in: 50...200)
-        floating = Double.random(in: -(step / 2)...(step / 2))
+        interval = Double.random(in: 0.02...0.1)
+        fonts.sizeRange.random(max: 100)
+        gap = Double.random(in: 20...150)
+        amplitude = Double.random(in: 30...300)
     }
     
     override func applyUserDefaults() {
@@ -71,9 +62,8 @@ class SnowViewModel: FlowModeViewModel {
         if ud.isInitialized {
             scale = ud.scale > 0 ? ud.scale : Self.SCALE
             interval = ud.interval > 0 ? ud.interval : Self.INTERVAL
-            wind = ud.wind > 0 ? ud.wind : Self.WIND
-            step = ud.step > 0 ? ud.step : Self.STEP
-            floating = ud.floating > 0 ? ud.floating : Self.FLOATING
+            gap = ud.gap > 0 ? ud.gap : Self.GAP
+            amplitude = ud.amplitude
         }
     }
     
@@ -82,9 +72,8 @@ class SnowViewModel: FlowModeViewModel {
         
         ud.scale = scale
         ud.interval = interval
-        ud.wind = wind
-        ud.step = step
-        ud.floating = floating
+        ud.gap = gap
+        ud.amplitude = amplitude
     }
     
     override func resetUserDefaults() {
@@ -93,36 +82,32 @@ class SnowViewModel: FlowModeViewModel {
         fonts = Self.FONT
         scale = Self.SCALE
         interval = Self.INTERVAL
-        wind = Self.WIND
-        step = Self.STEP
-        floating = Self.FLOATING
+        gap = Self.GAP
+        amplitude = Self.AMPLITUDE
     }
     
     override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
                                              _ style: T) {
-        guard let style = style as? Snow else { return }
+        guard let style = style as? Wave else { return }
         
         fonts.sizeRange.set(min: style.fontSizeMin, max: style.fontSizeMax)
         scale = style.scale > 0 ? style.scale : Self.SCALE
         interval = style.interval > 0 ? style.interval : Self.INTERVAL
-        wind = style.wind > 0 ? style.wind : Self.WIND
-        step = style.step > 0 ? style.step : Self.STEP
-        floating = style.floating
+        gap = style.gap > 0 ? style.gap : Self.GAP
+        amplitude = style.amplitude
         
         super.applyCoreData(context, style)
     }
     
     override func saveCoreData(_ context: NSManagedObjectContext,
                                _ name: String, _ style: FlowMode? = nil) {
-        let style = Snow(context: context)
+        let style = Wave(context: context)
         fonts.sizeRange.save(min: &style.fontSizeMin, max: &style.fontSizeMax)
         style.scale = scale
         style.interval = interval
-        style.wind = wind
-        style.step = step
-        style.floating = floating
+        style.gap = gap
+        style.amplitude = amplitude
         
         super.saveCoreData(context, name, style)
     }
 }
-

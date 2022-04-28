@@ -20,7 +20,7 @@ struct CircleHome: View {
         ContentTypeView(contents: $circle.contents)
         
         Section {
-            SpeedSlider(interval: $circle.interval, min: 0.02, max: 1.0)
+            SandwichImageSlider(interval: $circle.interval, min: 0.02, max: 1.0)
         } header: {
             Text("Speed")
         }

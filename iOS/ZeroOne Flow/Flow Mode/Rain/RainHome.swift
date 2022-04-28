@@ -20,7 +20,7 @@ struct RainHome: View {
         ContentTypeView(contents: $rain.contents)
         
         Section {
-            SpeedSlider(interval: $rain.interval, min: 0.01, max: 0.5)
+            SandwichImageSlider(interval: $rain.interval, min: 0.01, max: 0.5)
         } header: {
             Text("Speed")
         }

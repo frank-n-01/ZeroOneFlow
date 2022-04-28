@@ -28,13 +28,13 @@ struct SnowFlow: View {
         }
         .onAppear {
             loop = Int(snow.scale)
-            fallRange = -(snow.step / 3)...snow.step
-            appearRange = -height...0
-            bottom = height * 2
+            appearRange = -(height / 2)...0
+            bottom = height * 1.5
+            fallRange = snow.floating...snow.step
         }
         .onChange(of: height) { newHeight in
             appearRange = -newHeight...0
-            bottom = newHeight * 2
+            bottom = newHeight * 1.5
         }
         .onReceive(Timer.publish(every: snow.interval, on: .current,
                                  in: .common).autoconnect()) { _ in

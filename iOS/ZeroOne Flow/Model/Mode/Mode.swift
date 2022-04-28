@@ -13,6 +13,7 @@ enum Mode: Int, CaseIterable, Identifiable {
     case bigbang
     case rain
     case snow
+    case wave
     
     var id: UUID {
         return UUID()
@@ -38,6 +39,8 @@ enum Mode: Int, CaseIterable, Identifiable {
             return "Rain"
         case .snow:
             return "Snow"
+        case .wave:
+            return "Wave"
         }
     }
     
@@ -61,6 +64,8 @@ enum Mode: Int, CaseIterable, Identifiable {
             return "Rain"
         case .snow:
             return "Snow"
+        case .wave:
+            return "Wave"
         }
     }
     
@@ -84,6 +89,8 @@ enum Mode: Int, CaseIterable, Identifiable {
             return Rain.entity()
         case .snow:
             return Snow.entity()
+        case .wave:
+            return Wave.entity()
         }
     }
 }

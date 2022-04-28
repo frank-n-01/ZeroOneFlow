@@ -53,6 +53,10 @@
 		65590A902611C601004AB0D3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65590A8F2611C601004AB0D3 /* ContentView.swift */; };
 		65590A922611C603004AB0D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65590A912611C603004AB0D3 /* Assets.xcassets */; };
 		65590A952611C603004AB0D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65590A942611C603004AB0D3 /* Preview Assets.xcassets */; };
+		656669C128183A0600C8DFCA /* WaveUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656669C028183A0600C8DFCA /* WaveUserDefaults.swift */; };
+		656669C328183B2100C8DFCA /* WaveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656669C228183B2100C8DFCA /* WaveViewModel.swift */; };
+		656669C528195C7200C8DFCA /* WaveHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656669C428195C7200C8DFCA /* WaveHome.swift */; };
+		656669C728195ED600C8DFCA /* WaveFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656669C628195ED600C8DFCA /* WaveFlow.swift */; };
 		657066312726E81E00C37C19 /* RandomGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657066302726E81E00C37C19 /* RandomGradientView.swift */; };
 		657633742674F0020006981A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657633732674F0020006981A /* Persistence.swift */; };
 		6576337B26761E610006981A /* ModePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576337A26761E610006981A /* ModePicker.swift */; };
@@ -99,7 +103,7 @@
 		65E84BFA2670F78B00378408 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84BF92670F78B00378408 /* ColorView.swift */; };
 		65E84BFD2670F80800378408 /* TextColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84BFC2670F80800378408 /* TextColorView.swift */; };
 		65E84C042670F8CD00378408 /* BackgroundColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C032670F8CD00378408 /* BackgroundColorView.swift */; };
-		65E84C0B2670FCB500378408 /* SpeedSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C0A2670FCB500378408 /* SpeedSlider.swift */; };
+		65E84C0B2670FCB500378408 /* SandwichImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C0A2670FCB500378408 /* SandwichImageSlider.swift */; };
 		65E84C0D2670FCD400378408 /* ToggleWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C0C2670FCD400378408 /* ToggleWithLabel.swift */; };
 		65E84C162670FE0700378408 /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C152670FE0700378408 /* Contents.swift */; };
 		65E84C1B26738BE800378408 /* BigBangHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84C1A26738BE800378408 /* BigBangHome.swift */; };
@@ -174,6 +178,10 @@
 		65590A912611C603004AB0D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65590A942611C603004AB0D3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		65590A962611C603004AB0D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		656669C028183A0600C8DFCA /* WaveUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveUserDefaults.swift; sourceTree = "<group>"; };
+		656669C228183B2100C8DFCA /* WaveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveViewModel.swift; sourceTree = "<group>"; };
+		656669C428195C7200C8DFCA /* WaveHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveHome.swift; sourceTree = "<group>"; };
+		656669C628195ED600C8DFCA /* WaveFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveFlow.swift; sourceTree = "<group>"; };
 		657066302726E81E00C37C19 /* RandomGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomGradientView.swift; sourceTree = "<group>"; };
 		657633732674F0020006981A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		6576337A26761E610006981A /* ModePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModePicker.swift; sourceTree = "<group>"; };
@@ -226,7 +234,7 @@
 		65E84BF92670F78B00378408 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		65E84BFC2670F80800378408 /* TextColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextColorView.swift; sourceTree = "<group>"; };
 		65E84C032670F8CD00378408 /* BackgroundColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorView.swift; sourceTree = "<group>"; };
-		65E84C0A2670FCB500378408 /* SpeedSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedSlider.swift; sourceTree = "<group>"; };
+		65E84C0A2670FCB500378408 /* SandwichImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandwichImageSlider.swift; sourceTree = "<group>"; };
 		65E84C0C2670FCD400378408 /* ToggleWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleWithLabel.swift; sourceTree = "<group>"; };
 		65E84C152670FE0700378408 /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
 		65E84C1A26738BE800378408 /* BigBangHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBangHome.swift; sourceTree = "<group>"; };
@@ -305,6 +313,7 @@
 				65E84C1926738B0F00378408 /* Big Bang */,
 				654241DB26CE91E2003ABF3E /* Rain */,
 				65E203A527F343C100ED1BE3 /* Snow */,
+				656669BF28182F9600C8DFCA /* Wave */,
 			);
 			path = "Flow Mode";
 			sourceTree = "<group>";
@@ -412,6 +421,17 @@
 				65590A942611C603004AB0D3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		656669BF28182F9600C8DFCA /* Wave */ = {
+			isa = PBXGroup;
+			children = (
+				656669C428195C7200C8DFCA /* WaveHome.swift */,
+				656669C628195ED600C8DFCA /* WaveFlow.swift */,
+				656669C228183B2100C8DFCA /* WaveViewModel.swift */,
+				656669C028183A0600C8DFCA /* WaveUserDefaults.swift */,
+			);
+			path = Wave;
 			sourceTree = "<group>";
 		};
 		657066322726EA2700C37C19 /* Gradient */ = {
@@ -556,7 +576,7 @@
 			children = (
 				65B9FB6B273947380072CE4F /* SingleImageSlider.swift */,
 				65E84BEA2670F53000378408 /* CGFloatSlider.swift */,
-				65E84C0A2670FCB500378408 /* SpeedSlider.swift */,
+				65E84C0A2670FCB500378408 /* SandwichImageSlider.swift */,
 				65B9FB6D273954220072CE4F /* RangeSliders.swift */,
 			);
 			path = Slider;
@@ -850,6 +870,7 @@
 			files = (
 				65092F8926D085C800E769C6 /* FlowModeViewModel.swift in Sources */,
 				654241E726CFD3EE003ABF3E /* FlowModeUserDefaults.swift in Sources */,
+				656669C328183B2100C8DFCA /* WaveViewModel.swift in Sources */,
 				657066312726E81E00C37C19 /* RandomGradientView.swift in Sources */,
 				65E203A327EA194D00ED1BE3 /* FlowCount.swift in Sources */,
 				651EE0D02653E2B5007389AC /* CircleHome.swift in Sources */,
@@ -866,6 +887,7 @@
 				654241E226CEA0C9003ABF3E /* RainFlow.swift in Sources */,
 				65092FA826D5246E00E769C6 /* BigBangViewModel.swift in Sources */,
 				65E84C042670F8CD00378408 /* BackgroundColorView.swift in Sources */,
+				656669C528195C7200C8DFCA /* WaveHome.swift in Sources */,
 				65092FAA26D5332200E769C6 /* RainUserDefaults.swift in Sources */,
 				659AD81F2633F211009A1426 /* FlyFlow.swift in Sources */,
 				650F31852712E52B000D39D3 /* RandomStyleButton.swift in Sources */,
@@ -875,6 +897,7 @@
 				65092F9226D3B22000E769C6 /* TornadoViewModel.swift in Sources */,
 				659AD81B2633F1D1009A1426 /* FlyHome.swift in Sources */,
 				65092FB826E4462C00E769C6 /* FontDesign.swift in Sources */,
+				656669C128183A0600C8DFCA /* WaveUserDefaults.swift in Sources */,
 				65E84C0D2670FCD400378408 /* ToggleWithLabel.swift in Sources */,
 				653B2CF12674E77A00A7A921 /* ZeroOne Flow.xcdatamodeld in Sources */,
 				65DF0E11265E75F5009421F7 /* WormFlow.swift in Sources */,
@@ -901,6 +924,7 @@
 				6535DEB2266903D200CFA77B /* SymbolMaker.swift in Sources */,
 				6542630A2642B24A0025BFB7 /* LanguageMaker.swift in Sources */,
 				65E203AB27F34C2800ED1BE3 /* SnowHome.swift in Sources */,
+				656669C728195ED600C8DFCA /* WaveFlow.swift in Sources */,
 				6537AF38262AB35C00919C4E /* LinearFlow.swift in Sources */,
 				654241D626CBEE5C003ABF3E /* TextFormat.swift in Sources */,
 				651EE0C92650B132007389AC /* SingleHome.swift in Sources */,
@@ -911,7 +935,7 @@
 				65E203B027F485DE00ED1BE3 /* ScreenSizeGetter.swift in Sources */,
 				65092F9026D3B12E00E769C6 /* TornadoUserDefaults.swift in Sources */,
 				657EB84226FA2DBF0001A71A /* NumberType.swift in Sources */,
-				65E84C0B2670FCB500378408 /* SpeedSlider.swift in Sources */,
+				65E84C0B2670FCB500378408 /* SandwichImageSlider.swift in Sources */,
 				65E722BE263EE45D00564A48 /* TornadoFlow.swift in Sources */,
 				65E7FD09270746F400C4E3CE /* PlayButton.swift in Sources */,
 				65092F9426D3BD9F00E769C6 /* FontRangeView.swift in Sources */,

@@ -13,7 +13,7 @@ struct LinearHome: View {
         ContentTypeView(contents: $linear.contents)
         
         Section {
-            SpeedSlider(interval: $linear.interval, min: 0.001, max: 1.0)
+            SandwichImageSlider(interval: $linear.interval, min: 0.001, max: 1.0)
             ToggleWithLabel(value: $linear.isRepeat, label: "Repeat")
         } header: {
             Text("Speed")

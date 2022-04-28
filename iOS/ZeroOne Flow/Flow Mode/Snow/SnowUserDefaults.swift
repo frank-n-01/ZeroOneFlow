@@ -31,10 +31,20 @@ class SnowUserDefaults: FlowModeUserDefaults {
         }
     }
     
+    @Published var floating: Double {
+        didSet {
+            if floating != oldValue {
+                UserDefaults.standard.set(
+                    floating, forKey: Keys.floating.rawValue + flowMode)
+            }
+        }
+    }
+    
     override init(_ flowModeKey: String) {
         scale = UserDefaults.standard.double(forKey: Keys.scale.rawValue + flowModeKey)
         wind = UserDefaults.standard.double(forKey: Keys.windStrength.rawValue + flowModeKey)
         step = UserDefaults.standard.double(forKey: Keys.step.rawValue + flowModeKey)
+        floating = UserDefaults.standard.double(forKey: Keys.floating.rawValue + flowModeKey)
         
         super.init(flowModeKey)
     }
@@ -43,5 +53,6 @@ class SnowUserDefaults: FlowModeUserDefaults {
         case scale = "scale_"
         case windStrength = "wind_"
         case step = "step_"
+        case floating = "floating_"
     }
 }

@@ -20,7 +20,7 @@ struct BigBangHome: View {
         ContentTypeView(contents: $bigbang.contents)
         
         Section {
-            SpeedSlider(interval: $bigbang.interval, min: 0.01, max: 0.2)
+            SandwichImageSlider(interval: $bigbang.interval, min: 0.01, max: 0.2)
         } header: {
             Text("Speed")
         }
