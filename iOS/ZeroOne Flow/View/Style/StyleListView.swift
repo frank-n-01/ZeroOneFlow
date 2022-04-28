@@ -3,7 +3,9 @@
 import SwiftUI
 
 struct StyleListView: View {
+    @EnvironmentObject var mode: ModeUserDefaults
     @ObservedObject var viewModel: FlowModeViewModel
+    
     @Environment(\.managedObjectContext) var context
     @FetchRequest(
         entity: Mode.allCases[ModeUserDefaults.sharedCurrentMode].entity,
@@ -38,9 +40,10 @@ struct StyleListView: View {
                 }
                 .font(CommonStyle.LABEL_FONT)
                 
-                Button(action: { viewModel.applyCoreData(context, style) }) {
-                    Spacer()
-                }
+                Button(action: {
+                    viewModel.applyCoreData(context, style)
+                    mode.isRandomStyle = false
+                }) { Spacer() }
             }
         }
         .onDelete(perform: remove)
