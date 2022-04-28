@@ -28,7 +28,7 @@
 		65092FB626E2ED7800E769C6 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65092FB526E2ED7800E769C6 /* ContentType.swift */; };
 		65092FB826E4462C00E769C6 /* FontDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65092FB726E4462C00E769C6 /* FontDesign.swift */; };
 		65092FBA26E4492400E769C6 /* FontWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65092FB926E4492400E769C6 /* FontWeight.swift */; };
-		650F317F270F27A3000D39D3 /* StyleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650F317E270F27A3000D39D3 /* StyleListView.swift */; };
+		650F317F270F27A3000D39D3 /* StyleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650F317E270F27A3000D39D3 /* StyleList.swift */; };
 		650F318327107D0C000D39D3 /* SaveStyleField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650F318227107D0C000D39D3 /* SaveStyleField.swift */; };
 		650F31852712E52B000D39D3 /* RandomStyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650F31842712E52B000D39D3 /* RandomStyleButton.swift */; };
 		651EE0B9264D340E007389AC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651EE0B8264D340E007389AC /* Colors.swift */; };
@@ -151,7 +151,7 @@
 		65092FB526E2ED7800E769C6 /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
 		65092FB726E4462C00E769C6 /* FontDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontDesign.swift; sourceTree = "<group>"; };
 		65092FB926E4492400E769C6 /* FontWeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontWeight.swift; sourceTree = "<group>"; };
-		650F317E270F27A3000D39D3 /* StyleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleListView.swift; sourceTree = "<group>"; };
+		650F317E270F27A3000D39D3 /* StyleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleList.swift; sourceTree = "<group>"; };
 		650F318227107D0C000D39D3 /* SaveStyleField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveStyleField.swift; sourceTree = "<group>"; };
 		650F31842712E52B000D39D3 /* RandomStyleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomStyleButton.swift; sourceTree = "<group>"; };
 		651EE0B8264D340E007389AC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -272,7 +272,6 @@
 			isa = PBXGroup;
 			children = (
 				657EB82126F56C790001A71A /* Common */,
-				65E203AE27F485BC00ED1BE3 /* Util */,
 				657EB83826FA21D50001A71A /* Slider */,
 				657EB83726FA21CB0001A71A /* Toggle */,
 				6576337926761E4E0006981A /* Picker */,
@@ -446,7 +445,7 @@
 		657633752675B9290006981A /* Style */ = {
 			isa = PBXGroup;
 			children = (
-				650F317E270F27A3000D39D3 /* StyleListView.swift */,
+				650F317E270F27A3000D39D3 /* StyleList.swift */,
 				650F318227107D0C000D39D3 /* SaveStyleField.swift */,
 			);
 			path = Style;
@@ -639,6 +638,7 @@
 		65E203A127EA192D00ED1BE3 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				65E203AF27F485DE00ED1BE3 /* ScreenSizeGetter.swift */,
 				65E203A227EA194D00ED1BE3 /* FlowCount.swift */,
 			);
 			path = Utility;
@@ -663,14 +663,6 @@
 				65E203A627F343ED00ED1BE3 /* SnowUserDefaults.swift */,
 			);
 			path = Snow;
-			sourceTree = "<group>";
-		};
-		65E203AE27F485BC00ED1BE3 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				65E203AF27F485DE00ED1BE3 /* ScreenSizeGetter.swift */,
-			);
-			path = Util;
 			sourceTree = "<group>";
 		};
 		65E722BA263EE41600564A48 /* Tornado */ = {
@@ -908,7 +900,7 @@
 				6537AF4B2633AA2D00919C4E /* LinearHome.swift in Sources */,
 				65092FAC26D5335200E769C6 /* RainViewModel.swift in Sources */,
 				65092FA026D3E81200E769C6 /* CircleViewModel.swift in Sources */,
-				650F317F270F27A3000D39D3 /* StyleListView.swift in Sources */,
+				650F317F270F27A3000D39D3 /* StyleList.swift in Sources */,
 				65092FA426D51CEC00E769C6 /* WormViewModel.swift in Sources */,
 				65B9FB6E273954220072CE4F /* RangeSliders.swift in Sources */,
 				65E84C1D26738C1600378408 /* Fonts.swift in Sources */,
