@@ -6,19 +6,26 @@ struct WaveFlow: View {
     @ObservedObject var wave: WaveViewModel
     @State private var scale = 0
     @State private var count = FlowCount()
+    @State private var height: CGFloat = UIScreen.main.bounds.height
+    @State private var width: CGFloat = UIScreen.main.bounds.width
     
     var body: some View {
         ZStack {
             wave.colors.bg.edgesIgnoringSafeArea(.all)
+            ScreenSizeGetter(height: $height, width: $width)
             
             ForEach(0 ..< scale, id: \.self) { i in
-                if i < count.value {
-                    WaveLine(wave: wave, count: $count)
-                }
+                WaveLine(wave: wave, count: $count,
+                         height: $height, width: $width)
             }
         }
         .onAppear {
-            scale = Int(wave.scale)
+            scale = Int(round(wave.scale))
+            wave.verifyVerticalPadding(height: height)
+        }
+        .onChange(of: height) { newHeight in
+            wave.setMaxVerticalPadding(height: newHeight)
+            wave.verifyVerticalPadding(height: height)
         }
         .onReceive(Timer.publish(every: wave.interval, on: .current,
                                  in: .common).autoconnect()) { _ in
@@ -31,9 +38,12 @@ struct WaveFlow: View {
 struct WaveLine: View {
     @ObservedObject var wave: WaveViewModel
     @Binding var count: FlowCount
+    @Binding var height: CGFloat
+    @Binding var width: CGFloat
     @State private var length = 0
-    @State private var centerIndex = 0
+    @State private var joint = 0
     @State private var positions: [CGPoint] = []
+    
     
     var body: some View {
         ZStack {
@@ -44,7 +54,7 @@ struct WaveLine: View {
         .onAppear {
             setPositions()
         }
-        .onChange(of: UIScreen.main.bounds.width) { _ in
+        .onChange(of: width) { _ in
             setPositions()
         }
         .onChange(of: count.value) { _ in
@@ -53,28 +63,37 @@ struct WaveLine: View {
     }
     
     private func setPositions() {
-        length = Int(UIScreen.main.bounds.width / wave.gap)
-        centerIndex = length / 2
+        length = Int(width / wave.gap)
+        joint = Int.random(in: 1 ..< length)
         
-        let y = UIScreen.main.bounds.height / 2
+        let y = height / 2
+        positions = Array(repeating: CGPoint(x: 0, y: y), count: length)
+        
         for i in 0 ..< length {
-            positions.append(CGPoint(x: wave.gap * CGFloat(i), y: y))
+            positions[i].x = wave.gap * CGFloat(i)
         }
     }
     
     private func move() {
         withAnimation {
-            positions[centerIndex].y += Double.random(in: -wave.amplitude...wave.amplitude)
+            if positions[joint].y < wave.paddingVertical {
+                positions[joint].y += Double.random(in: 0...wave.amplitude)
+            } else if positions[joint].y > height - wave.paddingVertical {
+                positions[joint].y -= Double.random(in: 0...wave.amplitude)
+            } else {
+                positions[joint].y += Double.random(in: -wave.amplitude...wave.amplitude)
+            }
             
-            for i in (1 ... centerIndex).reversed() {
+            for i in (1 ... joint).reversed() {
                 positions[i - 1].y = positions[i].y + Double.random(in: -wave.amplitude...wave.amplitude)
             }
             
-            guard centerIndex < length else { return }
-            
-            for i in centerIndex ..< length {
+            for i in joint ..< length {
                 positions[i].y = positions[i - 1].y + Double.random(in: -wave.amplitude...wave.amplitude)
             }
+        }
+        if count.value % 10 == 0 {
+            joint = Int.random(in: 1 ..< length)
         }
     }
 }

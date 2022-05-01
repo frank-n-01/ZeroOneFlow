@@ -84,6 +84,7 @@
         <attribute name="fontSizeMax" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="fontSizeMin" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="gap" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="paddingVertical" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="scale" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Worm" representedClassName="Worm" parentEntity="FlowMode" syncable="YES" codeGenerationType="class">
@@ -104,6 +105,6 @@
         <element name="Snow" positionX="-207" positionY="-351" width="128" height="119"/>
         <element name="Tornado" positionX="-243.3117065429688" positionY="147.4387817382812" width="128" height="119"/>
         <element name="Worm" positionX="295.2474365234375" positionY="190.4984130859375" width="128" height="104"/>
-        <element name="Wave" positionX="-207" positionY="-351" width="128" height="104"/>
+        <element name="Wave" positionX="-207" positionY="-351" width="128" height="119"/>
     </elements>
 </model>

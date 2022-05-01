@@ -31,17 +31,27 @@ class WaveUserDefaults: FlowModeUserDefaults {
         }
     }
     
-    override init(_ flowModeKey: String) {
-        scale = UserDefaults.standard.double(forKey: Keys.scale.rawValue + flowModeKey)
-        gap = UserDefaults.standard.double(forKey: Keys.gap.rawValue + flowModeKey)
-        amplitude = UserDefaults.standard.double(forKey: Keys.amplitude.rawValue + flowModeKey)
-        
-        super.init(flowModeKey)
+    @Published var paddingVertical: Double {
+        didSet {
+            if paddingVertical != oldValue {
+                UserDefaults.standard.set(
+                    paddingVertical, forKey: Keys.paddingVertical.rawValue + flowMode)
+            }
+        }
+    }
+    
+    override init(_ flowMode: String) {
+        scale = UserDefaults.standard.double(forKey: Keys.scale.rawValue + flowMode)
+        gap = UserDefaults.standard.double(forKey: Keys.gap.rawValue + flowMode)
+        amplitude = UserDefaults.standard.double(forKey: Keys.amplitude.rawValue + flowMode)
+        paddingVertical = UserDefaults.standard.double(forKey: Keys.paddingVertical.rawValue + flowMode)
+        super.init(flowMode)
     }
     
     private enum Keys: String {
         case scale = "scale_"
         case gap = "gap_"
         case amplitude = "amplitude_"
+        case paddingVertical = "padding_vertical_"
     }
 }

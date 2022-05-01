@@ -20,7 +20,7 @@ struct SnowHome: View {
         ContentTypeView(contents: $snow.contents)
         
         Section {
-            SandwichImageSlider(interval: $snow.interval, min: 0.02, max: 0.5)
+            SandwichImageSlider(value: $snow.interval, min: 0.02, max: 0.5)
         } header: {
             Text("Speed")
         }
@@ -28,7 +28,7 @@ struct SnowHome: View {
         Section {
             SingleImageSlider(value: $snow.wind, min: 1, max: 500,
                               image: "wind.snow", format: "%.0f")
-            SandwichImageSlider(interval: $snow.floating, min: -snow.step, max: snow.step,
+            SandwichImageSlider(value: $snow.floating, min: -snow.step, max: snow.step,
                                 firstImage: "arrow.counterclockwise", secondImage: "arrow.down")
         } header: {
             Text("Wind")

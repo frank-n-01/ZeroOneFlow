@@ -4,7 +4,7 @@ import SwiftUI
 
 struct SnowFlow: View {
     @ObservedObject var snow: SnowViewModel
-    @State private var loop = 0
+    @State private var scale = 0
     @State private var count = FlowCount()
     @State private var height: CGFloat = 0
     @State private var width: CGFloat = 0
@@ -16,10 +16,9 @@ struct SnowFlow: View {
     var body: some View {
         ZStack {
             snow.colors.bg.edgesIgnoringSafeArea(.all)
-            
             ScreenSizeGetter(height: $height, width: $width)
             
-            ForEach(0 ..< loop, id: \.self) { i in
+            ForEach(0 ..< scale, id: \.self) { i in
                 if i < count.value {
                     SnowFlake(snow: snow, count: $count, fallRange: $fallRange,
                               appearRange: $appearRange, bottom: $bottom, width: $width)
@@ -27,7 +26,7 @@ struct SnowFlow: View {
             }
         }
         .onAppear {
-            loop = Int(snow.scale)
+            scale = Int(round(snow.scale))
             appearRange = -(height / 2)...0
             bottom = height * 1.5
             fallRange = snow.floating...snow.step

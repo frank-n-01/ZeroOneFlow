@@ -24,6 +24,8 @@ struct StyleList: View {
             }
             .toolbar {
                 EditButton()
+                    .font(CommonStyle.LABEL_FONT)
+                    .padding()
             }
             .listStyle(.insetGrouped)
             .navigationTitle("Style")

@@ -19,12 +19,12 @@ struct FlyHome: View {
         ContentTypeView(contents: $fly.contents)
         
         Section {
-            SandwichImageSlider(interval: $fly.interval, min: 0.01, max: 1.0)
+            SandwichImageSlider(value: $fly.interval, min: 0.01, max: 1.0)
         } header: {
             Text("Speed")
         }
         
-        PaddingView(padding: $fly.padding)
+        PaddingSliderView(padding: $fly.padding)
     }
 }
 

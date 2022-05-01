@@ -32,8 +32,7 @@ class CircleUserDefaults: FlowModeUserDefaults {
     override init(_ flowMode: String) {
         depth = UserDefaults.standard.double(forKey: Keys.depth.rawValue + flowMode)
         gap = UserDefaults.standard.double(forKey: Keys.gap.rawValue + flowMode)
-        rotationAngle = UserDefaults.standard
-            .double(forKey: Keys.rotationAngle.rawValue + flowMode)
+        rotationAngle = UserDefaults.standard.double(forKey: Keys.rotationAngle.rawValue + flowMode)
         
         super.init(flowMode)
     }

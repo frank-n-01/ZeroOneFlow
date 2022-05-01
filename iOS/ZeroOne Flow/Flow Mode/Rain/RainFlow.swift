@@ -4,7 +4,7 @@ import SwiftUI
 
 struct RainFlow: View {
     @ObservedObject var rain: RainViewModel
-    @State private var loop = 0
+    @State private var scale = 0
     @State private var count = FlowCount()
     @State private var height: CGFloat = 0
     @State private var width: CGFloat = 0
@@ -12,17 +12,16 @@ struct RainFlow: View {
     var body: some View {
         ZStack {
             rain.colors.bg.edgesIgnoringSafeArea(.all)
-            
             ScreenSizeGetter(height: $height, width: $width)
             
-            ForEach(0 ..< loop, id: \.self) { i in
+            ForEach(0 ..< scale, id: \.self) { i in
                 if i < count.value {
                     RainDrop(rain: rain, count: $count, height: $height, width: $width)
                 }
             }
         }
         .onAppear {
-            loop = Int(rain.scale)
+            scale = Int(round(rain.scale))
         }
         .onReceive(Timer.publish(every: rain.interval, on: .current,
                                  in: .common).autoconnect()) { _ in

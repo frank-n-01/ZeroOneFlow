@@ -4,7 +4,7 @@ import SwiftUI
 
 struct TornadoFlow: View {
     @ObservedObject var tornado: TornadoViewModel
-    @State private var loop = 0
+    @State private var scale = 0
     @State private var count = FlowCount()
     @State private var duration = 0.0
     @State private var angle = 0.0
@@ -14,7 +14,7 @@ struct TornadoFlow: View {
         ZStack {
             tornado.colors.bg.edgesIgnoringSafeArea(.all)
             
-            ForEach(0 ..< loop, id: \.self) { i in
+            ForEach(0 ..< scale, id: \.self) { i in
                 if i < count.value {
                     TornadoParts(tornado: tornado, duration: $duration, count: $count)
                 }
@@ -22,7 +22,7 @@ struct TornadoFlow: View {
             .rotationEffect(.degrees(angle))
         }
         .onAppear {
-            loop = Int(tornado.scale)
+            scale = Int(round(tornado.scale))
             duration = Double.random(in: tornado.durationRange.range)
         }
         .onReceive(Timer.publish(every: 0.1, on: .current,
@@ -80,10 +80,10 @@ struct TornadoParts: View {
                                              z: rotation3D.axis.z),
                                       anchorZ: rotation3D.anchorZ,
                                       perspective: rotation3D.perspective)
-                    .onChange(of: count.value) { _ in
+                    .onAppear {
                         move(in: geometry.size)
                     }
-                    .onAppear {
+                    .onChange(of: count.value) { _ in
                         move(in: geometry.size)
                     }
             }

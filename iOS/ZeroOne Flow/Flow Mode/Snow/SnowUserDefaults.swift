@@ -40,13 +40,13 @@ class SnowUserDefaults: FlowModeUserDefaults {
         }
     }
     
-    override init(_ flowModeKey: String) {
-        scale = UserDefaults.standard.double(forKey: Keys.scale.rawValue + flowModeKey)
-        wind = UserDefaults.standard.double(forKey: Keys.windStrength.rawValue + flowModeKey)
-        step = UserDefaults.standard.double(forKey: Keys.step.rawValue + flowModeKey)
-        floating = UserDefaults.standard.double(forKey: Keys.floating.rawValue + flowModeKey)
+    override init(_ flowMode: String) {
+        scale = UserDefaults.standard.double(forKey: Keys.scale.rawValue + flowMode)
+        wind = UserDefaults.standard.double(forKey: Keys.windStrength.rawValue + flowMode)
+        step = UserDefaults.standard.double(forKey: Keys.step.rawValue + flowMode)
+        floating = UserDefaults.standard.double(forKey: Keys.floating.rawValue + flowMode)
         
-        super.init(flowModeKey)
+        super.init(flowMode)
     }
     
     private enum Keys: String {

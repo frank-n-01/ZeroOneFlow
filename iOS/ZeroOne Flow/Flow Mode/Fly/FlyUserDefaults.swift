@@ -34,12 +34,9 @@ class FlyUserDefaults: FlowModeUserDefaults {
     }
     
     override init(_ flowMode: String) {
-        scale = UserDefaults.standard
-            .double(forKey: Keys.scale.rawValue + flowMode)
-        paddingVertical = UserDefaults.standard
-            .double(forKey: Keys.paddingVertical.rawValue + flowMode)
-        paddingHorizontal = UserDefaults.standard
-            .double(forKey: Keys.paddingHorizontal.rawValue + flowMode)
+        scale = UserDefaults.standard.double(forKey: Keys.scale.rawValue + flowMode)
+        paddingVertical = UserDefaults.standard.double(forKey: Keys.paddingVertical.rawValue + flowMode)
+        paddingHorizontal = UserDefaults.standard.double(forKey: Keys.paddingHorizontal.rawValue + flowMode)
         
         super.init(flowMode)
     }

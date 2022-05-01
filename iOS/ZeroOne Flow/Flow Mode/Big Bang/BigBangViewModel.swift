@@ -52,6 +52,8 @@ class BigBangViewModel: FlowModeViewModel {
     static let ROTATION = 15.0
     static let PADDING = Padding(vertical: -100, horizontal: -100)
     static let IS_3D = true
+    static let INITIAL_FLOW_COUNT = -5
+    static let RETURNED_FLOW_COUNT = -15
     
     init() {
         scale = Self.SCALE

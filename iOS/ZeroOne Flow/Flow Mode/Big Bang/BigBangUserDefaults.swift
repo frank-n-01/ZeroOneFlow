@@ -58,12 +58,9 @@ class BigBangUserDefaults: FlowModeUserDefaults {
     override init(_ flowMode: String) {
         scale = UserDefaults.standard.double(forKey: Keys.scale.rawValue + flowMode)
         gap = UserDefaults.standard.double(forKey: Keys.gap.rawValue + flowMode)
-        rotationAngle = UserDefaults.standard
-            .double(forKey: Keys.rotationAngle.rawValue + flowMode)
-        paddingVertical = UserDefaults.standard
-            .double(forKey: Keys.paddingVertical.rawValue + flowMode)
-        paddingHorizontal = UserDefaults.standard
-            .double(forKey: Keys.paddingHorizontal.rawValue + flowMode)
+        rotationAngle = UserDefaults.standard.double(forKey: Keys.rotationAngle.rawValue + flowMode)
+        paddingVertical = UserDefaults.standard.double(forKey: Keys.paddingVertical.rawValue + flowMode)
+        paddingHorizontal = UserDefaults.standard.double(forKey: Keys.paddingHorizontal.rawValue + flowMode)
         is3D = UserDefaults.standard.bool(forKey: Keys.is3D.rawValue + flowMode)
         
         super.init(flowMode)

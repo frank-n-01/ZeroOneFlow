@@ -20,7 +20,7 @@ struct WormHome: View {
         ContentTypeView(contents: $worm.contents)
         
         Section {
-            SandwichImageSlider(interval: $worm.interval, min: 0.01, max: 1.0)
+            SandwichImageSlider(value: $worm.interval, min: 0.01, max: 1.0)
         } header: {
             Text("Speed")
         }
@@ -33,12 +33,12 @@ struct WormHome: View {
         }
 
         Section {
-            SingleImageSlider(value: $worm.crawling, min: 0, max: 200,
-                              image: "scribble.variable", format: "%.0f")
+            SandwichImageSlider(value: $worm.crawling, min: 0, max: 200,
+                                firstImage: "scribble.variable", secondImage: "arrow.forward")
         } header: {
             Text("Crawling")
         }
         
-        PaddingView(padding: $worm.padding)
+        PaddingSliderView(padding: $worm.padding)
     }
 }

@@ -48,16 +48,11 @@ class WormUserDefaults: FlowModeUserDefaults {
     }
     
     override init(_ flowMode: String) {
-        length = UserDefaults.standard
-            .double(forKey: Keys.length.rawValue + flowMode)
-        step = UserDefaults.standard
-            .double(forKey: Keys.step.rawValue + flowMode)
-        crawling = UserDefaults.standard
-            .double(forKey: Keys.crawling.rawValue + flowMode)
-        paddingVertical = UserDefaults.standard
-            .double(forKey: Keys.paddingVertical.rawValue + flowMode)
-        paddingHorizontal = UserDefaults.standard
-            .double(forKey: Keys.paddingHorizontal.rawValue + flowMode)
+        length = UserDefaults.standard.double(forKey: Keys.length.rawValue + flowMode)
+        step = UserDefaults.standard.double(forKey: Keys.step.rawValue + flowMode)
+        crawling = UserDefaults.standard.double(forKey: Keys.crawling.rawValue + flowMode)
+        paddingVertical = UserDefaults.standard.double(forKey: Keys.paddingVertical.rawValue + flowMode)
+        paddingHorizontal = UserDefaults.standard.double(forKey: Keys.paddingHorizontal.rawValue + flowMode)
         
         super.init(flowMode)
     }

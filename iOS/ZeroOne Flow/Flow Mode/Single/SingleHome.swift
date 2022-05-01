@@ -14,7 +14,7 @@ struct SingleHome: View {
         ContentTypeView(contents: $single.contents)
         
         Section {
-            SandwichImageSlider(interval: $single.interval, min: 0.001, max: 2.0)
+            SandwichImageSlider(value: $single.interval, min: 0.001, max: 2.0)
         } header: {
             Text("Speed")
         }

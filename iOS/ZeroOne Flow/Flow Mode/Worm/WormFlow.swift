@@ -5,7 +5,7 @@ import SwiftUI
 struct WormFlow: View {
     @ObservedObject var worm: WormViewModel
     @State var position: [CGPoint] = []
-    @State private var loop = 0
+    @State private var length = 0
     @State private var crawling = 0
     @State private var isToLeft = Bool.random()
     @State private var isUpward = Bool.random()
@@ -13,17 +13,15 @@ struct WormFlow: View {
     @State private var height: CGFloat = 0
     
     var body: some View {
-        if worm.isFlowing {
-            ZStack {
-                worm.colors.bg.edgesIgnoringSafeArea(.all)
-                wormHead
-                wormBody
-            }
-            .onAppear {
-                loop = Int(worm.length)
-                crawling = Int(worm.crawling)
-                position = Array(repeating: UIScreen.centerPoint, count: loop)
-            }
+        ZStack {
+            worm.colors.bg.edgesIgnoringSafeArea(.all)
+            wormHead
+            wormBody
+        }
+        .onAppear {
+            length = Int(round(worm.length))
+            crawling = Int(round(worm.crawling))
+            position = Array(repeating: UIScreen.centerPoint, count: length)
         }
     }
     
@@ -50,7 +48,7 @@ struct WormFlow: View {
     }
     
     private var wormBody: some View {
-        ForEach(0 ..< loop, id: \.self) { i in
+        ForEach(0 ..< length, id: \.self) { i in
             WormParts(worm: worm, position: $position[i])
         }
     }
@@ -99,7 +97,7 @@ struct WormFlow: View {
     
     /// The body follows the head.
     private func moveBody() {
-        for i in (1 ..< loop).reversed() {
+        for i in (1 ..< length).reversed() {
             position[i].x = position[i - 1].x
             position[i].y = position[i - 1].y
         }
