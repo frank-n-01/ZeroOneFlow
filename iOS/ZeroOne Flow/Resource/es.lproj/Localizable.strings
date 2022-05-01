@@ -15,6 +15,7 @@
 "Big Bang" = "Big Bang";
 "Rain" = "Lluvia";
 "Snow" = "Nieve";
+"Wave" = "Onda";
 
 // MARK: - Content Type
 "Content" = "Contenido";
@@ -123,6 +124,8 @@
 "Crawling" = "Arrastrándose";
 "Stretch" = "Estirar";
 
+"Amplitude" = "Amplitud";
+
 // MARK: - Text Format
 "LineFeed" = "Nueva Línea";
 "Activate" = "Activar";
@@ -135,5 +138,3 @@
 
 // MARK: - Padding
 "Padding" = "Relleno";
-"V" = "V";
-"H" = "H";

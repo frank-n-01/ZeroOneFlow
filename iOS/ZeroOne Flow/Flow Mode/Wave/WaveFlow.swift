@@ -25,7 +25,7 @@ struct WaveFlow: View {
         }
         .onChange(of: height) { newHeight in
             wave.setMaxVerticalPadding(height: newHeight)
-            wave.verifyVerticalPadding(height: height)
+            wave.verifyVerticalPadding(height: newHeight)
         }
         .onReceive(Timer.publish(every: wave.interval, on: .current,
                                  in: .common).autoconnect()) { _ in

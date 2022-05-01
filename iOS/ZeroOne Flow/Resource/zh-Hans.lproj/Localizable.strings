@@ -15,6 +15,7 @@
 "Big Bang" = "大爆炸";
 "Rain" = "雨";
 "Snow" = "雪";
+"Wave" = "波";
 
 // MARK: - Content Type
 "Content" = "内容";
@@ -123,6 +124,8 @@
 "Crawling" = "爬行";
 "Stretch" = "伸缩";
 
+"Amplitude" = "波幅";
+
 // MARK: - Text Format
 "LineFeed" = "换行";
 "Activate" = "启用";
@@ -135,5 +138,3 @@
 
 // MARK: - Padding
 "Padding" = "空白";
-"V" = "纵";
-"H" = "横";
