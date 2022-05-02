@@ -6,10 +6,10 @@ The repository of `ZeroOne Flow` app.
 ## Concept
 Zero and One will vividly flow on the screen. Please enjoy the dynamic beauty of 01!
 
-You can play the flow and customize its style. While the "dice" button is ON (filled), a random style will be generated every time you start the flow.
+You can customize the flow to create endless variations. While the "dice" button is ON (filled), a random style will be generated every time you start the flow.
 
-## Flow
-There are 9 flow modes with different algorithms:
+## Flow Mode
+There are various flow modes with different algorithms:
 
 1. Linear
 2. Fly
@@ -20,9 +20,10 @@ There are 9 flow modes with different algorithms:
 7. Big Bang
 8. Rain
 9. Snow
+10. Wave
 
 ## Content
-The flow content is not only binary numbers:
+Actually, the flow content is not only binary numbers:
 
 ### Number
 - Binary
