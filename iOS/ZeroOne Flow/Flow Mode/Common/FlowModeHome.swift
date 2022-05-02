@@ -13,7 +13,9 @@ struct FlowModeHome: View {
     @StateObject var bigbang = BigBangViewModel()
     @StateObject var rain = RainViewModel()
     @StateObject var snow = SnowViewModel()
+    @StateObject var wave = WaveViewModel()
     
+    @State private var isStyleSheetPresent = false
     @State private var isFlowing: Bool = false {
         didSet {
             viewModel.isFlowing = isFlowing
@@ -27,7 +29,11 @@ struct FlowModeHome: View {
                 homeView
             }
             .toolbar {
+                styleSheetButton
                 bottomBarButtons
+            }
+            .sheet(isPresented: $isStyleSheetPresent) {
+                StyleList(viewModel: viewModel)
             }
             .onTapGesture(count: 2) {
                 startFlow()
@@ -41,29 +47,12 @@ struct FlowModeHome: View {
         Form {
             Section {
                 ModePicker(mode: $mode.flowMode)
-                styleViewLink
             }
             currentHome
         }
         .onAppear {
             // Enable the navigate animation after the home has appeared.
             UINavigationBar.setAnimationsEnabled(true)
-        }
-    }
-    
-    var styleViewLink: some View {
-        NavigationLink {
-            StyleListView(viewModel: viewModel)
-        } label: {
-            HStack {
-                Image(systemName: "doc.on.doc")
-                    .foregroundColor(.gray)
-                Text("Style")
-                    .bold()
-                    .padding(.leading, 1)
-            }
-            .font(CommonStyle.LABEL_FONT)
-            .padding(.leading, 2)
         }
     }
     
@@ -82,6 +71,19 @@ struct FlowModeHome: View {
             if isFlowing {
                 // Dismiss the navigate animation when the flow starts.
                 UINavigationBar.setAnimationsEnabled(false)
+            }
+        }
+    }
+    
+    var styleSheetButton: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            if !isFlowing {
+                Button {
+                    isStyleSheetPresent.toggle()
+                } label: {
+                    Image(systemName: "doc.on.doc")
+                        .padding()
+                }
             }
         }
     }
@@ -130,6 +132,8 @@ struct FlowModeHome: View {
             return rain
         case .snow:
             return snow
+        case .wave:
+            return wave
         }
     }
     
@@ -154,6 +158,8 @@ struct FlowModeHome: View {
                 RainHome(rain: rain)
             case .snow:
                 SnowHome(snow: snow)
+            case .wave:
+                WaveHome(wave: wave)
             }
         }
     }
@@ -179,6 +185,8 @@ struct FlowModeHome: View {
                 RainFlow(rain: rain)
             case .snow:
                 SnowFlow(snow: snow)
+            case .wave:
+                WaveFlow(wave: wave)
             }
         }
     }

@@ -25,11 +25,17 @@ class TornadoViewModel: FlowModeViewModel {
         }
     }
     
+    static let FONT = Fonts(size: 0, design: .random,
+                            weight: .random, min: 5, max: 50)
+    static let SCALE = 15.0
+    static let DURATION = Range(min: 0.01, max: 3.0)
+    static let ANGLE = Range(min: 1, max: 30)
+    
     init() {
-        scale = TornadoDefault.SCALE
-        durationRange = TornadoDefault.DURATION
-        angleRange = TornadoDefault.ANGLE
-        super.init(ud: ud, fonts: TornadoDefault.FONT)
+        scale = Self.SCALE
+        durationRange = Self.DURATION
+        angleRange = Self.ANGLE
+        super.init(ud: ud, fonts: Self.FONT)
     }
     
     override func makeRandomStyle() {
@@ -44,7 +50,7 @@ class TornadoViewModel: FlowModeViewModel {
         super.applyUserDefaults()
         
         if ud.isInitialized {
-            scale = ud.scale > 0 ? ud.scale : TornadoDefault.SCALE
+            scale = ud.scale > 0 ? ud.scale : Self.SCALE
             durationRange.set(min: ud.durationMin, max: ud.durationMax)
             angleRange.set(min: ud.angleMin, max: ud.angleMax)
         }
@@ -61,10 +67,10 @@ class TornadoViewModel: FlowModeViewModel {
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        scale = TornadoDefault.SCALE
-        fonts = TornadoDefault.FONT
-        durationRange = TornadoDefault.DURATION
-        angleRange = TornadoDefault.ANGLE
+        scale = Self.SCALE
+        fonts = Self.FONT
+        durationRange = Self.DURATION
+        angleRange = Self.ANGLE
     }
     
     override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
@@ -90,11 +96,4 @@ class TornadoViewModel: FlowModeViewModel {
        
         super.saveCoreData(context, name, style)
     }
-}
-
-private class TornadoDefault {
-    static let FONT = Fonts(size: 0, design: .random, weight: .random, min: 5, max: 50)
-    static let SCALE = 15.0
-    static let DURATION = Range(min: 0.01, max: 3.0)
-    static let ANGLE = Range(min: 1, max: 30)
 }

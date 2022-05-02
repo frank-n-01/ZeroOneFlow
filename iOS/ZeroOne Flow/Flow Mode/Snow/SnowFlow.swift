@@ -4,7 +4,7 @@ import SwiftUI
 
 struct SnowFlow: View {
     @ObservedObject var snow: SnowViewModel
-    @State private var loop = 0
+    @State private var scale = 0
     @State private var count = FlowCount()
     @State private var height: CGFloat = 0
     @State private var width: CGFloat = 0
@@ -17,16 +17,23 @@ struct SnowFlow: View {
         ZStack {
             snow.colors.bg.edgesIgnoringSafeArea(.all)
             ScreenSizeGetter(height: $height, width: $width)
-            snowFlakes
+            
+            ForEach(0 ..< scale, id: \.self) { i in
+                if i < count.value {
+                    SnowFlake(snow: snow, count: $count, fallRange: $fallRange,
+                              appearRange: $appearRange, bottom: $bottom, width: $width)
+                }
+            }
         }
         .onAppear {
-            loop = Int(snow.scale)
-            fallRange = (snow.step / 2)...snow.step
-            windRange = -snow.wind...snow.wind
+            scale = Int(round(snow.scale))
+            appearRange = -(height / 2)...0
+            bottom = height * 1.5
+            fallRange = snow.floating...snow.step
         }
-        .onChange(of: height) { height in
-            appearRange = -height...0
-            bottom = height + height
+        .onChange(of: height) { newHeight in
+            appearRange = -newHeight...0
+            bottom = newHeight * 1.5
         }
         .onReceive(Timer.publish(every: snow.interval, on: .current,
                                  in: .common).autoconnect()) { _ in
@@ -34,27 +41,15 @@ struct SnowFlow: View {
             count.increment()
         }
     }
-    
-    private var snowFlakes: some View {
-        ForEach(0 ..< loop, id: \.self) { i in
-            if i < count.value {
-                SnowFlake(snow: snow, count: $count, height: $height, width: $width,
-                          fallRange: $fallRange, windRange: $windRange,
-                          appearRange: $appearRange, bottom: $bottom)
-            }
-        }
-    }
 }
 
 struct SnowFlake: View {
     @ObservedObject var snow: SnowViewModel
     @Binding var count: FlowCount
-    @Binding var height: CGFloat
-    @Binding var width: CGFloat
     @Binding var fallRange: ClosedRange<CGFloat>
-    @Binding var windRange: ClosedRange<CGFloat>
     @Binding var appearRange: ClosedRange<CGFloat>
     @Binding var bottom: CGFloat
+    @Binding var width: CGFloat
     @State private var content = ""
     @State private var size: CGFloat = 0
     @State private var design: Font.Design = .monospaced
@@ -77,7 +72,7 @@ struct SnowFlake: View {
             .onChange(of: count.value) { _ in
                 withAnimation {
                     position.y += CGFloat.random(in: fallRange)
-                    position.x += CGFloat.random(in: windRange)
+                    position.x += CGFloat.random(in: -snow.wind...snow.wind)
                 }
                 if position.y > bottom {
                     position.y = CGFloat.random(in: appearRange)

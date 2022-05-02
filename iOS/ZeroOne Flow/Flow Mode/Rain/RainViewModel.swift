@@ -31,32 +31,39 @@ class RainViewModel: FlowModeViewModel {
         }
     }
     
+    static let FONT = Fonts(size: 0, design: .random,
+                            weight: .ultraLight, min: 10, max: 40)
+    static let SCALE = 100.0
+    static let INTERVAL = 0.05
+    static let LENGTH = 150.0
+    static let STEP = 200.0
+    
     init() {
-        scale = RainDefault.SCALE
-        interval = RainDefault.INTERVAL
-        length = RainDefault.LENGTH
-        step = RainDefault.STEP
-        super.init(ud: ud, fonts: RainDefault.FONT)
+        scale = Self.SCALE
+        interval = Self.INTERVAL
+        length = Self.LENGTH
+        step = Self.STEP
+        super.init(ud: ud, fonts: Self.FONT)
     }
     
     override func makeRandomStyle() {
         super.makeRandomStyle()
         
         scale = Double.random(in: 1...150)
-        interval = Double.random(in: 0.01...0.05)
+        interval = Double.random(in: 0.02...0.05)
         fonts.sizeRange.random(max: 100)
-        length = Double.random(in: 50...150)
-        step = CGFloat.random(in: 50...300)
+        length = Double.random(in: 50...100)
+        step = CGFloat.random(in: 100...200)
     }
     
     override func applyUserDefaults() {
         super.applyUserDefaults()
         
         if ud.isInitialized {
-            scale = ud.scale > 0 ? ud.scale : RainDefault.SCALE
-            interval = ud.interval > 0 ? ud.interval : RainDefault.INTERVAL
-            length = ud.length > 0 ? ud.length : RainDefault.LENGTH
-            step = ud.step > 0 ? ud.step : RainDefault.STEP
+            scale = ud.scale > 0 ? ud.scale : Self.SCALE
+            interval = ud.interval > 0 ? ud.interval : Self.INTERVAL
+            length = ud.length > 0 ? ud.length : Self.LENGTH
+            step = ud.step > 0 ? ud.step : Self.STEP
         }
     }
     
@@ -72,11 +79,11 @@ class RainViewModel: FlowModeViewModel {
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        fonts = RainDefault.FONT
-        scale = RainDefault.SCALE
-        interval = RainDefault.INTERVAL
-        length = RainDefault.LENGTH
-        step = RainDefault.STEP
+        fonts = Self.FONT
+        scale = Self.SCALE
+        interval = Self.INTERVAL
+        length = Self.LENGTH
+        step = Self.STEP
     }
     
     override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
@@ -84,10 +91,10 @@ class RainViewModel: FlowModeViewModel {
         guard let style = style as? Rain else { return }
         
         fonts.sizeRange.set(min: style.fontSizeMin, max: style.fontSizeMax)
-        scale = style.scale > 0 ? style.scale : RainDefault.SCALE
-        interval = style.interval > 0 ? style.interval : RainDefault.INTERVAL
-        length = style.length > 0 ? style.length : RainDefault.LENGTH
-        step = style.step > 0 ? style.step : RainDefault.STEP
+        scale = style.scale > 0 ? style.scale : Self.SCALE
+        interval = style.interval > 0 ? style.interval : Self.INTERVAL
+        length = style.length > 0 ? style.length : Self.LENGTH
+        step = style.step > 0 ? style.step : Self.STEP
         
         super.applyCoreData(context, style)
     }
@@ -103,12 +110,4 @@ class RainViewModel: FlowModeViewModel {
         
         super.saveCoreData(context, name, style)
     }
-}
-
-private class RainDefault {
-    static let FONT = Fonts(size: 0, design: .random, weight: .ultraLight, min: 15, max: 50)
-    static let SCALE = 150.0
-    static let INTERVAL = 0.05
-    static let LENGTH = 200.0
-    static let STEP = 200.0
 }

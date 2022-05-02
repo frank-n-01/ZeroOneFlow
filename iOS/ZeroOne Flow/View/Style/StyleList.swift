@@ -2,8 +2,10 @@
 
 import SwiftUI
 
-struct StyleListView: View {
+struct StyleList: View {
+    @EnvironmentObject var mode: ModeUserDefaults
     @ObservedObject var viewModel: FlowModeViewModel
+    
     @Environment(\.managedObjectContext) var context
     @FetchRequest(
         entity: Mode.allCases[ModeUserDefaults.sharedCurrentMode].entity,
@@ -11,19 +13,23 @@ struct StyleListView: View {
     ) var styles: FetchedResults<FlowMode>
     
     var body: some View {
-        List {
-            Section {
-                SaveStyleField(saveCoreData: saveCoreData)
+        NavigationView {
+            List {
+                Section {
+                    SaveStyleField(saveCoreData: saveCoreData)
+                }
+                Section {
+                    styleRows
+                }
             }
-            Section {
-                styleRows
+            .toolbar {
+                EditButton()
+                    .font(CommonStyle.LABEL_FONT)
+                    .padding()
             }
+            .listStyle(.insetGrouped)
+            .navigationTitle("Style")
         }
-        .toolbar {
-            EditButton()
-        }
-        .listStyle(.insetGrouped)
-        .navigationTitle("Style")
     }
     
     var styleRows: some View {
@@ -38,7 +44,10 @@ struct StyleListView: View {
                 }
                 .font(CommonStyle.LABEL_FONT)
                 
-                Button(action: { viewModel.applyCoreData(context, style) }) {
+                Button {
+                    viewModel.applyCoreData(context, style)
+                    mode.isRandomStyle = false
+                } label: {
                     Spacer()
                 }
             }

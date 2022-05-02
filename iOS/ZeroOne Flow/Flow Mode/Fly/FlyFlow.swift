@@ -4,21 +4,21 @@ import SwiftUI
 
 struct FlyFlow: View {
     @ObservedObject var fly: FlyViewModel
-    @State private var loop = 0
+    @State private var scale = 0
     @State private var count = FlowCount()
     
     var body: some View {
         ZStack {
             fly.colors.bg.edgesIgnoringSafeArea(.all)
             
-            ForEach(0 ..< loop, id: \.self) { i in
+            ForEach(0 ..< scale, id: \.self) { i in
                 if i < count.value {
                     FlyParts(fly: fly, count: $count)
                 }
             }
         }
         .onAppear {
-            loop = Int(fly.scale)
+            scale = Int(round(fly.scale))
         }
         .onReceive(Timer.publish(every: fly.interval, on: .current,
                                  in: .common).autoconnect()) { _ in

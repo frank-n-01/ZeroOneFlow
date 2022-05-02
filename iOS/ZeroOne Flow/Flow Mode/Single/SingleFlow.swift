@@ -9,6 +9,7 @@ struct SingleFlow: View {
     @State private var weight: Font.Weight = .regular
     @State private var txtColor = CommonStyle.TEXT_COLOR
     @State private var gradient = RandomGradient()
+    @State private var position = CGPoint()
     
     var body: some View {
         ZStack {
@@ -20,15 +21,20 @@ struct SingleFlow: View {
                                   weight: weight,
                                   design: design))
                     .foregroundColor(txtColor)
-                    .position(x: geometry.size.width / 2,
-                              y: geometry.size.height / 2)
+                    .position(position)
                     .fixedSize()
                     .onAppear {
+                        position.x = geometry.size.width / 2
+                        position.y = geometry.size.height / 2
                         content = ContentMaker.make(with: single.contents)
                         design = single.fonts.design.value
                         weight = single.fonts.weight.value
                         txtColor = single.colors.txt
                         gradient.type = single.gradientType
+                    }
+                    .onChange(of: geometry.size) { newSize in
+                        position.x = newSize.width / 2
+                        position.y = newSize.height / 2
                     }
             }
         }

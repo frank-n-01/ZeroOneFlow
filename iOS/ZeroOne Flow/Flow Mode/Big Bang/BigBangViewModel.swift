@@ -44,14 +44,25 @@ class BigBangViewModel: FlowModeViewModel {
         }
     }
     
+    static let FONT = Fonts(size: 0, design: .random,
+                            weight: .random, min: 5, max: 30)
+    static let SCALE = 150.0
+    static let INTERVAL = 0.1
+    static let GAP = 20.0
+    static let ROTATION = 15.0
+    static let PADDING = Padding(vertical: -100, horizontal: -100)
+    static let IS_3D = true
+    static let INITIAL_FLOW_COUNT = -5
+    static let RETURNED_FLOW_COUNT = -15
+    
     init() {
-        scale = BigBangDefault.SCALE
-        interval = BigBangDefault.INTERVAL
-        gap = BigBangDefault.GAP
-        rotationAngle = BigBangDefault.ROTATION
-        padding = BigBangDefault.PADDING
-        is3D = BigBangDefault.IS_3D
-        super.init(ud: ud, fonts: BigBangDefault.FONT)
+        scale = Self.SCALE
+        interval = Self.INTERVAL
+        gap = Self.GAP
+        rotationAngle = Self.ROTATION
+        padding = Self.PADDING
+        is3D = Self.IS_3D
+        super.init(ud: ud, fonts: Self.FONT)
     }
     
     override func makeRandomStyle() {
@@ -69,10 +80,10 @@ class BigBangViewModel: FlowModeViewModel {
         super.applyUserDefaults()
         
         if ud.isInitialized {
-            scale = ud.scale > 0 ? ud.scale : BigBangDefault.SCALE
-            interval = ud.interval > 0 ? ud.interval : BigBangDefault.INTERVAL
-            gap = ud.gap > 0 ? ud.gap : BigBangDefault.GAP
-            rotationAngle = ud.rotationAngle > 0 ? ud.rotationAngle : BigBangDefault.ROTATION
+            scale = ud.scale > 0 ? ud.scale : Self.SCALE
+            interval = ud.interval > 0 ? ud.interval : Self.INTERVAL
+            gap = ud.gap > 0 ? ud.gap : Self.GAP
+            rotationAngle = ud.rotationAngle > 0 ? ud.rotationAngle : Self.ROTATION
             padding.set(vertical: ud.paddingVertical, horizontal: ud.paddingHorizontal)
             is3D = ud.is3D
         }
@@ -93,13 +104,13 @@ class BigBangViewModel: FlowModeViewModel {
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        scale = BigBangDefault.SCALE
-        interval = BigBangDefault.INTERVAL
-        gap = BigBangDefault.GAP
-        rotationAngle = BigBangDefault.ROTATION
-        padding = BigBangDefault.PADDING
-        is3D = BigBangDefault.IS_3D
-        fonts = BigBangDefault.FONT
+        scale = Self.SCALE
+        interval = Self.INTERVAL
+        gap = Self.GAP
+        rotationAngle = Self.ROTATION
+        padding = Self.PADDING
+        is3D = Self.IS_3D
+        fonts = Self.FONT
     }
     
     override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
@@ -130,14 +141,4 @@ class BigBangViewModel: FlowModeViewModel {
        
         super.saveCoreData(context, name, style)
     }
-}
-
-private class BigBangDefault {
-    static let FONT = Fonts(size: 0, design: .random, weight: .random, min: 5, max: 30)
-    static let SCALE = 150.0
-    static let INTERVAL = 0.1
-    static let GAP = 20.0
-    static let ROTATION = 15.0
-    static let PADDING = Padding(vertical: -100, horizontal: -100)
-    static let IS_3D = true
 }

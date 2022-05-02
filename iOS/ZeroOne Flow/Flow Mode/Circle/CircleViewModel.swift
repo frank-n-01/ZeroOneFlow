@@ -31,12 +31,19 @@ class CircleViewModel: FlowModeViewModel {
         }
     }
     
+    static let FONT = Fonts(size: 18, design: .random,
+                            weight: .random, min: 10, max: 100)
+    static let INTERVAL = 0.1
+    static let DEPTH = 150.0
+    static let GAP = 5.0
+    static let ROTATION = 112.0
+    
     init() {
-        interval = CircleDefault.INTERVAL
-        depth = CircleDefault.DEPTH
-        gap = CircleDefault.GAP
-        rotationAngle = CircleDefault.ROTATION
-        super.init(ud: ud, fonts: CircleDefault.FONT)
+        interval = Self.INTERVAL
+        depth = Self.DEPTH
+        gap = Self.GAP
+        rotationAngle = Self.ROTATION
+        super.init(ud: ud, fonts: Self.FONT)
     }
     
     override func makeRandomStyle() {
@@ -52,10 +59,10 @@ class CircleViewModel: FlowModeViewModel {
         super.applyUserDefaults()
         
         if ud.isInitialized {
-            interval = ud.interval > 0 ? ud.interval : CircleDefault.INTERVAL
-            depth = ud.depth > 0 ? ud.depth : CircleDefault.DEPTH
-            gap = ud.gap > 0 ? ud.gap : CircleDefault.GAP
-            rotationAngle = ud.rotationAngle > 0 ? ud.rotationAngle : CircleDefault.ROTATION
+            interval = ud.interval > 0 ? ud.interval : Self.INTERVAL
+            depth = ud.depth > 0 ? ud.depth : Self.DEPTH
+            gap = ud.gap > 0 ? ud.gap : Self.GAP
+            rotationAngle = ud.rotationAngle > 0 ? ud.rotationAngle : Self.ROTATION
         }
     }
     
@@ -71,11 +78,11 @@ class CircleViewModel: FlowModeViewModel {
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        interval = CircleDefault.INTERVAL
-        depth = CircleDefault.DEPTH
-        gap = CircleDefault.GAP
-        rotationAngle = CircleDefault.ROTATION
-        fonts = CircleDefault.FONT
+        interval = Self.INTERVAL
+        depth = Self.DEPTH
+        gap = Self.GAP
+        rotationAngle = Self.ROTATION
+        fonts = Self.FONT
     }
     
     override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
@@ -100,12 +107,4 @@ class CircleViewModel: FlowModeViewModel {
        
         super.saveCoreData(context, name, style)
     }
-}
-
-private class CircleDefault {
-    static let FONT = Fonts(size: 18, design: .random, weight: .random, min: 10, max: 100)
-    static let INTERVAL = 0.1
-    static let DEPTH = 150.0
-    static let GAP = 5.0
-    static let ROTATION = 112.0
 }

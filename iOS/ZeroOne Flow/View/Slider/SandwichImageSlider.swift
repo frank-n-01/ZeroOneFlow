@@ -2,8 +2,8 @@
 
 import SwiftUI
 
-struct SpeedSlider: View {
-    @Binding var interval: Double
+struct SandwichImageSlider: View {
+    @Binding var value: Double
     var min: Double
     var max: Double
     var firstImage = "hare.fill"
@@ -12,7 +12,7 @@ struct SpeedSlider: View {
     var body: some View {
         HStack(spacing: 10) {
             Image(systemName: firstImage)
-            Slider(value: $interval, in: min...max)
+            Slider(value: $value, in: min...max)
             Image(systemName: secondImage)
         }
         .font(CommonStyle.LABEL_FONT)

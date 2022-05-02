@@ -15,6 +15,7 @@
 "Big Bang" = "ビッグバン";
 "Rain" = "レイン";
 "Snow" = "スノー";
+"Wave" = "ウェーブ";
 
 // MARK: - Content Type
 "Content" = "内容";
@@ -123,6 +124,8 @@
 "Crawling" = "爬行";
 "Stretch" = "伸縮";
 
+"Amplitude" = "振幅";
+
 // MARK: - Text Format
 "LineFeed" = "改行";
 "Activate" = "有効化";
@@ -135,5 +138,3 @@
 
 // MARK: - Padding
 "Padding" = "余白";
-"V" = "縦";
-"H" = "横";

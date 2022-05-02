@@ -26,11 +26,17 @@ class FlyViewModel: FlowModeViewModel {
         }
     }
     
+    static let FONT = Fonts(size: 20, design: .random,
+                            weight: .random, min: 10, max: 100)
+    static let SCALE = 10.0
+    static let INTERVAL = 0.1
+    static let PADDING = Padding(vertical: 0, horizontal: 0)
+    
     init() {
-        scale = FlyDefault.SCALE
-        interval = FlyDefault.INTERVAL
-        padding = FlyDefault.PADDING
-        super.init(ud: ud, fonts: FlyDefault.FONT)
+        scale = Self.SCALE
+        interval = Self.INTERVAL
+        padding = Self.PADDING
+        super.init(ud: ud, fonts: Self.FONT)
     }
     
     override func makeRandomStyle() {
@@ -45,8 +51,8 @@ class FlyViewModel: FlowModeViewModel {
         super.applyUserDefaults()
         
         if ud.isInitialized {
-            scale = ud.scale > 0 ? ud.scale : FlyDefault.SCALE
-            interval = ud.interval > 0 ? ud.interval : FlyDefault.INTERVAL
+            scale = ud.scale > 0 ? ud.scale : Self.SCALE
+            interval = ud.interval > 0 ? ud.interval : Self.INTERVAL
             padding.set(vertical: ud.paddingVertical,
                         horizontal: ud.paddingHorizontal)
         }
@@ -64,10 +70,10 @@ class FlyViewModel: FlowModeViewModel {
     override func resetUserDefaults() {
         super.resetUserDefaults()
         
-        scale = FlyDefault.SCALE
-        fonts = FlyDefault.FONT
-        interval = FlyDefault.INTERVAL
-        padding = FlyDefault.PADDING
+        scale = Self.SCALE
+        fonts = Self.FONT
+        interval = Self.INTERVAL
+        padding = Self.PADDING
     }
     
     override func applyCoreData<T: FlowMode>(_ context: NSManagedObjectContext,
@@ -90,11 +96,4 @@ class FlyViewModel: FlowModeViewModel {
        
         super.saveCoreData(context, name, style)
     }
-}
-
-private class FlyDefault {
-    static let FONT = Fonts(size: 20, design: .random, weight: .random, min: 10, max: 100)
-    static let SCALE = 10.0
-    static let INTERVAL = 0.1
-    static let PADDING = Padding(vertical: 0, horizontal: 0)
 }

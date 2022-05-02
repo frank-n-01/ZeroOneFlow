@@ -15,6 +15,7 @@
 "Big Bang" = "Big Bang";
 "Rain" = "Rain";
 "Snow" = "Snow";
+"Wave" = "Wave";
 
 // MARK: - Content Type
 "Content" = "Content";
@@ -123,6 +124,8 @@
 "Crawling" = "Crawling";
 "Stretch" = "Stretch";
 
+"Amplitude" = "Amplitude";
+
 // MARK: - Text Format
 "LineFeed.gradient" = "Line Feed";
 "Activate" = "Activate";
@@ -135,5 +138,3 @@
 
 // MARK: - Padding
 "Padding" = "Padding";
-"V" = "V";
-"H" = "H";

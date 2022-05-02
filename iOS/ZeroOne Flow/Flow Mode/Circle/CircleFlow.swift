@@ -5,29 +5,36 @@ import SwiftUI
 struct CircleFlow: View {
     @ObservedObject var circle: CircleViewModel
     @State var center = UIScreen.centerPoint
-    @State private var loop = 0
+    @State private var depth = 0
     @State private var count = FlowCount()
+    @State private var height: CGFloat = UIScreen.main.bounds.height
+    @State private var width: CGFloat = UIScreen.main.bounds.width
     
     var body: some View {
         ZStack {
             circle.colors.bg.edgesIgnoringSafeArea(.all)
             
-            ForEach(0 ..< loop, id: \.self) { i in
+            ScreenSizeGetter(height: $height, width: $width)
+            
+            ForEach(0 ..< depth, id: \.self) { i in
                 if i < count.value {
                     CircleParts(circle: circle, count: $count, center: $center)
                 }
             }
+        }
+        .onAppear {
+            depth = Int(round(circle.depth))
         }
         .onReceive(Timer.publish(every: circle.interval, on: .current,
                                  in: .common).autoconnect()) { _ in
             guard circle.isFlowing else { return }
             count.increment()
         }
-        .onChange(of: UIScreen.main.bounds) { _ in
-            center = UIScreen.centerPoint
+        .onChange(of: height) { newHeight in
+            center.y = newHeight / 2
         }
-        .onAppear {
-            loop = Int(circle.depth)
+        .onChange(of: width) { newWidth in
+            center.x = newWidth / 2
         }
     }
 }
@@ -39,7 +46,7 @@ struct CircleParts: View {
     @State private var content = ""
     @State private var design: Font.Design = .monospaced
     @State private var weight: Font.Weight = .regular
-    @State private var position = UIScreen.centerPoint
+    @State private var position = UIScreen.getRandomPoint()
     @State private var angle: Double = 0.0
     @State private var isClockwise = false
     
@@ -47,25 +54,23 @@ struct CircleParts: View {
         if circle.isFlowing {
             GeometryReader { _ in
                 Text(content)
-                    .font(.system(size: circle.fonts.size,
-                                  weight: weight,
-                                  design: design))
+                    .font(.system(size: circle.fonts.size, weight: weight, design: design))
                     .foregroundColor(circle.colors.txt)
                     .position(position)
-                    .onChange(of: count.value) { _ in
-                        withAnimation(.easeIn) {
-                            rotate()
-                        }
-                    }
+                    .rotationEffect(.degrees(angle))
                     .onAppear {
                         withAnimation(.easeIn) {
-                            initPosition()
+                            setPosition()
                             content = ContentMaker.make(with: circle.contents)
                         }
                         design = circle.fonts.design.value
                         weight = circle.fonts.weight.value
                     }
-                    .rotationEffect(.degrees(angle))
+                    .onChange(of: count.value) { _ in
+                        withAnimation() {
+                            rotate()
+                        }
+                    }
             }
         }
     }
@@ -84,7 +89,7 @@ struct CircleParts: View {
         }
     }
     
-    private func initPosition() {
+    private func setPosition() {
         if center.x < center.y {
             position.x = center.x
             position.y = center.y - CGFloat(count.value) * circle.gap

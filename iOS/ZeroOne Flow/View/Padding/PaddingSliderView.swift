@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct PaddingView: View {
+struct PaddingSliderView: View {
     @Binding var padding: Padding
     
     var body: some View {
@@ -16,8 +16,10 @@ struct PaddingView: View {
     
     private var verticalSlider: some View {
         HStack {
-            Image(systemName: "v.square")
+            Image(systemName: "arrow.up.and.down")
                 .font(CommonStyle.LABEL_FONT)
+                .frame(width: 30)
+                .foregroundColor(.gray)
             Slider(value: $padding.ver, in: padding.min...padding.max)
                 .padding(.leading, 10)
             Text(String(format: "%.f", padding.ver))
@@ -31,8 +33,10 @@ struct PaddingView: View {
     
     private var horizontalSlider: some View {
         HStack {
-            Image(systemName: "h.square")
+            Image(systemName: "arrow.left.and.right")
                 .font(CommonStyle.LABEL_FONT)
+                .frame(width: 30)
+                .foregroundColor(.gray)
             Slider(value: $padding.hor, in: padding.min...padding.max)
                 .padding(.leading, 10)
             Text(String(format: "%.f", padding.hor))

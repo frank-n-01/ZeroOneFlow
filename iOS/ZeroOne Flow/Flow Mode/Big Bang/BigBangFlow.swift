@@ -4,14 +4,14 @@ import SwiftUI
 
 struct BigBangFlow: View {
     @ObservedObject var bigbang: BigBangViewModel
-    @State private var loop = 0
-    @State private var count = FlowCount(value: -15)
+    @State private var flow = BigBangFlowParameters()
+    @State private var screen = BigBangScreenSize()
+    @State private var scale = 0
+    @State private var count = FlowCount(value: BigBangViewModel.INITIAL_FLOW_COUNT)
     @State private var angle = 0.0
     @State private var isClockwise = false
     @State private var isMoving = false
     @State private var returnedCount = 0
-    @State private var flow = BigBangFlowParameters()
-    @State private var screen = BigBangScreenSize()
     
     var body: some View {
         ZStack {
@@ -27,13 +27,43 @@ struct BigBangFlow: View {
             }
         }
         .onAppear {
-            self.loop = Int(bigbang.scale)
-            flow.loop = self.loop
+            self.scale = Int(round(bigbang.scale))
+            flow.loop = self.scale
         }
         .onReceive(Timer.publish(every: bigbang.interval, on: .current,
                                  in: .common).autoconnect()) { _ in
             guard bigbang.isFlowing else { return }
-            control()
+            
+            count.increment()
+            
+            if count.value == 0 {
+                isMoving.toggle()
+                return
+            }
+            
+            if count.value == 1 {
+                withAnimation {
+                    bang()
+                }
+            }
+            
+            if count.value >= 1 {
+                guard returnedCount < scale else {
+                    isMoving.toggle()
+                    flow.toggle()
+                    count.value = BigBangViewModel.RETURNED_FLOW_COUNT
+                    returnedCount = 0
+                    return
+                }
+                
+                withAnimation {
+                    move()
+                    rotate2D()
+                    if bigbang.is3D {
+                        rotate3D()
+                    }
+                }
+            }
         }
     }
     
@@ -43,28 +73,28 @@ struct BigBangFlow: View {
             Text("")
                 .onAppear {
                     screen.set(size: geometry.size, padding: bigbang.padding)
-                    for _ in 0 ..< loop {
+                    for _ in 0 ..< scale {
                         flow.content.append(ContentMaker.make(with: bigbang.contents))
-                        flow.position = Array(repeating: screen.center, count: loop)
+                        flow.position = Array(repeating: screen.center, count: scale)
                         flow.size.append(CGFloat.random(in: bigbang.fonts.sizeRange.range))
                         flow.design.append(bigbang.fonts.design.value)
                         flow.weight.append(bigbang.fonts.weight.value)
                         flow.txtAngle.append(Double.random(in: 0 ..< 360))
-                        flow.isExpanding = Array(repeating: true, count: loop)
-                        flow.isReturned = Array(repeating: false, count: loop)
-                        flow.rotation3D = Array(repeating: Rotation3D(), count: loop)
+                        flow.isExpanding = Array(repeating: true, count: scale)
+                        flow.isReturned = Array(repeating: false, count: scale)
+                        flow.rotation3D = Array(repeating: Rotation3D(), count: scale)
                     }
                 }
                 .onChange(of: geometry.size) { _ in
                     screen.set(size: geometry.size, padding: bigbang.padding)
-                    flow.position = Array(repeating: screen.center, count: loop)
+                    flow.position = Array(repeating: screen.center, count: scale)
                 }
         }
     }
     
     /// The elements of the Big Bang.
     private var elements: some View {
-        ForEach(0 ..< loop, id: \.self) { i in
+        ForEach(0 ..< scale, id: \.self) { i in
             Text(flow.content[i])
                 .font(.system(size: !flow.isReturned[i] || count.value < 1
                               ? flow.size[i] : CGFloat(1.0),
@@ -89,48 +119,15 @@ struct BigBangFlow: View {
             .position(screen.center)
     }
     
-    private func control() {
-        count.increment()
-        
-        if count.value == 0 {
-            isMoving.toggle()
-            return
-        }
-        
-        if count.value == 1 {
-            withAnimation {
-                bang()
-            }
-        }
-        
-        if count.value >= 1 {
-            guard returnedCount < loop else {
-                isMoving.toggle()
-                flow.toggle()
-                count.value = -15
-                returnedCount = 0
-                return
-            }
-            
-            withAnimation {
-                move()
-                rotate2D()
-                if bigbang.is3D {
-                    rotate3D()
-                }
-            }
-        }
-    }
-    
     private func bang() {
-        for i in (0 ..< loop) {
+        for i in (0 ..< scale) {
             flow.position[i].x += CGFloat.random(in: screen.bangRangeX)
             flow.position[i].y += CGFloat.random(in: screen.bangRangeY)
         }
     }
     
     private func move() {
-        for i in (0 ..< loop) {
+        for i in (0 ..< scale) {
             if flow.isExpanding[i] {
                 guard screen.borderRangeX.contains(flow.position[i].x) &&
                         screen.borderRangeY.contains(flow.position[i].y) else {
@@ -191,7 +188,7 @@ struct BigBangFlow: View {
     
     private func rotate3D() {
         withAnimation {
-            for i in (0 ..< loop) {
+            for i in (0 ..< scale) {
                 flow.rotation3D[i].angle += Double.random(in: 0...bigbang.gap)
                 if flow.rotation3D[i].angle > 3600 {
                     flow.rotation3D[i].angle -= 3600

@@ -28,12 +28,12 @@ class RainUserDefaults: FlowModeUserDefaults {
         }
     }
     
-    override init(_ flowModeKey: String) {
-        scale = UserDefaults.standard.double(forKey: Keys.scale.rawValue + flowModeKey)
-        length = UserDefaults.standard.double(forKey: Keys.length.rawValue + flowModeKey)
-        step = UserDefaults.standard.double(forKey: Keys.step.rawValue + flowModeKey)
+    override init(_ flowMode: String) {
+        scale = UserDefaults.standard.double(forKey: Keys.scale.rawValue + flowMode)
+        length = UserDefaults.standard.double(forKey: Keys.length.rawValue + flowMode)
+        step = UserDefaults.standard.double(forKey: Keys.step.rawValue + flowMode)
         
-        super.init(flowModeKey)
+        super.init(flowMode)
     }
     
     private enum Keys: String {
