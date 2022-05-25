@@ -11,8 +11,7 @@ struct PersistenceController {
         container = NSPersistentContainer(name: "ZeroOne Flow")
         
         if inMemory {
-            container.persistentStoreDescriptions.first!.url = URL(
-                fileURLWithPath: "/dev/null")
+            container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
         
         container.loadPersistentStores(completionHandler: { (_, error) in

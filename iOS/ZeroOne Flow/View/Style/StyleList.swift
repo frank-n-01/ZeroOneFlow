@@ -12,6 +12,9 @@ struct StyleList: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \FlowMode.date, ascending: false)]
     ) var styles: FetchedResults<FlowMode>
     
+    // The saved date (used as id) of currently applied style.
+    @State private var appliedStyleDate: Date?
+    
     var body: some View {
         NavigationView {
             List {
@@ -36,6 +39,11 @@ struct StyleList: View {
         ForEach(styles, id: \.self) { style in
             HStack {
                 Group {
+                    if style.date == self.appliedStyleDate {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.blue)
+                    }
+                    
                     if style.name ?? "" == "unnamed" {
                         Text(LocalizedStringKey(style.name ?? ""))
                     } else {
@@ -47,6 +55,7 @@ struct StyleList: View {
                 Button {
                     viewModel.applyCoreData(context, style)
                     mode.isRandomStyle = false
+                    self.appliedStyleDate = style.date
                 } label: {
                     Spacer()
                 }
