@@ -5,15 +5,15 @@ import SwiftUI
 struct StyleList: View {
     @EnvironmentObject var mode: ModeUserDefaults
     @ObservedObject var viewModel: FlowModeViewModel
-    
     @Environment(\.managedObjectContext) var context
+    
     @FetchRequest(
         entity: Mode.allCases[ModeUserDefaults.sharedCurrentMode].entity,
         sortDescriptors: [NSSortDescriptor(keyPath: \FlowMode.date, ascending: false)]
     ) var styles: FetchedResults<FlowMode>
     
-    // The saved date (used as id) of currently applied style.
-    @State private var appliedStyleDate: Date?
+    // The index of currently applied style.
+    @State private var appliedIndex: Int?
     
     var body: some View {
         NavigationView {
@@ -36,26 +36,26 @@ struct StyleList: View {
     }
     
     var styleRows: some View {
-        ForEach(styles, id: \.self) { style in
+        ForEach(styles.indices, id: \.self) { i in
             HStack {
                 Group {
-                    if style.date == self.appliedStyleDate {
+                    if i == appliedIndex {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(.blue)
                     }
                     
-                    if style.name ?? "" == "unnamed" {
-                        Text(LocalizedStringKey(style.name ?? ""))
+                    if styles[i].name ?? "" == "unnamed" {
+                        Text(LocalizedStringKey(styles[i].name ?? ""))
                     } else {
-                        Text(style.name ?? "")
+                        Text(styles[i].name ?? "")
                     }
                 }
                 .font(CommonStyle.LABEL_FONT)
                 
                 Button {
-                    viewModel.applyCoreData(context, style)
+                    viewModel.applyCoreData(context, styles[i])
                     mode.isRandomStyle = false
-                    self.appliedStyleDate = style.date
+                    appliedIndex = i
                 } label: {
                     Spacer()
                 }
@@ -76,9 +76,7 @@ struct StyleList: View {
             context.delete(styles[index])
         }
         
-        if context.hasChanges {
-            try? context.save()
-        }
+        saveContext()
     }
     
     func move(from source: IndexSet, to destination: Int) {
@@ -108,8 +106,11 @@ struct StyleList: View {
             }
         }
         
-        if context.hasChanges {
-            try? context.save()
-        }
+        saveContext()
+    }
+    
+    private func saveContext() {
+        guard context.hasChanges else { return }
+        try? context.save()
     }
 }
