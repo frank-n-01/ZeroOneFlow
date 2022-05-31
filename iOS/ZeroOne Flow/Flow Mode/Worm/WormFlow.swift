@@ -37,12 +37,12 @@ struct WormFlow: View {
                     moveBody()
                 }
                 .onAppear {
-                    width = geometry.size.width - worm.padding.hor
-                    height = geometry.size.height - worm.padding.ver
+                    width = geometry.size.width - worm.padding.horizontal
+                    height = geometry.size.height - worm.padding.vertical
                 }
                 .onChange(of: geometry.size) { _ in
-                    width = geometry.size.width - worm.padding.hor
-                    height = geometry.size.height - worm.padding.ver
+                    width = geometry.size.width - worm.padding.horizontal
+                    height = geometry.size.height - worm.padding.vertical
                 }
         }
     }
@@ -58,7 +58,7 @@ struct WormFlow: View {
             Double.random(in: 0...Double(worm.step))
         )
         if isToLeft {
-            if position[0].x > worm.padding.hor {
+            if position[0].x > worm.padding.horizontal {
                 position[0].x -= step
             } else {
                 isToLeft.toggle()
@@ -75,7 +75,7 @@ struct WormFlow: View {
     private func moveHeadY() {
         let step = CGFloat(Double.random(in: 0...Double(worm.step)))
         if isUpward {
-            if position[0].y > worm.padding.ver {
+            if position[0].y > worm.padding.vertical {
                 position[0].y -= step
             } else {
                 isUpward.toggle()

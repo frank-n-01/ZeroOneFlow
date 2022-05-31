@@ -61,10 +61,10 @@ private struct FlyParts: View {
     private func move(_ geometry: GeometryProxy) {
         withAnimation(.easeIn) {
             position.x = CGFloat.random(
-                in: fly.padding.hor...(geometry.size.width - fly.padding.hor))
+                in: fly.padding.horizontal...(geometry.size.width - fly.padding.horizontal))
             
             position.y = CGFloat.random(
-                in: fly.padding.ver...(geometry.size.height - fly.padding.ver))
+                in: fly.padding.vertical...(geometry.size.height - fly.padding.vertical))
         }
     }
 }

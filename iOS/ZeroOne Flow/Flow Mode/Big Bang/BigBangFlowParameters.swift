@@ -37,8 +37,8 @@ struct BigBangScreenSize {
         width = size.width
         height = size.height
         center = CGPoint(x: width / 2, y: height / 2)
-        borderRangeX = padding.hor...(width - padding.hor)
-        borderRangeY = padding.ver...(height - padding.ver)
+        borderRangeX = padding.horizontal...(width - padding.horizontal)
+        borderRangeY = padding.vertical...(height - padding.vertical)
         centerRangeX = (center.x - 5)...(center.x + 5)
         centerRangeY = (center.y - 5)...(center.y + 5)
         bangRangeX = -(width / 3)...(width / 3)
