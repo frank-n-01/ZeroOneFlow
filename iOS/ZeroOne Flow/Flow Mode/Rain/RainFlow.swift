@@ -23,8 +23,13 @@ struct RainFlow: View {
         .onAppear {
             scale = Int(round(rain.scale))
         }
-        .onReceive(Timer.publish(every: rain.interval, on: .current,
-                                 in: .common).autoconnect()) { _ in
+        .onChange(of: rain.isFlowing) { isFlowing in
+            guard isFlowing else { return }
+            count.value = 0
+            scale = Int(round(rain.scale))
+        }
+        .onReceive(Timer.publish(every: rain.isFlowing ? rain.interval : 100,
+                                 on: .current, in: .common).autoconnect()) { _ in
             guard rain.isFlowing else { return }
             count.increment()
         }

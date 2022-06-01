@@ -26,20 +26,29 @@ struct SnowFlow: View {
             }
         }
         .onAppear {
-            scale = Int(round(snow.scale))
-            appearRange = -(height / 2)...0
-            bottom = height * 1.5
-            fallRange = snow.floating...snow.step
+            setup()
         }
         .onChange(of: height) { newHeight in
             appearRange = -newHeight...0
             bottom = newHeight * 1.5
         }
-        .onReceive(Timer.publish(every: snow.interval, on: .current,
-                                 in: .common).autoconnect()) { _ in
+        .onChange(of: snow.isFlowing) { isFlowing in
+            guard isFlowing else { return }
+            count.value = 0
+            setup()
+        }
+        .onReceive(Timer.publish(every: snow.isFlowing ? snow.interval : 100,
+                                 on: .current, in: .common).autoconnect()) { _ in
             guard snow.isFlowing else { return }
             count.increment()
         }
+    }
+    
+    private func setup() {
+        scale = Int(round(snow.scale))
+        appearRange = -(height / 2)...0
+        bottom = height * 1.5
+        fallRange = snow.floating...snow.step
     }
 }
 

@@ -15,8 +15,9 @@ struct WaveFlow: View {
             ScreenSizeGetter(height: $height, width: $width)
             
             ForEach(0 ..< scale, id: \.self) { i in
-                WaveLine(wave: wave, count: $count,
-                         height: $height, width: $width)
+                if i < count.value {
+                    WaveLine(wave: wave, count: $count, height: $height, width: $width)
+                }
             }
         }
         .onAppear {
@@ -27,8 +28,14 @@ struct WaveFlow: View {
             wave.setMaxVerticalPadding(height: newHeight)
             wave.verifyVerticalPadding(height: newHeight)
         }
-        .onReceive(Timer.publish(every: wave.interval, on: .current,
-                                 in: .common).autoconnect()) { _ in
+        .onChange(of: wave.isFlowing) { isFlowing in
+            guard isFlowing else { return }
+            count.value = 0
+            scale = Int(round(wave.scale))
+            wave.verifyVerticalPadding(height: height)
+        }
+        .onReceive(Timer.publish(every: wave.isFlowing ? wave.interval : 100,
+                                 on: .current,  in: .common).autoconnect()) { _ in
             guard wave.isFlowing else { return }
             count.increment()
         }

@@ -20,8 +20,13 @@ struct FlyFlow: View {
         .onAppear {
             scale = Int(round(fly.scale))
         }
-        .onReceive(Timer.publish(every: fly.interval, on: .current,
-                                 in: .common).autoconnect()) { _ in
+        .onChange(of: fly.isFlowing) { isFlowing in
+            guard isFlowing else { return }
+            count.value = 0
+            scale = Int(round(fly.scale))
+        }
+        .onReceive(Timer.publish(every: fly.isFlowing ? fly.interval : 100,
+                                 on: .current, in: .common).autoconnect()) { _ in
             guard fly.isFlowing else { return }
             count.increment()
         }

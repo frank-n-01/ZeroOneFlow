@@ -15,7 +15,7 @@ struct FlowModeHome: View {
     @StateObject var snow = SnowViewModel()
     @StateObject var wave = WaveViewModel()
     
-    @State private var isStyleSheetPresent = false
+    @State private var isSheetPresent = false
     @State private var isFlowing: Bool = false {
         didSet {
             viewModel.isFlowing = isFlowing
@@ -26,66 +26,41 @@ struct FlowModeHome: View {
         NavigationView {
             ZStack {
                 flowView
-                homeView
             }
             .toolbar {
-                styleSheetButton
                 bottomBarButtons
             }
-            .sheet(isPresented: $isStyleSheetPresent) {
-                StyleList(viewModel: viewModel)
+            .sheet(isPresented: $isSheetPresent) {
+                homeView
             }
-            .onTapGesture(count: 2) {
-                startFlow()
+            .navigationBarTitleDisplayMode(.inline)
+        }
+        .navigationViewStyle(.stack)
+    }
+    
+    var homeView: some View {
+        NavigationView {
+            Form {
+                Section {
+                    ModePicker(mode: $mode.flowMode)
+                }
+                currentHome
             }
             .navigationTitle("Control")
         }
         .navigationViewStyle(.stack)
     }
     
-    var homeView: some View {
-        Form {
-            Section {
-                ModePicker(mode: $mode.flowMode)
-            }
-            currentHome
-        }
-        .onAppear {
-            // Enable the navigate animation after the home has appeared.
-            UINavigationBar.setAnimationsEnabled(true)
-        }
-    }
-    
     var flowView: some View {
-        NavigationLink(isActive: $isFlowing) {
-            currentFlow
-                .navigationBarHidden(isFlowing)
-                .statusBar(hidden: isFlowing)
-                .onTapGesture {
-                    isFlowing.toggle()
-                }
-        } label: {
-            EmptyView()
-        }
-        .onChange(of: isFlowing) { _ in
-            if isFlowing {
-                // Dismiss the navigate animation when the flow starts.
-                UINavigationBar.setAnimationsEnabled(false)
-            }
-        }
-    }
-    
-    var styleSheetButton: some ToolbarContent {
-        ToolbarItem(placement: .navigationBarTrailing) {
-            if !isFlowing {
-                Button {
-                    isStyleSheetPresent.toggle()
-                } label: {
-                    Image(systemName: "doc.on.doc")
-                        .padding()
+        currentFlow
+            .navigationBarHidden(true)
+            .statusBar(hidden: true)
+            .onTapGesture {
+                isFlowing.toggle()
+                if isFlowing && mode.isRandomStyle {
+                    viewModel.makeRandomStyle()
                 }
             }
-        }
     }
     
     var bottomBarButtons: some ToolbarContent {
@@ -94,9 +69,12 @@ struct FlowModeHome: View {
                 HStack {
                     RandomStyleButton()
                     Spacer()
-                    PlayButton(play: startFlow)
-                    Spacer()
-                    ResetButton(reset: viewModel.resetUserDefaults)
+                    Button {
+                        isSheetPresent.toggle()
+                    } label: {
+                        Image(systemName: "ellipsis.circle.fill")
+                            .padding()
+                    }
                 }
             }
         }

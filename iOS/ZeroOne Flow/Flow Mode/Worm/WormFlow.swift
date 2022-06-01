@@ -4,7 +4,8 @@ import SwiftUI
 
 struct WormFlow: View {
     @ObservedObject var worm: WormViewModel
-    @State var position: [CGPoint] = []
+    @State private var position: [CGPoint] = []
+    @State private var count = FlowCount()
     @State private var length = 0
     @State private var crawling = 0
     @State private var isToLeft = Bool.random()
@@ -19,22 +20,26 @@ struct WormFlow: View {
             wormBody
         }
         .onAppear {
-            length = Int(round(worm.length))
-            crawling = Int(round(worm.crawling))
-            position = Array(repeating: UIScreen.centerPoint, count: length)
+            setup()
+        }
+        .onChange(of: worm.isFlowing) { isFlowing in
+            guard isFlowing else { return }
+            count.value = 0
+            setup()
         }
     }
     
     private var wormHead: some View {
         GeometryReader { geometry in
             Text("")
-                .onReceive(Timer.publish(every: worm.interval, on: .current,
-                                         in: .common).autoconnect()) { _ in
+                .onReceive(Timer.publish(every: worm.isFlowing ? worm.interval : 100,
+                                         on: .current, in: .common).autoconnect()) { _ in
                     guard worm.isFlowing else { return }
                     moveHeadX()
                     moveHeadY()
                     turn()
                     moveBody()
+                    count.increment()
                 }
                 .onAppear {
                     width = geometry.size.width - worm.padding.horizontal
@@ -49,7 +54,9 @@ struct WormFlow: View {
     
     private var wormBody: some View {
         ForEach(0 ..< length, id: \.self) { i in
-            WormParts(worm: worm, position: $position[i])
+            if i < count.value {
+                WormParts(worm: worm, position: $position[i])
+            }
         }
     }
     
@@ -101,6 +108,12 @@ struct WormFlow: View {
             position[i].x = position[i - 1].x
             position[i].y = position[i - 1].y
         }
+    }
+    
+    private func setup() {
+        length = Int(round(worm.length))
+        crawling = Int(round(worm.crawling))
+        position = Array(repeating: UIScreen.centerPoint, count: length)
     }
 }
 

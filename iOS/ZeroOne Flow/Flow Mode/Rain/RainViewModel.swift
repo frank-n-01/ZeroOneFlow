@@ -49,8 +49,8 @@ class RainViewModel: FlowModeViewModel {
     override func makeRandomStyle() {
         super.makeRandomStyle()
         
-        scale = Double.random(in: 1...150)
-        interval = Double.random(in: 0.02...0.05)
+        scale = Double.random(in: 1...120)
+        interval = Double.random(in: 0.02...0.08)
         fonts.sizeRange.random(max: 100)
         length = Double.random(in: 50...100)
         step = CGFloat.random(in: 100...200)

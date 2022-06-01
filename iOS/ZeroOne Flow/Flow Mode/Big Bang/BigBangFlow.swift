@@ -27,11 +27,21 @@ struct BigBangFlow: View {
             }
         }
         .onAppear {
-            self.scale = Int(round(bigbang.scale))
-            flow.loop = self.scale
+            scale = Int(round(bigbang.scale))
+            flow.loop = scale
         }
-        .onReceive(Timer.publish(every: bigbang.interval, on: .current,
-                                 in: .common).autoconnect()) { _ in
+        .onChange(of: bigbang.isFlowing) { isFlowing in
+            guard isFlowing else { return }
+            count.value = BigBangViewModel.INITIAL_FLOW_COUNT
+            scale = Int(round(bigbang.scale))
+            flow = BigBangFlowParameters()
+            flow.loop = scale
+            setup()
+            isMoving = false
+            returnedCount = 0
+        }
+        .onReceive(Timer.publish(every: bigbang.isFlowing ? bigbang.interval : 100,
+                                 on: .current, in: .common).autoconnect()) { _ in
             guard bigbang.isFlowing else { return }
             
             count.increment()
@@ -73,17 +83,7 @@ struct BigBangFlow: View {
             Text("")
                 .onAppear {
                     screen.set(size: geometry.size, padding: bigbang.padding)
-                    for _ in 0 ..< scale {
-                        flow.content.append(ContentMaker.make(with: bigbang.contents))
-                        flow.position = Array(repeating: screen.center, count: scale)
-                        flow.size.append(CGFloat.random(in: bigbang.fonts.sizeRange.range))
-                        flow.design.append(bigbang.fonts.design.value)
-                        flow.weight.append(bigbang.fonts.weight.value)
-                        flow.txtAngle.append(Double.random(in: 0 ..< 360))
-                        flow.isExpanding = Array(repeating: true, count: scale)
-                        flow.isReturned = Array(repeating: false, count: scale)
-                        flow.rotation3D = Array(repeating: Rotation3D(), count: scale)
-                    }
+                    setup()
                 }
                 .onChange(of: geometry.size) { _ in
                     screen.set(size: geometry.size, padding: bigbang.padding)
@@ -117,6 +117,20 @@ struct BigBangFlow: View {
             .font(.system(size: 5.0, weight: .black))
             .foregroundColor(bigbang.colors.txt)
             .position(screen.center)
+    }
+    
+    private func setup() {
+        for _ in 0 ..< scale {
+            flow.content.append(ContentMaker.make(with: bigbang.contents))
+            flow.position = Array(repeating: screen.center, count: scale)
+            flow.size.append(CGFloat.random(in: bigbang.fonts.sizeRange.range))
+            flow.design.append(bigbang.fonts.design.value)
+            flow.weight.append(bigbang.fonts.weight.value)
+            flow.txtAngle.append(Double.random(in: 0 ..< 360))
+            flow.isExpanding = Array(repeating: true, count: scale)
+            flow.isReturned = Array(repeating: false, count: scale)
+            flow.rotation3D = Array(repeating: Rotation3D(), count: scale)
+        }
     }
     
     private func bang() {
