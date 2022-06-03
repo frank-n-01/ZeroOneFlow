@@ -20,7 +20,7 @@ struct ResetButton: View {
     var resetButton: some View {
         Button(action: { showAlert.toggle() }) {
             Image(systemName: "arrow.uturn.left")
-                .font(CommonStyle.TOOLBAR_BUTTON_FONT)
+                .font(CommonStyle.LABEL_FONT)
                 .foregroundColor(.red)
         }
     }

@@ -9,7 +9,7 @@ struct RandomStyleButton: View {
     var body: some View {
         Button(action: { mode.isRandomStyle.toggle() }) {
             Image(systemName: mode.isRandomStyle ? diceImage + ".fill" : diceImage)
-                .font(CommonStyle.TOOLBAR_BUTTON_FONT)
+                .font(CommonStyle.LABEL_FONT)
         }
         .onAppear {
             diceImage = "die.face.\(Int.random(in: 1...6))"

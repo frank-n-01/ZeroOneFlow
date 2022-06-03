@@ -93,4 +93,29 @@ enum Mode: Int, CaseIterable, Identifiable {
             return Wave.entity()
         }
     }
+    
+    var image: String {
+        switch self {
+        case .linear:
+            return "line.horizontal.3"
+        case .fly:
+            return "ladybug"
+        case .tornado:
+            return "tornado"
+        case .single:
+            return "paragraphsign"
+        case .circle:
+            return "circle.circle"
+        case .worm:
+            return "scribble.variable"
+        case .bigbang:
+            return "sun.max"
+        case .rain:
+            return "cloud.rain"
+        case .snow:
+            return "snow"
+        case .wave:
+            return "waveform.path.ecg"
+        }
+    }
 }

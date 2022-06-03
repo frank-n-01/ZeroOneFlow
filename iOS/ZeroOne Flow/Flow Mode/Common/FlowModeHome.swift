@@ -15,7 +15,7 @@ struct FlowModeHome: View {
     @StateObject var snow = SnowViewModel()
     @StateObject var wave = WaveViewModel()
     
-    @State private var isSheetPresent = false
+    @State private var isControlSheetPresent = false
     @State private var isFlowing: Bool = false {
         didSet {
             viewModel.isFlowing = isFlowing
@@ -30,7 +30,7 @@ struct FlowModeHome: View {
             .toolbar {
                 bottomBarButtons
             }
-            .sheet(isPresented: $isSheetPresent) {
+            .sheet(isPresented: $isControlSheetPresent) {
                 homeView
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -41,12 +41,10 @@ struct FlowModeHome: View {
     var homeView: some View {
         NavigationView {
             Form {
-                Section {
-                    ModePicker(mode: $mode.flowMode)
-                }
                 currentHome
             }
             .navigationTitle("Control")
+            .navigationBarTitleDisplayMode(.inline)
         }
         .navigationViewStyle(.stack)
     }
@@ -69,12 +67,11 @@ struct FlowModeHome: View {
                 HStack {
                     RandomStyleButton()
                     Spacer()
-                    Button {
-                        isSheetPresent.toggle()
-                    } label: {
-                        Image(systemName: "ellipsis.circle.fill")
-                            .padding()
-                    }
+                    ModeButton(mode: $mode.flowMode)
+                    Spacer()
+                    ShowStyleButton(viewModel: viewModel)
+                    Spacer()
+                    ShowControlButton(isSheetPresent: $isControlSheetPresent)
                 }
             }
         }
@@ -82,11 +79,9 @@ struct FlowModeHome: View {
     
     func startFlow() {
         isFlowing.toggle()
-        
         if mode.isRandomStyle {
             viewModel.makeRandomStyle()
         }
-        
         ContentMaker.reset()
     }
     
