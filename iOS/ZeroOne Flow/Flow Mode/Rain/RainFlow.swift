@@ -22,10 +22,11 @@ struct RainFlow: View {
         }
         .onAppear {
             scale = Int(round(rain.scale))
+            count.value = 1
         }
         .onChange(of: rain.isFlowing) { isFlowing in
-            guard isFlowing else { return }
             count.value = 0
+            guard isFlowing else { return }
             scale = Int(round(rain.scale))
         }
         .onReceive(Timer.publish(every: rain.isFlowing ? rain.interval : 100,

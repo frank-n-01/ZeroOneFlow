@@ -24,6 +24,7 @@ struct TornadoFlow: View {
         .onAppear {
             scale = Int(round(tornado.scale))
             duration = Double.random(in: tornado.durationRange.range)
+            count.value = Int.random(in: 1...10)
         }
         .onChange(of: tornado.isFlowing) { isFlowing in
             guard isFlowing else { return }

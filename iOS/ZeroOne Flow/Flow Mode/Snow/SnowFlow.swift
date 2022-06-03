@@ -27,6 +27,7 @@ struct SnowFlow: View {
         }
         .onAppear {
             setup()
+            count.value = 1
         }
         .onChange(of: height) { newHeight in
             appearRange = -newHeight...0

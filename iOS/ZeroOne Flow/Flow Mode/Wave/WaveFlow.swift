@@ -23,6 +23,7 @@ struct WaveFlow: View {
         .onAppear {
             scale = Int(round(wave.scale))
             wave.verifyVerticalPadding(height: height)
+            count.value = 1
         }
         .onChange(of: height) { newHeight in
             wave.setMaxVerticalPadding(height: newHeight)

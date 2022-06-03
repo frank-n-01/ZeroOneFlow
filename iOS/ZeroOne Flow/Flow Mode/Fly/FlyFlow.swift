@@ -19,6 +19,7 @@ struct FlyFlow: View {
         }
         .onAppear {
             scale = Int(round(fly.scale))
+            count.value = Int.random(in: 1...10)
         }
         .onChange(of: fly.isFlowing) { isFlowing in
             guard isFlowing else { return }

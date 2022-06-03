@@ -31,6 +31,7 @@ struct LinearFlow: View {
         }
         .onAppear {
             setup()
+            flow.content += ContentMaker.make(with: linear.contents)
         }
         .onChange(of: linear.isFlowing) { isFlowing in
             guard isFlowing else { return }

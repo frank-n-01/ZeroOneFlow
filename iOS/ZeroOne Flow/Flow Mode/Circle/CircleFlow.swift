@@ -24,6 +24,7 @@ struct CircleFlow: View {
         }
         .onAppear {
             depth = Int(round(circle.depth))
+            count.value = 1
         }
         .onReceive(Timer.publish(every: circle.isFlowing ? circle.interval : 100,
                                  on: .current, in: .common).autoconnect()) { _ in

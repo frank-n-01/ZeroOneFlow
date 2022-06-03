@@ -21,6 +21,7 @@ struct WormFlow: View {
         }
         .onAppear {
             setup()
+            count.value = 1
         }
         .onChange(of: worm.isFlowing) { isFlowing in
             guard isFlowing else { return }
