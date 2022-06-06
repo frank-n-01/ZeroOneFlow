@@ -97,7 +97,7 @@ enum Mode: Int, CaseIterable, Identifiable {
     var image: String {
         switch self {
         case .linear:
-            return "line.horizontal.3"
+            return "text.alignleft"
         case .fly:
             return "ladybug"
         case .tornado:

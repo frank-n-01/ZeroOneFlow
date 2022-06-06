@@ -25,7 +25,19 @@ struct FlowModeHome: View {
     var body: some View {
         NavigationView {
             ZStack {
-                flowView
+                currentFlow
+                
+                if !isFlowing {
+                    gradientOverlay
+                }
+            }
+            .navigationBarHidden(true)
+            .statusBar(hidden: isFlowing)
+            .onTapGesture {
+                isFlowing.toggle()
+                if isFlowing && mode.isRandomStyle {
+                    viewModel.makeRandomStyle()
+                }
             }
             .toolbar {
                 bottomBarButtons
@@ -33,7 +45,6 @@ struct FlowModeHome: View {
             .sheet(isPresented: $isControlSheetPresent) {
                 homeView
             }
-            .navigationBarTitleDisplayMode(.inline)
         }
         .navigationViewStyle(.stack)
     }
@@ -43,31 +54,36 @@ struct FlowModeHome: View {
             Form {
                 currentHome
             }
-            .navigationTitle("Control")
+            .navigationTitle(mode.flowMode.name)
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        isControlSheetPresent.toggle()
+                    } label: {
+                        Text("Done").padding()
+                    }
+                }
+            }
         }
         .navigationViewStyle(.stack)
     }
     
-    var flowView: some View {
-        currentFlow
-            .navigationBarHidden(true)
-            .statusBar(hidden: true)
-            .onTapGesture {
-                isFlowing.toggle()
-                if isFlowing && mode.isRandomStyle {
-                    viewModel.makeRandomStyle()
-                }
-            }
+    /// The overlay to increase the visibility of tool bar buttons.
+    var gradientOverlay: some View {
+        LinearGradient(colors: [viewModel.colors.bg, .black],
+                       startPoint: .top, endPoint: .bottom)
+            .opacity(0.4)
+            .edgesIgnoringSafeArea(.all)
     }
     
     var bottomBarButtons: some ToolbarContent {
         ToolbarItemGroup(placement: .bottomBar) {
             if !isFlowing {
                 HStack {
-                    RandomStyleButton()
-                    Spacer()
                     ModeButton(mode: $mode.flowMode)
+                    Spacer()
+                    RandomStyleButton()
                     Spacer()
                     ShowStyleButton(viewModel: viewModel)
                     Spacer()
