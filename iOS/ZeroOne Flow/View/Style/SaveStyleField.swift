@@ -31,9 +31,16 @@ struct SaveStyleField: View {
     
     func save() {
         if name.isEmpty {
-            name = "unnamed"
+            // Make a random name.
+            let language = LanguageType.allCases.randomElement() ?? .english
+            let maxLength = language.hasWords ? 3 : 6
+            for _ in 0...Int.random(in: 1...maxLength) {
+                name += LanguageMaker.make(type: language)
+                if language.hasSpaceBetweenWords {
+                    name += " "
+                }
+            }
         }
-        
         saveCoreData(name)
         name = ""
     }
