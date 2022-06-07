@@ -15,12 +15,12 @@ struct FlowModeHome: View {
     @StateObject var snow = SnowViewModel()
     @StateObject var wave = WaveViewModel()
     
-    @State private var isControlSheetPresent = false
     @State private var isFlowing: Bool = false {
         didSet {
             viewModel.isFlowing = isFlowing
         }
     }
+    @State private var showControlSheet = false
     
     var body: some View {
         NavigationView {
@@ -28,77 +28,68 @@ struct FlowModeHome: View {
                 currentFlow
                 
                 if !isFlowing {
-                    gradientOverlay
+                    // The overlay to increase the visibility of tool bar buttons.
+                    LinearGradient(colors: [viewModel.colors.bg, .black],
+                                   startPoint: .top, endPoint: .bottom)
+                        .opacity(0.4)
+                        .edgesIgnoringSafeArea(.all)
                 }
             }
-            .navigationBarHidden(true)
-            .statusBar(hidden: isFlowing)
             .onTapGesture {
+                // Start the flow.
                 isFlowing.toggle()
                 if isFlowing && mode.isRandomStyle {
                     viewModel.makeRandomStyle()
                 }
             }
             .toolbar {
-                bottomBarButtons
-            }
-            .sheet(isPresented: $isControlSheetPresent) {
-                homeView
-            }
-        }
-        .navigationViewStyle(.stack)
-    }
-    
-    var homeView: some View {
-        NavigationView {
-            Form {
-                currentHome
-            }
-            .navigationTitle(mode.flowMode.name)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isControlSheetPresent.toggle()
-                    } label: {
-                        Text("Done").padding()
+                ToolbarItemGroup(placement: .bottomBar) {
+                    if !isFlowing {
+                        HStack {
+                            ModeButton(mode: $mode.flowMode)
+                            Spacer()
+                            RandomStyleButton()
+                            Spacer()
+                            ShowStyleButton(viewModel: viewModel)
+                            Spacer()
+                            ShowControlButton(isSheetPresent: $showControlSheet)
+                        }
                     }
                 }
             }
+            .sheet(isPresented: $showControlSheet) {
+                NavigationView {
+                    Form {
+                        currentHome
+                    }
+                    .navigationTitle(mode.flowMode.name)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItemGroup(placement: .bottomBar) {
+                            StyleNavigationButton(viewModel: viewModel,
+                                                  isPresent: $showControlSheet)
+                            Spacer()
+                            PlayButton {
+                                // Start without making random style.
+                                showControlSheet.toggle()
+                                isFlowing.toggle()
+                            }
+                            Spacer()
+                            ResetButton(reset: viewModel.resetUserDefaults)
+                        }
+                    }
+                }
+                .navigationViewStyle(.stack)
+            }
+            .navigationBarHidden(true)
+            .statusBar(hidden: isFlowing)
         }
         .navigationViewStyle(.stack)
-    }
-    
-    /// The overlay to increase the visibility of tool bar buttons.
-    var gradientOverlay: some View {
-        LinearGradient(colors: [viewModel.colors.bg, .black],
-                       startPoint: .top, endPoint: .bottom)
-            .opacity(0.4)
-            .edgesIgnoringSafeArea(.all)
-    }
-    
-    var bottomBarButtons: some ToolbarContent {
-        ToolbarItemGroup(placement: .bottomBar) {
-            if !isFlowing {
-                HStack {
-                    ModeButton(mode: $mode.flowMode)
-                    Spacer()
-                    RandomStyleButton()
-                    Spacer()
-                    ShowStyleButton(viewModel: viewModel)
-                    Spacer()
-                    ShowControlButton(isSheetPresent: $isControlSheetPresent)
-                }
-            }
+        .onChange(of: viewModel.isFlowing) { newState in
+            guard isFlowing != newState else { return }
+            // Synchronize the state.
+            isFlowing = newState
         }
-    }
-    
-    func startFlow() {
-        isFlowing.toggle()
-        if mode.isRandomStyle {
-            viewModel.makeRandomStyle()
-        }
-        ContentMaker.reset()
     }
     
     var viewModel: FlowModeViewModel {

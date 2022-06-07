@@ -5,34 +5,41 @@ import SwiftUI
 struct StyleList: View {
     @EnvironmentObject var mode: ModeUserDefaults
     @ObservedObject var viewModel: FlowModeViewModel
-    @Environment(\.managedObjectContext) var context
+    @Binding var isPresent: Bool
     
+    @Environment(\.managedObjectContext) var context
     @FetchRequest(
         entity: Mode.allCases[ModeUserDefaults.sharedCurrentMode].entity,
         sortDescriptors: [NSSortDescriptor(keyPath: \FlowMode.date, ascending: false)]
     ) var styles: FetchedResults<FlowMode>
     
     // The index of currently applied style.
-    @State private var appliedIndex: Int?
+    @State private var appliedIndex = -1
     
     var body: some View {
-        NavigationView {
-            List {
-                Section {
-                    SaveStyleField(saveCoreData: saveCoreData)
-                }
-                Section {
-                    styleRows
-                }
+        List {
+            Section {
+                SaveStyleField(saveCoreData: saveCoreData)
             }
-            .toolbar {
+            Section {
+                styleRows
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
                     .font(CommonStyle.LABEL_FONT)
                     .padding()
             }
-            .listStyle(.insetGrouped)
-            .navigationTitle("Style")
+            ToolbarItem(placement: .bottomBar) {
+                PlayButton {
+                    isPresent.toggle()
+                    viewModel.isFlowing.toggle()
+                }
+            }
         }
+        .listStyle(.insetGrouped)
+        .navigationTitle("Style")
     }
     
     var styleRows: some View {
@@ -67,6 +74,7 @@ struct StyleList: View {
     
     func saveCoreData(name: String) {
         viewModel.saveCoreData(context, name)
+        appliedIndex = -1
     }
     
     func remove(at offsets: IndexSet) {
@@ -112,5 +120,6 @@ struct StyleList: View {
     private func saveContext() {
         guard context.hasChanges else { return }
         try? context.save()
+        appliedIndex = -1
     }
 }

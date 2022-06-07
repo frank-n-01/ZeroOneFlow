@@ -51,6 +51,7 @@
 		6542630A2642B24A0025BFB7 /* LanguageMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654263092642B24A0025BFB7 /* LanguageMaker.swift */; };
 		65456710284A513A005CA8B0 /* ShowStyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545670F284A513A005CA8B0 /* ShowStyleButton.swift */; };
 		65456712284A5484005CA8B0 /* ModeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65456711284A5484005CA8B0 /* ModeButton.swift */; };
+		65456716284F8748005CA8B0 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65456715284F8748005CA8B0 /* PlayButton.swift */; };
 		65590A8E2611C601004AB0D3 /* ZeroOne_FlowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65590A8D2611C601004AB0D3 /* ZeroOne_FlowApp.swift */; };
 		65590A902611C601004AB0D3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65590A8F2611C601004AB0D3 /* ContentView.swift */; };
 		65590A922611C603004AB0D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65590A912611C603004AB0D3 /* Assets.xcassets */; };
@@ -175,6 +176,7 @@
 		654263092642B24A0025BFB7 /* LanguageMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageMaker.swift; sourceTree = "<group>"; };
 		6545670F284A513A005CA8B0 /* ShowStyleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowStyleButton.swift; sourceTree = "<group>"; };
 		65456711284A5484005CA8B0 /* ModeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeButton.swift; sourceTree = "<group>"; };
+		65456715284F8748005CA8B0 /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		65590A8A2611C601004AB0D3 /* ZeroOne Flow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ZeroOne Flow.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65590A8D2611C601004AB0D3 /* ZeroOne_FlowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroOne_FlowApp.swift; sourceTree = "<group>"; };
 		65590A8F2611C601004AB0D3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -645,6 +647,7 @@
 				6545670F284A513A005CA8B0 /* ShowStyleButton.swift */,
 				65E7FD08270746F400C4E3CE /* ShowControlButton.swift */,
 				65E7FD0A2707496200C4E3CE /* ResetButton.swift */,
+				65456715284F8748005CA8B0 /* PlayButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -887,6 +890,7 @@
 				656669C128183A0600C8DFCA /* WaveUserDefaults.swift in Sources */,
 				65E84C0D2670FCD400378408 /* ToggleWithLabel.swift in Sources */,
 				653B2CF12674E77A00A7A921 /* ZeroOne Flow.xcdatamodeld in Sources */,
+				65456716284F8748005CA8B0 /* PlayButton.swift in Sources */,
 				65DF0E11265E75F5009421F7 /* WormFlow.swift in Sources */,
 				65E203A927F3484900ED1BE3 /* SnowViewModel.swift in Sources */,
 				654241E926CFF9D2003ABF3E /* LinearViewModel.swift in Sources */,

@@ -15,7 +15,24 @@ struct ShowStyleButton: View {
                 .padding()
         }
         .sheet(isPresented: $isSheetPresent) {
-            StyleList(viewModel: viewModel)
+            NavigationView {
+                StyleList(viewModel: viewModel, isPresent: $isSheetPresent)
+            }
+        }
+    }
+}
+
+struct StyleNavigationButton: View {
+    @ObservedObject var viewModel: FlowModeViewModel
+    @Binding var isPresent: Bool
+    
+    var body: some View {
+        NavigationLink {
+            StyleList(viewModel: viewModel, isPresent: $isPresent)
+        } label: {
+            Image(systemName: "doc")
+                .font(CommonStyle.LABEL_FONT)
+                .padding()
         }
     }
 }

@@ -14,14 +14,16 @@ struct ResetButton: View {
             } message: {
                 Text("reset.message")
             }
-            .padding()
     }
     
     var resetButton: some View {
-        Button(action: { showAlert.toggle() }) {
+        Button {
+            showAlert.toggle()
+        } label: {
             Image(systemName: "arrow.uturn.left")
                 .font(CommonStyle.LABEL_FONT)
                 .foregroundColor(.red)
+                .padding()
         }
     }
     
