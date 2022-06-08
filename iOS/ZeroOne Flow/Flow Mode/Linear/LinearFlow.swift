@@ -31,7 +31,9 @@ struct LinearFlow: View {
         }
         .onAppear {
             setup()
-            flow.content += ContentMaker.make(with: linear.contents)
+            for _ in 0 ..< 5 {
+                flow.content += ContentMaker.make(with: linear.contents)
+            }
         }
         .onChange(of: linear.isFlowing) { isFlowing in
             guard isFlowing else { return }
@@ -50,7 +52,9 @@ struct LinearFlow: View {
                 }
                 .onChange(of: geometry.size.height) { _ in
                     flow.currentHeight = geometry.size.height
-                    flow.controlRepeat()
+                    if linear.isFlowing {
+                        flow.controlRepeat()
+                    }
                 }
         }
     }

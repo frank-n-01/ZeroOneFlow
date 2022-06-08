@@ -50,8 +50,6 @@ struct FlowModeHome: View {
                             Spacer()
                             RandomStyleButton()
                             Spacer()
-                            ShowStyleButton(viewModel: viewModel)
-                            Spacer()
                             ShowControlButton(isSheetPresent: $showControlSheet)
                         }
                     }
@@ -66,8 +64,8 @@ struct FlowModeHome: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItemGroup(placement: .bottomBar) {
-                            StyleNavigationButton(viewModel: viewModel,
-                                                  isPresent: $showControlSheet)
+                            ShowStyleButton(viewModel: viewModel,
+                                            isPresent: $showControlSheet)
                             Spacer()
                             PlayButton {
                                 // Start without making random style.

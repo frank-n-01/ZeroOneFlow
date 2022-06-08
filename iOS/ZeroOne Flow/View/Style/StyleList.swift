@@ -53,11 +53,12 @@ struct StyleList: View {
                     
                     if styles[i].name ?? "" == "unnamed" {
                         Text(LocalizedStringKey(styles[i].name ?? ""))
+                            .font(CommonStyle.LABEL_FONT)
                     } else {
                         Text(styles[i].name ?? "")
+                            .font(CommonStyle.LABEL_FONT)
                     }
                 }
-                .font(CommonStyle.LABEL_FONT)
                 
                 Button {
                     viewModel.applyCoreData(context, styles[i])
