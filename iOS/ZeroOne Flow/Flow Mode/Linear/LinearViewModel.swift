@@ -52,7 +52,11 @@ class LinearViewModel: FlowModeViewModel {
         
         interval = Double.random(in: 0.001...0.01)
         linefeed.random(max: 30)
-        indents.random(max: 5)
+        if linefeed.isOn {
+            indents.random(max: 5)
+        } else {
+            indents.isOn = false
+        }
     }
     
     override func applyUserDefaults() {
