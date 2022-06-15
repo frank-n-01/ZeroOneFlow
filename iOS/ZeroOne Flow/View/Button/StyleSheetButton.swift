@@ -2,17 +2,20 @@
 
 import SwiftUI
 
-struct ShowStyleButton: View {
+struct StyleSheetButton: View {
     @ObservedObject var viewModel: FlowModeViewModel
-    @Binding var isPresent: Bool
+    @State private var isPresent = false
     
     var body: some View {
-        NavigationLink {
-            StyleList(viewModel: viewModel, isPresent: $isPresent)
+        Button {
+            isPresent.toggle()
         } label: {
             Image(systemName: "doc")
                 .font(CommonStyle.LABEL_FONT)
                 .padding()
+        }
+        .sheet(isPresented: $isPresent) {
+            StyleList(viewModel: viewModel, isPresent: $isPresent)
         }
     }
 }

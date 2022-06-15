@@ -49,7 +49,7 @@
 		654241E726CFD3EE003ABF3E /* FlowModeUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654241E626CFD3EE003ABF3E /* FlowModeUserDefaults.swift */; };
 		654241E926CFF9D2003ABF3E /* LinearViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654241E826CFF9D2003ABF3E /* LinearViewModel.swift */; };
 		6542630A2642B24A0025BFB7 /* LanguageMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654263092642B24A0025BFB7 /* LanguageMaker.swift */; };
-		65456710284A513A005CA8B0 /* ShowStyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545670F284A513A005CA8B0 /* ShowStyleButton.swift */; };
+		65456710284A513A005CA8B0 /* StyleSheetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545670F284A513A005CA8B0 /* StyleSheetButton.swift */; };
 		65456712284A5484005CA8B0 /* ModeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65456711284A5484005CA8B0 /* ModeButton.swift */; };
 		65456716284F8748005CA8B0 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65456715284F8748005CA8B0 /* PlayButton.swift */; };
 		65590A8E2611C601004AB0D3 /* ZeroOne_FlowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65590A8D2611C601004AB0D3 /* ZeroOne_FlowApp.swift */; };
@@ -93,7 +93,7 @@
 		65E722BC263EE44500564A48 /* TornadoHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E722BB263EE44500564A48 /* TornadoHome.swift */; };
 		65E722BE263EE45D00564A48 /* TornadoFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E722BD263EE45D00564A48 /* TornadoFlow.swift */; };
 		65E7FCF62702048500C4E3CE /* FlowModeHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E7FCF52702048500C4E3CE /* FlowModeHome.swift */; };
-		65E7FD09270746F400C4E3CE /* ShowControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E7FD08270746F400C4E3CE /* ShowControlButton.swift */; };
+		65E7FD09270746F400C4E3CE /* ControlSheetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E7FD08270746F400C4E3CE /* ControlSheetButton.swift */; };
 		65E7FD0B2707496200C4E3CE /* ResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E7FD0A2707496200C4E3CE /* ResetButton.swift */; };
 		65E84BDE2670EC0B00378408 /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84BDD2670EC0B00378408 /* Mode.swift */; };
 		65E84BEB2670F53000378408 /* CGFloatSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E84BEA2670F53000378408 /* CGFloatSlider.swift */; };
@@ -174,7 +174,7 @@
 		654241E626CFD3EE003ABF3E /* FlowModeUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowModeUserDefaults.swift; sourceTree = "<group>"; };
 		654241E826CFF9D2003ABF3E /* LinearViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearViewModel.swift; sourceTree = "<group>"; };
 		654263092642B24A0025BFB7 /* LanguageMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageMaker.swift; sourceTree = "<group>"; };
-		6545670F284A513A005CA8B0 /* ShowStyleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowStyleButton.swift; sourceTree = "<group>"; };
+		6545670F284A513A005CA8B0 /* StyleSheetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleSheetButton.swift; sourceTree = "<group>"; };
 		65456711284A5484005CA8B0 /* ModeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeButton.swift; sourceTree = "<group>"; };
 		65456715284F8748005CA8B0 /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		65590A8A2611C601004AB0D3 /* ZeroOne Flow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ZeroOne Flow.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,7 +226,7 @@
 		65E722BB263EE44500564A48 /* TornadoHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TornadoHome.swift; sourceTree = "<group>"; };
 		65E722BD263EE45D00564A48 /* TornadoFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TornadoFlow.swift; sourceTree = "<group>"; };
 		65E7FCF52702048500C4E3CE /* FlowModeHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowModeHome.swift; sourceTree = "<group>"; };
-		65E7FD08270746F400C4E3CE /* ShowControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowControlButton.swift; sourceTree = "<group>"; };
+		65E7FD08270746F400C4E3CE /* ControlSheetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlSheetButton.swift; sourceTree = "<group>"; };
 		65E7FD0A2707496200C4E3CE /* ResetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButton.swift; sourceTree = "<group>"; };
 		65E84BDD2670EC0B00378408 /* Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
 		65E84BEA2670F53000378408 /* CGFloatSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatSlider.swift; sourceTree = "<group>"; };
@@ -644,8 +644,8 @@
 			children = (
 				650F31842712E52B000D39D3 /* RandomStyleButton.swift */,
 				65456711284A5484005CA8B0 /* ModeButton.swift */,
-				6545670F284A513A005CA8B0 /* ShowStyleButton.swift */,
-				65E7FD08270746F400C4E3CE /* ShowControlButton.swift */,
+				6545670F284A513A005CA8B0 /* StyleSheetButton.swift */,
+				65E7FD08270746F400C4E3CE /* ControlSheetButton.swift */,
 				65E7FD0A2707496200C4E3CE /* ResetButton.swift */,
 				65456715284F8748005CA8B0 /* PlayButton.swift */,
 			);
@@ -908,7 +908,7 @@
 				6576337D2676214C0006981A /* ContentResource.swift in Sources */,
 				65B9FBDC275F96CB0072CE4F /* CodeType.swift in Sources */,
 				657D64212785D86C00C5D5BE /* BigBangFlowParameters.swift in Sources */,
-				65456710284A513A005CA8B0 /* ShowStyleButton.swift in Sources */,
+				65456710284A513A005CA8B0 /* StyleSheetButton.swift in Sources */,
 				65092F8D26D2890100E769C6 /* FlyViewModel.swift in Sources */,
 				65E84BEB2670F53000378408 /* CGFloatSlider.swift in Sources */,
 				65590A902611C601004AB0D3 /* ContentView.swift in Sources */,
@@ -928,7 +928,7 @@
 				657EB84226FA2DBF0001A71A /* NumberType.swift in Sources */,
 				65E84C0B2670FCB500378408 /* SandwichImageSlider.swift in Sources */,
 				65E722BE263EE45D00564A48 /* TornadoFlow.swift in Sources */,
-				65E7FD09270746F400C4E3CE /* ShowControlButton.swift in Sources */,
+				65E7FD09270746F400C4E3CE /* ControlSheetButton.swift in Sources */,
 				65092F9426D3BD9F00E769C6 /* FontRangeView.swift in Sources */,
 				651EE0D22653E559007389AC /* CircleFlow.swift in Sources */,
 				650F318327107D0C000D39D3 /* SaveStyleField.swift in Sources */,

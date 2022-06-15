@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct ShowControlButton: View {
+struct ControlSheetButton: View {
     @Binding var isSheetPresent: Bool
     
     var body: some View {

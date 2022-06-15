@@ -17,29 +17,37 @@ struct StyleList: View {
     @State private var appliedIndex = -1
     
     var body: some View {
-        List {
-            Section {
-                SaveStyleField(saveCoreData: saveCoreData)
-            }
-            Section {
-                styleRows
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                EditButton()
-                    .font(CommonStyle.LABEL_FONT)
-                    .padding()
-            }
-            ToolbarItem(placement: .bottomBar) {
-                PlayButton {
-                    isPresent.toggle()
-                    viewModel.isFlowing.toggle()
+        NavigationView {
+            List {
+                Section {
+                    SaveStyleField(saveCoreData: saveCoreData)
+                }
+                Section {
+                    styleRows
                 }
             }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                        .font(CommonStyle.LABEL_FONT)
+                        .padding()
+                }
+                ToolbarItemGroup(placement: .bottomBar) {
+                    ModeButton(mode: $mode.flowMode)
+                    Spacer()
+                    PlayButton {
+                        isPresent.toggle()
+                        viewModel.isFlowing.toggle()
+                    }
+                    Spacer()
+                    ResetButton(reset: viewModel.resetUserDefaults)
+                }
+            }
+            .listStyle(.insetGrouped)
+            .navigationTitle("Style")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .listStyle(.insetGrouped)
-        .navigationTitle("Style")
+        .navigationViewStyle(.stack)
     }
     
     var styleRows: some View {

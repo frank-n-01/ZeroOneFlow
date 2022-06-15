@@ -99,7 +99,7 @@ enum Mode: Int, CaseIterable, Identifiable {
         case .linear:
             return "text.alignleft"
         case .fly:
-            return "ladybug"
+            return "ladybug.fill"
         case .tornado:
             return "tornado"
         case .single:
@@ -111,7 +111,7 @@ enum Mode: Int, CaseIterable, Identifiable {
         case .bigbang:
             return "sun.max"
         case .rain:
-            return "cloud.rain"
+            return "cloud.rain.fill"
         case .snow:
             return "snow"
         case .wave:

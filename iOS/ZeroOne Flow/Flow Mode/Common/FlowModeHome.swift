@@ -36,7 +36,6 @@ struct FlowModeHome: View {
                 }
             }
             .onTapGesture {
-                // Start the flow.
                 isFlowing.toggle()
                 if isFlowing && mode.isRandomStyle {
                     viewModel.makeRandomStyle()
@@ -50,7 +49,9 @@ struct FlowModeHome: View {
                             Spacer()
                             RandomStyleButton()
                             Spacer()
-                            ShowControlButton(isSheetPresent: $showControlSheet)
+                            StyleSheetButton(viewModel: viewModel)
+                            Spacer()
+                            ControlSheetButton(isSheetPresent: $showControlSheet)
                         }
                     }
                 }
@@ -60,12 +61,11 @@ struct FlowModeHome: View {
                     Form {
                         currentHome
                     }
-                    .navigationTitle(mode.flowMode.name)
+                    .navigationTitle("Control")
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItemGroup(placement: .bottomBar) {
-                            ShowStyleButton(viewModel: viewModel,
-                                            isPresent: $showControlSheet)
+                            ModeButton(mode: $mode.flowMode)
                             Spacer()
                             PlayButton {
                                 // Start without making random style.
@@ -84,9 +84,10 @@ struct FlowModeHome: View {
         }
         .navigationViewStyle(.stack)
         .onChange(of: viewModel.isFlowing) { newState in
-            guard isFlowing != newState else { return }
-            // Synchronize the state.
-            isFlowing = newState
+            if isFlowing != newState {
+                // Synchronize the state.
+                isFlowing = newState
+            }
         }
     }
     
