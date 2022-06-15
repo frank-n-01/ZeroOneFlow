@@ -92,12 +92,16 @@ struct WaveLine: View {
                 positions[joint].y += Double.random(in: -wave.amplitude...wave.amplitude)
             }
             
+            positions[joint].x += Double.random(in: -wave.gap...wave.gap)
+            
             for i in (1 ... joint).reversed() {
                 positions[i - 1].y = positions[i].y + Double.random(in: -wave.amplitude...wave.amplitude)
+                positions[i].x += Double.random(in: -wave.gap...wave.gap)
             }
             
             for i in joint ..< length {
                 positions[i].y = positions[i - 1].y + Double.random(in: -wave.amplitude...wave.amplitude)
+                positions[i].x += Double.random(in: -wave.gap...wave.gap)
             }
         }
         if count.value % 10 == 0 {
