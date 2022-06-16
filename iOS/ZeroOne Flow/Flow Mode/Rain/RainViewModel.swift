@@ -32,7 +32,7 @@ class RainViewModel: FlowModeViewModel {
     }
     
     static let FONT = Fonts(size: 0, design: .random,
-                            weight: .ultraLight, min: 10, max: 40)
+                            weight: .ultraLight, min: 10, max: 50)
     static let SCALE = 100.0
     static let INTERVAL = 0.05
     static let LENGTH = 150.0

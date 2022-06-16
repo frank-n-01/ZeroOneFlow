@@ -27,7 +27,7 @@ struct SnowFlow: View {
         }
         .onAppear {
             setup()
-            count.value = 1
+            count.value = 0
         }
         .onChange(of: height) { newHeight in
             appearRange = -newHeight...0
@@ -47,7 +47,7 @@ struct SnowFlow: View {
     
     private func setup() {
         scale = Int(round(snow.scale))
-        appearRange = -(height / 2)...0
+        appearRange = -height...0
         bottom = height * 1.5
         fallRange = snow.floating...snow.step
     }
@@ -80,7 +80,7 @@ struct SnowFlake: View {
                 content = ContentMaker.make(with: snow.contents)
             }
             .onChange(of: count.value) { _ in
-                withAnimation {
+                withAnimation(.easeIn) {
                     position.y += CGFloat.random(in: fallRange)
                     position.x += CGFloat.random(in: -snow.wind...snow.wind)
                 }
