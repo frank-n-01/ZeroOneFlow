@@ -39,7 +39,8 @@ struct Padding: Equatable {
     }
     
     mutating func random() {
-        self.vertical = CGFloat.random(in: min...0)
-        self.horizontal = CGFloat.random(in: min...0)
+        guard min <= max else { return }
+        self.vertical = CGFloat.random(in: min...max)
+        self.horizontal = CGFloat.random(in: min...max)
     }
 }
