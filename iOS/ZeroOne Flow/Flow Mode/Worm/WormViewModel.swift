@@ -62,6 +62,7 @@ class WormViewModel: FlowModeViewModel {
         length = Double.random(in: 1...100)
         step = Double.random(in: 10...100)
         crawling = Double.random(in: 10...100)
+        padding.random()
     }
     
     override func applyUserDefaults() {

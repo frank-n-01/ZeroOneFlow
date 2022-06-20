@@ -3,14 +3,14 @@
 import SwiftUI
 
 struct Padding: Equatable {
-    var ver: CGFloat
-    var hor: CGFloat
+    var vertical: CGFloat
+    var horizontal: CGFloat
     var min: CGFloat
     var max: CGFloat
     
     init(vertical: CGFloat, horizontal: CGFloat, min: CGFloat, max: CGFloat) {
-        self.ver = vertical
-        self.hor = horizontal
+        self.vertical = vertical
+        self.horizontal = horizontal
         
         if min <= max {
             self.min = min
@@ -29,17 +29,18 @@ struct Padding: Equatable {
     }
     
     mutating func set(vertical: Double, horizontal: Double) {
-        self.ver = CGFloat(vertical)
-        self.hor = CGFloat(horizontal)
+        self.vertical = CGFloat(vertical)
+        self.horizontal = CGFloat(horizontal)
     }
     
     nonmutating func save(vertical: inout Double, horizontal: inout Double) {
-        vertical = Double(self.ver)
-        horizontal = Double(self.hor)
+        vertical = Double(self.vertical)
+        horizontal = Double(self.horizontal)
     }
     
     mutating func random() {
-        self.ver = CGFloat.random(in: min...0)
-        self.hor = CGFloat.random(in: min...0)
+        guard min <= max else { return }
+        self.vertical = CGFloat.random(in: min...max)
+        self.horizontal = CGFloat.random(in: min...max)
     }
 }

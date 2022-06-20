@@ -5,15 +5,16 @@ import SwiftUI
 struct StyleList: View {
     @EnvironmentObject var mode: ModeUserDefaults
     @ObservedObject var viewModel: FlowModeViewModel
-    @Environment(\.managedObjectContext) var context
+    @Binding var isPresent: Bool
     
+    @Environment(\.managedObjectContext) var context
     @FetchRequest(
         entity: Mode.allCases[ModeUserDefaults.sharedCurrentMode].entity,
         sortDescriptors: [NSSortDescriptor(keyPath: \FlowMode.date, ascending: false)]
     ) var styles: FetchedResults<FlowMode>
     
     // The index of currently applied style.
-    @State private var appliedIndex: Int?
+    @State private var appliedIndex = -1
     
     var body: some View {
         NavigationView {
@@ -26,13 +27,27 @@ struct StyleList: View {
                 }
             }
             .toolbar {
-                EditButton()
-                    .font(CommonStyle.LABEL_FONT)
-                    .padding()
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                        .font(CommonStyle.LABEL_FONT)
+                        .padding()
+                }
+                ToolbarItemGroup(placement: .bottomBar) {
+                    ModeButton(mode: $mode.flowMode)
+                    Spacer()
+                    PlayButton {
+                        isPresent.toggle()
+                        viewModel.isFlowing.toggle()
+                    }
+                    Spacer()
+                    ResetButton(reset: viewModel.resetUserDefaults)
+                }
             }
             .listStyle(.insetGrouped)
             .navigationTitle("Style")
+            .navigationBarTitleDisplayMode(.inline)
         }
+        .navigationViewStyle(.stack)
     }
     
     var styleRows: some View {
@@ -46,11 +61,12 @@ struct StyleList: View {
                     
                     if styles[i].name ?? "" == "unnamed" {
                         Text(LocalizedStringKey(styles[i].name ?? ""))
+                            .font(CommonStyle.LABEL_FONT)
                     } else {
                         Text(styles[i].name ?? "")
+                            .font(CommonStyle.LABEL_FONT)
                     }
                 }
-                .font(CommonStyle.LABEL_FONT)
                 
                 Button {
                     viewModel.applyCoreData(context, styles[i])
@@ -67,6 +83,7 @@ struct StyleList: View {
     
     func saveCoreData(name: String) {
         viewModel.saveCoreData(context, name)
+        appliedIndex = -1
     }
     
     func remove(at offsets: IndexSet) {
@@ -112,5 +129,6 @@ struct StyleList: View {
     private func saveContext() {
         guard context.hasChanges else { return }
         try? context.save()
+        appliedIndex = -1
     }
 }

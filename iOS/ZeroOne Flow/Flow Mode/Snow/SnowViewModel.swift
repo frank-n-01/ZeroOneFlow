@@ -58,8 +58,8 @@ class SnowViewModel: FlowModeViewModel {
         super.makeRandomStyle()
         
         scale = Double.random(in: 1...200)
-        interval = Double.random(in: 0.02...0.08)
-        fonts.sizeRange.random(max: 150)
+        interval = Double.random(in: 0.02...0.1)
+        fonts.sizeRange.random(max: 100)
         wind = Double.random(in: 10...150)
         step = CGFloat.random(in: 50...200)
         floating = Double.random(in: -(step / 2)...(step / 2))

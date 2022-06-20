@@ -24,16 +24,23 @@ struct LinearFlow: View {
                     .background(currentHeightGetter)
             }
         }
-        .onReceive(Timer.publish(every: linear.interval, on: .current,
-                                 in: .common).autoconnect()) { _ in
+        .onReceive(Timer.publish(every: linear.isFlowing ? linear.interval : 100,
+                                 on: .current, in: .common).autoconnect()) { _ in
             guard linear.isFlowing else { return }
             move()
         }
         .onAppear {
-            flow.isRepeat = linear.isRepeat
-            flow.adjustKerning(contents: linear.contents)
-            flow.adjustLineSpacing(contents: linear.contents)
-            CodeMaker.reset()
+            setup()
+            for _ in 0 ..< 5 {
+                flow.content += ContentMaker.make(with: linear.contents)
+            }
+        }
+        .onChange(of: linear.isFlowing) { isFlowing in
+            guard isFlowing else { return }
+            flow.content = ""
+            flow.preservedContent = ""
+            flow.isStopped = false
+            setup()
         }
     }
     
@@ -45,7 +52,9 @@ struct LinearFlow: View {
                 }
                 .onChange(of: geometry.size.height) { _ in
                     flow.currentHeight = geometry.size.height
-                    flow.controlRepeat()
+                    if linear.isFlowing {
+                        flow.controlRepeat()
+                    }
                 }
         }
     }
@@ -64,6 +73,13 @@ struct LinearFlow: View {
         flow.content += ContentMaker
             .getRandomLineFeed(linear.linefeed, linear.indents, linear.contents)
     }
+    
+    private func setup() {
+        flow.isRepeat = linear.isRepeat
+        flow.adjustKerning(contents: linear.contents)
+        flow.adjustLineSpacing(contents: linear.contents)
+        CodeMaker.reset()
+    }
 }
 
 private struct LinearFlowParameters {
@@ -75,7 +91,7 @@ private struct LinearFlowParameters {
     var lineSpacing: CGFloat = 0.0
     var kerning: CGFloat = 0.0
     var isStopped = false
-    var isRepeat: Bool = true
+    var isRepeat = true
     
     mutating func controlRepeat() {
         if isRepeat {

@@ -22,9 +22,17 @@ struct RainFlow: View {
         }
         .onAppear {
             scale = Int(round(rain.scale))
+            count.value = 1
         }
-        .onReceive(Timer.publish(every: rain.interval, on: .current,
-                                 in: .common).autoconnect()) { _ in
+        .onChange(of: rain.isFlowing) { isFlowing in
+            // Delete the content to release the memory.
+            count.value = 0
+            if isFlowing {
+                scale = Int(round(rain.scale))
+            }
+        }
+        .onReceive(Timer.publish(every: rain.isFlowing ? rain.interval : 100,
+                                 on: .current, in: .common).autoconnect()) { _ in
             guard rain.isFlowing else { return }
             count.increment()
         }
@@ -55,7 +63,7 @@ struct RainDrop: View {
                 design = rain.fonts.design.value
                 weight = rain.fonts.weight.value
                 position.x = CGFloat.random(in: 0...width)
-                position.y = CGFloat.random(in: -height...0)
+                position.y = CGFloat.random(in: 0...height)
                 length = Int.random(in: 1...Int(rain.length))
                 makeContent()
             }

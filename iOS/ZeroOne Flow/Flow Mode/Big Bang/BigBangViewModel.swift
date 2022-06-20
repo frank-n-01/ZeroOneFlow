@@ -73,6 +73,7 @@ class BigBangViewModel: FlowModeViewModel {
         interval = Double.random(in: 0.01...0.15)
         gap = CGFloat.random(in: 5...50)
         rotationAngle = Double.random(in: 0.1...60)
+        is3D = Bool.random()
         padding.random()
     }
     

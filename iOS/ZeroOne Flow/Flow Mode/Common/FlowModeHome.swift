@@ -15,101 +15,80 @@ struct FlowModeHome: View {
     @StateObject var snow = SnowViewModel()
     @StateObject var wave = WaveViewModel()
     
-    @State private var isStyleSheetPresent = false
     @State private var isFlowing: Bool = false {
         didSet {
             viewModel.isFlowing = isFlowing
         }
     }
+    @State private var showControlSheet = false
     
     var body: some View {
         NavigationView {
             ZStack {
-                flowView
-                homeView
+                currentFlow
+                
+                if !isFlowing {
+                    // The overlay to increase the visibility of tool bar buttons.
+                    LinearGradient(colors: [viewModel.colors.bg, .black],
+                                   startPoint: .top, endPoint: .bottom)
+                        .opacity(0.4)
+                        .edgesIgnoringSafeArea(.all)
+                }
+            }
+            .onTapGesture {
+                isFlowing.toggle()
+                if isFlowing && mode.isRandomStyle {
+                    viewModel.makeRandomStyle()
+                }
             }
             .toolbar {
-                styleSheetButton
-                bottomBarButtons
+                ToolbarItemGroup(placement: .bottomBar) {
+                    if !isFlowing {
+                        HStack {
+                            ModeButton(mode: $mode.flowMode)
+                            Spacer()
+                            RandomStyleButton()
+                            Spacer()
+                            StyleSheetButton(viewModel: viewModel)
+                            Spacer()
+                            ControlSheetButton(isSheetPresent: $showControlSheet)
+                        }
+                    }
+                }
             }
-            .sheet(isPresented: $isStyleSheetPresent) {
-                StyleList(viewModel: viewModel)
+            .sheet(isPresented: $showControlSheet) {
+                NavigationView {
+                    Form {
+                        currentHome
+                    }
+                    .navigationTitle("Control")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItemGroup(placement: .bottomBar) {
+                            ModeButton(mode: $mode.flowMode)
+                            Spacer()
+                            PlayButton {
+                                // Start without making random style.
+                                showControlSheet.toggle()
+                                isFlowing.toggle()
+                            }
+                            Spacer()
+                            ResetButton(reset: viewModel.resetUserDefaults)
+                        }
+                    }
+                }
+                .navigationViewStyle(.stack)
             }
-            .onTapGesture(count: 2) {
-                startFlow()
-            }
-            .navigationTitle("Control")
+            .navigationBarHidden(true)
+            .statusBar(hidden: isFlowing)
         }
         .navigationViewStyle(.stack)
-    }
-    
-    var homeView: some View {
-        Form {
-            Section {
-                ModePicker(mode: $mode.flowMode)
-            }
-            currentHome
-        }
-        .onAppear {
-            // Enable the navigate animation after the home has appeared.
-            UINavigationBar.setAnimationsEnabled(true)
-        }
-    }
-    
-    var flowView: some View {
-        NavigationLink(isActive: $isFlowing) {
-            currentFlow
-                .navigationBarHidden(isFlowing)
-                .statusBar(hidden: isFlowing)
-                .onTapGesture {
-                    isFlowing.toggle()
-                }
-        } label: {
-            EmptyView()
-        }
-        .onChange(of: isFlowing) { _ in
-            if isFlowing {
-                // Dismiss the navigate animation when the flow starts.
-                UINavigationBar.setAnimationsEnabled(false)
+        .onChange(of: viewModel.isFlowing) { newState in
+            if isFlowing != newState {
+                // Synchronize the state.
+                isFlowing = newState
             }
         }
-    }
-    
-    var styleSheetButton: some ToolbarContent {
-        ToolbarItem(placement: .navigationBarTrailing) {
-            if !isFlowing {
-                Button {
-                    isStyleSheetPresent.toggle()
-                } label: {
-                    Image(systemName: "doc.on.doc")
-                        .padding()
-                }
-            }
-        }
-    }
-    
-    var bottomBarButtons: some ToolbarContent {
-        ToolbarItemGroup(placement: .bottomBar) {
-            if !isFlowing {
-                HStack {
-                    RandomStyleButton()
-                    Spacer()
-                    PlayButton(play: startFlow)
-                    Spacer()
-                    ResetButton(reset: viewModel.resetUserDefaults)
-                }
-            }
-        }
-    }
-    
-    func startFlow() {
-        isFlowing.toggle()
-        
-        if mode.isRandomStyle {
-            viewModel.makeRandomStyle()
-        }
-        
-        ContentMaker.reset()
     }
     
     var viewModel: FlowModeViewModel {

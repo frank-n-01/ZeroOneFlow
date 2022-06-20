@@ -20,7 +20,12 @@ class ContentMaker {
     
     static func getRandomLineFeed(_ linefeed: TextFormat, _ indents: TextFormat,
                                   _ contents: Contents) -> String {
-        guard linefeed.isOn else { return "" }
+        guard linefeed.isOn else {
+            if indents.isOn {
+                return getRandomIndent(indents)
+            }
+            return ""
+        }
         guard Int.random(in: 0...Int(linefeed.value)) == 0 else { return "" }
         
         // BASIC does not need indents.

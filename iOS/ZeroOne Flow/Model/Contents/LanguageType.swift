@@ -40,4 +40,57 @@ enum LanguageType: Int, CaseIterable, Equatable, Identifiable {
             return "Spanish"
         }
     }
+    
+    /// Contains natural language words or not.
+    /// Return false if it only has characters,
+    var hasWords: Bool {
+        switch self {
+        case .latin:
+            return false
+        case .cuneiform:
+            return false
+        case .greek:
+            return false
+        case .hieroglyph:
+            return false
+        case .arabic:
+            return false
+        case .devanagari:
+            return false
+        case .chinese:
+            return false
+        case .english:
+            return true
+        case .japanese:
+            return true
+        case .spanish:
+            return true
+        }
+    }
+    
+    /// Is a space necessary between words or cahracters.
+    var hasSpaceBetweenWords: Bool {
+        switch self {
+        case .latin:
+            return false
+        case .cuneiform:
+            return true
+        case .greek:
+            return false
+        case .hieroglyph:
+            return true
+        case .arabic:
+            return false
+        case .devanagari:
+            return false
+        case .chinese:
+            return false
+        case .english:
+            return true
+        case .japanese:
+            return false
+        case .spanish:
+            return true
+        }
+    }
 }

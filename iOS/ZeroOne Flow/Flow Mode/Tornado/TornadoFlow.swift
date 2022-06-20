@@ -24,9 +24,15 @@ struct TornadoFlow: View {
         .onAppear {
             scale = Int(round(tornado.scale))
             duration = Double.random(in: tornado.durationRange.range)
+            count.value = Int.random(in: 1...10)
         }
-        .onReceive(Timer.publish(every: 0.1, on: .current,
-                                 in: .common).autoconnect()) { _ in
+        .onChange(of: tornado.isFlowing) { isFlowing in
+            guard isFlowing else { return }
+            count.value = 0
+            scale = Int(round(tornado.scale))
+        }
+        .onReceive(Timer.publish(every: tornado.isFlowing ? 0.1 : 100,
+                                 on: .current, in: .common).autoconnect()) { _ in
             guard tornado.isFlowing else { return }
             count.increment()
             
@@ -68,31 +74,29 @@ struct TornadoParts: View {
     @State private var position: CGPoint = UIScreen.getRandomPoint()
     
     var body: some View {
-        if tornado.isFlowing {
-            GeometryReader { geometry in
-                Text(content)
-                    .font(.system(size: fontSize, weight: weight, design: design))
-                    .foregroundColor(tornado.colors.txt)
-                    .position(position)
-                    .rotation3DEffect(.degrees(rotation3D.angle),
-                                      axis: (x: rotation3D.axis.x,
-                                             y: rotation3D.axis.y,
-                                             z: rotation3D.axis.z),
-                                      anchorZ: rotation3D.anchorZ,
-                                      perspective: rotation3D.perspective)
-                    .onAppear {
-                        move(in: geometry.size)
-                    }
-                    .onChange(of: count.value) { _ in
-                        move(in: geometry.size)
-                    }
-            }
-            .onAppear {
-                content = ContentMaker.make(with: tornado.contents)
-                fontSize = tornado.fonts.sizeRange.getRandomSizeInRange()
-                design = tornado.fonts.design.value
-                weight = tornado.fonts.weight.value
-            }
+        GeometryReader { geometry in
+            Text(content)
+                .font(.system(size: fontSize, weight: weight, design: design))
+                .foregroundColor(tornado.colors.txt)
+                .position(position)
+                .rotation3DEffect(.degrees(rotation3D.angle),
+                                  axis: (x: rotation3D.axis.x,
+                                         y: rotation3D.axis.y,
+                                         z: rotation3D.axis.z),
+                                  anchorZ: rotation3D.anchorZ,
+                                  perspective: rotation3D.perspective)
+                .onAppear {
+                    move(in: geometry.size)
+                }
+                .onChange(of: count.value) { _ in
+                    move(in: geometry.size)
+                }
+        }
+        .onAppear {
+            content = ContentMaker.make(with: tornado.contents)
+            fontSize = tornado.fonts.sizeRange.getRandomSizeInRange()
+            design = tornado.fonts.design.value
+            weight = tornado.fonts.weight.value
         }
     }
     

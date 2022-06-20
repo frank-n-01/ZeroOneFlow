@@ -19,9 +19,15 @@ struct FlyFlow: View {
         }
         .onAppear {
             scale = Int(round(fly.scale))
+            count.value = Int.random(in: 1...10)
         }
-        .onReceive(Timer.publish(every: fly.interval, on: .current,
-                                 in: .common).autoconnect()) { _ in
+        .onChange(of: fly.isFlowing) { isFlowing in
+            guard isFlowing else { return }
+            count.value = 0
+            scale = Int(round(fly.scale))
+        }
+        .onReceive(Timer.publish(every: fly.isFlowing ? fly.interval : 100,
+                                 on: .current, in: .common).autoconnect()) { _ in
             guard fly.isFlowing else { return }
             count.increment()
         }
@@ -61,10 +67,10 @@ private struct FlyParts: View {
     private func move(_ geometry: GeometryProxy) {
         withAnimation(.easeIn) {
             position.x = CGFloat.random(
-                in: fly.padding.hor...(geometry.size.width - fly.padding.hor))
+                in: fly.padding.horizontal...(geometry.size.width - fly.padding.horizontal))
             
             position.y = CGFloat.random(
-                in: fly.padding.ver...(geometry.size.height - fly.padding.ver))
+                in: fly.padding.vertical...(geometry.size.height - fly.padding.vertical))
         }
     }
 }

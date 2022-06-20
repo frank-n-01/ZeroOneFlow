@@ -34,7 +34,7 @@ class SingleViewModel: FlowModeViewModel {
     override func makeRandomStyle() {
         interval = Double.random(in: 0.01...0.2)
         fonts.size = CGFloat.random(
-            in: Self.MAX_FONT_SIZE * 0.3 ..< Self.MAX_FONT_SIZE * 0.6)
+            in: Self.MAX_FONT_SIZE * 0.2 ..< Self.MAX_FONT_SIZE * 0.6)
         contents.random()
         colors.txtRandom = true
         colors.bgRandom = true

@@ -24,9 +24,10 @@ struct CircleFlow: View {
         }
         .onAppear {
             depth = Int(round(circle.depth))
+            count.value = 1
         }
-        .onReceive(Timer.publish(every: circle.interval, on: .current,
-                                 in: .common).autoconnect()) { _ in
+        .onReceive(Timer.publish(every: circle.isFlowing ? circle.interval : 100,
+                                 on: .current, in: .common).autoconnect()) { _ in
             guard circle.isFlowing else { return }
             count.increment()
         }
@@ -35,6 +36,11 @@ struct CircleFlow: View {
         }
         .onChange(of: width) { newWidth in
             center.x = newWidth / 2
+        }
+        .onChange(of: circle.isFlowing) { isFlowing in
+            guard isFlowing else { return }
+            count.value = 0
+            depth = Int(round(circle.depth))
         }
     }
 }
@@ -51,27 +57,25 @@ struct CircleParts: View {
     @State private var isClockwise = false
     
     var body: some View {
-        if circle.isFlowing {
-            GeometryReader { _ in
-                Text(content)
-                    .font(.system(size: circle.fonts.size, weight: weight, design: design))
-                    .foregroundColor(circle.colors.txt)
-                    .position(position)
-                    .rotationEffect(.degrees(angle))
-                    .onAppear {
-                        withAnimation(.easeIn) {
-                            setPosition()
-                            content = ContentMaker.make(with: circle.contents)
-                        }
-                        design = circle.fonts.design.value
-                        weight = circle.fonts.weight.value
+        GeometryReader { _ in
+            Text(content)
+                .font(.system(size: circle.fonts.size, weight: weight, design: design))
+                .foregroundColor(circle.colors.txt)
+                .position(position)
+                .rotationEffect(.degrees(angle))
+                .onAppear {
+                    withAnimation(.easeIn) {
+                        setPosition()
+                        content = ContentMaker.make(with: circle.contents)
                     }
-                    .onChange(of: count.value) { _ in
-                        withAnimation() {
-                            rotate()
-                        }
+                    design = circle.fonts.design.value
+                    weight = circle.fonts.weight.value
+                }
+                .onChange(of: count.value) { _ in
+                    withAnimation() {
+                        rotate()
                     }
-            }
+                }
         }
     }
     

@@ -26,11 +26,7 @@ struct SingleFlow: View {
                     .onAppear {
                         position.x = geometry.size.width / 2
                         position.y = geometry.size.height / 2
-                        content = ContentMaker.make(with: single.contents)
-                        design = single.fonts.design.value
-                        weight = single.fonts.weight.value
-                        txtColor = single.colors.txt
-                        gradient.type = single.gradientType
+                        setup()
                     }
                     .onChange(of: geometry.size) { newSize in
                         position.x = newSize.width / 2
@@ -38,8 +34,12 @@ struct SingleFlow: View {
                     }
             }
         }
-        .onReceive(Timer.publish(every: single.interval, on: .current,
-                                 in: .common).autoconnect()) { _ in
+        .onChange(of: single.isFlowing) { isFlowing in
+            guard isFlowing else { return }
+            setup()
+        }
+        .onReceive(Timer.publish(every: single.isFlowing ? single.interval : 100,
+                                 on: .current, in: .common).autoconnect()) { _ in
             guard single.isFlowing else { return }
             
             content = ContentMaker.make(with: single.contents)
@@ -53,5 +53,13 @@ struct SingleFlow: View {
                 }
             }
         }
+    }
+    
+    private func setup() {
+        content = ContentMaker.make(with: single.contents)
+        design = single.fonts.design.value
+        weight = single.fonts.weight.value
+        txtColor = single.colors.txt
+        gradient.type = single.gradientType
     }
 }

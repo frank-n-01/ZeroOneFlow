@@ -15,20 +15,28 @@ struct WaveFlow: View {
             ScreenSizeGetter(height: $height, width: $width)
             
             ForEach(0 ..< scale, id: \.self) { i in
-                WaveLine(wave: wave, count: $count,
-                         height: $height, width: $width)
+                if i < count.value {
+                    WaveLine(wave: wave, count: $count, height: $height, width: $width)
+                }
             }
         }
         .onAppear {
             scale = Int(round(wave.scale))
             wave.verifyVerticalPadding(height: height)
+            count.value = 1
         }
         .onChange(of: height) { newHeight in
             wave.setMaxVerticalPadding(height: newHeight)
             wave.verifyVerticalPadding(height: newHeight)
         }
-        .onReceive(Timer.publish(every: wave.interval, on: .current,
-                                 in: .common).autoconnect()) { _ in
+        .onChange(of: wave.isFlowing) { isFlowing in
+            guard isFlowing else { return }
+            count.value = 0
+            scale = Int(round(wave.scale))
+            wave.verifyVerticalPadding(height: height)
+        }
+        .onReceive(Timer.publish(every: wave.isFlowing ? wave.interval : 100,
+                                 on: .current,  in: .common).autoconnect()) { _ in
             guard wave.isFlowing else { return }
             count.increment()
         }
@@ -84,12 +92,16 @@ struct WaveLine: View {
                 positions[joint].y += Double.random(in: -wave.amplitude...wave.amplitude)
             }
             
+            positions[joint].x += Double.random(in: -wave.gap...wave.gap)
+            
             for i in (1 ... joint).reversed() {
                 positions[i - 1].y = positions[i].y + Double.random(in: -wave.amplitude...wave.amplitude)
+                positions[i].x += Double.random(in: -wave.gap...wave.gap)
             }
             
             for i in joint ..< length {
                 positions[i].y = positions[i - 1].y + Double.random(in: -wave.amplitude...wave.amplitude)
+                positions[i].x += Double.random(in: -wave.gap...wave.gap)
             }
         }
         if count.value % 10 == 0 {

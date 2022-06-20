@@ -32,7 +32,7 @@ class RainViewModel: FlowModeViewModel {
     }
     
     static let FONT = Fonts(size: 0, design: .random,
-                            weight: .ultraLight, min: 10, max: 40)
+                            weight: .ultraLight, min: 10, max: 50)
     static let SCALE = 100.0
     static let INTERVAL = 0.05
     static let LENGTH = 150.0
@@ -49,11 +49,11 @@ class RainViewModel: FlowModeViewModel {
     override func makeRandomStyle() {
         super.makeRandomStyle()
         
-        scale = Double.random(in: 1...150)
-        interval = Double.random(in: 0.02...0.05)
+        scale = Double.random(in: 1...100)
+        interval = Double.random(in: 0.02...0.07)
         fonts.sizeRange.random(max: 100)
-        length = Double.random(in: 50...100)
-        step = CGFloat.random(in: 100...200)
+        length = Double.random(in: 10...100)
+        step = CGFloat.random(in: 50...200)
     }
     
     override func applyUserDefaults() {
